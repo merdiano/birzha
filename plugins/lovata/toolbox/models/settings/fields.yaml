@@ -1,10 +1,43 @@
 tabs:
     fields:
+        site_name:
+            tab: lovata.toolbox::lang.tab.settings
+            label: Site name
+
+        dollar:
+            tab: lovata.toolbox::lang.tab.settings
+            span: left
+            label: Dollar kurs
+
+        euro:
+            tab: lovata.toolbox::lang.tab.settings
+            span: right
+            label: Euro kurs
+
+        gbp:
+            tab: lovata.toolbox::lang.tab.settings
+            span: left
+            label: GBP kurs
+        phone:
+            tab: lovata.toolbox::lang.tab.settings
+            span: left
+            label: Telefon
+
+        email:
+            tab: lovata.toolbox::lang.tab.settings
+            span: right
+            label: Email
+
+        address:
+            tab: lovata.toolbox::lang.tab.settings
+            label: Adres
+
         slug_is_translatable:
             tab: lovata.toolbox::lang.tab.settings
             span: left
             label: lovata.toolbox::lang.settings.slug_is_translatable
             type: checkbox
+
         queue_on:
             tab: lovata.toolbox::lang.tab.mail
             span: left
