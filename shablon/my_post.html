@@ -10,93 +10,10 @@
     <link rel="stylesheet" href="css/slick-theme.css">
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Home</title>
+    <title>My post</title>
 </head>
 
 <body>
-
-    <!-- Register ======================================================== -->
-    <section class="register">
-        <div class="auto_container">
-            <div class="register_wrap">
-                <div class="register_body">
-                    <div class="register_buttons">
-                        <div class="user_btn" id="btn-1">
-                            <img src="images/svg/log-in-blue.svg" alt="">
-                            <span>Войти</span>
-                        </div>
-                        <div class="user_btn" id="btn-2">
-                            <img src="images/svg/user-plus-blue.svg" alt="">
-                            <span>Регистрация</span>
-                        </div>
-                    </div>
-                    <div class="register_banner">
-                        <div class="register_logo">
-                            <img src="images/register_logo.png" alt="">
-                        </div>
-                        <div class="register_title">
-                            ГТСБТ
-                        </div>
-                        <div class="register_text">
-                            Государственная
-                            товарно-сырьевая
-                            биржа Туркменистана
-                        </div>
-                        <div class="register_foot">
-                            <div class="register_mail">
-                                <img src="images/svg/login_mail.svg" alt="">
-                            </div>
-                            <a href="#" class="register_link">
-                                info@exchange.gov.tm
-                            </a>
-                        </div>
-                    </div>
-                    <div class="register_content">
-                        <form action="#" class="register_form">
-                            <div class="form_title">
-                                Регистрация
-                            </div>
-                            <div class="register_input">
-                                <input type="text" placeholder="Ваш логин">
-                            </div>
-                            <div class="register_input">
-                                <input type="email" placeholder="Ваш электронный адрес">
-                            </div>
-                            <div class="register_input">
-                                <input type="number" placeholder="Номер телефона">
-                            </div>
-                            <div class="register_input">
-                                <input type="password" placeholder="Пароль">
-                            </div>
-                            <button type="submit" class="form_btn">Продолжить регистрацию</button>
-                        </form>
-                    </div>
-
-                    <div class="register_content_2">
-                        <form action="#" class="register_form">
-                            <div class="form_title">
-                                Войти
-                            </div>
-                            <div class="form_text">
-                                Если вы забыли свой логин или пароль, просим вас
-                                восстановить его по <a href="#" class="form_link">ссылке.</a>
-                            </div>
-                            <div class="register_input">
-                                <input type="text" placeholder="Ваш логин">
-                            </div>
-                            <div class="register_input">
-                                <input type="password" placeholder="Пароль">
-                            </div>
-                            <button type="submit" class="form_btn"> Войти в свой профиль</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Register end ==================================================== -->
-
     <!-- Header Top ========================================================= -->
     <section class="header_top" id="head-top">
         <div class="auto_container">
@@ -170,7 +87,7 @@
                     <img src="images/logo.png" alt="">
                 </a>
 
-                <div class="head_buttons">
+                <!-- <div class="head_buttons">
                     <div class="register_btn">
                         <div class="btn_icon">
                             <img src="images/svg/user-plus-white.svg" alt="">
@@ -187,7 +104,71 @@
                             Войти
                         </div>
                     </div>
+                </div> -->
+
+                <div class="profile">
+                    <div class="profile_bio">
+                        <div class="profile_head">
+                            <div class="profile_icon">
+                                <img src="images/svg/user-plus.svg" alt="">
+                            </div>
+                            <div class="profile_text">
+                                Аман Аманов
+                            </div>
+                            <div class="prodile_arrow">
+                                <img src="images/svg/arrow-down.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="profile_drop">
+                            <a href="personal_data.html" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="images/svg/user-plus.svg" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    Персональные данные
+                                </div>
+                            </a>
+
+                            <a href="my_post.html" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="images/svg/clipboard.svg" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    Мои объявления
+                                </div>
+                            </a>
+
+                            <a href="#" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="images/svg/inbox.svg" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    Сообщения
+                                </div>
+                            </a>
+
+                            <a href="#" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="images/svg/log-out.svg" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    Выйти
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <a href="add_post.html" class="add_post_btn">
+                        <div class="post_icon">
+                            <img src="images/svg/add.svg" alt="">
+                        </div>
+                        <div class="post_text">
+                            Добавить объявление
+                        </div>
+                    </a>
                 </div>
+
             </div>
         </div>
     </header>
@@ -206,7 +187,7 @@
                         <a href="product.html" class="nav_link">Условия торгов</a>
                         <a href="contact.html" class="nav_link">Обратная связь</a>
 
-                        <div class="mobile_register">
+                        <!-- <div class="mobile_register">
                             <div class="register_btn">
                                 <div class="btn_icon">
                                     <img src="images/svg/user-plus-white.svg" alt="">
@@ -223,7 +204,71 @@
                                     Войти
                                 </div>
                             </div>
+                        </div> -->
+
+                        <div class="mobile_profile">
+                            <div class="profile_bio">
+                                <div class="profile_head">
+                                    <div class="profile_icon">
+                                        <img src="images/svg/user-plus.svg" alt="">
+                                    </div>
+                                    <div class="profile_text">
+                                        Аман Аманов
+                                    </div>
+                                    <div class="prodile_arrow">
+                                        <img src="images/svg/arrow-down.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="profile_drop">
+                                    <a href="personal_data.html" class="profile_item">
+                                        <div class="profile_icon">
+                                            <img src="images/svg/user-plus.svg" alt="">
+                                        </div>
+                                        <div class="profile_text">
+                                            Персональные данные
+                                        </div>
+                                    </a>
+        
+                                    <a href="my_post.html" class="profile_item">
+                                        <div class="profile_icon">
+                                            <img src="images/svg/clipboard.svg" alt="">
+                                        </div>
+                                        <div class="profile_text">
+                                            Мои объявления
+                                        </div>
+                                    </a>
+        
+                                    <a href="#" class="profile_item">
+                                        <div class="profile_icon">
+                                            <img src="images/svg/inbox.svg" alt="">
+                                        </div>
+                                        <div class="profile_text">
+                                            Сообщения
+                                        </div>
+                                    </a>
+        
+                                    <a href="#" class="profile_item">
+                                        <div class="profile_icon">
+                                            <img src="images/svg/log-out.svg" alt="">
+                                        </div>
+                                        <div class="profile_text">
+                                            Выйти
+                                        </div>
+                                    </a>
+        
+                                </div>
+                            </div>
+        
+                            <a href="add_post.html" class="add_post_btn">
+                                <div class="post_icon">
+                                    <img src="images/svg/add.svg" alt="">
+                                </div>
+                                <div class="post_text">
+                                    Добавить объявление
+                                </div>
+                            </a>
                         </div>
+
                     </div>
                 </div>
                 <div class="languages">
@@ -236,128 +281,13 @@
     </nav>
     <!--Navs  end ========================================================= -->
 
-    <!--Intro  ============================================================= -->
-    <section class="intro">
+    <!-- My post ========================================================= -->
+    <section class="library">
         <div class="auto_container">
-            <div class="intro_wrap">
-                <div class="intro_body">
-                    <div class="intro_slider">
-                        <div class="slider_item">
-                            <div class="slider_content">
-                                <div class="slider_title">
-                                    Электронная выставочно-ярмарочная торговля
-                                </div>
-                                <div class="slider_text">
-                                    Форма организации электронной коммерции с использованием информационной
-                                    системы «Государственной товарно-сырьевой биржи Туркменистана», при которой
-                                    обеспечивается
-                                    возможность реализации товаров не  в электронной коммерции.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider_item">
-                            <div class="slider_content">
-                                <div class="slider_title">
-                                    возможность реализации товаров не изъятых из гражданского оборота и являющиеся
-                                    коммерции.
-                                </div>
-                                <div class="slider_text">
-                                    Форма организации электронной коммерции с использованием информационной
-                                    системы «Государственной товарно-сырьевой биржи Туркменистана», при которой
-                                    обеспечивается
-                                    возможность реализации товаров коммерции.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider_item">
-                            <div class="slider_content">
-                                <div class="slider_title">
-                                    Электронная выставочно-ярмарочная торговля
-                                </div>
-                                <div class="slider_text">
-                                    Форма организации электронной коммерции с использованием информационной
-                                    системы «Государственной товарно-сырьевой биржи Туркменистана», при которой
-                                    обеспечивается
-                                    возможность реализации коммерции.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider_item">
-                            <div class="slider_content">
-                                <div class="slider_title">
-                                    Электронная выставочно-ярмарочная торговля
-                                </div>
-                                <div class="slider_text">
-                                    Форма организации электронной коммерции с использованием информационной
-                                    системы «Государственной товарно-сырьевой биржи Туркменистана», при которой
-                                    обеспечивается
-                                    возможность  коммерции.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="advert">
-                        <div class="advert_item">
-                            <img src="images/advert.png" alt="">
-                        </div>
-                        <div class="advert_item">
-                            <img src="images/advert.png" alt="">
-                        </div>
-                        <div class="advert_item">
-                            <img src="images/advert.png" alt="">
-                        </div>
-                        <div class="advert_item">
-                            <img src="images/advert.png" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="categories">
-                    <a href="#" class="cat_item">
-                        <div class="cat_photo">
-                            <img src="images/cat-1.png" alt="">
-                        </div>
-                        <div class="cat_text">
-                            Нефтехимия
-                        </div>
-                    </a>
-                    <a href="#" class="cat_item">
-                        <div class="cat_photo">
-                            <img src="images/cat-2.png" alt="">
-                        </div>
-                        <div class="cat_text">
-                            Машиностроение
-                        </div>
-                    </a>
-                    <a href="#" class="cat_item">
-                        <div class="cat_photo">
-                            <img src="images/cat-3.png" alt="">
-                        </div>
-                        <div class="cat_text">
-                            Легкая промышленность
-                        </div>
-                    </a>
-                    <a href="#" class="cat_item">
-                        <div class="cat_photo">
-                            <img src="images/cat-4.png" alt="">
-                        </div>
-                        <div class="cat_text">
-                            Стройматериалы
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Intro  end ========================================================= -->
-
-    <!--Product  ============================================================= -->
-    <section class="product">
-        <div class="auto_container">
-            <div class="product_wrap">
+            <div class="library_wrap">
                 <div class="product_head">
                     <div class="product_title">
-                        Новые товары
+                        Мои объявления
                     </div>
                     <div class="sort_by">
                         <div class="sort_icon">
@@ -446,7 +376,7 @@
                             </div>
                         </div>
                         <a href="#" class="item_btn">
-                            Подробнее
+                            Изменить
                         </a>
                     </div>
                     <div class="product_item">
@@ -497,7 +427,7 @@
                             </div>
                         </div>
                         <a href="#" class="item_btn">
-                            Подробнее
+                            Изменить
                         </a>
                     </div>
                     <div class="product_item">
@@ -548,7 +478,7 @@
                             </div>
                         </div>
                         <a href="#" class="item_btn">
-                            Подробнее
+                            Изменить
                         </a>
                     </div>
                     <div class="product_item">
@@ -599,7 +529,7 @@
                             </div>
                         </div>
                         <a href="#" class="item_btn">
-                            Подробнее
+                            Изменить
                         </a>
                     </div>
                     <div class="product_item">
@@ -650,7 +580,7 @@
                             </div>
                         </div>
                         <a href="#" class="item_btn">
-                            Подробнее
+                            Изменить
                         </a>
                     </div>
                     <div class="product_item">
@@ -701,7 +631,7 @@
                             </div>
                         </div>
                         <a href="#" class="item_btn">
-                            Подробнее
+                            Изменить
                         </a>
                     </div>
                     <div class="product_item">
@@ -752,7 +682,7 @@
                             </div>
                         </div>
                         <a href="#" class="item_btn">
-                            Подробнее
+                            Изменить
                         </a>
                     </div>
                     <div class="product_item">
@@ -803,14 +733,14 @@
                             </div>
                         </div>
                         <a href="#" class="item_btn">
-                            Подробнее
+                            Изменить
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--Product  end ========================================================= -->
+    <!-- My post end ===================================================== -->
 
     <!--Footer ============================================================= -->
     <footer class="footer">
@@ -820,41 +750,39 @@
                     <a href="index.html" class="foot_logo">
                         <img src="images/foot_logo.png" alt="">
                     </a>
-                    <div class="foot_outer">
-                        <div class="foot_col">
-                            <div class="foot_title">
-                                Категории
-                            </div>
-                            <div class="foot_box">
-                                <a href="#" class="foot_item">
-                                    Нефтехимия
-                                </a>
-                                <a href="#" class="foot_item">
-                                    Машиностроение
-                                </a>
-                                <a href="#" class="foot_item">
-                                    Легкая промышленность
-                                </a>
-                                <a href="#" class="foot_item">
-                                    Стройматериалы
-                                </a>
-                            </div>
+                    <div class="foot_col">
+                        <div class="foot_title">
+                            Категории
                         </div>
-                        <div class="foot_col">
-                            <div class="foot_title">
-                                Контакты
+                        <div class="foot_box">
+                            <a href="#" class="foot_item">
+                                Нефтехимия
+                            </a>
+                            <a href="#" class="foot_item">
+                                Машиностроение
+                            </a>
+                            <a href="#" class="foot_item">
+                                Легкая промышленность
+                            </a>
+                            <a href="#" class="foot_item">
+                                Стройматериалы
+                            </a>
+                        </div>
+                    </div>
+                    <div class="foot_col">
+                        <div class="foot_title">
+                            Контакты
+                        </div>
+                        <div class="foot_box">
+                            <div class="foot_item">
+                                Тел: +99312446015
                             </div>
-                            <div class="foot_box">
-                                <div class="foot_item">
-                                    Тел: +99312446015
-                                </div>
-                                <div class="foot_item">
-                                    Эл. почта: info@exchange.gov.tm
-                                </div>
-                                <div class="foot_item">
-                                    Адрес: 744000, Туркменистан <br>
-                                    г.Ашгабат, Арчабиль шаелы 52
-                                </div>
+                            <div class="foot_item">
+                                Эл. почта: info@exchange.gov.tm
+                            </div>
+                            <div class="foot_item">
+                                Адрес: 744000, Туркменистан <br>
+                                г.Ашгабат, Арчабиль шаелы 52
                             </div>
                         </div>
                     </div>
@@ -867,13 +795,11 @@
     </footer>
     <!--Footer end ========================================================= -->
 
-
     <script src="js/jquery.js"></script>
     <script src="js/slick.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/custom-select.js"></script>
     <script src="js/main.js"></script>
-    <!-- <script src="js/extra.js"></script> -->
 </body>
 
 </html>
