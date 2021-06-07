@@ -1,0 +1,13 @@
+fields:
+    description:
+        label: Description
+        size: ''
+        mode: tab
+        span: auto
+        required: 1
+        type: markdown
+    price:
+        label: Price
+        span: auto
+        required: 1
+        type: number

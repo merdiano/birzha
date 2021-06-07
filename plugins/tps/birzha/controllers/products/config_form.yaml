@@ -1,0 +1,10 @@
+name: Products
+form: $/tps/birzha/models/product/fields.yaml
+modelClass: TPS\Birzha\Models\Product
+defaultRedirect: tps/birzha/products
+create:
+    redirect: 'tps/birzha/products/update/:id'
+    redirectClose: tps/birzha/products
+update:
+    redirect: tps/birzha/products
+    redirectClose: tps/birzha/products

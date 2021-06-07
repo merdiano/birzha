@@ -1,0 +1,47 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        required: 1
+        defaultFrom: name
+        type: text
+    images:
+        label: Images
+        mode: image
+        imageWidth: '320'
+        imageHeight: '225'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+tabs:
+    fields:
+        status:
+            label: Status
+            options:
+                new: New
+                approved: Approved
+                denied: Denied
+                disabled: Disabled
+            span: auto
+            required: 1
+            type: balloon-selector
+            tab: 'Status Tab'
+        status_note:
+            label: 'Status note'
+            size: ''
+            span: auto
+            type: textarea
+            tab: 'Status Tab'
+        categories:
+            label: Category
+            nameFrom: name
+            span: auto
+            type: relation
+            tab: Categories

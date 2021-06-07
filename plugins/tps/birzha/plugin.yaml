@@ -1,0 +1,52 @@
+plugin:
+    name: TPS.Birzha
+    description: 'TPS birzha plugin'
+    author: TPS
+    icon: icon
+    homepage: ''
+navigation:
+    birzha-menu:
+        label: Catalog
+        url: tps/birzha/categories
+        icon: icon-th-large
+        sideMenu:
+            categories:
+                label: Categories
+                url: tps/birzha/categories
+                icon: icon-sitemap
+                permissions:
+                    - category
+            products:
+                label: Products
+                url: tps/birzha/products
+                icon: icon-cube
+                permissions:
+                    - product
+            measure:
+                label: Measure
+                url: tps/birzha/measures
+                icon: icon-tachometer
+            terms:
+                label: Terms
+                url: tps/birzha/terms
+                icon: icon-delicious
+            offers:
+                label: Offers
+                url: tps/birzha/offers
+                icon: icon-cubes
+permissions:
+    category:
+        tab: Catalog
+        label: Caregories
+    product:
+        tab: Catalog
+        label: Products
+    measure:
+        tab: Catalog
+        label: Measures
+    offer:
+        tab: Catalog
+        label: Offers
+    term:
+        tab: Catalog
+        label: Terms

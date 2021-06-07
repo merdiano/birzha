@@ -44,6 +44,25 @@ class Plugin extends PluginBase
     }
 
     /**
+     * @return array
+     */
+    public function registerSettings()
+    {
+        return [
+            'config' => [
+                'label'       => 'Application Settings',
+                'icon'        => 'icon-cogs',
+                'description' => 'Site general settings',
+                'class'       => 'TPS\Birzha\Models\Settings',
+                'order'       => 300,
+                'permissions' => [
+                    'toolbox-menu-settings',
+                ],
+            ],
+        ];
+    }
+
+    /**
      * Registers any front-end components implemented in this plugin.
      *
      * @return array
@@ -62,35 +81,35 @@ class Plugin extends PluginBase
      *
      * @return array
      */
-    public function registerPermissions()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'tps.birzha.some_permission' => [
-                'tab' => 'Birzha',
-                'label' => 'Some permission'
-            ],
-        ];
-    }
-
-    /**
-     * Registers back-end navigation items for this plugin.
-     *
-     * @return array
-     */
-    public function registerNavigation()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'birzha' => [
-                'label'       => 'Birzha',
-                'url'         => Backend::url('tps/birzha/mycontroller'),
-                'icon'        => 'icon-leaf',
-                'permissions' => ['tps.birzha.*'],
-                'order'       => 500,
-            ],
-        ];
-    }
+//    public function registerPermissions()
+//    {
+//        return []; // Remove this line to activate
+//
+//        return [
+//            'tps.birzha.some_permission' => [
+//                'tab' => 'Birzha',
+//                'label' => 'Some permission'
+//            ],
+//        ];
+//    }
+//
+//    /**
+//     * Registers back-end navigation items for this plugin.
+//     *
+//     * @return array
+//     */
+//    public function registerNavigation()
+//    {
+//        return []; // Remove this line to activate
+//
+//        return [
+//            'birzha' => [
+//                'label'       => 'Birzha',
+//                'url'         => Backend::url('tps/birzha/mycontroller'),
+//                'icon'        => 'icon-leaf',
+//                'permissions' => ['tps.birzha.*'],
+//                'order'       => 500,
+//            ],
+//        ];
+//    }
 }

@@ -1,0 +1,43 @@
+columns:
+    id:
+        label: id
+        type: number
+    product_id:
+        label: product_id
+        type: number
+    vendor_id:
+        label: vendor_id
+        type: number
+    description:
+        label: description
+        type: text
+    quantity:
+        label: quantity
+        type: number
+    price:
+        label: price
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    status:
+        label: status
+        type: text
+    measure_id:
+        label: measure_id
+        type: number
+    payment_term_id:
+        label: payment_term_id
+        type: number
+    deliver_term_id:
+        label: deliver_term_id
+        type: number
+    packaging:
+        label: packaging
+        type: text
+    place:
+        label: place
+        type: text
