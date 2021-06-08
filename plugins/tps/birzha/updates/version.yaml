@@ -50,3 +50,30 @@
 1.0.18:
     - 'Updated table tps_birzha_product'
     - builder_table_update_tps_birzha_product_5.php
+1.0.19:
+    - 'Updated table tps_birzha_offer'
+    - builder_table_update_tps_birzha_offer_2.php
+1.0.20:
+    - 'Updated table tps_birzha_product'
+    - builder_table_update_tps_birzha_product_6.php
+1.0.21:
+    - 'Updated table tps_birzha_offer'
+    - builder_table_update_tps_birzha_offer_3.php
+1.0.22:
+    - 'Created table tps_birzha_payment'
+    - builder_table_create_tps_birzha_payment.php
+1.0.23:
+    - 'Updated table tps_birzha_offer'
+    - builder_table_update_tps_birzha_offer_4.php
+1.0.24:
+    - 'Created table tps_birzha_currency'
+    - builder_table_create_tps_birzha_currency.php
+1.0.25:
+    - 'Updated table tps_birzha_offer'
+    - builder_table_update_tps_birzha_offer_5.php
+1.0.26:
+    - 'Updated table tps_birzha_offer'
+    - builder_table_update_tps_birzha_offer_6.php
+1.0.27:
+    - 'Updated table tps_birzha_offer'
+    - builder_table_update_tps_birzha_offer_7.php

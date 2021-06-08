@@ -5,7 +5,7 @@ use Model;
 /**
  * Model
  */
-class Category extends Model
+class Payment extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
@@ -13,12 +13,11 @@ class Category extends Model
 
     protected $dates = ['deleted_at'];
 
-    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_category';
+    public $table = 'tps_birzha_payment';
 
     /**
      * @var array Validation rules
@@ -26,14 +25,11 @@ class Category extends Model
     public $rules = [
     ];
 
-    public $translatable = ['name','slug'];
-
     public $hasMany = [
-        'products' => 'TPS\Birzha\Models\Product'
+        'offers' => 'TPS\Birzha\Models\Offer'
     ];
 
-    public function scopeActive($query)
-    {
-        return $query->where('status', 1);
-    }
+    public $belongsTo = [
+        'user' => 'RainLab\User\Models\User'
+    ];
 }

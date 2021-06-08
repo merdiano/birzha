@@ -1,0 +1,31 @@
+fields:
+    amount:
+        label: Amount
+        span: auto
+        disabled: 1
+        readOnly: 1
+        type: number
+    user:
+        label: Payer
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        readOnly: 1
+        type: relation
+    created_at:
+        label: 'Payment date'
+        mode: datetime
+        span: auto
+        readOnly: 1
+        type: datepicker
+    payment_type:
+        label: 'Payment type'
+        span: auto
+        type: text
+    offers:
+        label: 'Payed for'
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        readOnly: 1
+        type: relation

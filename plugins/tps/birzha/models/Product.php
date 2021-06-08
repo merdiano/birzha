@@ -27,7 +27,7 @@ class Product extends Model
     ];
 
     public $belongsToMany = [
-        'categories' => 'TPS\Birzha\Models\Category'
+        'categories' => ['TPS\Birzha\Models\Category','table' => 'tps_birzha_product_categories']
     ];
 
     public $hasMany = [
@@ -37,4 +37,6 @@ class Product extends Model
     public $attachMany = [
         'images' => 'System\Models\File'
     ];
+
+    public $translatable = ['name','slug','mark'];
 }

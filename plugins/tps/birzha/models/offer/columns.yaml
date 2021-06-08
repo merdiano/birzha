@@ -1,43 +1,74 @@
 columns:
     id:
-        label: id
+        label: Id
         type: number
     product_id:
-        label: product_id
-        type: number
-    vendor_id:
-        label: vendor_id
-        type: number
-    description:
-        label: description
+        label: Product
         type: text
+        relation: product
+    vendor_id:
+        label: Seller
+        type: text
+        relation: user
+    description:
+        label: Ddescription
+        type: text
+        invisible: true
     quantity:
         label: quantity
         type: number
     price:
-        label: price
-        type: text
+        label: Price
+        type: number
     created_at:
         label: created_at
         type: datetime
+        invisible: true
     updated_at:
         label: updated_at
         type: datetime
+        invisible: true
     status:
-        label: status
+        label: Status
         type: text
     measure_id:
-        label: measure_id
-        type: number
+        label: Measure
+        type: text
+        relation: measure
     payment_term_id:
-        label: payment_term_id
-        type: number
+        label: 'Payment term'
+        type: text
+        invisible: true
+        relation: payment_term
     deliver_term_id:
-        label: deliver_term_id
-        type: number
+        label: 'Delivery term'
+        type: text
+        invisible: true
+        relation: deliver_term
     packaging:
-        label: packaging
-        type: text
+        label: Packaging
+        type: switch
+        invisible: true
     place:
-        label: place
+        label: Place
         type: text
+        invisible: true
+    mark:
+        label: Mark
+        type: text
+        invisible: true
+    status_note:
+        label: 'Status note'
+        type: text
+        invisible: true
+    name:
+        label: Name
+        type: text
+    currency_id:
+        label: Currency
+        type: text
+        invisible: true
+        relation: currency
+    ends_at:
+        label: 'End date'
+        type: datetime

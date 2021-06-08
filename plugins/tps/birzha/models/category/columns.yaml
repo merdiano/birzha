@@ -6,6 +6,27 @@ columns:
     name:
         label: Name
         type: text
+        searchable: true
     status:
         label: Status
         type: switch
+        sortable: true
+    created_at:
+        label: created_at
+        type: datetime
+        invisible: true
+    updated_at:
+        label: updated_at
+        type: datetime
+        invisible: true
+    meta_desc:
+        label: meta_desc
+        type: text
+        invisible: true
+    icon:
+        label: icon
+        type: text
+        invisible: true
+    slug:
+        label: slug
+        type: text

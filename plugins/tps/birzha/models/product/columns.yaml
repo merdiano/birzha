@@ -2,21 +2,29 @@ columns:
     id:
         label: id
         type: number
+        sortable: true
     created_at:
-        label: created_at
+        label: 'Created at'
         type: datetime
+        invisible: true
     updated_at:
-        label: updated_at
+        label: 'Updated at'
         type: datetime
-    deleted_at:
-        label: deleted_at
-        type: datetime
+        invisible: true
     name:
-        label: name
+        label: Name
         type: text
+        searchable: true
+        sortable: true
     status:
-        label: status
+        label: Status
         type: text
+        sortable: true
     slug:
-        label: slug
+        label: Slug
         type: text
+    mark:
+        label: Marka
+        type: text
+        searchable: true
+        sortable: true

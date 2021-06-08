@@ -22,18 +22,36 @@ navigation:
                 icon: icon-cube
                 permissions:
                     - product
-            measure:
-                label: Measure
-                url: tps/birzha/measures
-                icon: icon-tachometer
-            terms:
-                label: Terms
-                url: tps/birzha/terms
-                icon: icon-delicious
             offers:
                 label: Offers
                 url: tps/birzha/offers
                 icon: icon-cubes
+                permissions:
+                    - offer
+            measure:
+                label: Measure
+                url: tps/birzha/measures
+                icon: icon-tachometer
+                permissions:
+                    - measure
+            terms:
+                label: Terms
+                url: tps/birzha/terms
+                icon: icon-delicious
+                permissions:
+                    - term
+            currency:
+                label: Currencies
+                url: tps/birzha/currencies
+                icon: icon-dollar
+                permissions:
+                    - currency
+            payments:
+                label: Payments
+                url: tps/birzha/payments
+                icon: icon-money
+                permissions:
+                    - payment
 permissions:
     category:
         tab: Catalog
@@ -50,3 +68,9 @@ permissions:
     term:
         tab: Catalog
         label: Terms
+    currency:
+        tab: Catalog
+        label: Currencies
+    payment:
+        tab: Catalog
+        label: Payments

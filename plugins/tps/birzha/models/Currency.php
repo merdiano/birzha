@@ -5,35 +5,32 @@ use Model;
 /**
  * Model
  */
-class Category extends Model
+class Currency extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
-    use \October\Rain\Database\Traits\SoftDelete;
-
-    protected $dates = ['deleted_at'];
+    /*
+     * Disable timestamps by default.
+     * Remove this line if timestamps are defined in the database table.
+     */
+    public $timestamps = false;
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
-
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_category';
+    public $table = 'tps_birzha_currency';
 
     /**
      * @var array Validation rules
      */
     public $rules = [
+
     ];
 
-    public $translatable = ['name','slug'];
+    public $translatable = ['name'];
 
     public $hasMany = [
-        'products' => 'TPS\Birzha\Models\Product'
+        'offers' => 'TPS\Birzha\Models\Offer'
     ];
-
-    public function scopeActive($query)
-    {
-        return $query->where('status', 1);
-    }
 }

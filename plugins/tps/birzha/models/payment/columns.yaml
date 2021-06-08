@@ -1,0 +1,18 @@
+columns:
+    id:
+        label: id
+        type: number
+    created_at:
+        label: created_at
+        type: datetime
+        invisible: false
+    user_id:
+        label: User
+        type: text
+        relation: user
+    amount:
+        label: Amount
+        type: text
+    payment_type:
+        label: 'Payment type'
+        type: text

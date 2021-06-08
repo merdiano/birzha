@@ -9,6 +9,16 @@ fields:
         required: 1
         defaultFrom: name
         type: text
+    mark:
+        label: Marka
+        span: auto
+        type: text
+    created_at:
+        label: 'Created at'
+        mode: datetime
+        span: auto
+        readOnly: 1
+        type: datepicker
     images:
         label: Images
         mode: image
@@ -26,6 +36,7 @@ tabs:
             label: Status
             options:
                 new: New
+                draft: Draft
                 approved: Approved
                 denied: Denied
                 disabled: Disabled
@@ -42,6 +53,8 @@ tabs:
         categories:
             label: Category
             nameFrom: name
+            descriptionFrom: description
+            scope: active
             span: auto
             type: relation
             tab: Categories

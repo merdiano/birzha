@@ -32,4 +32,12 @@ class Term extends Model
     ];
 
     public $translatable = ['name'];
+
+    public function scopePayment($query){
+        return $query->where('type','payment');
+    }
+
+    public function scopeDelivery($query){
+        return $query->where('type','delivery');
+    }
 }

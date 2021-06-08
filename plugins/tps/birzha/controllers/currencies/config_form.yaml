@@ -1,0 +1,11 @@
+name: Currencies
+modelClass: TPS\Birzha\Models\Currency
+form: $/tps/birzha/models/currency/fields.yaml
+defaultRedirect: tps/birzha/currencies
+create:
+    redirect: 'tps/birzha/currencies/update/:id'
+    redirectClose: tps/birzha/currencies
+update:
+    redirect: tps/birzha/currencies
+    redirectClose: tps/birzha/currencies
+preview: {  }
