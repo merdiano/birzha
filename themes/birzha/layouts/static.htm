@@ -1,0 +1,33 @@
+[staticPage]
+useContent = 1
+default = 0
+
+[localePicker]
+forceUrl = 1
+==
+<!DOCTYPE html>
+<html lang="{{activeLocale}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="{{ this.page.meta_title | default(this.page.title)}}">
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="canonical" content="{{ this.page.meta_canonical }}">
+    <meta name="keywords" content="{{ this.page.meta_keywords }}">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <title>{{ this.page.meta_title | default(this.page.title)}}</title>
+    {% styles %}
+
+</head>
+<body>
+
+{% page %}
+
+{% partial 'footer' %}
+
+{% framework extras %}
+{% scripts %}
+</body>
+</html>

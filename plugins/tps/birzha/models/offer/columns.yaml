@@ -9,7 +9,7 @@ columns:
     vendor_id:
         label: Seller
         type: text
-        relation: user
+        relation: vendor
     description:
         label: Ddescription
         type: text

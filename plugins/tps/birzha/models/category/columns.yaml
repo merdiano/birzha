@@ -8,7 +8,7 @@ columns:
         type: text
         searchable: true
     status:
-        label: Status
+        label: Active
         type: switch
         sortable: true
     created_at:
@@ -28,5 +28,5 @@ columns:
         type: text
         invisible: true
     slug:
-        label: slug
+        label: Slug
         type: text

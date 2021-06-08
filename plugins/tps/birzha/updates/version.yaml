@@ -77,3 +77,6 @@
 1.0.27:
     - 'Updated table tps_birzha_offer'
     - builder_table_update_tps_birzha_offer_7.php
+1.0.28:
+    - 'Updated table tps_birzha_payment'
+    - builder_table_update_tps_birzha_payment.php

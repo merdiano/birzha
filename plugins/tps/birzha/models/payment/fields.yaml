@@ -22,10 +22,15 @@ fields:
         label: 'Payment type'
         span: auto
         type: text
-    offers:
-        label: 'Payed for'
-        nameFrom: name
-        descriptionFrom: description
+    status:
+        label: Status
+        options:
+            new: new
+            payed: payed
         span: auto
-        readOnly: 1
-        type: relation
+        type: balloon-selector
+    note:
+        label: Note
+        size: ''
+        span: auto
+        type: textarea

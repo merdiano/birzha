@@ -1,0 +1,30 @@
+en:
+  site.name: 'Turkmenistan state birzha'
+  nav.home: 'Home'
+  nav.city: 'Ashgabat'
+  page.more: 'More'
+  page.not_found: 'Page not found'
+  page.not_found_message: "We're sorry, but the page you requested cannot be found."
+  page.search: 'Search'
+  page.search_result: 'The search results found: :number articles'
+  footer.copyright: '© TDHСMB all rights reserved'
+ru:
+  site.name: '«Туркменистан: золотой век»'
+  nav.home: 'Главная'
+  nav.city: 'Ашхабад'
+  page.more: 'Ещё'
+  page.not_found: 'Страница не найдена'
+  page.not_found_message: "Сожалеем, но запрошенная вами страница не может быть найдена."
+  page.search: 'Поиск'
+  page.search_result: 'По результату поиска было найдено: :number статьи'
+  footer.copyright: '© TDHСMB все права зашишены'
+tm:
+  site.name: 'Türkmenistanyň Döwlet çig-mal biržasy'
+  nav.home: 'Baş sahypa'
+  nav.city: 'Aşgabat'
+  page.more: 'Ýene'
+  page.not_found: 'Sahypa tapylmady.'
+  page.not_found_message: "Bagyşlaň! Siziň gözleýän sahypaňyz ýyok."
+  page.search: 'Gözleg'
+  page.search_result: 'Gözleg netijesi: :number makala tapyldy'
+  footer.copyright: '© TDHСMB ähli hukuklar goralan'
