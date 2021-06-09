@@ -10,6 +10,9 @@ fields:
         required: 1
         defaultFrom: name
         type: text
+        preset:
+            field: name
+            type: slug
     meta_desc:
         label: 'Meta description'
         size: ''
@@ -24,3 +27,4 @@ fields:
         label: Status
         span: auto
         type: switch
+        default: 1

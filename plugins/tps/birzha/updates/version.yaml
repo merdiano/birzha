@@ -80,3 +80,9 @@
 1.0.28:
     - 'Updated table tps_birzha_payment'
     - builder_table_update_tps_birzha_payment.php
+1.0.29:
+    - 'Updated table tps_birzha_category'
+    - builder_table_update_tps_birzha_category_4.php
+1.0.30:
+    - 'Updated table tps_birzha_product_categories'
+    - builder_table_update_tps_birzha_product_categories.php

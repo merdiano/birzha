@@ -7,6 +7,7 @@ use Model;
  */
 class Product extends Model
 {
+
     use \October\Rain\Database\Traits\Validation;
 
     use \October\Rain\Database\Traits\SoftDelete;
@@ -38,5 +39,6 @@ class Product extends Model
         'images' => 'System\Models\File'
     ];
 
-    public $translatable = ['name','slug','mark'];
+    public $translatable = ['name',['slug', 'index' => true],'mark'];
+
 }

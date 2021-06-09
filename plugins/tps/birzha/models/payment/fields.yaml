@@ -21,7 +21,10 @@ fields:
     payment_type:
         label: 'Payment type'
         span: auto
-        type: text
+        options:
+            bank: Bank
+            online: Online
+        type: balloon-selector
     status:
         label: Status
         options:

@@ -9,6 +9,9 @@ fields:
         required: 1
         defaultFrom: name
         type: text
+        preset:
+            field: name
+            type: slug
     mark:
         label: Marka
         span: auto
@@ -35,8 +38,8 @@ tabs:
         status:
             label: Status
             options:
-                new: New
                 draft: Draft
+                new: New
                 approved: Approved
                 denied: Denied
                 disabled: Disabled

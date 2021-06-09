@@ -1,0 +1,22 @@
+scopes:
+    created_at:
+        label: Date
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+    status:
+        label: Status
+        type: group
+        options:
+            new: new
+            payed: payed
+    payment_type:
+        label: 'Payment type'
+        type: group
+        options:
+            bank: Bank
+            online: Online
+    user:
+        label: Seller
+        modelClass: RainLab\User\Models\User
+        nameFrom: name
+        conditions: user_id in (:filtered)

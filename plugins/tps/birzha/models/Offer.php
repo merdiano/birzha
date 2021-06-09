@@ -37,4 +37,16 @@ class Offer extends Model
     ];
 
     public $translatable = ['name','description','mark','place'];
+    /**
+     * Allows filtering for specifc categories.
+     * @param  Illuminate\Query\Builder  $query      QueryBuilder
+     * @param  array                     $categories List of category ids
+     * @return Illuminate\Query\Builder              QueryBuilder
+     */
+    public function scopeFilterUsers($query, $categories)
+    {
+        return $query->whereHas('categories', function($q) use ($categories) {
+            $q->whereIn('id', $categories);
+        });
+    }
 }

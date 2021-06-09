@@ -1,0 +1,33 @@
+scopes:
+    product:
+        label: Product
+        modelClass: TPS\Birzha\Models\Product
+        nameFrom: name
+        conditions: product_id in (:filtered)
+    mark:
+        label: Marka
+        type: text
+        conditions: mark = :value
+    status:
+        label: Status
+        type: group
+        options:
+            draft: Draft
+            new: New
+            approved: Approved
+            denied: Denied
+            payed: Payed
+            published: Published
+    user:
+        label: Seller
+        modelClass: RainLab\User\Models\User
+        nameFrom: name
+        conditions: user_id in (:filtered)
+    created_at:
+        label: Created at
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+    ends_at:
+        label: Ends at
+        type: daterange
+        conditions: ends_at >= ':after' AND ends_at <= ':before'
