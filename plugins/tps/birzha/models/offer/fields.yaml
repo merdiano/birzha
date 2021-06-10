@@ -1,0 +1,124 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    mark:
+        label: Marka
+        span: auto
+        type: text
+    description:
+        label: Description
+        size: ''
+        mode: tab
+        span: full
+        required: 1
+        type: markdown
+    images:
+        label: Images
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: auto
+            extension: auto
+        span: auto
+        type: fileupload
+    place:
+        label: Place
+        span: auto
+        type: text
+    product:
+        label: Product
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    vendor:
+        label: Seller
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    quantity:
+        label: Quantity
+        span: auto
+        required: 1
+        type: number
+    measure_id:
+        label: Measure
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
+    created_at:
+        label: 'Created at'
+        mode: datetime
+        span: auto
+        readOnly: 1
+        type: datepicker
+    ends_at:
+        label: 'Ends at'
+        mode: datetime
+        span: auto
+        required: 1
+        type: datepicker
+    status:
+        label: Status
+        options:
+            draft: Draft
+            new: New
+            approved: Approved
+            denied: Denied
+            payed: Payed
+            published: Published
+        span: auto
+        type: balloon-selector
+    status_note:
+        label: 'Status note'
+        size: ''
+        span: auto
+        type: textarea
+    payment_term:
+        label: 'Payment term'
+        nameFrom: name
+        descriptionFrom: description
+        scope: payment
+        span: auto
+        type: relation
+    delivery_term:
+        label: 'Delivery term'
+        nameFrom: name
+        descriptionFrom: description
+        scope: delivery
+        span: auto
+        type: relation
+    packaging:
+        label: Pacaging
+        options:
+            - 'no'
+            - 'yes'
+        span: auto
+        type: balloon-selector
+    payment:
+        label: Payment
+        nameFrom: created_at
+        descriptionFrom: description
+        span: auto
+        readOnly: 1
+        type: relation
+tabs:
+    fields:
+        price:
+            label: Price
+            span: auto
+            required: 1
+            type: number
+            tab: Dopalnitelno
+        currency:
+            label: Currency
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: Dopalnitelno

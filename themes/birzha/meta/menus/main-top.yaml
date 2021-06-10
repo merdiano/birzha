@@ -1,0 +1,58 @@
+items:
+    -
+        title: Kategoriýalar
+        nesting: null
+        type: url
+        url: /
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            locale:
+                en:
+                    title: Categories
+                    url: ''
+                ru:
+                    title: Категории
+                    url: ''
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Söwda şertleri'
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: sowda-sertleri
+        replace: 0
+        viewBag:
+            locale:
+                en:
+                    title: 'Trade terms'
+                    url: ''
+                ru:
+                    title: 'Условия торгов'
+                    url: ''
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Habarlaşmak üçin'
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: habarlasmak-ucin
+        replace: 0
+        viewBag:
+            locale:
+                en:
+                    title: ''
+                    url: ''
+                ru:
+                    title: ''
+                    url: ''
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: main-top

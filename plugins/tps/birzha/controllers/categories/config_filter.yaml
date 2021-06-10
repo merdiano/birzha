@@ -1,0 +1,14 @@
+scopes:
+    status:
+        label: Hide UnActive
+        type: checkbox
+        default: 1
+        conditions: status = true
+    created_at:
+        label: Date
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+    name:
+        label: Name
+        type: text
+        conditions: name = :value

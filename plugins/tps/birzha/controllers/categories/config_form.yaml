@@ -1,0 +1,10 @@
+name: Categories
+form: $/tps/birzha/models/category/fields.yaml
+modelClass: TPS\Birzha\Models\Category
+defaultRedirect: tps/birzha/categories
+create:
+    redirect: 'tps/birzha/categories/update/:id'
+    redirectClose: tps/birzha/categories
+update:
+    redirect: tps/birzha/categories
+    redirectClose: tps/birzha/categories

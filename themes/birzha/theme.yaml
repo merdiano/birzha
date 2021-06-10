@@ -1,0 +1,7 @@
+name: Birzha
+description: 'White and Blue theme'
+author: TPS
+homepage: ''
+code: birzha
+form: config/settings.yaml
+translate: config/lang.yaml

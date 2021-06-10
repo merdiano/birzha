@@ -1,0 +1,10 @@
+name: Terms
+form: $/tps/birzha/models/term/fields.yaml
+modelClass: TPS\Birzha\Models\Term
+defaultRedirect: tps/birzha/terms
+create:
+    redirect: 'tps/birzha/terms/update/:id'
+    redirectClose: tps/birzha/terms
+update:
+    redirect: tps/birzha/terms
+    redirectClose: tps/birzha/terms

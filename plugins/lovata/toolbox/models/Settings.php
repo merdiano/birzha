@@ -10,4 +10,6 @@ class Settings extends CommonSettings
     const SETTINGS_CODE = 'lovata_toolbox_settings';
 
     public $settingsCode = 'lovata_toolbox_settings';
+
+    public $translatable = ['address','site_name'];
 }

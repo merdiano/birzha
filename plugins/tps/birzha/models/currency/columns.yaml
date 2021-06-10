@@ -1,0 +1,10 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: Name
+        type: text
+    code:
+        label: Code
+        type: text

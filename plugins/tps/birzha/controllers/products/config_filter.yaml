@@ -1,0 +1,27 @@
+scopes:
+    created_at:
+        label: Date
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+    name:
+        label: Name
+        type: text
+        conditions: name = :value
+    mark:
+        label: Marka
+        type: text
+        conditions: mark = :value
+    status:
+        label: Status
+        type: group
+        options:
+            draft: Draft
+            new: New
+            approved: Approved
+            denied: Denied
+            disabled: Disabled
+    category:
+        label: Category
+        modelClass: TPS\Birzha\Models\Category
+        nameFrom: name
+        scope: FilterCategories

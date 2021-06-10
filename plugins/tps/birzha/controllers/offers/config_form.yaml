@@ -1,0 +1,10 @@
+name: Offers
+form: $/tps/birzha/models/offer/fields.yaml
+modelClass: TPS\Birzha\Models\Offer
+defaultRedirect: tps/birzha/offers
+create:
+    redirect: 'tps/birzha/offers/update/:id'
+    redirectClose: tps/birzha/offers
+update:
+    redirect: tps/birzha/offers
+    redirectClose: tps/birzha/offers

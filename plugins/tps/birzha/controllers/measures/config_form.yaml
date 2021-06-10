@@ -1,0 +1,10 @@
+name: Measures
+form: $/tps/birzha/models/measure/fields.yaml
+modelClass: TPS\Birzha\Models\Measure
+defaultRedirect: tps/birzha/measures
+create:
+    redirect: 'tps/birzha/measures/update/:id'
+    redirectClose: tps/birzha/measures
+update:
+    redirect: tps/birzha/measures
+    redirectClose: tps/birzha/measures

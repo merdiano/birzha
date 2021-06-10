@@ -1,0 +1,12 @@
+list: $/tps/birzha/models/measure/columns.yaml
+modelClass: TPS\Birzha\Models\Measure
+title: Measures
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'tps/birzha/measures/update/:id'

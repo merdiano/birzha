@@ -1,0 +1,33 @@
+tabs:
+  fields:
+    logo_ru:
+      tab: General
+      label: Logo russian
+      type: fileupload
+      mode: image
+      span: left
+    logo_tk:
+      tab: General
+      label: Logo turkmen
+      type: fileupload
+      mode: image
+      span: right
+    logo_en:
+      tab: General
+      label: Logo english
+      type: fileupload
+      mode: image
+      span: left
+
+    phone:
+      tab: General
+      label: phone
+      default: +993 12 399747
+      span: left
+    eMail:
+      tab: General
+      label: e-mail
+      default: altynasyr.newspaper@gmail.com
+      span: right
+
+

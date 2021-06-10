@@ -1,0 +1,22 @@
+columns:
+    id:
+        label: id
+        type: text
+    sender_id:
+        label: sender_id
+        type: number
+    reciver_id:
+        label: reciver_id
+        type: number
+    send_at:
+        label: send_at
+        type: text
+    read_at:
+        label: read_at
+        type: text
+    message:
+        label: message
+        type: text
+    deleted_at:
+        label: deleted_at
+        type: datetime

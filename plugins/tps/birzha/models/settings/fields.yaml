@@ -1,0 +1,53 @@
+tabs:
+    fields:
+        site_name:
+            tab: General
+            label: Site name
+
+        dollar:
+            tab: Currency
+            span: left
+            label: Dollar kurs
+
+        euro:
+            tab: Currency
+            span: right
+            label: Euro kurs
+
+        gbp:
+            tab: Currency
+            span: left
+            label: GBP kurs
+        phone:
+            tab: General
+            span: left
+            label: Telefon
+
+        email:
+            tab: General
+            span: right
+            label: Email
+
+        address:
+            tab: General
+            label: Adres
+
+        api_login:
+            tab: Payment
+            label: Payment api Login
+            span: left
+        api_password:
+            tab: Payment
+            label: Payment api password
+            type: password
+            span: right
+        fee:
+            tab: Payment
+            label: Fee per product
+            type: number
+            span: left
+        duration:
+            tab: Payment
+            label: Product display duration
+            comment: In days
+            span: right
