@@ -15,7 +15,8 @@ const selectElement = function (element) {
 };
 // selector end=============
 
-let drop = document.querySelector('.profile_drop');
+let drop = document.querySelectorAll('.profile_drop');
+let profile_head = document.querySelectorAll('.profile_head');
 let register = document.querySelector('.register');
 let register_btn = document.querySelectorAll('.register_btn');
 let log_in = document.querySelectorAll('.log_in');
@@ -73,11 +74,11 @@ window.onclick = function (e) {
         }
     }
 
-    if (selectElement('.links').classList.contains('active')) {
+    if (selectElement('.links').classList.contains('active')&& !e.target.closest('.profile_head')) {
         selectElement('.links').classList.remove('active');
     }
 
-    if (selectElement('.links_bg').classList.contains('active')) {
+    if (selectElement('.links_bg').classList.contains('active') && !e.target.closest('.profile_head')) {
         selectElement('.links_bg').classList.remove('active');
     }
 
@@ -94,7 +95,17 @@ selectElement('.burger').addEventListener('click', function () {
     });
 });
 
-
+if (profile_head != undefined) {
+    profile_head.forEach(r => {
+        r.addEventListener('click', function () {
+            sleep(2).then(() => {
+                drop.forEach(d => {
+                    d.classList.toggle('active');
+                }) 
+            });
+        });
+    }) 
+}
 
 
 
@@ -111,7 +122,6 @@ if (register_btn != undefined) {
             });
         });
     })
-
 }
 
 
@@ -152,7 +162,7 @@ if (btn_2 != undefined) {
         sleep(2).then(() => {
             btn_2.classList.add('active');
             btn_1.classList.remove('active');
-    
+
             register_content.classList.add('active');
             register_content_2.classList.remove('active');
         });
