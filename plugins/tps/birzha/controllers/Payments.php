@@ -12,7 +12,7 @@ class Payments extends Controller
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
 
-    public $stats, $payment_stats, $amount_stats;
+    public $stats;
     public $requiredPermissions = [
         'payment'
     ];
@@ -22,23 +22,29 @@ class Payments extends Controller
         parent::__construct();
         BackendMenu::setContext('TPS.Birzha', 'birzha-menu', 'payments');
 
-        $this->stats = Payment::select('status',DB::raw('COUNT(id) as count, SUM(amount) as total_amount'))
-            ->groupBy('status')
+        $this->stats = Payment::groupBy('status','payment_type')
+            ->selectRaw('status, payment_type, COUNT(id) as count, SUM(amount) as total_amount')
             ->get();
-
-        $this->payment_stats = Payment::select('payment_type',DB::raw('COUNT(id) as count, SUM(amount) as total_amount'))
-            ->groupBy('payment_type')
-            ->get();
-
     }
 
     public function getRecordsStats($status){
-        return $this->stats->where('status',$status)->first()->count ?? 0;
+        return $this->stats->where('status',$status)
+                ->sum('count')
+            ?? 0;
     }
 
     public function getPaymentStats($type)
     {
-        return $this->stats->where('payment_type',$type)->first()->count ?? 0;
+        return $this->stats->where('payment_type',$type)
+                ->sum('count')
+            ?? 0;
+    }
+
+    public function getAmountStats($type){
+        return $this->stats->where('payment_type',$type)
+                ->where('status','approved')
+                ->sum('total_amount')
+            ?? 0;
     }
 
     //todo amount funksia yazmaly

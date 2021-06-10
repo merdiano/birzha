@@ -25,6 +25,10 @@ class Product extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'categories' => 'required',
+        'status' => 'required',
+        'title' => 'required',
+        'slug' => 'required'
     ];
 
     public $belongsToMany = [
@@ -40,5 +44,11 @@ class Product extends Model
     ];
 
     public $translatable = ['name',['slug', 'index' => true],'mark'];
+
+    public function beforeCreate()
+    {
+        if(!$this->status)
+            $this->status = 'draft';
+    }
 
 }

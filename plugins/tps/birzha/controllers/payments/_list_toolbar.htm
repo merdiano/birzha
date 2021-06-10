@@ -2,20 +2,26 @@
     <div data-control="toolbar">
         <div class="scoreboard-item control-chart" data-control="chart-pie">
             <ul>
-                <li data-color="#95b753">New <span><?= $this->getRecordsStats('new'); ?></span></li>
-                <li data-color="#d1d1d1">Payed <span><?= $this->getRecordsStats('payed'); ?></span></li>
+                <li data-color="#95b753">Online Payment<span><?= $this->getPaymentStats('online'); ?></span></li>
+                <li data-color="#d1d1d1">Bank Transfer<span><?= $this->getPaymentStats('bank'); ?></span></li>
             </ul>
         </div>
         <div class="scoreboard-item control-chart" data-control="chart-pie">
             <ul>
-                <li data-color="#95b753">Online <span><?= $this->getPaymentStats('online'); ?></span></li>
-                <li data-color="#d1d1d1">Bank <span><?= $this->getPaymentStats('bank'); ?></span></li>
+                <li data-color="#95b753">New payments(Bank transfers)<span><?= $this->getRecordsStats('new'); ?></span></li>
+                <li data-color="#d1d1d1">Approved (Payed) <span><?= $this->getRecordsStats('payed'); ?></span></li>
             </ul>
         </div>
+
         <div class="scoreboard-item title-value">
-            <h4><?= e(trans('janvince.smallcontactform::lang.controller.scoreboard.new_count')) ?></h4>
-            <p><?= $this->getRecordsStats('new'); ?></p>
-            <p class="description">Payments</p>
+            <h4>Online payments</h4>
+            <p><?= $this->getAmountStats('online'); ?></p>
+            <p class="description">Total amount</p>
+        </div>
+        <div class="scoreboard-item title-value">
+            <h4>Bank transfer approved payments</h4>
+            <p><?= $this->getAmountStats('bank'); ?></p>
+            <p class="description">Total amount</p>
         </div>
     </div>
 </div>

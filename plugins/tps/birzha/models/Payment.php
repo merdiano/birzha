@@ -23,6 +23,7 @@ class Payment extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'amount' => 'required'
     ];
 
     public $hasMany = [

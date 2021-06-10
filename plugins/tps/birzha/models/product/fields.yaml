@@ -35,6 +35,15 @@ fields:
         type: fileupload
 tabs:
     fields:
+        categories:
+            label: Category
+            nameFrom: name
+            descriptionFrom: description
+            scope: active
+            span: auto
+            type: relation
+            tab: Categories
+            required: 1
         status:
             label: Status
             options:
@@ -53,11 +62,4 @@ tabs:
             span: auto
             type: textarea
             tab: 'Status Tab'
-        categories:
-            label: Category
-            nameFrom: name
-            descriptionFrom: description
-            scope: active
-            span: auto
-            type: relation
-            tab: Categories
+

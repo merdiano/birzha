@@ -7,7 +7,7 @@ use TPS\Birzha\Models\Product;
 
 class Products extends Controller
 {
-    public $implement = [        'Backend\Behaviors\ListController',        'Backend\Behaviors\FormController'    ];
+    public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController'];
 
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';

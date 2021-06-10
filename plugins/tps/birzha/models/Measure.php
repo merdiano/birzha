@@ -23,6 +23,7 @@ class Measure extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'name' => 'required'
     ];
 
     public $translatable = ['name','code'];
