@@ -26,27 +26,33 @@ class Offer extends Model
         'product' => 'TPS\Birzha\Models\Product',
         'payment' => 'TPS\Birzha\Models\Payment',
         'currency' => 'TPS\Birzha\Models\Currency',
-        'measure' => 'TPS\Birzha\Models\Measure',
+        'measure' => ['TPS\Birzha\Models\Measure','key' => 'measure_id'],
         'payment_term' => ['TPS\Birzha\Models\Term','key' => 'payment_term_id'],
         'delivery_term' => ['TPS\Birzha\Models\Term','key' => 'delivery_term_id'],
         'vendor' => User::class
     ];
 
     public $attachMany = [
-        'images' => 'TPS\Birzha\Models\Product'
+        'images' => 'System\Models\File'
     ];
 
     public $translatable = ['name','description','mark','place'];
     /**
      * Allows filtering for specifc categories.
      * @param  Illuminate\Query\Builder  $query      QueryBuilder
-     * @param  array                     $categories List of category ids
+     * @param  array                     $users List of user ids
      * @return Illuminate\Query\Builder              QueryBuilder
      */
-    public function scopeFilterUsers($query, $categories)
+    public function scopeFilterUsers($query, $users)
     {
-        return $query->whereHas('categories', function($q) use ($categories) {
-            $q->whereIn('id', $categories);
+        return $query->whereHas('categories', function($q) use ($users) {
+            $q->whereIn('id', $users);
         });
+    }
+
+    public function beforeCreate()
+    {
+        if(!$this->status)
+            $this->status = 'draft';
     }
 }

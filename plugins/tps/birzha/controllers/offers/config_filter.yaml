@@ -16,8 +16,6 @@ scopes:
             new: New
             approved: Approved
             denied: Denied
-            payed: Payed
-            published: Published
     user:
         label: Seller
         modelClass: RainLab\User\Models\User
