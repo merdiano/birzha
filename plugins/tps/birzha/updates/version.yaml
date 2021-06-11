@@ -89,3 +89,6 @@
 1.0.31:
     - 'Updated table tps_birzha_product'
     - builder_table_update_tps_birzha_product_7.php
+1.0.32:
+    - 'Updated table tps_birzha_offer'
+    - builder_table_update_tps_birzha_offer_8.php

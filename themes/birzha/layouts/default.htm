@@ -1,3 +1,36 @@
 [localePicker]
 forceUrl = 0
+
+[staticPage]
+useContent = 1
+default = 0
 ==
+<!DOCTYPE html>
+<html lang="{{activeLocale}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    {% styles %}
+    <link rel="stylesheet" href="{{'assets/css/main.css'|theme}}">
+    <!--    <link href="{{ ['assets/css/main.css']|theme }}" rel="stylesheet">-->
+<!--    <link rel="icon" href="{{'assets/images/icon/cropped-cropped-orienticon-32x32.png'|theme}}" sizes="32x32">-->
+<!--    <link rel="icon" href="{{'assets/images/icon/cropped-cropped-orienticon-192x192.png'|theme}}" sizes="192x192">-->
+<!--    <link rel="apple-touch-icon-precomposed" href="{{'assets/images/icon/cropped-cropped-orienticon-180x180.png'|theme}}">-->
+<!--    <meta name="msapplication-TileImage" content="{{'assets/images/icon/cropped-cropped-orienticon-270x270.png'|theme}}">-->
+
+</head>
+<body>
+{% partial 'auth' %}
+{% partial 'header' %}
+{% page %}
+{% partial 'footer' %}
+<script src="{{'assets/js/jquery.js'|theme}}"></script>
+
+{% framework extras %}
+{% scripts %}
+<script src="{{'assets/js/main.js'|theme}}"></script>
+</body>
+</html>

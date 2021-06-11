@@ -85,8 +85,8 @@ tabs:
         packaging:
             label: Pacaging
             options:
-                - 'no'
-                - 'yes'
+                'no': 'no'
+                'yes': 'yes'
             span: auto
             type: balloon-selector
             tab: Terms

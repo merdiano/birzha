@@ -27,8 +27,12 @@ class Product extends Model
     public $rules = [
         'categories' => 'required',
         'status' => 'required',
-        'title' => 'required',
+        'name' => 'required',
         'slug' => 'required'
+    ];
+
+    public $customMessages = [
+        'status_note.required' => 'Status Note is required when status is set to Denied',
     ];
 
     public $belongsToMany = [
@@ -49,6 +53,13 @@ class Product extends Model
     {
         if(!$this->status)
             $this->status = 'draft';
+    }
+
+    public function beforeValidate()
+    {
+        if ($this->status && $this->status =='denied') {
+            $this->rules['status_note'] = 'required';
+        }
     }
 
 }
