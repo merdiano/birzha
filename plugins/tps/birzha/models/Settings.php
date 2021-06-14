@@ -5,7 +5,7 @@ use October\Rain\Database\Model;
 class Settings extends Model
 {
     const SETTINGS_CODE = 'tps_birzha_settings';
-
+    public static $arCacheValue = [];
     public $implement = [
         'System.Behaviors.SettingsModel',
         '@RainLab.Translate.Behaviors.TranslatableModel',
