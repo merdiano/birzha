@@ -49,7 +49,6 @@ class Plugin extends PluginBase
             return [
                 'category'          => 'Category',
                 'all-categories'    => 'All Categories',
-                'product'           => 'Product',
                 'all-products'      => 'All products',
                 'category-products' => 'Category Products',
             ];
@@ -100,10 +99,8 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
-
         return [
-            'TPS\Birzha\Components\MyComponent' => 'myComponent',
+            'TPS\Birzha\Components\Categories' => 'categories',
         ];
     }
 

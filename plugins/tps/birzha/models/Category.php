@@ -1,5 +1,7 @@
 <?php namespace TPS\Birzha\Models;
 
+use Cms\Classes\Page as CmsPage;
+use Cms\Classes\Theme;
 use Model;
 
 /**
@@ -44,7 +46,47 @@ class Category extends Model
     }
 
     public static function getMenuTypeInfo($type){
+        $result = [];
 
+        if ($type == 'category') {
+            $result = [
+                'references'   => Category::active()->pluck('name','id'),
+                'nesting'      => true,
+                'dynamicItems' => true
+            ];
+        }
+
+        if ($type == 'all-categories') {
+            $result = [
+                'dynamicItems' => true
+            ];
+        }
+
+        if ($result) {
+            $theme = Theme::getActiveTheme();
+
+            $pages = CmsPage::listInTheme($theme, true);
+            $cmsPages = [];
+            foreach ($pages as $page) {
+                if (!$page->hasComponent('categories')) {
+                    continue;
+                }
+
+                /*
+                 * Component must use a category filter with a routing parameter
+                 * eg: categoryFilter = "{{ :somevalue }}"
+                 */
+                $properties = $page->getComponentProperties('blogPosts');
+                if (!isset($properties['categoryFilter']) || !preg_match('/{{\s*:/', $properties['categoryFilter'])) {
+                    continue;
+                }
+
+                $cmsPages[] = $page;
+            }
+
+            $result['cmsPages'] = $cmsPages;
+        }
+        return $result;
     }
 
     public static function resolveMenuItem($item, $url, $theme){
