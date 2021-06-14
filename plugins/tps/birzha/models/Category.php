@@ -42,4 +42,12 @@ class Category extends Model
     {
         return $query->where('status', 1);
     }
+
+    public static function getMenuTypeInfo($type){
+
+    }
+
+    public static function resolveMenuItem($item, $url, $theme){
+
+    }
 }

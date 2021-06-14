@@ -2,7 +2,9 @@
 
 use Backend;
 use System\Classes\PluginBase;
-
+use TPS\Birzha\Models\Category;
+use TPS\Birzha\Models\Product;
+use Event;
 /**
  * Birzha Plugin Information File
  */
@@ -40,7 +42,36 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        /*
+         * Register menu items for the RainLab.Pages plugin
+         */
+        Event::listen('pages.menuitem.listTypes', function() {
+            return [
+                'category'          => 'Category',
+                'all-categories'    => 'All Categories',
+                'product'           => 'Product',
+                'all-products'      => 'All products',
+                'category-products' => 'Category Products',
+            ];
+        });
 
+        Event::listen('pages.menuitem.getTypeInfo', function($type) {
+            if ($type == 'category' || $type == 'all-categories') {
+                return Category::getMenuTypeInfo($type);
+            }
+            elseif ($type == 'product' || $type == 'all-products' || $type == 'category-products') {
+                return Product::getMenuTypeInfo($type);
+            }
+        });
+
+        Event::listen('pages.menuitem.resolveItem', function($type, $item, $url, $theme) {
+            if ($type == 'category' || $type == 'all-categories') {
+                return Category::resolveMenuItem($item, $url, $theme);
+            }
+            elseif ($type == 'product' || $type == 'all-products' || $type == 'category-products') {
+                return Product::resolveMenuItem($item, $url, $theme);
+            }
+        });
     }
 
     /**

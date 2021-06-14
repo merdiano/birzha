@@ -5,6 +5,12 @@ forceUrl = 0
 useContent = 1
 default = 0
 ==
+<?php
+function onRun(){
+    $phone = TPS\Birzha\Models\Settings::getValue('phone');
+}
+?>
+==
 <!DOCTYPE html>
 <html lang="{{activeLocale}}">
 <head>

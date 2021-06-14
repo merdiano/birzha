@@ -62,4 +62,11 @@ class Product extends Model
         }
     }
 
+    public static function getMenuTypeInfo($type){
+
+    }
+
+    public static function resolveMenuItem($item, $url, $theme){
+
+    }
 }
