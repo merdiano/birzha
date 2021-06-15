@@ -36,7 +36,7 @@ class Settings extends Model
         //Get settings object
         $obSettings = static::where('item', static::SETTINGS_CODE)->first();
         if (empty($obSettings)) {
-            static::$arCacheValue[$sCode] = static::get($sCode, $sDefaultValue);
+            static::$arCacheValue[$sCode] = static::getAttributeTranslated($sCode, $sDefaultValue);
 
             return static::$arCacheValue[$sCode];
         }
