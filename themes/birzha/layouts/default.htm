@@ -1,13 +1,19 @@
-[localePicker]
-forceUrl = 0
-
 [staticPage]
 useContent = 1
 default = 0
+
+[localePicker]
+forceUrl = 1
 ==
 <?php
-function onRun(){
-    $phone = TPS\Birzha\Models\Settings::getValue('phone');
+function onStart(){
+    $this['phone'] = TPS\Birzha\Models\Settings::getValue('phone');
+    $this['site_name'] = TPS\Birzha\Models\Settings::getValue('site_name');
+    $this['dollar'] = TPS\Birzha\Models\Settings::getValue('dollar');
+    $this['euro'] = TPS\Birzha\Models\Settings::getValue('euro');
+    $this['gbp'] = TPS\Birzha\Models\Settings::getValue('gbp');
+    $this['email'] = TPS\Birzha\Models\Settings::getValue('email');
+    $this['address'] = TPS\Birzha\Models\Settings::getValue('address');
 }
 ?>
 ==

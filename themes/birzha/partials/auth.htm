@@ -4,29 +4,27 @@
             <div class="register_body">
                 <div class="register_buttons">
                     <div class="user_btn" id="btn-1">
-                        <img src="images/svg/log-in-blue.svg" alt="">
-                        <span>Войти</span>
+                        <img src="{{ 'assets/images/svg/log-in-blue.svg'|theme }}" alt="">
+                        <span><nobr>{{ 'topnav.login'|_ }}</nobr></span>
                     </div>
                     <div class="user_btn" id="btn-2">
-                        <img src="images/svg/user-plus-blue.svg" alt="">
-                        <span>Регистрация</span>
+                        <img src="{{ 'assets/images/svg/user-plus-blue.svg'|theme }}" alt="">
+                        <span><nobr>{{ 'topnav.reg'|_ }}</nobr></span>
                     </div>
                 </div>
                 <div class="register_banner">
                     <div class="register_logo">
-                        <img src="images/register_logo.png" alt="">
+                        <img src="{{ 'assets/images/register_logo.png'|theme }}" alt="">
                     </div>
                     <div class="register_title">
-                        ГТСБТ
+                        {{ 'site.short_name'|_ }}
                     </div>
                     <div class="register_text">
-                        Государственная
-                        товарно-сырьевая
-                        биржа Туркменистана
+                        {{ 'site.name'|_ }}
                     </div>
                     <div class="register_foot">
                         <div class="register_mail">
-                            <img src="images/svg/login_mail.svg" alt="">
+                            <img src="{{ 'assets/images/svg/login_mail.svg'|theme }}" alt="">
                         </div>
                         <a href="#" class="register_link">
                             info@exchange.gov.tm
@@ -36,7 +34,7 @@
                 <div class="register_content">
                     <form action="#" class="register_form">
                         <div class="form_title">
-                            Регистрация
+                            {{ 'topnav.reg'|_ }}
                         </div>
                         <div class="register_input">
                             <input type="text" placeholder="Ваш логин">
@@ -50,18 +48,17 @@
                         <div class="register_input">
                             <input type="password" placeholder="Пароль">
                         </div>
-                        <button type="submit" class="form_btn">Продолжить регистрацию</button>
+                        <button type="submit" class="form_btn">{{ 'auth.reg_continue'|_ }}</button>
                     </form>
                 </div>
 
                 <div class="register_content_2">
                     <form action="#" class="register_form">
                         <div class="form_title">
-                            Войти
+                            {{ 'topnav.login'|_ }}
                         </div>
                         <div class="form_text">
-                            Если вы забыли свой логин или пароль, просим вас
-                            восстановить его по <a href="#" class="form_link">ссылке.</a>
+                            {{ 'auth.account_recov'|_ }}
                         </div>
                         <div class="register_input">
                             <input type="text" placeholder="Ваш логин">
@@ -69,7 +66,7 @@
                         <div class="register_input">
                             <input type="password" placeholder="Пароль">
                         </div>
-                        <button type="submit" class="form_btn"> Войти в свой профиль</button>
+                        <button type="submit" class="form_btn">{{ 'auth.login_to_account'|_ }}</button>
                     </form>
                 </div>
 

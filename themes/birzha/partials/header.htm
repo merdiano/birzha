@@ -1,3 +1,8 @@
+[viewBag]
+
+[staticMenu]
+code = "main-top"
+==
 <!-- Header Top ========================================================= -->
 <section class="header_top" id="head-top">
     <div class="auto_container">
@@ -8,7 +13,7 @@
                         <img src="{{'assets/images/svg/phone-call.svg'|theme}}" alt="">
                     </div>
                     <div class="head_text">
-                        +99312446015
+                        {{ phone }}
                     </div>
                 </div>
                 <div class="header_contact">
@@ -16,7 +21,7 @@
                         <img src="{{'assets/images/svg/blue_mail.svg'|theme}}" alt="">
                     </div>
                     <a href="#" class="head_text">
-                        info@exchange.gov.tm
+                        {{ email }}
                     </a>
                 </div>
             </div>
@@ -32,7 +37,7 @@
                         usd
                     </div>
                     <div class="head_num">
-                        3.5000
+                        {{ dollar }}
                     </div>
                 </div>
                 <div class="header_contact">
@@ -43,7 +48,7 @@
                         eur
                     </div>
                     <div class="head_num">
-                        4.3430
+                        {{ euro }}
                     </div>
                 </div>
                 <div class="header_contact">
@@ -54,7 +59,7 @@
                         gbp
                     </div>
                     <div class="head_num">
-                        3.4353
+                        {{ gbp }}
                     </div>
                 </div>
             </div>
@@ -72,8 +77,7 @@
                     <img src="{{'assets/images/big_logo.png'|theme}}" alt="logo">
                 </div>
                 <div class="logo_text">
-                    Государственная товарно-сырьевая <br>
-                    биржа Туркменистана
+                    {{ site_name|raw }}
                 </div>
             </a>
 
@@ -83,7 +87,7 @@
                         <img src="{{'assets/images/svg/user-plus-white.svg'|theme}}" alt="">
                     </div>
                     <div class="btn_text">
-                        Регистрация
+                        {{ 'topnav.reg'|_ }}
                     </div>
                 </div>
                 <div class="log_in">
@@ -91,7 +95,7 @@
                         <img src="{{'assets/images/svg/log-in-white.svg'|theme}}" alt="">
                     </div>
                     <div class="btn_text">
-                        Войти
+                        {{ 'topnav.login'|_ }}
                     </div>
                 </div>
             </div>
@@ -109,9 +113,10 @@
             </div>
             <div class="links_bg">
                 <div class="links">
-                    <a href="category.html" class="nav_link">Категории</a>
-                    <a href="product.html" class="nav_link">Условия торгов</a>
-                    <a href="contact.html" class="nav_link">Обратная связь</a>
+                    
+                    {% for item in staticMenu.menuItems %}
+                    <a class="nav_link" href="{{ item.url }}">{{ item.title }}</a>
+                    {% endfor %}
 
                     <div class="mobile_register">
                         <div class="register_btn">
@@ -119,7 +124,7 @@
                                 <img src="{{'assets/images/svg/user-plus-white.svg'|theme}}" alt="">
                             </div>
                             <div class="btn_text">
-                                Регистрация
+                                {{ 'topnav.reg'|_ }}
                             </div>
                         </div>
                         <div class="log_in">
@@ -127,7 +132,7 @@
                                 <img src="{{'assets/images/svg/log-in-white.svg'|theme}}" alt="">
                             </div>
                             <div class="btn_text">
-                                Войти
+                                {{ 'topnav.login'|_ }}
                             </div>
                         </div>
                     </div>
@@ -151,7 +156,7 @@
                                         <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
                                     </div>
                                     <div class="profile_text">
-                                        Персональные данные
+                                        {{ 'auth.personal_data'|_ }}
                                     </div>
                                 </a>
 
@@ -160,7 +165,7 @@
                                         <img src="{{'assets/images/svg/clipboard.svg'|theme}}" alt="">
                                     </div>
                                     <div class="profile_text">
-                                        Мои объявления
+                                        {{ 'auth.my_announces'|_ }}
                                     </div>
                                 </a>
 
@@ -169,7 +174,7 @@
                                         <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
                                     </div>
                                     <div class="profile_text">
-                                        Сообщения
+                                        {{ 'auth.messages'|_ }}
                                     </div>
                                 </a>
 
@@ -178,7 +183,7 @@
                                         <img src="{{'assets/images/svg/log-out.svg'|theme}}" alt="">
                                     </div>
                                     <div class="profile_text">
-                                        Выйти
+                                        {{ 'auth.logout'|_ }}
                                     </div>
                                 </a>
 
@@ -190,16 +195,16 @@
                                 <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
                             </div>
                             <div class="post_text">
-                                Добавить объявление
+                                {{ 'auth.add_announce'|_ }}
                             </div>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="languages">
-                <a href="#" class="lang_item">eng</a>
-                <a href="#" class="lang_item active">рус</a>
-                <a href="#" class="lang_item">tkm</a>
+                {% for code, name in locales %}
+                <a href="#" class="lang_item {{ code == activeLocale ? 'active' : '' }}" data-request="onSwitchLocale" data-request-data="locale: '{{code}}'">{{ code }}</a>
+                {% endfor %}
             </div>
         </div>
     </div>

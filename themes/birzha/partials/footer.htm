@@ -7,14 +7,13 @@
                         <img src="{{'assets/images/register_logo.png'|theme}}" alt="logo">
                     </div>
                     <div class="foot_logo_text">
-                        Государственная товарно-сырьевая <br>
-                        биржа Туркменистана
+                        {{ site_name|raw }}
                     </div>
                 </a>
                 <div class="foot_outer">
                     <div class="foot_col">
                         <div class="foot_title">
-                            Категории
+                            {{ 'nav.categories'|_ }}
                         </div>
                         <div class="foot_box">
                             <a href="#" class="foot_item">
@@ -33,25 +32,24 @@
                     </div>
                     <div class="foot_col">
                         <div class="foot_title">
-                            Контакты
+                            {{ 'footer.contacts'|_ }}
                         </div>
                         <div class="foot_box">
                             <div class="foot_item">
-                                Тел: +99312446015
+                                {{ 'footer.tel'|_ }}: {{ phone }}
                             </div>
                             <div class="foot_item">
-                                Эл. почта: info@exchange.gov.tm
+                                {{ 'footer.email'|_ }}: {{ email }}
                             </div>
                             <div class="foot_item">
-                                Адрес: 744000, Туркменистан <br>
-                                г.Ашгабат, Арчабиль шаелы 52
+                                {{ 'footer.address'|_ }}: {{ address|raw }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                © TDHСMB все права зашишены
+                {{ 'footer.copyright'|_ }}
             </div>
         </div>
     </div>
