@@ -8,7 +8,51 @@ is_hidden = 0
 <link rel="stylesheet" href="{{['assets/css/slick-theme.css','assets/css/slick.css']|theme}}">
 {% endput %}
 
-{% partial 'slider' %}
+<!--Intro  ============================================================= -->
+<section class="intro">
+    <div class="auto_container">
+        <div class="intro_wrap">
+
+            {% partial 'slider' %}
+
+            <div class="categories">
+                <a href="#" class="cat_item">
+                    <div class="cat_photo">
+                        <img src="{{ 'assets/images/cat-1.png'|theme }}" alt="">
+                    </div>
+                    <div class="cat_text">
+                        Нефтехимия
+                    </div>
+                </a>
+                <a href="#" class="cat_item">
+                    <div class="cat_photo">
+                        <img src="{{ 'assets/images/cat-2.png'|theme }}" alt="">
+                    </div>
+                    <div class="cat_text">
+                        Машиностроение
+                    </div>
+                </a>
+                <a href="#" class="cat_item">
+                    <div class="cat_photo">
+                        <img src="{{ 'assets/images/cat-3.png'|theme }}" alt="">
+                    </div>
+                    <div class="cat_text">
+                        Легкая промышленность
+                    </div>
+                </a>
+                <a href="#" class="cat_item">
+                    <div class="cat_photo">
+                        <img src="{{ 'assets/images/cat-4.png'|theme }}" alt="">
+                    </div>
+                    <div class="cat_text">
+                        Стройматериалы
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Intro  end ========================================================= -->
 
 <!--Product  ============================================================= -->
 <section class="product">
@@ -16,7 +60,7 @@ is_hidden = 0
         <div class="product_wrap">
             <div class="product_head">
                 <div class="product_title">
-                    Новые товары
+                    {{ 'page.new_prods'|_ }}
                 </div>
                 <div class="sort_by">
                     <div class="sort_icon">
@@ -38,29 +82,29 @@ is_hidden = 0
             </div>
             <div class="inline_head">
                 <div class="inline_item">
-                    Лот №:
+                    {{ 'page.prod_id'|_ }} №:
                 </div>
                 <div class="inline_item">
-                    Изображение
+                    {{ 'page.prod_img'|_ }}
                 </div>
                 <div class="inline_item">
-                    Товар
+                    {{ 'page.prod_title'|_ }}
                 </div>
                 <div class="inline_item">
-                    Количество:
+                    {{ 'page.prod_amount'|_ }}:
                 </div>
                 <div class="inline_item">
-                    Стартовая цена:
+                    {{ 'page.prod_price'|_ }}:
                 </div>
                 <div class="inline_item">
-                    Дата окончания:
+                    {{ 'page.prod_finishdate'|_ }}:
                 </div>
             </div>
             <div class="product_box">
                 <div class="product_item">
                     <div class="item_head">
                         <div class="item_lot">
-                            Лот №:
+                            {{ 'page.prod_id'|_ }} №:
                         </div>
                         <div class="item_num">
                             № 154997
@@ -70,7 +114,7 @@ is_hidden = 0
                         № 49378
                     </div>
                     <div class="item_photo">
-                        <img src="images/goods.png" alt="">
+                        <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
@@ -82,36 +126,36 @@ is_hidden = 0
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Количество:
+                            {{ 'page.prod_amount'|_ }}:
                         </div>
                         <div class="item_name">
-                            15 кг.
+                            15 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Стартовая цена:
+                            {{ 'page.prod_price'|_ }}:
                         </div>
                         <div class="item_name">
-                            120 ТМТ / 1 кг.
+                            120 ТМТ / 1 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Дата окончания:
+                            {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
                             01.01.2022
                         </div>
                     </div>
                     <a href="#" class="item_btn">
-                        Подробнее
+                        {{ 'page.more'|_ }}
                     </a>
                 </div>
                 <div class="product_item">
                     <div class="item_head">
                         <div class="item_lot">
-                            Лот №:
+                            {{ 'page.prod_id'|_ }} №:
                         </div>
                         <div class="item_num">
                             № 154997
@@ -121,7 +165,7 @@ is_hidden = 0
                         № 49378
                     </div>
                     <div class="item_photo">
-                        <img src="images/goods.png" alt="">
+                        <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
@@ -133,36 +177,36 @@ is_hidden = 0
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Количество:
+                            {{ 'page.prod_amount'|_ }}:
                         </div>
                         <div class="item_name">
-                            15 кг.
+                            15 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Стартовая цена:
+                            {{ 'page.prod_price'|_ }}:
                         </div>
                         <div class="item_name">
-                            120 ТМТ / 1 кг.
+                            120 ТМТ / 1 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Дата окончания:
+                            {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
                             01.01.2022
                         </div>
                     </div>
                     <a href="#" class="item_btn">
-                        Подробнее
+                        {{ 'page.more'|_ }}
                     </a>
                 </div>
                 <div class="product_item">
                     <div class="item_head">
                         <div class="item_lot">
-                            Лот №:
+                            {{ 'page.prod_id'|_ }} №:
                         </div>
                         <div class="item_num">
                             № 154997
@@ -172,7 +216,7 @@ is_hidden = 0
                         № 49378
                     </div>
                     <div class="item_photo">
-                        <img src="images/goods.png" alt="">
+                        <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
@@ -184,36 +228,36 @@ is_hidden = 0
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Количество:
+                            {{ 'page.prod_amount'|_ }}:
                         </div>
                         <div class="item_name">
-                            15 кг.
+                            15 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Стартовая цена:
+                            {{ 'page.prod_price'|_ }}:
                         </div>
                         <div class="item_name">
-                            120 ТМТ / 1 кг.
+                            120 ТМТ / 1 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Дата окончания:
+                            {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
                             01.01.2022
                         </div>
                     </div>
                     <a href="#" class="item_btn">
-                        Подробнее
+                        {{ 'page.more'|_ }}
                     </a>
                 </div>
                 <div class="product_item">
                     <div class="item_head">
                         <div class="item_lot">
-                            Лот №:
+                            {{ 'page.prod_id'|_ }} №:
                         </div>
                         <div class="item_num">
                             № 154997
@@ -223,7 +267,7 @@ is_hidden = 0
                         № 49378
                     </div>
                     <div class="item_photo">
-                        <img src="images/goods.png" alt="">
+                        <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
@@ -235,36 +279,36 @@ is_hidden = 0
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Количество:
+                            {{ 'page.prod_amount'|_ }}:
                         </div>
                         <div class="item_name">
-                            15 кг.
+                            15 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Стартовая цена:
+                            {{ 'page.prod_price'|_ }}:
                         </div>
                         <div class="item_name">
-                            120 ТМТ / 1 кг.
+                            120 ТМТ / 1 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Дата окончания:
+                            {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
                             01.01.2022
                         </div>
                     </div>
                     <a href="#" class="item_btn">
-                        Подробнее
+                        {{ 'page.more'|_ }}
                     </a>
                 </div>
                 <div class="product_item">
                     <div class="item_head">
                         <div class="item_lot">
-                            Лот №:
+                            {{ 'page.prod_id'|_ }} №:
                         </div>
                         <div class="item_num">
                             № 154997
@@ -274,7 +318,7 @@ is_hidden = 0
                         № 49378
                     </div>
                     <div class="item_photo">
-                        <img src="images/goods.png" alt="">
+                        <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
@@ -286,36 +330,36 @@ is_hidden = 0
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Количество:
+                            {{ 'page.prod_amount'|_ }}:
                         </div>
                         <div class="item_name">
-                            15 кг.
+                            15 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Стартовая цена:
+                            {{ 'page.prod_price'|_ }}:
                         </div>
                         <div class="item_name">
-                            120 ТМТ / 1 кг.
+                            120 ТМТ / 1 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Дата окончания:
+                            {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
                             01.01.2022
                         </div>
                     </div>
                     <a href="#" class="item_btn">
-                        Подробнее
+                        {{ 'page.more'|_ }}
                     </a>
                 </div>
                 <div class="product_item">
                     <div class="item_head">
                         <div class="item_lot">
-                            Лот №:
+                            {{ 'page.prod_id'|_ }} №:
                         </div>
                         <div class="item_num">
                             № 154997
@@ -325,7 +369,7 @@ is_hidden = 0
                         № 49378
                     </div>
                     <div class="item_photo">
-                        <img src="images/goods.png" alt="">
+                        <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
@@ -337,36 +381,36 @@ is_hidden = 0
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Количество:
+                            {{ 'page.prod_amount'|_ }}:
                         </div>
                         <div class="item_name">
-                            15 кг.
+                            15 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Стартовая цена:
+                            {{ 'page.prod_price'|_ }}:
                         </div>
                         <div class="item_name">
-                            120 ТМТ / 1 кг.
+                            120 ТМТ / 1 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Дата окончания:
+                            {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
                             01.01.2022
                         </div>
                     </div>
                     <a href="#" class="item_btn">
-                        Подробнее
+                        {{ 'page.more'|_ }}
                     </a>
                 </div>
                 <div class="product_item">
                     <div class="item_head">
                         <div class="item_lot">
-                            Лот №:
+                            {{ 'page.prod_id'|_ }} №:
                         </div>
                         <div class="item_num">
                             № 154997
@@ -376,7 +420,7 @@ is_hidden = 0
                         № 49378
                     </div>
                     <div class="item_photo">
-                        <img src="images/goods.png" alt="">
+                        <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
@@ -388,36 +432,36 @@ is_hidden = 0
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Количество:
+                            {{ 'page.prod_amount'|_ }}:
                         </div>
                         <div class="item_name">
-                            15 кг.
+                            15 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Стартовая цена:
+                            {{ 'page.prod_price'|_ }}:
                         </div>
                         <div class="item_name">
-                            120 ТМТ / 1 кг.
+                            120 ТМТ / 1 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Дата окончания:
+                            {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
                             01.01.2022
                         </div>
                     </div>
                     <a href="#" class="item_btn">
-                        Подробнее
+                        {{ 'page.more'|_ }}
                     </a>
                 </div>
                 <div class="product_item">
                     <div class="item_head">
                         <div class="item_lot">
-                            Лот №:
+                            {{ 'page.prod_id'|_ }} №:
                         </div>
                         <div class="item_num">
                             № 154997
@@ -427,7 +471,7 @@ is_hidden = 0
                         № 49378
                     </div>
                     <div class="item_photo">
-                        <img src="images/goods.png" alt="">
+                        <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
@@ -439,30 +483,30 @@ is_hidden = 0
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Количество:
+                            {{ 'page.prod_amount'|_ }}:
                         </div>
                         <div class="item_name">
-                            15 кг.
+                            15 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Стартовая цена:
+                            {{ 'page.prod_price'|_ }}:
                         </div>
                         <div class="item_name">
-                            120 ТМТ / 1 кг.
+                            120 ТМТ / 1 {{ 'page.prod_kg'|_ }}.
                         </div>
                     </div>
                     <div class="item_group">
                         <div class="item_sub_name">
-                            Дата окончания:
+                            {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
                             01.01.2022
                         </div>
                     </div>
                     <a href="#" class="item_btn">
-                        Подробнее
+                        {{ 'page.more'|_ }}
                     </a>
                 </div>
             </div>

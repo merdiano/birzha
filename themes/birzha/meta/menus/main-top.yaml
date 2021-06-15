@@ -23,8 +23,10 @@ items:
         title: 'Söwda şertleri'
         nesting: 0
         type: static-page
+        url: null
         code: ''
         reference: sowda-sertleri
+        cmsPage: null
         replace: 0
         viewBag:
             locale:
@@ -47,10 +49,10 @@ items:
         viewBag:
             locale:
                 en:
-                    title: ''
+                    title: 'Contact us'
                     url: ''
                 ru:
-                    title: ''
+                    title: 'Обратная связь'
                     url: ''
             isHidden: '0'
             cssClass: ''
