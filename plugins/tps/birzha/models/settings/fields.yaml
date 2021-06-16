@@ -32,6 +32,10 @@ tabs:
             tab: General
             label: Adres
 
+        short_name:
+            tab: General
+            label: Short name (abbreviation)
+
         api_login:
             tab: Payment
             label: Payment api Login
