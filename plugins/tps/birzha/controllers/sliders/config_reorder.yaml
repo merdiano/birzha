@@ -1,0 +1,4 @@
+title: Sliders
+modelClass: TPS\Birzha\Models\Slider
+toolbar:
+    buttons: reorder_toolbar

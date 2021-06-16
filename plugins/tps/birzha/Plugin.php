@@ -101,6 +101,7 @@ class Plugin extends PluginBase
     {
         return [
             'TPS\Birzha\Components\Categories' => 'categories',
+            'TPS\Birzha\Components\Sliders' => 'sliders'
         ];
     }
 

@@ -1,71 +1,15 @@
+[viewBag]
+
+[sliders]
+sliderCode = "skjdhj"
+sliderType = "text_slider"
+
+[sliders sliders2]
+sliderCode = "skjdhj"
+sliderType = "img_slider"
+==
 <div class="intro_body">
-    <div class="intro_slider">
-        <div class="slider_item">
-            <div class="slider_content">
-                <div class="slider_title">
-                    Электронная выставочно-ярмарочная торговля
-                </div>
-                <div class="slider_text">
-                    Форма организации электронной коммерции с использованием информационной
-                    системы «Государственной товарно-сырьевой биржи Туркменистана», при которой
-                    обеспечивается
-                    возможность реализации товаров не в электронной коммерции.
-                </div>
-            </div>
-        </div>
-        <div class="slider_item">
-            <div class="slider_content">
-                <div class="slider_title">
-                    возможность реализации товаров не изъятых из гражданского оборота и являющиеся
-                    коммерции.
-                </div>
-                <div class="slider_text">
-                    Форма организации электронной коммерции с использованием информационной
-                    системы «Государственной товарно-сырьевой биржи Туркменистана», при которой
-                    обеспечивается
-                    возможность реализации товаров коммерции.
-                </div>
-            </div>
-        </div>
-        <div class="slider_item">
-            <div class="slider_content">
-                <div class="slider_title">
-                    Электронная выставочно-ярмарочная торговля
-                </div>
-                <div class="slider_text">
-                    Форма организации электронной коммерции с использованием информационной
-                    системы «Государственной товарно-сырьевой биржи Туркменистана», при которой
-                    обеспечивается
-                    возможность реализации коммерции.
-                </div>
-            </div>
-        </div>
-        <div class="slider_item">
-            <div class="slider_content">
-                <div class="slider_title">
-                    Электронная выставочно-ярмарочная торговля
-                </div>
-                <div class="slider_text">
-                    Форма организации электронной коммерции с использованием информационной
-                    системы «Государственной товарно-сырьевой биржи Туркменистана», при которой
-                    обеспечивается
-                    возможность коммерции.
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="advert">
-        <div class="advert_item">
-            <img src="{{ 'assets/images/advert.png'|theme }}" alt="">
-        </div>
-        <div class="advert_item">
-            <img src="{{ 'assets/images/advert.png'|theme }}" alt="">
-        </div>
-        <div class="advert_item">
-            <img src="{{ 'assets/images/advert.png'|theme }}" alt="">
-        </div>
-        <div class="advert_item">
-            <img src="{{ 'assets/images/advert.png'|theme }}" alt="">
-        </div>
-    </div>
+    {% component 'sliders' %}
+    {% component 'sliders2' %}
+    
 </div>

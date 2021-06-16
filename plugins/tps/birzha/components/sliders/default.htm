@@ -1,0 +1,8 @@
+{% set slider = __SELF__.slider %}
+
+
+{% if slider %}
+
+{% partial __SELF__~"::"~__SELF__.property('sliderType') %}
+
+{% endif %}

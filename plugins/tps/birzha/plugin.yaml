@@ -52,6 +52,10 @@ navigation:
                 icon: icon-money
                 permissions:
                     - payment
+            sliders:
+                label: Sliders
+                url: tps/birzha/sliders
+                icon: icon-picture-o
 permissions:
     category:
         tab: Catalog
