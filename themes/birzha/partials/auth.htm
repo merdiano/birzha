@@ -1,3 +1,11 @@
+[viewBag]
+
+[auth signin]
+form_type = "signin"
+
+[auth signup]
+form_type = "signup"
+==
 <section class="register">
     <div class="auto_container">
         <div class="register_wrap">
@@ -32,42 +40,11 @@
                     </div>
                 </div>
                 <div class="register_content">
-                    <form action="#" class="register_form">
-                        <div class="form_title">
-                            {{ 'topnav.reg'|_ }}
-                        </div>
-                        <div class="register_input">
-                            <input type="text" placeholder="Ваш логин">
-                        </div>
-                        <div class="register_input">
-                            <input type="email" placeholder="Ваш электронный адрес">
-                        </div>
-                        <div class="register_input">
-                            <input type="number" placeholder="Номер телефона">
-                        </div>
-                        <div class="register_input">
-                            <input type="password" placeholder="Пароль">
-                        </div>
-                        <button type="submit" class="form_btn">{{ 'auth.reg_continue'|_ }}</button>
-                    </form>
+                    {% component 'signup' %}
                 </div>
 
                 <div class="register_content_2">
-                    <form action="#" class="register_form">
-                        <div class="form_title">
-                            {{ 'topnav.login'|_ }}
-                        </div>
-                        <div class="form_text">
-                            {{ 'auth.account_recov'|_ }}
-                        </div>
-                        <div class="register_input">
-                            <input type="text" placeholder="Ваш логин">
-                        </div>
-                        <div class="register_input">
-                            <input type="password" placeholder="Пароль">
-                        </div>
-                        <button type="submit" class="form_btn">{{ 'auth.login_to_account'|_ }}</button>
-                    </form>
+                    {% component 'signin' %}
                 </div>
 
             </div>
