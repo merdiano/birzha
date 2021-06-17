@@ -37,6 +37,11 @@ class Categories extends ComponentBase
                 'description' => 'Filter active categories only',
                 'type'        => 'checkbox'
             ],
+            'categoryImages' => [
+                'title' => 'Images of categories',
+                'description' => 'Ctaegories with images or without them',
+                'type' => 'dropdown'
+            ],
             'slug' => [
                 'title'       => 'Slug',
                 'description' => 'Category slug',
@@ -46,9 +51,11 @@ class Categories extends ComponentBase
         ];
     }
 
-    public function getCategoryPageOptions()
-    {
-        return Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    public function getCategoryImagesOptions() {
+        return [
+            'with_images' => 'With images',
+            'without_images' => 'Without images'
+        ];
     }
 
     public function onRun()

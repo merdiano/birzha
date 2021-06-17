@@ -1,0 +1,12 @@
+<div class="categories">
+    {% for category in categories %}
+    <a href="{{ 'category'|page({ slug: category.slug }) }}" class="cat_item">
+        <div class="cat_photo">
+            <img src="{{ category.icon|media }}" alt="">
+        </div>
+        <div class="cat_text">
+            {{ category.name }}
+        </div>
+    </a>
+    {% endfor %}
+</div>
