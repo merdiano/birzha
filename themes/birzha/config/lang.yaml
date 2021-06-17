@@ -1,10 +1,12 @@
 en:
   site.name: 'Turkmenistan state birzha'
   site.short_name: 'ГТСБТ'
+  auth.login: Login
+  auth.password: Password
   auth.reg_continue: Продолжить регистрацию
   auth.account_recov: Если вы забыли свой логин или пароль, просим вас
                             восстановить его по <a href="#" class="form_link">ссылке.</a>
-  auth.login_to_account: Войти в свой профиль      
+  auth.login_to_account: Войти в свой профиль
   auth.personal_data: Персональные данные
   auth.my_announces: Мои объявления
   auth.messages: Сообщения
@@ -35,10 +37,12 @@ en:
 ru:
   site.name: '«Туркменистан: золотой век»'
   site.short_name: 'ГТСБТ'
+  auth.login: 'Ваш логин'
+  auth.password: Пароль
   auth.reg_continue: Продолжить регистрацию
   auth.account_recov: Если вы забыли свой логин или пароль, просим вас
                             восстановить его по <a href="#" class="form_link">ссылке.</a>
-  auth.login_to_account: Войти в свой профиль      
+  auth.login_to_account: Войти в свой профиль
   auth.personal_data: Персональные данные
   auth.my_announces: Мои объявления
   auth.messages: Сообщения
@@ -69,10 +73,12 @@ ru:
 tm:
   site.name: 'Türkmenistanyň Döwlet çig-mal biržasy'
   site.short_name: 'ГТСБТ'
+  auth.login: 'Ваш логин'
+  auth.password: Пароль
   auth.reg_continue: Продолжить регистрацию
   auth.account_recov: Если вы забыли свой логин или пароль, просим вас
                             восстановить его по <a href="#" class="form_link">ссылке.</a>
-  auth.login_to_account: Войти в свой профиль      
+  auth.login_to_account: Войти в свой профиль
   auth.personal_data: Персональные данные
   auth.my_announces: Мои объявления
   auth.messages: Сообщения
