@@ -15,7 +15,7 @@ class Settings extends Model
 
     public $settingsCode = 'birzha_settings';
 
-    public $translatable = ['address','site_name'];
+    public $translatable = ['address','site_name', 'short_name'];
 
     /**
      * Get setting value

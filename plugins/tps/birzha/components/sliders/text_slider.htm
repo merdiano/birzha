@@ -1,0 +1,16 @@
+{% set slider = __SELF__.slider %}
+
+<div class="intro_slider">
+    {% for item in slider.slide_items %}
+    <div class="slider_item">
+        <div class="slider_content">
+            <div class="slider_title">
+                {{ item.slide_title }}
+            </div>
+            <div class="slider_text">
+                {{ item.slide_text }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

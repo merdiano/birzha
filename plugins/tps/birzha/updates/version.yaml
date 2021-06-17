@@ -92,3 +92,6 @@
 1.0.32:
     - 'Updated table tps_birzha_offer'
     - builder_table_update_tps_birzha_offer_8.php
+1.0.33:
+    - 'Created table tps_birzha_sliders'
+    - builder_table_create_tps_birzha_sliders.php

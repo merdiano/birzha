@@ -1,0 +1,28 @@
+fields:
+    code:
+        label: 'Slider code'
+        span: auto
+        type: text
+    slide_items:
+        label: 'Slider items'
+        prompt: 'Add new item'
+        style: default
+        span: full
+        type: repeater
+        form:
+            fields:
+                slide_title:
+                    label: 'Slide title'
+                    span: auto
+                    type: text
+                slide_text:
+                    label: 'Slide text'
+                    span: auto
+                    type: text
+                slide_img:
+                    label: 'Slide image'
+                    mode: image
+                    imageWidth: '80'
+                    imageHeight: '80'
+                    span: auto
+                    type: mediafinder

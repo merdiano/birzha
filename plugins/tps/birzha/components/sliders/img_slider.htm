@@ -1,0 +1,9 @@
+{% set slider = __SELF__.slider %}
+
+<div class="advert">
+    {% for item in slider.slide_items %}
+    <div class="advert_item">
+        <img src="{{ item.slide_img|media }}" alt="">
+    </div>
+    {% endfor %}
+</div>

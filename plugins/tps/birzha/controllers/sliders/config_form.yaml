@@ -1,0 +1,10 @@
+name: Sliders
+form: $/tps/birzha/models/slider/fields.yaml
+modelClass: TPS\Birzha\Models\Slider
+defaultRedirect: tps/birzha/sliders
+create:
+    redirect: 'tps/birzha/sliders/update/:id'
+    redirectClose: tps/birzha/sliders
+update:
+    redirect: tps/birzha/sliders
+    redirectClose: tps/birzha/sliders

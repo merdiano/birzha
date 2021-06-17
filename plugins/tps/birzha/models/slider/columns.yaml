@@ -1,0 +1,7 @@
+columns:
+    id:
+        label: Id
+        type: number
+    code:
+        label: 'Slider code'
+        type: text

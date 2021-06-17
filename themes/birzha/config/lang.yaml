@@ -34,6 +34,7 @@ en:
   footer.email: Эл. почта
   footer.address: Адрес
   footer.copyright: '© TDHСMB all rights reserved'
+  footer.categories: 'Categories'
 ru:
   site.name: '«Туркменистан: золотой век»'
   site.short_name: 'ГТСБТ'
@@ -70,6 +71,7 @@ ru:
   footer.email: Эл. почта
   footer.address: Адрес
   footer.copyright: '© TDHСMB все права зашишены'
+  footer.categories: 'Categories'
 tm:
   site.name: 'Türkmenistanyň Döwlet çig-mal biržasy'
   site.short_name: 'ГТСБТ'
@@ -106,3 +108,4 @@ tm:
   footer.email: Эл. почта
   footer.address: Адрес
   footer.copyright: '© TDHСMB ähli hukuklar goralan'
+  footer.categories: 'Categories'
