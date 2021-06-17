@@ -1,7 +1,14 @@
 title = "Kategoriýa"
-url = "/kategoriya"
+url = "/kategoriya/:slug"
 layout = "default"
 is_hidden = 0
 
 [categories]
+slug = "{{ :slug }}"
+
+[viewBag]
+localeTitle[en] = "Category"
+localeTitle[ru] = "Категория"
+localeUrl[en] = "/category"
+localeUrl[ru] = "/kategoriya"
 ==

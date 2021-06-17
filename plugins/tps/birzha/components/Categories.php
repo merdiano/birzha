@@ -37,12 +37,6 @@ class Categories extends ComponentBase
                 'description' => 'Filter active categories only',
                 'type'        => 'checkbox'
             ],
-            'categoryPage' => [
-                'title'       => 'Category page',
-                'description' => 'Chose category page',
-                'type'        => 'dropdown',
-                'group'       => 'Links',
-            ],
             'slug' => [
                 'title'       => 'Slug',
                 'description' => 'Category slug',
@@ -71,21 +65,8 @@ class Categories extends ComponentBase
         if($this->property('active'))
             $categories->where('status',1);
 
-        return $this->linkCategories($categories->get());
+        return $categories->get();
     }
 
-    /**
-     * Sets the URL on each category according to the defined category page
-     * @return void
-     */
-    protected function linkCategories($categories)
-    {
-        return $categories->each(function ($category) {
-            $category->setUrl($this->categoryPage, $this->controller);
 
-            if ($category->children) {
-                $this->linkCategories($category->children);
-            }
-        });
-    }
 }
