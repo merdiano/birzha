@@ -3,6 +3,11 @@ url = "/"
 layout = "default"
 description = "Baş sahypa. Türkmenistanyň biržasy."
 is_hidden = 0
+
+[categories]
+active = 0
+categoryImages = "with_images"
+slug = "{{ :slug }}"
 ==
 {% put styles %}
 <link rel="stylesheet" href="{{['assets/css/slick-theme.css','assets/css/slick.css']|theme}}">
@@ -15,40 +20,7 @@ is_hidden = 0
 
             {% partial 'slider' %}
 
-            <div class="categories">
-                <a href="#" class="cat_item">
-                    <div class="cat_photo">
-                        <img src="{{ 'assets/images/cat-1.png'|theme }}" alt="">
-                    </div>
-                    <div class="cat_text">
-                        Нефтехимия
-                    </div>
-                </a>
-                <a href="#" class="cat_item">
-                    <div class="cat_photo">
-                        <img src="{{ 'assets/images/cat-2.png'|theme }}" alt="">
-                    </div>
-                    <div class="cat_text">
-                        Машиностроение
-                    </div>
-                </a>
-                <a href="#" class="cat_item">
-                    <div class="cat_photo">
-                        <img src="{{ 'assets/images/cat-3.png'|theme }}" alt="">
-                    </div>
-                    <div class="cat_text">
-                        Легкая промышленность
-                    </div>
-                </a>
-                <a href="#" class="cat_item">
-                    <div class="cat_photo">
-                        <img src="{{ 'assets/images/cat-4.png'|theme }}" alt="">
-                    </div>
-                    <div class="cat_text">
-                        Стройматериалы
-                    </div>
-                </a>
-            </div>
+            {% component 'categories' %}
         </div>
     </div>
 </section>

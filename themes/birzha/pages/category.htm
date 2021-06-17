@@ -3,12 +3,15 @@ url = "/kategoriya/:slug"
 layout = "default"
 is_hidden = 0
 
-[categories]
-slug = "{{ :slug }}"
-
 [viewBag]
 localeTitle[en] = "Category"
 localeTitle[ru] = "Категория"
-localeUrl[en] = "/category"
-localeUrl[ru] = "/kategoriya"
+localeUrl[en] = "/category/:slug"
+localeUrl[ru] = "/kategoriya/:slug"
+
+[categories]
+slug = "{{ :slug }}"
 ==
+<h1>This is category/:slug page</h1>
+
+<h1>this is the slug - {{ this.param['slug'] }}</h1>

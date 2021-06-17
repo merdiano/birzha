@@ -1,3 +1,7 @@
-<p>This is the default markup for component Categories</p>
+{% set categories = __SELF__.categories %}
 
-<small>You can delete this file if you want</small>
+{% if categories %}
+
+{% partial __SELF__~"::"~__SELF__.property('categoryImages') %}
+
+{% endif %}
