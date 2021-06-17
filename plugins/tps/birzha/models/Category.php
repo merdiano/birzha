@@ -34,7 +34,7 @@ class Category extends Model
         'status' => 'required',
     ];
 
-    public $translatable = ['name','slug'];
+    public $translatable = ['name',['slug', 'index' => true]];
 
     public $hasMany = [
         'products' => 'TPS\Birzha\Models\Product'
@@ -90,6 +90,6 @@ class Category extends Model
     }
 
     public static function resolveMenuItem($item, $url, $theme){
-
+        //todo
     }
 }
