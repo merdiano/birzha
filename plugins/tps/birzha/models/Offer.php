@@ -24,7 +24,7 @@ class Offer extends Model
         'price' => 'required|numeric',
         'quantity' => 'required|numeric',
         'currency' => 'required',
-        'name' => 'required',
+        // 'name' => 'required',
         'mark' => 'required'
     ];
 
@@ -72,6 +72,9 @@ class Offer extends Model
            if($this->status = 'approved'){
                $this->ends_at = Carbon::now()->addDays(30);
            }
+       }
+       if(!$this->name) {
+           $this->name = $this->product->name;
        }
     }
 

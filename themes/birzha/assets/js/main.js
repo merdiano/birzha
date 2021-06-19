@@ -175,37 +175,37 @@ if (btn_2 != undefined) {
 
 
 // Category Tabs ==========================================
-const tabsBtn = document.querySelectorAll(".tab_link");
-const tabsItems = document.querySelectorAll(".tab_source");
-tabsBtn.forEach((e) => {
-    onTabClick(tabsBtn, tabsItems, e);
-});
-function onTabClick(tabBtns, tabItems, item) {
-    item.addEventListener("click", function (e) {
-        let currentBtn = item;
-        let tabId = currentBtn.getAttribute("data-tab");
-        let currentTab = document.querySelector(tabId);
-        if (e.srcElement.classList.contains("active")) {
-            // e.srcElement.classList.remove("active");
-            // e.srcElement.parentElement
-            //     .querySelector(".tab__btn")
-            //     .classList.remove("active");
-            // console.log(e.srcElement.parentElement.querySelector(".event"));
-            // e.srcElement.parentElement
-            //     .querySelector(".event")
-            //     .classList.remove("active");
-        } else if (!currentBtn.classList.contains("active")) {
-            tabBtns.forEach(function (item) {
-                item.classList.remove("active");
-            });
-            tabItems.forEach(function (item) {
-                item.classList.remove("active");
-            });
-            currentBtn.classList.add("active");
-            currentTab.classList.add("active");
-        }
-    });
-}
+// const tabsBtn = document.querySelectorAll(".tab_link");
+// const tabsItems = document.querySelectorAll(".tab_source");
+// tabsBtn.forEach((e) => {
+//     onTabClick(tabsBtn, tabsItems, e);
+// });
+// function onTabClick(tabBtns, tabItems, item) {
+//     item.addEventListener("click", function (e) {
+//         let currentBtn = item;
+//         let tabId = currentBtn.getAttribute("data-tab");
+//         let currentTab = document.querySelector(tabId);
+//         if (e.srcElement.classList.contains("active")) {
+//             // e.srcElement.classList.remove("active");
+//             // e.srcElement.parentElement
+//             //     .querySelector(".tab__btn")
+//             //     .classList.remove("active");
+//             // console.log(e.srcElement.parentElement.querySelector(".event"));
+//             // e.srcElement.parentElement
+//             //     .querySelector(".event")
+//             //     .classList.remove("active");
+//         } else if (!currentBtn.classList.contains("active")) {
+//             tabBtns.forEach(function (item) {
+//                 item.classList.remove("active");
+//             });
+//             tabItems.forEach(function (item) {
+//                 item.classList.remove("active");
+//             });
+//             currentBtn.classList.add("active");
+//             currentTab.classList.add("active");
+//         }
+//     });
+// }
 
 // Category Tabs end ==========================================
 

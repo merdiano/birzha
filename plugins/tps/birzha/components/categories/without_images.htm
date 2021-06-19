@@ -1,16 +1,8 @@
-{% set i = 1 %}
-
 <div class="cat_tabs">
     {% for category in categories %}
-        <div class="tab_link" data-tab="#tab-{{ i }}">
+        <a href="{{ 'category'|page({ slug: category.slug }) }}" 
+            class="tab_link {{ __SELF__.property('slug') == category.slug ? 'active' : '' }}">
             {{ category.name }}
-        </div>
-
-        {% set i = i + 1  %}
-
+        </a>
     {% endfor %}
 </div>
-
-{#<div class="tab_link active" data-tab="#tab-{{ i }}">
-    
-</div>#}

@@ -1,0 +1,76 @@
+{% set offers = __SELF__.offers %}
+
+<div class="product_box">
+    {% for offer in offers %}
+    <div class="product_item">
+        <div class="item_head">
+            <div class="item_lot">
+                {{ 'page.prod_id'|_ }} №:
+            </div>
+            <div class="item_num">
+                № 154997
+            </div>
+        </div>
+        <div class="inline_num">
+            № 49378
+        </div>
+        <div class="item_photo">
+            <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
+        </div>
+        <div class="item_group">
+            <div class="item_title">
+                {{ offer.product.name }}
+            </div>
+            <div class="item_sub_title">
+                {{ offer.product.name }}
+            </div>
+        </div>
+        <div class="item_group">
+            <div class="item_sub_name">
+                {{ 'page.prod_amount'|_ }}:
+            </div>
+            <div class="item_name">
+                {{ offer.quantity }} {{ 'page.prod_kg'|_ }}.
+            </div>
+        </div>
+        <div class="item_group">
+            <div class="item_sub_name">
+                {{ 'page.prod_price'|_ }}:
+            </div>
+            <div class="item_name">
+                {{ offer.price }} ТМТ / 1 {{ 'page.prod_kg'|_ }}.
+            </div>
+        </div>
+        <div class="item_group">
+            <div class="item_sub_name">
+                {{ 'page.prod_finishdate'|_ }}:
+            </div>
+            <div class="item_name">
+                {{ offer.ends_at|date('d.m.Y') }}
+            </div>
+        </div>
+        <a href="#" class="item_btn">
+            {{ 'page.more'|_ }}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% if offers.total > offers.perPage %}
+
+<div class="cat_end">
+    <a href="{{ offers.previousPageUrl|default('#') }}" class="cat_arrow left">
+        <img src="{{ 'assets/images/svg/arrow-right.svg'|theme }}" alt="">
+    </a>
+    <form method="get" class="cat_form">
+        <input type="text" value="{{offers.currentPage|default('1')}}" name="page"> 
+    </form>
+    <a href="{{ offers.nextPageUrl|default('#') }}" class="cat_arrow ">
+        <img src="{{ 'assets/images/svg/arrow-right.svg'|theme }}" alt="">
+    </a>
+    <div class="cat_page">
+        {{ (offers.total / offers.perPage)|round(0,'ceil') }} {{ 'page.pages'|_ }}
+    </div>
+</div>
+
+{% endif %}

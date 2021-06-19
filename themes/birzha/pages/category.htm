@@ -10,8 +10,79 @@ localeUrl[en] = "/category/:slug"
 localeUrl[ru] = "/kategoriya/:slug"
 
 [categories]
+active = 0
+categoryImages = "without_images"
 slug = "{{ :slug }}"
+
+[offers]
+categorySlug = "{{ :slug }}"
+perPage = 2
+sortOrder = "desc"
 ==
 <h1>This is category/:slug page</h1>
 
 <h1>this is the slug - {{ this.param['slug'] }}</h1>
+<!--Category ============================================================= -->
+<section class="category">
+    <div class="auto_container">
+        <div class="category_wrap">
+
+            {% component 'categories' %}
+
+            <div class="cat_source">
+                <div class="product_head">
+                    <div class="product_title">
+                        Новые товары
+                    </div>
+                    <div class="sort_by">
+                        <div class="sort_icon">
+                            <svg id="inline" data-name="Иконка (Стиль 2)" xmlns="http://www.w3.org/2000/svg"
+                                class="icon" viewBox="0 0 40 40">
+                                <path id="Иконка_Стиль_2_2" data-name="Иконка (Стиль 2)"
+                                    d="M-177-64a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h22a2,2,0,0,1,2,2v6a2,2,0,0,1-2,2Zm-14,0a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h6a2,2,0,0,1,2,2v6a2,2,0,0,1-2,2Zm14-15a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h22a2,2,0,0,1,2,2v6a2,2,0,0,1-2,2Zm-14,0a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h6a2,2,0,0,1,2,2v6a2,2,0,0,1-2,2Zm14-15a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h22a2,2,0,0,1,2,2v6a2,2,0,0,1-2,2Zm-14,0a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h6a2,2,0,0,1,2,2v6a2,2,0,0,1-2,2Z"
+                                    transform="translate(193 104)" fill="#003197" />
+                            </svg>
+                        </div>
+                        <div class="sort_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" id="card"
+                                class="icon active">
+                                <path id="Иконка_Стиль_1_" data-name="Иконка (Стиль 1)"
+                                    d="M-169-64a2,2,0,0,1-2-2V-80a2,2,0,0,1,2-2h14a2,2,0,0,1,2,2v14a2,2,0,0,1-2,2Zm-22,0a2,2,0,0,1-2-2V-80a2,2,0,0,1,2-2h14a2,2,0,0,1,2,2v14a2,2,0,0,1-2,2Zm22-22a2,2,0,0,1-2-2v-14a2,2,0,0,1,2-2h14a2,2,0,0,1,2,2v14a2,2,0,0,1-2,2Zm-22,0a2,2,0,0,1-2-2v-14a2,2,0,0,1,2-2h14a2,2,0,0,1,2,2v14a2,2,0,0,1-2,2Z"
+                                    transform="translate(193 104)" fill="#003197" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="inline_head">
+                    <div class="inline_item">
+                        Лот №:
+                    </div>
+                    <div class="inline_item">
+                        Изображение
+                    </div>
+                    <div class="inline_item">
+                        Товар
+                    </div>
+                    <div class="inline_item">
+                        Дата окончания:
+                    </div>
+                    <div class="inline_item">
+                        Количество:
+                    </div>
+                    <div class="inline_item">
+                        Стартовая цена:
+                    </div>
+                </div>
+
+                <div>
+                    {% component 'offers' %}
+                </div>
+                
+                
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+<!--Category end ========================================================= -->

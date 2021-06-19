@@ -36,8 +36,8 @@ class Category extends Model
 
     public $translatable = ['name',['slug', 'index' => true]];
 
-    public $hasMany = [
-        'products' => 'TPS\Birzha\Models\Product'
+    public $belongsToMany = [
+        'products' => ['TPS\Birzha\Models\Product','table'=>'tps_birzha_product_categories']
     ];
 
     public function scopeActive($query)
