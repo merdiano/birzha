@@ -1,0 +1,51 @@
+title = "Offer"
+url = "/offer/:slug/:id"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeTitle[en] = "Offer"
+localeTitle[ru] = "Offer"
+localeUrl[en] = "/offer/:slug/:id"
+localeUrl[ru] = "/offer/:slug/:id"
+
+[singleoffer]
+productSlug = "{{ :slug }}"
+offerId = "{{ :id }}"
+
+[offers]
+sortOrder = "desc"
+productSlug = "{{ :slug }}"
+offerId = "{{ :id }}"
+==
+{% put styles %}
+<link rel="stylesheet" href="{{['assets/css/slick-theme.css','assets/css/slick.css']|theme}}">
+{% endput %}
+
+
+
+<!--Product detail ========================================================= -->
+<section class="detail">
+    <div class="auto_container">
+        <div class="detail_wrap">
+
+            {% component 'singleoffer' %}
+
+            <div class="detail_box">
+                <div class="product_head">
+                    <div class="product_title">
+                        {{'page.similar_prods'|_}}
+                    </div>
+                </div>
+                
+                {% component 'offers' %}
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!--Product detail  end ==================================================== -->
+
+{% put scripts %}
+<script src="{{['assets/js/slick.js','assets/js/slider.js']|theme}}"></script>
+{% endput %}

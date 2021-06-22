@@ -8,14 +8,14 @@
                 {{ 'page.prod_id'|_ }} №:
             </div>
             <div class="item_num">
-                № 154997
+                № {{offer.id}}
             </div>
         </div>
         <div class="inline_num">
-            № 49378
+            № {{offer.id}}
         </div>
         <div class="item_photo">
-            <img src="{{ 'assets/images/goods.png'|theme }}" alt="">
+            <img src="{{ offer.product.images[0].thumb(308,180,{'mode':'crop'}) }}" alt="">
         </div>
         <div class="item_group">
             <div class="item_title">
@@ -38,7 +38,7 @@
                 {{ 'page.prod_price'|_ }}:
             </div>
             <div class="item_name">
-                {{ offer.price }} ТМТ / 1 {{ 'page.prod_kg'|_ }}.
+                {{ offer.price }} {{offer.currency.code}} / 1 {{ offer.measure.code }}.
             </div>
         </div>
         <div class="item_group">
@@ -49,7 +49,7 @@
                 {{ offer.ends_at|date('d.m.Y') }}
             </div>
         </div>
-        <a href="#" class="item_btn">
+        <a href="{{ 'offer'|page({ slug: offer.product.slug, id: offer.id }) }}" class="item_btn">
             {{ 'page.more'|_ }}
         </a>
     </div>

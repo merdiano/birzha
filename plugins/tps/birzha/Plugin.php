@@ -103,7 +103,8 @@ class Plugin extends PluginBase
             'TPS\Birzha\Components\Categories' => 'categories',
             'TPS\Birzha\Components\Auth' => 'auth',
             'TPS\Birzha\Components\Sliders' => 'sliders',
-            'TPS\Birzha\Components\Offers' => 'offers'
+            'TPS\Birzha\Components\Offers' => 'offers',
+            'TPS\Birzha\Components\Singleoffer' => 'singleoffer'
         ];
     }
 

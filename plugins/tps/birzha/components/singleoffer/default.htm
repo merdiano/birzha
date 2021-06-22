@@ -1,0 +1,158 @@
+{% set offer = __SELF__.offer %}
+
+{% if offer %}
+<div class="detail_body">
+    <div class="detail_gallery">
+        <div class="detail_photo_box">
+            {% for image in offer.product.images %}
+            <div class="detail_photo">
+                <img src="{{ image.thumb(575,290,{'mode':'crop'}) }}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="detail_for_navs">
+            {% for image in offer.product.images %}
+            <div class="detail_photo_nav">
+                <img src="{{ image.thumb(98,60,{'mode':'crop'}) }}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="detail_info">
+        <div class="detail_about">
+            <div class="detail_title">
+                {{offer.product.name}}
+            </div>
+            <div class="detail_row">
+                <div class="detail_name">
+                    {{'page.prod_no'|_}}:
+                </div>
+                <div class="detail_value">
+                    № {{offer.id}}
+                </div>
+            </div>
+            <div class="detail_row">
+                <div class="detail_name">
+                    {{'page.prod_amount_2'|_}} :
+                </div>
+                <div class="detail_value">
+                    {{offer.quantity}} {{offer.measure.code}}.
+                </div>
+            </div>
+            <div class="detail_row">
+                <div class="detail_name">
+                    {{'page.prod_price_2'|_}}:
+                </div>
+                <div class="detail_value">
+                    {{offer.price}} {{offer.currency.code}} / 1 {{offer.measure.code}}.
+                </div>
+            </div>
+            <div class="detail_row">
+                <div class="detail_name">
+                    {{'page.prod_startdate'|_}}:
+                </div>
+                <div class="detail_value green">
+                    {{offer.created_at|date('d/m/Y')}}
+                </div>
+            </div>
+        </div>
+        <div class="detail_other">
+            <div class="detail_row">
+                <div class="detail_name">
+                    {{'page.prod_mark'|_}}:
+                </div>
+                <div class="detail_value">
+                    {{offer.product.mark}}
+                </div>
+            </div>
+            <div class="detail_row">
+                <div class="detail_name">
+                    {{'page.prod_vendor'|_}}:
+                </div>
+                <div class="detail_value">
+                    ГК "Туркменхимия"
+                </div>
+            </div>
+            <div class="detail_row">
+                <div class="detail_name">
+                    {{'page.prod_vendor_country'|_}} :
+                </div>
+                <div class="detail_value">
+                    Туркменистан
+                </div>
+            </div>
+            <div class="detail_row">
+                <div class="detail_name">
+                    {{'page.prod_finishdate'|_}}:
+                </div>
+                <div class="detail_value red">
+                    {{offer.ends_at|date('d/m/Y')}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="detail_description">
+    <div class="description_title">
+        {{'page.prod_desc'|_}}:
+    </div>
+    <div class="detail_text">
+        {{offer.description}}
+    </div>
+</div>
+<div class="detail_table">
+    <div class="table_group">
+        <div class="title_item">
+            {{'page.measure'|_}}
+        </div>
+        <div class="table_item">
+            {{offer.measure.name}}
+        </div>
+    </div>
+    <div class="table_group">
+        <div class="title_item">
+            {{'page.payment_cond'|_}}
+        </div>
+        <div class="table_item">
+            Предоплата
+        </div>
+    </div>
+    <div class="table_group">
+        <div class="title_item">
+            {{'page.delivery_cond'|_}}
+        </div>
+        <div class="table_item">
+            FOB
+        </div>
+    </div>
+    <div class="table_group">
+        <div class="title_item">
+            {{'page.delivery_point'|_}}
+        </div>
+        <div class="table_item">
+            {{offer.place}}
+        </div>
+    </div>
+    <div class="table_group">
+        <div class="title_item">
+            {{'page.packaging'|_}}
+        </div>
+        <div class="table_item">
+            {{offer.packaging ? (offer.packaging == 'yes' ? 'Есть' : 'Нет') : ''}}
+        </div>
+    </div>
+</div>
+<div class="detail_buttons">
+    <a href="#" class="btn btn--green">
+        {{'page.seller_cont'|_}}
+    </a>
+    <div class="btn_group">
+        <a href="#" class="btn btn--border">
+            {{'page.buy_now'|_}}
+        </a>
+        <a href="#" class="btn btn--blue">
+            {{'page.send_prod_request'|_}}
+        </a>
+    </div>
+</div>
+{% endif %}
