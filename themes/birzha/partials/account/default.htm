@@ -1,41 +1,82 @@
-{% if canRegister %}
-<div class="register_content">
-    {{ form_ajax('onSignup', { class: 'register_form'}) }}
-    <div class="form_title">
-        {{ 'topnav.reg'|_ }}
-    </div>
-    <div class="register_input">
-        <input type="text" name="name" placeholder="{{'auth.name'|_}}">
-    </div>
-    <div class="register_input">
-        <input type="email" name="email" placeholder="{{'auth.email'|_}}">
-    </div>
-    <div class="register_input">
-        <input type="number" name="phone" placeholder="{{'auth.phone'|_}}">
-    </div>
-    <div class="register_input">
-        <input type="password" name="password" placeholder="{{'auth.password'|_}}">
-    </div>
-    <button type="submit" class="form_btn">{{ 'auth.reg_continue'|_ }}</button>
+<section class="register">
+    <div class="auto_container">
+        <div class="register_wrap">
+            <div class="register_body">
+                <div class="register_buttons">
+                    <div class="user_btn" id="btn-1">
+                        <img src="{{ 'assets/images/svg/log-in-blue.svg'|theme }}" alt="">
+                        <span><nobr>{{ 'topnav.login'|_ }}</nobr></span>
+                    </div>
+                    {% if canRegister %}
+                    <div class="user_btn" id="btn-2">
+                        <img src="{{ 'assets/images/svg/user-plus-blue.svg'|theme }}" alt="">
+                        <span><nobr>{{ 'topnav.reg'|_ }}</nobr></span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="register_banner">
+                    <div class="register_logo">
+                        <img src="{{ 'assets/images/register_logo.png'|theme }}" alt="">
+                    </div>
+                    <div class="register_title">
+                        {{ short_name }}
+                    </div>
+                    <div class="register_text">
+                        {{ 'site.name'|_ }}
+                    </div>
+                    <div class="register_foot">
+                        <div class="register_mail">
+                            <img src="{{ 'assets/images/svg/login_mail.svg'|theme }}" alt="">
+                        </div>
+                        <a href="#" class="register_link">
+                            info@exchange.gov.tm
+                        </a>
+                    </div>
+                </div>
 
-    {{ form_close() }}
-</div>
-{% endif %}
-<div class="register_content_2">
-    {{ form_ajax('onSignin', { class: 'register_form'}) }}
-    <div class="form_title">
-        {{ 'topnav.login'|_ }}
-    </div>
-    <div class="form_text">
-        {{ 'auth.account_recov'|_ }}
-    </div>
-    <div class="register_input">
-        <input type="text" placeholder="{{'auth.login'|_}}">
-    </div>
-    <div class="register_input">
-        <input type="password" placeholder="{{'auth.password'|_}}">
-    </div>
-    <button type="submit" class="form_btn">{{ 'auth.login_to_account'|_ }}</button>
-    {{ form_close() }}
+                {% if canRegister %}
+                <div class="register_content">
+                    {{ form_ajax(__SELF__~'::onRegister', { class: 'register_form'}) }}
+                    <div class="form_title">
+                        {{ 'topnav.reg'|_ }}
+                    </div>
+                    <div class="register_input">
+                        <input type="text" name="name" placeholder="{{'auth.name'|_}}">
+                    </div>
+                    <div class="register_input">
+                        <input type="email" name="email" placeholder="{{'auth.email'|_}}">
+                    </div>
+                    <div class="register_input">
+                        <input type="number" name="username" placeholder="{{'auth.phone'|_}}">
+                    </div>
+                    <div class="register_input">
+                        <input type="password" name="password" placeholder="{{'auth.password'|_}}">
+                    </div>
+                    <button type="submit" class="form_btn">{{ 'auth.reg_continue'|_ }}</button>
 
-</div>
+                    {{ form_close() }}
+                </div>
+                {% endif %}
+                <div class="register_content_2">
+                    {{ form_ajax(__SELF__~'::onSignin', { class: 'register_form'}) }}
+                    <div class="form_title">
+                        {{ 'topnav.login'|_ }}
+                    </div>
+                    <div class="form_text">
+                        {{ 'auth.account_recov'|_ }}
+                    </div>
+                    <div class="register_input">
+                        <input type="text" name="username" placeholder="{{'auth.phone'|_}}">
+                    </div>
+                    <div class="register_input">
+                        <input type="password" name="password" placeholder="{{'auth.password'|_}}">
+                    </div>
+                    <button type="submit" class="form_btn">{{ 'auth.login_to_account'|_ }}</button>
+                    {{ form_close() }}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
