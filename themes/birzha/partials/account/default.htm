@@ -1,0 +1,41 @@
+{% if canRegister %}
+<div class="register_content">
+    {{ form_ajax('onSignup', { class: 'register_form'}) }}
+    <div class="form_title">
+        {{ 'topnav.reg'|_ }}
+    </div>
+    <div class="register_input">
+        <input type="text" name="name" placeholder="{{'auth.name'|_}}">
+    </div>
+    <div class="register_input">
+        <input type="email" name="email" placeholder="{{'auth.email'|_}}">
+    </div>
+    <div class="register_input">
+        <input type="number" name="phone" placeholder="{{'auth.phone'|_}}">
+    </div>
+    <div class="register_input">
+        <input type="password" name="password" placeholder="{{'auth.password'|_}}">
+    </div>
+    <button type="submit" class="form_btn">{{ 'auth.reg_continue'|_ }}</button>
+
+    {{ form_close() }}
+</div>
+{% endif %}
+<div class="register_content_2">
+    {{ form_ajax('onSignin', { class: 'register_form'}) }}
+    <div class="form_title">
+        {{ 'topnav.login'|_ }}
+    </div>
+    <div class="form_text">
+        {{ 'auth.account_recov'|_ }}
+    </div>
+    <div class="register_input">
+        <input type="text" placeholder="{{'auth.login'|_}}">
+    </div>
+    <div class="register_input">
+        <input type="password" placeholder="{{'auth.password'|_}}">
+    </div>
+    <button type="submit" class="form_btn">{{ 'auth.login_to_account'|_ }}</button>
+    {{ form_close() }}
+
+</div>

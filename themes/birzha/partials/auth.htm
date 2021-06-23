@@ -1,11 +1,4 @@
-[viewBag]
 
-[auth signin]
-form_type = "signin"
-
-[auth signup]
-form_type = "signup"
-==
 <section class="register">
     <div class="auto_container">
         <div class="register_wrap">
@@ -39,13 +32,7 @@ form_type = "signup"
                         </a>
                     </div>
                 </div>
-                <div class="register_content">
-                    {% component 'signup' %}
-                </div>
-
-                <div class="register_content_2">
-                    {% component 'signin' %}
-                </div>
+                {% component 'account' %}
 
             </div>
         </div>

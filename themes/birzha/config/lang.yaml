@@ -1,7 +1,10 @@
 en:
-  site.name: 'Turkmenistan state birzha'
-  site.short_name: 'ГТСБТ'
-  auth.login: Login
+  site.name: Turkmenistan state birzha
+  site.short_name: ГТСБТ
+  auth.login: Enter email or phone number
+  auth.name: Your name
+  auth.email: Email address
+  auth.phone: Phone number
   auth.password: Password
   auth.reg_continue: Продолжить регистрацию
   auth.account_recov: Если вы забыли свой логин или пароль, просим вас
@@ -14,12 +17,12 @@ en:
   auth.add_announce: Добавить объявление
   topnav.reg: Sign up
   topnav.login: Sign in
-  nav.home: 'Home'
-  nav.city: 'Ashgabat'
-  page.more: 'More'
-  page.not_found: 'Page not found'
-  page.not_found_message: "We're sorry, but the page you requested cannot be found."
-  page.search: 'Search'
+  nav.home: Home
+  nav.city: Ashgabat
+  page.more: More
+  page.not_found: Page not found
+  page.not_found_message: We're sorry, but the page you requested cannot be found.
+  page.search: Search
   page.search_result: 'The search results found: :number articles'
   page.new_prods: Новые товары
   page.prod_id: Лот
@@ -28,18 +31,21 @@ en:
   page.prod_amount: Количество
   page.prod_price: Стартовая цена
   page.prod_finishdate: Дата окончания
-  page.prod_kg: 'кг'
-  page.pages: 'Страниц'
+  page.prod_kg: кг
+  page.pages: Страниц
   footer.contacts: Контакты
   footer.tel: Тел
   footer.email: Эл. почта
   footer.address: Адрес
-  footer.copyright: '© TDHСMB all rights reserved'
-  footer.categories: 'Categories'
+  footer.copyright: © TDHСMB all rights reserved
+  footer.categories: Categories
 ru:
   site.name: '«Туркменистан: золотой век»'
-  site.short_name: 'ГТСБТ'
-  auth.login: 'Ваш логин'
+  site.short_name: ГТСБТ
+  auth.name: Ваша имя
+  auth.login: Введите почту или номер телефона
+  auth.email: Ваш электронный адрес
+  auth.phone: Номер телефона
   auth.password: Пароль
   auth.reg_continue: Продолжить регистрацию
   auth.account_recov: Если вы забыли свой логин или пароль, просим вас
@@ -52,12 +58,12 @@ ru:
   auth.add_announce: Добавить объявление
   topnav.reg: Регистрация
   topnav.login: Sign in
-  nav.home: 'Главная'
-  nav.city: 'Ашхабад'
-  page.more: 'Ещё'
-  page.not_found: 'Страница не найдена'
-  page.not_found_message: "Сожалеем, но запрошенная вами страница не может быть найдена."
-  page.search: 'Поиск'
+  nav.home: Главная
+  nav.city: Ашхабад
+  page.more: Ещё
+  page.not_found: Страница не найдена
+  page.not_found_message: Сожалеем, но запрошенная вами страница не может быть найдена.
+  page.search: Поиск
   page.search_result: 'По результату поиска было найдено: :number статьи'
   page.new_prods: Новые товары
   page.prod_id: Лот
@@ -66,49 +72,52 @@ ru:
   page.prod_amount: Количество
   page.prod_price: Стартовая цена
   page.prod_finishdate: Дата окончания
-  page.prod_kg: 'кг'
-  page.pages: 'Страниц'
+  page.prod_kg: кг
+  page.pages: Страниц
   footer.contacts: Контакты
   footer.tel: Тел
   footer.email: Эл. почта
   footer.address: Адрес
-  footer.copyright: '© TDHСMB все права зашишены'
-  footer.categories: 'Categories'
+  footer.copyright: © TDHСMB все права зашишены
+  footer.categories: Categories
 tm:
-  site.name: 'Türkmenistanyň Döwlet çig-mal biržasy'
-  site.short_name: 'ГТСБТ'
-  auth.login: 'Ваш логин'
-  auth.password: Пароль
-  auth.reg_continue: Продолжить регистрацию
+  site.name: Türkmenistanyň Döwlet çig-mal biržasy
+  site.short_name: TDÇMB
+  auth.name: Adyňyz
+  auth.login: El. bukjaňyz ýa-da telefon nomeriňiz
+  auth.email: El. bukjaňyz
+  auth.phone: Telefon belgiňiz
+  auth.password: Açar söz
+  auth.reg_continue: Dowam et
   auth.account_recov: Если вы забыли свой логин или пароль, просим вас
                             восстановить его по <a href="#" class="form_link">ссылке.</a>
-  auth.login_to_account: Войти в свой профиль
-  auth.personal_data: Персональные данные
-  auth.my_announces: Мои объявления
-  auth.messages: Сообщения
-  auth.logout: Выйти
-  auth.add_announce: Добавить объявление
-  topnav.reg: Hasaba almak
-  topnav.login: Sign in
-  nav.home: 'Baş sahypa'
-  nav.city: 'Aşgabat'
-  page.more: 'Ýene'
-  page.not_found: 'Sahypa tapylmady.'
-  page.not_found_message: "Bagyşlaň! Siziň gözleýän sahypaňyz ýyok."
-  page.search: 'Gözleg'
+  auth.login_to_account: Profiliňe gir
+  auth.personal_data: Hususy maglumatlar
+  auth.my_announces: Meniň bildirişlerim
+  auth.messages: Hatlar
+  auth.logout: Çykyş
+  auth.add_announce: Bildiriş goş
+  topnav.reg: Agza bol
+  topnav.login: Giriş
+  nav.home: Baş sahypa
+  nav.city: Aşgabat
+  page.more: Ýene
+  page.not_found: Sahypa tapylmady.
+  page.not_found_message: Bagyşlaň! Siziň gözleýän sahypaňyz ýyok.
+  page.search: Gözleg
   page.search_result: 'Gözleg netijesi: :number makala tapyldy'
-  page.new_prods: Новые товары
-  page.prod_id: Лот
-  page.prod_img: Изображение
-  page.prod_title: Товар
-  page.prod_amount: Количество
-  page.prod_price: Стартовая цена
-  page.prod_finishdate: Дата окончания
-  page.prod_kg: 'кг'
-  page.pages: 'Страниц'
-  footer.contacts: Контакты
-  footer.tel: Тел
-  footer.email: Эл. почта
-  footer.address: Адрес
-  footer.copyright: '© TDHСMB ähli hukuklar goralan'
-  footer.categories: 'Categories'
+  page.new_prods: Täze harytlar
+  page.prod_id: Lot
+  page.prod_img: Surat
+  page.prod_title: Haryt
+  page.prod_amount: Sany
+  page.prod_price: Başlangyç bahasy
+  page.prod_finishdate: Gutarýan wagty
+  page.prod_kg: kg
+  page.pages: Sahypa
+  footer.contacts: Kontaktlar
+  footer.tel: Tel
+  footer.email: El. bukja
+  footer.address: Adres
+  footer.copyright: © TDÇMB ähli hukuklar goralan
+  footer.categories: Kategoriýalar
