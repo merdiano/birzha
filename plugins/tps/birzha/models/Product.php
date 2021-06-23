@@ -47,7 +47,11 @@ class Product extends Model
         'images' => 'System\Models\File'
     ];
 
-    public $translatable = ['name',['slug', 'index' => true],'mark'];
+    public $translatable = [
+        ['name', 'index' => true],
+        ['slug', 'index' => true],
+        'mark'
+    ];
 
     public function beforeCreate()
     {

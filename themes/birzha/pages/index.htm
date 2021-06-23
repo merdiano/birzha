@@ -17,6 +17,15 @@ sortOrder = "desc"
 <link rel="stylesheet" href="{{['assets/css/slick-theme.css','assets/css/slick.css']|theme}}">
 {% endput %}
 
+<div class="auto_container">
+    <div class="wrapper">
+        <form action="{{ 'search' | page }}" method="get">
+            <input name="q" type="text" placeholder="What are you looking for?" autocomplete="off">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
 <!--Intro  ============================================================= -->
 <section class="intro">
     <div class="auto_container">

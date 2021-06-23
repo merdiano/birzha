@@ -19,9 +19,8 @@ categorySlug = "{{ :slug }}"
 perPage = 2
 sortOrder = "desc"
 ==
-<h1>This is category/:slug page</h1>
 
-<h1>this is the slug - {{ this.param['slug'] }}</h1>
+
 <!--Category ============================================================= -->
 <section class="category">
     <div class="auto_container">
@@ -32,7 +31,7 @@ sortOrder = "desc"
             <div class="cat_source">
                 <div class="product_head">
                     <div class="product_title">
-                        Новые товары
+                        {{'page.new_prods'|_}}
                     </div>
                     <div class="sort_by">
                         <div class="sort_icon">

@@ -25,14 +25,31 @@ en:
   page.search: Search
   page.search_result: 'The search results found: :number articles'
   page.new_prods: Новые товары
+  page.similar_prods: Похожие товары
   page.prod_id: Лот
   page.prod_img: Изображение
   page.prod_title: Товар
+  page.prod_no: Номер лота
+  page.prod_mark: Марка товара
+  page.prod_vendor: Производитель
+  page.prod_vendor_country: Страна производителя
+  page.prod_desc: Описание
   page.prod_amount: Количество
+  page.prod_amount_2: Количество товара
   page.prod_price: Стартовая цена
+  page.prod_price_2: Стартовая цена за единицу
   page.prod_finishdate: Дата окончания
   page.prod_kg: кг
   page.pages: Страниц
+  page.prod_startdate: Дата начала
+  page.measure: Единица измерения
+  page.payment_cond: Условия оплаты
+  page.delivery_cond: Условия поставки
+  page.delivery_point: Пункт
+  page.packaging: Упаковка
+  page.seller_cont: Контакты продавца
+  page.buy_now: Купить сейчас
+  page.send_prod_request: Отправить запрос на лот
   footer.contacts: Контакты
   footer.tel: Тел
   footer.email: Эл. почта
@@ -66,12 +83,29 @@ ru:
   page.search: Поиск
   page.search_result: 'По результату поиска было найдено: :number статьи'
   page.new_prods: Новые товары
+  page.similar_prods: Похожие товары
   page.prod_id: Лот
   page.prod_img: Изображение
   page.prod_title: Товар
+  page.prod_no: Номер лота
+  page.prod_mark: Марка товара
+  page.prod_vendor: Производитель
+  page.prod_vendor_country: Страна производителя
+  page.prod_desc: Описание
   page.prod_amount: Количество
+  page.prod_amount_2: Количество товара
   page.prod_price: Стартовая цена
+  page.prod_price_2: Стартовая цена за единицу
   page.prod_finishdate: Дата окончания
+  page.prod_startdate: Дата начала
+  page.measure: Единица измерения
+  page.payment_cond: Условия оплаты
+  page.delivery_cond: Условия поставки
+  page.delivery_point: Пункт
+  page.packaging: Упаковка
+  page.seller_cont: Контакты продавца
+  page.buy_now: Купить сейчас
+  page.send_prod_request: Отправить запрос на лот
   page.prod_kg: кг
   page.pages: Страниц
   footer.contacts: Контакты
@@ -121,3 +155,21 @@ tm:
   footer.address: Adres
   footer.copyright: © TDÇMB ähli hukuklar goralan
   footer.categories: Kategoriýalar
+  page.similar_prods: Похожие товары
+  page.prod_no: Номер лота
+  page.prod_mark: Марка товара
+  page.prod_vendor: Производитель
+  page.prod_vendor_country: Страна производителя
+  page.prod_desc: Описание
+  page.prod_amount_2: Количество товара
+  page.prod_price_2: Стартовая цена за единицу
+  page.prod_startdate: Дата начала
+  page.measure: Единица измерения
+  page.payment_cond: Условия оплаты
+  page.delivery_cond: Условия поставки
+  page.delivery_point: Пункт
+  page.packaging: Упаковка
+  page.seller_cont: Контакты продавца
+  page.buy_now: Купить сейчас
+  page.send_prod_request: Отправить запрос на лот
+

@@ -3,6 +3,7 @@
 use Cms\Classes\ComponentBase;
 use TPS\Birzha\Models\Offer;
 use TPS\Birzha\Models\Category;
+use TPS\Birzha\Models\Product;
 use Session;
 
 class Offers extends ComponentBase
@@ -37,6 +38,18 @@ class Offers extends ComponentBase
                 'type' => 'dropdown',
                 'default' => 'desc'
             ],
+            'productSlug' => [
+                'title' => 'Product Slug',
+                'description' => 'Similar offers (the same product)',
+                'type' => 'string',
+                'default' => ''
+            ],
+            'offerId' => [
+                'title' => 'Offer id',
+                'description' => 'Offer id',
+                'type' => 'string',
+                'default' => ''
+            ]
         ];
     }
 
@@ -55,10 +68,12 @@ class Offers extends ComponentBase
         $sortOrder = $this->property('sortOrder');
         $cSlug = $this->property('categorySlug');
         $perPage = $this->property('perPage');
+        $productSlug = $this->property('productSlug');
+        $offerId = $this->property('offerId');
 
         $query = Offer::where('status', 'approved')->orderBy('created_at', $sortOrder)->paginate($perPage);
 
-        if($cSlug != '') {
+        if($cSlug != '') { //fetch offers by the category of the product
             $category = Category::transWhere('slug', $cSlug, Session::get('rainlab.translate.locale'))->first();
             if($category) {
                 $offersIds = array();
@@ -71,6 +86,15 @@ class Offers extends ComponentBase
                     }
                 }
                 $query = Offer::whereIn('id',$offersIds)->where('status','approved')->orderBy('created_at', $sortOrder)->paginate($perPage);
+            } else {
+                $query = null;
+            }
+        }
+
+        if($productSlug != '' && $offerId != '') { // fetch offers with similar products
+            $product = Product::transWhere('slug', $productSlug, Session::get('rainlab.translate.locale'))->first();
+            if($product) {
+                $query = Offer::where('product_id',$product->id)->where('id','!=',$offerId)->where('status','approved')->orderBy('created_at', $sortOrder)->paginate($perPage);
             } else {
                 $query = null;
             }

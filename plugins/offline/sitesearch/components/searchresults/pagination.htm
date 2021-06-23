@@ -1,0 +1,21 @@
+{% set pgn = __SELF__.myPaginator %}
+
+{% if pgn.total > pgn.perPage %}
+
+<div class="cat_end">
+    <a href="{{ pgn.previousPageUrl|default('#') }}" class="cat_arrow left">
+        <img src="{{ 'assets/images/svg/arrow-right.svg'|theme }}" alt="">
+    </a>
+    <form method="get" class="cat_form">
+        <input type="text" value="{{pgn.currentPage|default('1')}}" name="page"> 
+    </form>
+    <a href="{{ pgn.nextPageUrl|default('#') }}" class="cat_arrow ">
+        <img src="{{ 'assets/images/svg/arrow-right.svg'|theme }}" alt="">
+    </a>
+    <div class="cat_page">
+        {{ (pgn.total / pgn.perPage)|round(0,'ceil') }} {{ 'page.pages'|_ }}
+    </div>
+</div>
+
+{% endif %}
+
