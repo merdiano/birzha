@@ -6,6 +6,7 @@ use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Product;
 use TPS\Birzha\Models\Offer;
 use Event;
+use Session;
 /**
  * Birzha Plugin Information File
  */
@@ -79,10 +80,23 @@ class Plugin extends PluginBase
             $controller = \Cms\Classes\Controller::getController() ?? new \Cms\Classes\Controller();
 
             // Search your plugin's contents
-            // user enters product name
-            $products = Models\Product
-                ::where('name', 'like', "%${query}%")
-                ->get();
+            
+            $locale = Session::get('rainlab.translate.locale');
+            
+            if($locale == 'tm') {
+                // user enters product name
+                $products = Models\Product
+                    ::where('name', 'like', "%${query}%")
+                    ->get();
+            } else {
+                $queryString = $query;
+                
+                // user enters product name
+                $products =  Models\Product::whereHas('translations', function ($query) use ($locale,$queryString) {
+                    $query->where('locale', $locale)->where('attribute_data', 'like', "%${queryString}%");
+                })->get();
+            }
+            
             
             // show all offers that have that product
             $items = collect(new Offer);
