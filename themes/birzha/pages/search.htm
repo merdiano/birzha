@@ -1,0 +1,90 @@
+title = "Gözleg"
+url = "/search"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeTitle[en] = "Search results"
+localeTitle[ru] = "Результаты поиска"
+
+[searchResults]
+resultsPerPage = 3
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Visit page"
+==
+
+{% put styles %}
+<style>
+
+</style>
+{% endput %}
+
+{% set results = searchResults.results %}
+
+<section class="product">
+    <div class="auto_container">
+        <h2>Search results</h2>
+        <div class="product_wrap">
+            <div class="product_box">
+                {% for result in results %}
+                <div class="product_item">
+                    <div class="item_head">
+                        <div class="item_lot">
+                            {{ 'page.prod_id'|_ }} №:                            
+                        </div>
+                        <div class="item_num">
+                            № {{result.model.id}}
+                        </div>
+                    </div>
+                    <div class="item_photo">
+                        <img src="{{ result.model.product.images[0].thumb(308,180,{'mode':'crop'}) }}" alt="">
+                    </div>
+                    <div class="item_group">
+                        <div class="item_title">
+                            {{ result.model.product.name }}
+                        </div>
+                        <div class="item_sub_title">
+                            {{ result.model.product.name }}
+                        </div>
+                    </div>
+                    <div class="item_group">
+                        <div class="item_sub_name">
+                            {{ 'page.prod_amount'|_ }}:
+                        </div>
+                        <div class="item_name">
+                            {{ result.model.quantity }} {{ result.model.measure.code }}.
+                        </div>
+                    </div>
+                    <div class="item_group">
+                        <div class="item_sub_name">
+                            {{ 'page.prod_price'|_ }}:
+                        </div>
+                        <div class="item_name">
+                            {{ result.model.price }} {{result.model.currency.code}} / 1 {{ result.model.measure.code }}.
+                        </div>
+                    </div>
+                    <div class="item_group">
+                        <div class="item_sub_name">
+                            {{ 'page.prod_finishdate'|_ }}:
+                        </div>
+                        <div class="item_name">
+                            {{ result.model.ends_at|date('d.m.Y') }}
+                        </div>
+                    </div>
+                    <a href="{{ 'offer'|page({ slug: result.model.product.slug, id: result.model.id }) }}" class="item_btn">
+                        {{ 'page.more'|_ }}
+                    </a>
+                </div>
+                {% else %}
+                {# No results found #}
+                <h1>No results found</h1>
+                {% endfor %}
+
+                
+            </div>
+            
+            {% partial searchResults ~ '::pagination.htm' results = results %}
+        </div>
+    </div>
+</section>

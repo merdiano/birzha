@@ -4,6 +4,7 @@ use Backend;
 use System\Classes\PluginBase;
 use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Product;
+use TPS\Birzha\Models\Offer;
 use Event;
 /**
  * Birzha Plugin Information File
@@ -70,6 +71,56 @@ class Plugin extends PluginBase
             elseif ($type == 'product' || $type == 'all-products' || $type == 'category-products') {
                 return Product::resolveMenuItem($item, $url, $theme);
             }
+        });
+
+        \Event::listen('offline.sitesearch.query', function ($query) {
+
+            // The controller is used to generate page URLs.
+            $controller = \Cms\Classes\Controller::getController() ?? new \Cms\Classes\Controller();
+
+            // Search your plugin's contents
+            // user enters product name
+            $products = Models\Product
+                ::where('name', 'like', "%${query}%")
+                ->get();
+            
+            // show all offers that have that product
+            $items = collect(new Offer);
+            foreach($products as $p) {
+                foreach($p->offers as $of) {
+                    $items->add($of);
+                }
+            }
+
+            // Now build a results array
+            $results = $items->map(function ($item) use ($query, $controller) {
+
+                // If the query is found in the title, set a relevance of 2
+                $relevance = mb_stripos($item->title, $query) !== false ? 2 : 1;
+
+                // Optional: Add an age penalty to older results. This makes sure that
+                // newer results are listed first.
+                // if ($relevance > 1 && $item->created_at) {
+                //    $ageInDays = $item->created_at->diffInDays(\Illuminate\Support\Carbon::now());
+                //    $relevance -= \OFFLINE\SiteSearch\Classes\Providers\ResultsProvider::agePenaltyForDays($ageInDays);
+                // }
+
+                return [
+                    'title'     => $item->product->name,
+                    'url'       => $controller->pageUrl('offer', ['slug' => $item->product->slug, 'id' => $item->id]),
+                    // 'thumb'     => optional($item->product->images)->first(), // Instance of System\Models\File
+                    'relevance' => $relevance, // higher relevance results in a higher
+                                            // position in the results listing
+                    // 'meta' => 'data',       // optional, any other information you want
+                                            // to associate with this result
+                    'model' => $item,       // optional, pass along the original model
+                ];
+            });
+
+            return [
+                'provider' => 'Offers', // The badge to display for this result
+                'results'  => $results,
+            ];
         });
     }
 

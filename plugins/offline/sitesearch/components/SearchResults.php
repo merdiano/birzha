@@ -62,6 +62,8 @@ class SearchResults extends BaseComponent
      */
     protected $forcedQuery;
 
+    public $myPaginator;
+
     /**
      * The component's details.
      *
@@ -183,6 +185,8 @@ class SearchResults extends BaseComponent
             $this->resultsPerPage,
             $this->pageNumber
         );
+
+        $this->myPaginator = $paginator;
 
         $pageUrl = Url::to(Request::url());
 
