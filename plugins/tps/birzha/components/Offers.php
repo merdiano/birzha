@@ -5,6 +5,7 @@ use TPS\Birzha\Models\Offer;
 use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Product;
 use Session;
+use DB;
 
 class Offers extends ComponentBase
 {
@@ -71,7 +72,7 @@ class Offers extends ComponentBase
         $productSlug = $this->property('productSlug');
         $offerId = $this->property('offerId');
 
-        $query = Offer::where('status', 'approved')->orderBy('created_at', $sortOrder)->paginate($perPage);
+        $query = Offer::where('status', 'approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
 
         if($cSlug != '') { //fetch offers by the category of the product
             $category = Category::transWhere('slug', $cSlug, Session::get('rainlab.translate.locale'))->first();
@@ -85,7 +86,7 @@ class Offers extends ComponentBase
                         $offersIds[] = $of->id;
                     }
                 }
-                $query = Offer::whereIn('id',$offersIds)->where('status','approved')->orderBy('created_at', $sortOrder)->paginate($perPage);
+                $query = Offer::whereIn('id',$offersIds)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
             } else {
                 $query = null;
             }
@@ -94,7 +95,7 @@ class Offers extends ComponentBase
         if($productSlug != '' && $offerId != '') { // fetch offers with similar products
             $product = Product::transWhere('slug', $productSlug, Session::get('rainlab.translate.locale'))->first();
             if($product) {
-                $query = Offer::where('product_id',$product->id)->where('id','!=',$offerId)->where('status','approved')->orderBy('created_at', $sortOrder)->paginate($perPage);
+                $query = Offer::where('product_id',$product->id)->where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
             } else {
                 $query = null;
             }
