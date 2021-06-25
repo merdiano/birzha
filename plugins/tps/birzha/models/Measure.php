@@ -17,7 +17,7 @@ class Measure extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_measure';
+    public $table = 'tps_birzha_measures';
 
     /**
      * @var array Validation rules

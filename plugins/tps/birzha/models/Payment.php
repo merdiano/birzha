@@ -17,7 +17,7 @@ class Payment extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_payment';
+    public $table = 'tps_birzha_payments';
 
     /**
      * @var array Validation rules

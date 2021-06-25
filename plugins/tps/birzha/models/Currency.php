@@ -19,7 +19,7 @@ class Currency extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_currency';
+    public $table = 'tps_birzha_currencies';
 
     /**
      * @var array Validation rules

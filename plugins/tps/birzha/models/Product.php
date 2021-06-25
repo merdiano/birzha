@@ -19,7 +19,7 @@ class Product extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_product';
+    public $table = 'tps_birzha_products';
 
     /**
      * @var array Validation rules
@@ -39,6 +39,10 @@ class Product extends Model
         'categories' => ['TPS\Birzha\Models\Category','table' => 'tps_birzha_product_categories']
     ];
 
+    public $belongsTo = [
+        'country' => ['TPS\Birzha\Models\Country']
+    ];
+
     public $hasMany = [
         'offers' => 'TPS\Birzha\Models\Offer'
     ];
@@ -50,7 +54,6 @@ class Product extends Model
     public $translatable = [
         ['name', 'index' => true],
         ['slug', 'index' => true],
-        'mark'
     ];
 
     public function beforeCreate()

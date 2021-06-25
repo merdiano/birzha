@@ -23,7 +23,7 @@ class Category extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_category';
+    public $table = 'tps_birzha_categories';
 
     /**
      * @var array Validation rules

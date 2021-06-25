@@ -1,2 +1,66 @@
 title = "profile"
+url = "/profile"
+layout = "default"
+is_hidden = 0
+
+[session]
+security = "all"
+
+[viewBag]
+localeUrl[en] = "/profile"
+localeUrl[ru] = "/profile"
 ==
+<!-- Add post ============================================================= -->
+<section class="post">
+    <div class="auto_container">
+        <div class="post_wrap">
+            <div class="contact_title">
+                Персональные данные
+            </div>
+
+            <form action="#" class="post_form">
+                <div class="post_input">
+                    <label for="name">Имя</label>
+                    <input type="text" placeholder="Аман" id="name" name="name">
+                </div>
+
+                <div class="post_input">
+                    <label for="last_name">Фамилия</label>
+                    <input type="text" placeholder="Аманов" id="last_name" name="last_name">
+                </div>
+
+                <div class="post_input">
+                    <label for="log-in">Логин</label>
+                    <input type="text" placeholder="Aman Amanow" id="log-in" name="log-in">
+                </div>
+
+                <div class="post_input">
+                    <label for="blue_mail">Электронный адрес</label>
+                    <input type="email" placeholder="amanamanow@gmail.com" id="blue_mail" name="blue_mail">
+                </div>
+
+                <div class="post_input">
+                    <label for="phone_num">Номер телефона</label>
+                    <input type="text" placeholder="+993 65656565" id="phone_num" name="phone_num">
+                </div>
+
+                <div class="post_input">
+                    <label for="password">Пароль</label>
+                    <input type="password" placeholder="************" id="password" name="password">
+                    <div class="eye">
+                        <img class="eye_off" src="images/svg/eye-off.svg" alt="eye">
+                        <img class="eye_on" src="images/svg/eye.svg" alt="eye">
+                    </div>
+                </div>
+
+                <div class="btn_bg">
+                    <button class="post_btn" type="submit">
+                        Сохранить
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Add post end ========================================================= -->

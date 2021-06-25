@@ -15,7 +15,7 @@ class Offer extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_offer';
+    public $table = 'tps_birzha_offers';
 
     /**
      * @var array Validation rules
@@ -39,14 +39,15 @@ class Offer extends Model
         'measure'       => ['TPS\Birzha\Models\Measure','key' => 'measure_id'],
         'payment_term'  => ['TPS\Birzha\Models\Term','key' => 'payment_term_id'],
         'delivery_term' => ['TPS\Birzha\Models\Term','key' => 'delivery_term_id'],
-        'vendor'        => User::class
+        'vendor'        => User::class,
+        'country' => ['TPS\Birzha\Models\Country']
     ];
 
     public $attachMany = [
         'images' => 'System\Models\File'
     ];
 
-    public $translatable = ['name','description','mark','place'];
+    public $translatable = ['name','description'];
     /**
      * Allows filtering for specifc categories.
      * @param  Illuminate\Query\Builder  $query      QueryBuilder
