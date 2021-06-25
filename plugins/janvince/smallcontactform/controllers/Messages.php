@@ -30,7 +30,7 @@ class Messages extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('JanVince.SmallContactForm', 'smallcontactform', 'messages');
+        BackendMenu::setContext('TPS.Birzha', 'frontend', 'messages');
     }
 
   /**
