@@ -1,11 +1,11 @@
-title = "Offer"
+title = "Bildiriş"
 url = "/offer/:slug/:id"
 layout = "default"
 is_hidden = 0
 
 [viewBag]
-localeTitle[en] = "Offer"
-localeTitle[ru] = "Offer"
+localeTitle[en] = "Announcement"
+localeTitle[ru] = "Объявление"
 localeUrl[en] = "/offer/:slug/:id"
 localeUrl[ru] = "/offer/:slug/:id"
 
@@ -14,6 +14,7 @@ productSlug = "{{ :slug }}"
 offerId = "{{ :id }}"
 
 [offers]
+perPage = 0
 sortOrder = "desc"
 productSlug = "{{ :slug }}"
 offerId = "{{ :id }}"

@@ -1,14 +1,4 @@
 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-
-
-
 // selector =============
 const selectElement = function (element) {
     return document.querySelector(element);
@@ -101,10 +91,10 @@ if (profile_head != undefined) {
             sleep(2).then(() => {
                 drop.forEach(d => {
                     d.classList.toggle('active');
-                }) 
+                })
             });
         });
-    }) 
+    })
 }
 
 

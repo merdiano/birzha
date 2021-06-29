@@ -1,0 +1,82 @@
+
+<form action="#" class="post_form">
+    <div class="post_input">
+        <label for="name">Имя</label>
+        <input type="text" placeholder="Аман" id="name" name="name">
+    </div>
+
+    <div class="post_input">
+        <label for="last_name">Фамилия</label>
+        <input type="text" placeholder="Аманов" id="last_name" name="last_name">
+    </div>
+
+    <div class="post_input">
+        <label for="phone_num">Номер телефона</label>
+        <input type="text" placeholder="+993 65656565" id="phone_num" name="phone_num">
+    </div>
+
+
+    <div class="post_input">
+        <label for="blue_mail">Электронный адрес</label>
+        <input type="email" placeholder="amanamanow@gmail.com" id="blue_mail" name="blue_mail">
+    </div>
+
+    <div class="post_input">
+        <label for="log-in">Company</label>
+        <input type="text" placeholder="Company name" id="log-in" name="log-in">
+    </div>
+
+    <div class="post_input">
+        <label for="log-in">Legalization number</label>
+        <input type="text" placeholder="Company name" id="log-in" name="log-in">
+    </div>
+
+    <div class="post_input">
+        <label for="password">Пароль</label>
+        <input type="password" placeholder="************" id="password" name="password">
+        <div class="eye">
+            <img class="eye_off" src="{{'assets/images/svg/eye-off.svg'|theme}}" alt="eye">
+            <img class="eye_on" src="{{'assets/images/svg/eye.svg'|theme}}" alt="eye">
+        </div>
+    </div>
+    <div class="post_input">
+        <label for="password">Пароль</label>
+        <input type="password" placeholder="************" id="password" name="password">
+        <div class="eye">
+            <img class="eye_off" src="{{'assets/images/svg/eye-off.svg'|theme}}" alt="eye">
+            <img class="eye_on" src="{{'assets/images/svg/eye.svg'|theme}}" alt="eye">
+        </div>
+    </div>
+
+    <div class="btn_bg">
+        <button class="post_btn" type="submit">
+            Сохранить
+        </button>
+    </div>
+
+</form>
+{% put scripts %}
+<script>
+
+    document.querySelector('.eye_off').addEventListener('click', function () {
+        document.getElementById('password').type = "password"
+
+        document.querySelector('.eye_on').classList.remove('active');
+        document.querySelector('.eye_off').classList.remove('active');
+    })
+
+    document.querySelector('.eye_on').addEventListener('click', function () {
+        document.getElementById('password').type = "text";
+
+        document.querySelector('.eye_on').classList.add('active');
+        document.querySelector('.eye_off').classList.add('active');
+    })
+
+    document.querySelector('.profile_head').addEventListener('click', function () {
+        sleep(2).then(() => {
+            document.querySelector('.profile_drop').classList.toggle('active');
+        });
+    });
+
+</script>
+{% endput %}

@@ -61,6 +61,13 @@ class Account extends ComponentBase
                 'type'        => 'checkbox',
                 'default'     => 0
             ],
+            'view'            => [
+                'title'       => 'View',
+                'description' => 'Choose view type',
+                'type'        => 'dropdown',
+                'options'     => ['signin','signup','profile'],
+                'default'     => 'signin'
+            ]
         ];
     }
 

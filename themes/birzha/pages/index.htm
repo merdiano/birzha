@@ -1,4 +1,4 @@
-title = "index"
+title = "Baş sahypa"
 url = "/"
 layout = "default"
 description = "Baş sahypa. Türkmenistanyň biržasy."
@@ -12,6 +12,12 @@ slug = "{{ :slug }}"
 [offers]
 perPage = 0
 sortOrder = "desc"
+
+[viewBag]
+localeTitle[en] = "Home page"
+localeTitle[ru] = "Главная страница"
+localeUrl[en] = "/home-page"
+localeUrl[ru] = "/glavnaya-stranica"
 ==
 {% put styles %}
 <link rel="stylesheet" href="{{['assets/css/slick-theme.css','assets/css/slick.css']|theme}}">
@@ -92,5 +98,5 @@ sortOrder = "desc"
 <!--Product  end ========================================================= -->
 
 {% put scripts %}
-<script src="{{['assets/js/slick.js','assets/js/slider.js','assets/js/custom-select.js']|theme}}"></script>
+<script src="{{['assets/js/slick.js','assets/js/slider.js']|theme}}"></script>
 {% endput %}

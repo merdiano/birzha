@@ -1,0 +1,19 @@
+{{ form_ajax(__SELF__~'::onRegister', { class: 'register_form','data-request-validate':''}) }}
+<div class="form_title">
+    {{ 'topnav.reg'|_ }}
+</div>
+<div class="register_input">
+    <input type="email" name="email" placeholder="{{'auth.email'|_}}">
+    <div data-validate-for="email"></div>
+</div>
+<div class="register_input">
+    <input type="number" name="username" placeholder="{{'auth.phone'|_}}">
+    <div data-validate-for="username"></div>
+</div>
+<div class="register_input">
+    <input type="password" name="password" placeholder="{{'auth.password'|_}}">
+    <div data-validate-for="password"></div>
+</div>
+<button data-attach-loading type="submit" class="form_btn">{{ 'auth.reg_continue'|_ }}</button>
+
+{{ form_close() }}
