@@ -5,14 +5,10 @@ use Model;
 /**
  * Model
  */
-class Message extends Model
+class Chatroom extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-
-    use \October\Rain\Database\Traits\SoftDelete;
-
-    protected $dates = ['deleted_at'];
-
+    
     /*
      * Disable timestamps by default.
      * Remove this line if timestamps are defined in the database table.
@@ -23,7 +19,7 @@ class Message extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'tps_birzha_messages';
+    public $table = 'tps_birzha_chatrooms';
 
     /**
      * @var array Validation rules
@@ -31,7 +27,11 @@ class Message extends Model
     public $rules = [
     ];
 
-    public $hasOne = [
-        'chatroom' => ['TPS\Birzha\Models\Chatroom'],
+    public $belongsToMany = [
+        'users' => ['RainLab\User\Models\User','table'=>'tps_birzha_chatrooms_users']
+    ];
+
+    public $hasMany = [
+        'messages' => ['TPS\Birzha\Models\Message'],
     ];
 }

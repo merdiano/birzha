@@ -1,0 +1,112 @@
+{% set chatrooms = __SELF__.chatrooms %}
+
+<!-- Chat ============================================================ -->
+<section class="chat">
+    <div class="auto_container">
+        <div class="chat_wrap">
+            <div class="chat_box">
+                <div class="chat_people">
+
+                    {% for chatroom in chatrooms %}
+                    <a href="#" class="person" style="display: block;"
+                        data-request="onChatroom"
+                        data-request-data="chatroom_id: {{chatroom.id}}"
+                        data-request-success="showMessages(data)"
+                        data-id="{{ chatroom.id}}"
+                        data-partner-id="{{ chatroom.message_partner.id }}"
+                    >
+                        <div class="person_name">
+
+                            {% if chatroom.message_partner.name or chatroom.message_partner.surname %}
+                                {{chatroom.message_partner.name}} {{chatroom.message_partner.surname}}
+                            {% else %}
+                                {{chatroom.message_partner.email}}
+                            {% endif %}
+                            
+                            &nbsp;
+                            <span class="unread-messages-count">
+                                {% if chatroom.count_unread_messages %}
+                                    ({{chatroom.count_unread_messages}})
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="person_message">
+                            {{chatroom.last_message.message}}
+                        </div>
+                    </a>
+                    {% endfor %}
+                    
+                </div>
+                <div class="chat_area">
+                    <div class="chat_area-inner">
+
+                        <form action="#" class="message_form" 
+
+                            data-request="onMessageSend"
+                            data-request-success="showMessages(data)"
+                        >
+                            <input type="hidden" name="reciver_id">
+                            <input type="hidden" name="chatroom_id">
+
+                            <div class="message_input">
+                                <textarea name="msg" required></textarea>
+                            </div>
+
+                            <button class="message_btn" type="submit" data-attach-loading>
+                                <img src="{{'assets/images/svg/plane.svg'|theme}}" alt="send">
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Chat end ======================================================== -->
+
+{% put scripts %}
+<script>
+    function showMessages(data) {
+        $('.unread-messages-count').empty();
+
+        $('.my_message,.friend_message').remove();
+
+        $.each(data.messages, function(index, element) {
+            $('.chat_area-inner').append(`
+                <div class="${ element.sender_id == data.currentUserId ? 'my_message' : 'friend_message'}">
+                    <div class="message_time">
+                        ${
+                            new Date(element.send_at).getHours() + 
+                            ':' + 
+                            (new Date(element.send_at).getMinutes() < 10 ? '0' : '') +
+                            new Date(element.send_at).getMinutes() + 
+                            ' - ' + 
+                            new Date(element.send_at).getDate() + 
+                            '.' + 
+                            (+new Date(element.send_at).getMonth()+1 < 10 ? '0' : '') +
+                            (+new Date(element.send_at).getMonth()+1) + 
+                            '.' + 
+                            new Date(element.send_at).getFullYear()
+                        }
+                    </div>
+                    <div class="message_text">
+                        ${element.message}
+                    </div>
+                </div>
+            `);
+        });
+
+        $('.person').removeClass('active');
+        $(`.person[data-id="${data.chatRoomId}"]`).addClass('active');
+
+        $('.chat_area form input[name="reciver_id"]').val(data.chatRoomPartnerId);
+        $('.chat_area form input[name="chatroom_id"]').val(data.chatRoomId);
+
+        $('.chat_area form textarea').val('');
+
+        var bottom= $('.chat_area-inner').height()+$('.chat_area-inner').prop('scrollHeight');    
+        $('.chat_area-inner').scrollTop(bottom);
+    }
+</script>
+{% endput %}

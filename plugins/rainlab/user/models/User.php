@@ -41,7 +41,8 @@ class User extends UserBase
      * @var array Relations
      */
     public $belongsToMany = [
-        'groups' => [UserGroup::class, 'table' => 'users_groups']
+        'groups' => [UserGroup::class, 'table' => 'users_groups'],
+        'chatrooms' => ['TPS\Birzha\Models\Chatroom', 'table'=>'tps_birzha_chatrooms_users']
     ];
 
     public $attachOne = [

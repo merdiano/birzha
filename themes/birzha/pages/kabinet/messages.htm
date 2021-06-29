@@ -1,2 +1,16 @@
-title = "messages"
+title = "Messages"
+url = "/messages"
+layout = "default"
+is_hidden = 0
+
+[messages]
+
+[session]
+security = "user"
+redirect = "index"
+
+[viewBag]
+localeTitle[ru] = "Сообщения"
+localeUrl[ru] = "/soobshcheniya"
 ==
+{% component 'messages' %}
