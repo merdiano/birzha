@@ -25,7 +25,7 @@ class User extends UserBase
     public $rules = [
         'email'    => 'required|between:6,255|email|unique:users',
         'avatar'   => 'nullable|image|max:4000',
-        'username' => 'required|min:8|numeric|unique:users',
+        'username' => 'required|digits_between:8,20|numeric|unique:users',
         'password' => 'required:create|between:8,255|confirmed',
         'password_confirmation' => 'required_with:password|between:8,255',
     ];
@@ -33,8 +33,10 @@ class User extends UserBase
     public $messages = [
         'username.required' => 'We need to know your phone number!',
         'username.numeric' => 'Phone number must be numeric!',
-        'username.min' => 'Phone number must be minimum 8 numbers!',
+        'username.digits_between' => 'Phone number must be between 8, 20 digits!',
         'username.unique' => 'Phone number already registered',
+        'iu_about.digits' => 'Legalization number must be 6 digits',
+        'iu_company.max' => 'Company name must be maximum 191 chars'
     ];
 
     /**

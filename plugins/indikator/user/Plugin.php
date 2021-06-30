@@ -52,13 +52,13 @@ class Plugin extends PluginBase
                 'iu_job',
                 'iu_company',
                 'iu_about',
-                'iu_webpage',
-                'iu_blog',
-                'iu_facebook',
-                'iu_twitter',
-                'iu_skype',
-                'iu_icq',
-                'iu_comment'
+//                'iu_webpage',
+//                'iu_blog',
+//                'iu_facebook',
+//                'iu_twitter',
+//                'iu_skype',
+//                'iu_icq',
+//                'iu_comment'
             ]);
         });
 

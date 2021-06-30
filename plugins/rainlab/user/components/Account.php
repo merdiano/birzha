@@ -299,7 +299,7 @@ class Account extends ComponentBase
                 unset($rules['username']);
             }
 
-            $validation = Validator::make($data, $rules);
+            $validation = Validator::make($data, $rules,(new UserModel)->messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
@@ -418,6 +418,18 @@ class Account extends ComponentBase
         }
 
         $data = post();
+
+        $rules = [
+            'email'    => 'required|between:6,191|email',
+            'username' => 'required|digits_between:8,20|numeric',
+            'iu_company' => 'max:191',
+            'iu_about' => 'digits:6|numeric',
+        ];
+
+        $validation = Validator::make($data, $rules,(new UserModel)->messages);
+        if ($validation->fails()) {
+            throw new ValidationException($validation);
+        }
 
         if ($this->updateRequiresPassword()) {
             if (!$user->checkHashValue('password', $data['password_current'])) {

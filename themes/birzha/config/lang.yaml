@@ -2,19 +2,25 @@ en:
   site.name: Turkmenistan state birzha
   site.short_name: ГТСБТ
   auth.login: Enter email or phone number
-  auth.name: Your name
+  auth.name: Name
+  auth.surname: Surname
   auth.email: Email address
   auth.phone: Phone number
   auth.password: Password
-  auth.reg_continue: Продолжить регистрацию
+  auth.reg_continue: Register
   auth.account_recov: Если вы забыли свой логин или пароль, просим вас
                             восстановить его по <a href="#" class="form_link">ссылке.</a>
-  auth.login_to_account: Войти в свой профиль
-  auth.personal_data: Персональные данные
-  auth.my_announces: Мои объявления
-  auth.messages: Сообщения
-  auth.logout: Выйти
-  auth.add_announce: Добавить объявление
+  auth.login_to_account: Sign in
+  auth.personal_data: Profile
+  auth.my_announces: My announcements
+  auth.messages: Messages
+  auth.logout: Logout
+  auth.add_announce: Add announcement
+  account.company: Company
+  account.legalization_number: Legalization number
+  account.save: Save
+  account.current_password: Current password
+  account.new_password: New password
   topnav.reg: Sign up
   topnav.login: Sign in
   nav.home: Home
@@ -24,18 +30,18 @@ en:
   page.not_found_message: We're sorry, but the page you requested cannot be found.
   page.search: Search
   page.search_result: 'The search results found: :number articles'
-  page.new_prods: Новые товары
+  page.new_prods: New products
   page.similar_prods: Похожие товары
-  page.prod_id: Лот
-  page.prod_img: Изображение
-  page.prod_title: Товар
-  page.prod_no: Номер лота
-  page.prod_mark: Марка товара
-  page.prod_vendor: Производитель
-  page.prod_vendor_country: Страна производителя
-  page.prod_desc: Описание
-  page.prod_amount: Количество
-  page.prod_amount_2: Количество товара
+  page.prod_id: Lot
+  page.prod_img: Image
+  page.prod_title: Product
+  page.prod_no: lot number
+  page.prod_mark: Product mark
+  page.prod_vendor: Manufacturer
+  page.prod_vendor_country: Manufactured country
+  page.prod_desc: Description
+  page.prod_amount: Quantity
+  page.prod_amount_2: Product quantity
   page.prod_price: Стартовая цена
   page.prod_price_2: Стартовая цена за единицу
   page.prod_finishdate: Дата окончания
@@ -60,6 +66,7 @@ ru:
   site.name: '«Туркменистан: золотой век»'
   site.short_name: ГТСБТ
   auth.name: Ваша имя
+  auth.surname: Фамилия
   auth.login: Введите почту или номер телефона
   auth.email: Ваш электронный адрес
   auth.phone: Номер телефона
@@ -73,6 +80,11 @@ ru:
   auth.messages: Сообщения
   auth.logout: Выйти
   auth.add_announce: Добавить объявление
+  account.company: Компания
+  account.legalization_number: Номер легализации
+  account.save: Ýatla
+  account.current_password: Açar sözüňiz
+  account.new_password: Täze açar söz
   topnav.reg: Регистрация
   topnav.login: Sign in
   nav.home: Главная
@@ -118,6 +130,7 @@ tm:
   site.name: Türkmenistanyň Döwlet çig-mal biržasy
   site.short_name: TDÇMB
   auth.name: Adyňyz
+  auth.surname: Familiýaňyz
   auth.login: El. bukjaňyz ýa-da telefon nomeriňiz
   auth.email: El. bukjaňyz
   auth.phone: Telefon belgiňiz
@@ -131,6 +144,11 @@ tm:
   auth.messages: Hatlar
   auth.logout: Çykyş
   auth.add_announce: Bildiriş goş
+  account.company: Şereket
+  account.legalization_number: Legalizasiýa nomeri
+  account.save: Ýatla
+  account.current_password: Açar sözüňiz
+  account.new_password: Täze açar söz
   topnav.reg: Agza bol
   topnav.login: Giriş
   nav.home: Baş sahypa

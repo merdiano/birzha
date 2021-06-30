@@ -1,65 +1,74 @@
+{{ form_ajax('onUpdate',{class:'post_form','data-request-validate':''}) }}
 
-<form action="#" class="post_form">
     <div class="post_input">
-        <label for="name">Имя</label>
-        <input type="text" placeholder="Аман" id="name" name="name">
+        <label for="name">{{'auth.name'|_}}</label>
+        <input type="text"  id="name" name="name" value="{{user.name}}">
+        <div data-validate-for="name"></div>
     </div>
 
     <div class="post_input">
-        <label for="last_name">Фамилия</label>
-        <input type="text" placeholder="Аманов" id="last_name" name="last_name">
+        <label for="surname">{{'auth.surname'|_}}</label>
+        <input type="text" id="surname" name="surname" value="{{user.surname}}">
+        <div data-validate-for="surname"></div>
     </div>
 
     <div class="post_input">
-        <label for="phone_num">Номер телефона</label>
-        <input type="text" placeholder="+993 65656565" id="phone_num" name="phone_num">
+        <label for="phone_num">{{'auth.phone'|_}}</label>
+        <input type="text"  id="phone_num" name="username" value="{{user.username}}">
+        <div data-validate-for="username"></div>
     </div>
 
 
     <div class="post_input">
-        <label for="blue_mail">Электронный адрес</label>
-        <input type="email" placeholder="amanamanow@gmail.com" id="blue_mail" name="blue_mail">
+        <label for="blue_mail">{{'auth.email'|_}}</label>
+        <input type="email"  id="blue_mail" name="email" value="{{user.email}}">
+        <div data-validate-for="email"></div>
     </div>
 
     <div class="post_input">
-        <label for="log-in">Company</label>
-        <input type="text" placeholder="Company name" id="log-in" name="log-in">
+        <label for="iu_company">{{'account.company'|_}}</label>
+        <input type="text" id="iu_company" name="iu_company" value="{{user.iu_company}}">
+        <div data-validate-for="iu_company"></div>
     </div>
 
     <div class="post_input">
-        <label for="log-in">Legalization number</label>
-        <input type="text" placeholder="Company name" id="log-in" name="log-in">
+        <label for="iu_about">{{'account.legalization_number'|_}}</label>
+        <input type="text" placeholder="123456" id="iu_about" name="iu_about" value="{{user.iu_about}}">
+        <div data-validate-for="iu_about"></div>
     </div>
 
     <div class="post_input">
-        <label for="password">Пароль</label>
+        <label for="password">{{'account.new_password'|_}}</label>
         <input type="password" placeholder="************" id="password" name="password">
         <div class="eye">
             <img class="eye_off" src="{{'assets/images/svg/eye-off.svg'|theme}}" alt="eye">
             <img class="eye_on" src="{{'assets/images/svg/eye.svg'|theme}}" alt="eye">
         </div>
+        <div data-validate-for="password"></div>
     </div>
     <div class="post_input">
-        <label for="password">Пароль</label>
-        <input type="password" placeholder="************" id="password" name="password">
+        <label for="password_current">{{'account.current_password'}}</label>
+        <input type="password" placeholder="************" id="password_current" name="password_current">
         <div class="eye">
             <img class="eye_off" src="{{'assets/images/svg/eye-off.svg'|theme}}" alt="eye">
             <img class="eye_on" src="{{'assets/images/svg/eye.svg'|theme}}" alt="eye">
         </div>
+        <div data-validate-for="password_current"></div>
     </div>
 
     <div class="btn_bg">
         <button class="post_btn" type="submit">
-            Сохранить
+            {{'account.save'|_}}
         </button>
     </div>
+{{ form_close() }}
 
-</form>
 {% put scripts %}
 <script>
 
     document.querySelector('.eye_off').addEventListener('click', function () {
         document.getElementById('password').type = "password"
+        document.getElementById('password_current').type = "password"
 
         document.querySelector('.eye_on').classList.remove('active');
         document.querySelector('.eye_off').classList.remove('active');
@@ -67,6 +76,7 @@
 
     document.querySelector('.eye_on').addEventListener('click', function () {
         document.getElementById('password').type = "text";
+        document.getElementById('password_current').type = "text";
 
         document.querySelector('.eye_on').classList.add('active');
         document.querySelector('.eye_off').classList.add('active');
