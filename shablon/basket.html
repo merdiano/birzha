@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="css/slick-theme.css">
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Personal data</title>
+    <title>Add post 1 </title>
 </head>
 
 <body>
+
     <!-- Header Top ========================================================= -->
     <section class="header_top" id="head-top">
         <div class="auto_container">
@@ -93,23 +94,67 @@
                     </div>
                 </a>
 
-                <div class="head_buttons">
-                    <div class="register_btn">
-                        <div class="btn_icon">
-                            <img src="images/svg/user-plus-white.svg" alt="">
+                <div class="profile">
+                    <div class="profile_bio">
+                        <div class="profile_head">
+                            <div class="profile_icon">
+                                <img src="images/svg/user-plus.svg" alt="">
+                            </div>
+                            <div class="profile_text">
+                                Аман Аманов
+                            </div>
+                            <div class="prodile_arrow">
+                                <img src="images/svg/arrow-down.svg" alt="">
+                            </div>
                         </div>
-                        <div class="btn_text">
-                            Регистрация
+                        <div class="profile_drop">
+                            <a href="personal_data.html" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="images/svg/user-plus.svg" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    Персональные данные
+                                </div>
+                            </a>
+
+                            <a href="my_post.html" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="images/svg/clipboard.svg" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    Мои объявления
+                                </div>
+                            </a>
+
+                            <a href="#" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="images/svg/inbox.svg" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    Сообщения
+                                </div>
+                            </a>
+
+                            <a href="#" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="images/svg/log-out.svg" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    Выйти
+                                </div>
+                            </a>
+
                         </div>
                     </div>
-                    <div class="log_in">
-                        <div class="btn_icon">
-                            <img src="images/svg/log-in-white.svg" alt="">
+
+                    <a href="add_post.html" class="add_post_btn">
+                        <div class="post_icon">
+                            <img src="images/svg/add.svg" alt="">
                         </div>
-                        <div class="btn_text">
-                            Войти
+                        <div class="post_text">
+                            Добавить объявление
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -227,70 +272,186 @@
         <div class="auto_container">
             <div class="post_wrap">
                 <div class="contact_title">
-                    Персональные данные
+                    Корзина
                 </div>
 
-                <form action="#" class="post_form">
-                    <div class="post_input">
-                        <label for="name">Имя</label>
-                        <input type="text" placeholder="Аман" id="name" name="name">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="last_name">Фамилия</label>
-                        <input type="text" placeholder="Аманов" id="last_name" name="last_name">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="blue_mail">Электронный адрес</label>
-                        <input type="email" placeholder="amanamanow@gmail.com" id="blue_mail" name="blue_mail">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="phone_num">Номер телефона</label>
-                        <input type="text" placeholder="+993 65656565" id="phone_num" name="phone_num">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="password"> new Пароль</label>
-                        <input type="password" placeholder="************" id="password" name="password">
-                        <div class="eye">
-                            <img class="eye_off" src="images/svg/eye-off.svg" alt="eye">
-                            <img class="eye_on" src="images/svg/eye.svg" alt="eye">
+                <div class="basket_box">
+                    <div class="basket_data">
+                        <div class="basket_table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Лот №:</th>
+                                        <th>Изображение</th>
+                                        <th>Товар</th>
+                                        <th>Действие</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            № 49378
+                                        </td>
+                                        <td>
+                                            <div class="basket_img">
+                                                <img src="images/goods.png" alt="cat_photo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_item_title">
+                                                Сера молотая
+                                            </div>
+                                            <div class="basket_item_text">
+                                                Сера молотая
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_delete">
+                                                <img src="images/svg/garbage.svg" alt="delete-icon">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            № 49378
+                                        </td>
+                                        <td>
+                                            <div class="basket_img">
+                                                <img src="images/goods.png" alt="cat_photo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_item_title">
+                                                Сера молотая
+                                            </div>
+                                            <div class="basket_item_text">
+                                                Сера молотая
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_delete">
+                                                <img src="images/svg/garbage.svg" alt="delete-icon">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            № 49378
+                                        </td>
+                                        <td>
+                                            <div class="basket_img">
+                                                <img src="images/goods.png" alt="cat_photo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_item_title">
+                                                Сера молотая
+                                            </div>
+                                            <div class="basket_item_text">
+                                                Сера молотая
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_delete">
+                                                <img src="images/svg/garbage.svg" alt="delete-icon">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            № 49378
+                                        </td>
+                                        <td>
+                                            <div class="basket_img">
+                                                <img src="images/goods.png" alt="cat_photo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_item_title">
+                                                Сера молотая
+                                            </div>
+                                            <div class="basket_item_text">
+                                                Сера молотая
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_delete">
+                                                <img src="images/svg/garbage.svg" alt="delete-icon">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            № 49378
+                                        </td>
+                                        <td>
+                                            <div class="basket_img">
+                                                <img src="images/goods.png" alt="cat_photo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_item_title">
+                                                Сера молотая
+                                            </div>
+                                            <div class="basket_item_text">
+                                                Сера молотая
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="basket_delete">
+                                                <img src="images/svg/garbage.svg" alt="delete-icon">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
-                    <div class="post_input">
-                        <label for="password"> old Пароль</label>
-                        <input type="password" placeholder="************" id="password" name="password">
-                        <div class="eye">
-                            <img class="eye_off" src="images/svg/eye-off.svg" alt="eye">
-                            <img class="eye_on" src="images/svg/eye.svg" alt="eye">
+                    <div class="basket_info">
+                        <div class="basket_info_title">
+                            Стоимость
+                        </div>
+                        <div class="basket_info_item">
+                            <div class="basket_info_box">
+                                <div class="basket_info_name">
+                                    Цена за один пост:
+                                </div>
+                                <div class="basket_info_cash">
+                                    500 TMT
+                                </div>
+                            </div>
+                            <div class="basket_info_box">
+                                <div class="basket_info_name">
+                                    Количество постов:
+                                </div>
+                                <div class="basket_info_cash">
+                                    5
+                                </div>
+                            </div>
+                        </div>
+                        <div class="basket_info_item">
+                            <div class="basket_info_box">
+                                <div class="basket_info_name">
+                                    Итоговая сумма
+                                </div>
+                                <div class="basket_info_cash">
+                                    5200 TMT
+                                </div>
+                            </div>
+                            <div class="basket_info_select">
+                                <label>Метод оплаты</label>
+                                <div class="custom-select">
+                                    <select>
+                                        <option value="0">Машиностроение</option>
+                                        <option value="1">Машиностроение</option>
+                                        <option value="2">Машиностроение</option>
+                                        <option value="3">Машиностроение</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="post_input">
-                        <label for="log-in">Kompanmiya</label>
-                        <input type="text" placeholder="Aman Amanow" id="log-in" name="log-in">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="log-in">nomer legalizasiya</label>
-                        <input type="text" placeholder="Aman Amanow" id="log-in" name="log-in">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="log-in">Dolznost</label>
-                        <input type="text" placeholder="Aman Amanow" id="log-in" name="log-in">
-                    </div>
-
-                    <div class="btn_bg">
-                        <button class="post_btn" type="submit">
-                            Сохранить
-                        </button>
-                    </div>
-
-                </form>
+                </div>
             </div>
         </div>
     </section>
@@ -353,32 +514,7 @@
     <script src="js/slick.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/custom-select.js"></script>
-    <script>
-
-        document.querySelector('.eye_off').addEventListener('click', function () {
-            document.getElementById('password').type = "password"
-
-            document.querySelector('.eye_on').classList.remove('active');
-            document.querySelector('.eye_off').classList.remove('active');
-        })
-
-        document.querySelector('.eye_on').addEventListener('click', function () {
-            document.getElementById('password').type = "text";
-
-            document.querySelector('.eye_on').classList.add('active');
-            document.querySelector('.eye_off').classList.add('active');
-        })
-
-        document.querySelector('.profile_head').addEventListener('click', function () {
-            sleep(2).then(() => {
-                document.querySelector('.profile_drop').classList.toggle('active');
-            });
-        });
-
-    </script>
     <script src="js/main.js"></script>
-
-
 </body>
 
 </html>
