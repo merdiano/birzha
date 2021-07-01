@@ -7,6 +7,7 @@ use Tps\Birzha\Models\Message;
 use Auth;
 use Input;
 use Carbon\Carbon;
+use Flash;
 
 class Messages extends ComponentBase
 {
@@ -38,13 +39,24 @@ class Messages extends ComponentBase
         // Read unread messages
         Chatroom::find($chatRoomId)->messages()->where('reciver_id',Auth::user()->id)->where('read_at',null)->update(['read_at'=>Carbon::now()]);
 
-        
+        $this->page['result'] = Chatroom::find($chatRoomId)->messages()->latest('send_at')->limit(5)->get()->reverse();
+        $this->page['currentUserId'] = Auth::user()->id;
+        $this->page['chat_room_id'] = $chatRoomId;
+        $this->page['chatRoomPartnerId'] = Chatroom::find($chatRoomId)->users()->where('users.id','!=',Auth::user()->id)->first()->id;
         
         return [
-            'messages' => Chatroom::find($chatRoomId)->messages,
+            'chat_area' => $this->renderPartial('@chatroom')
+        ];
+    }
+
+    public function onLoadMore() {
+        $skipParam = Input::get('skip');
+        $chatRoomId = Input::get('chatroom_id');
+
+        return [
+            'more_messages' => Chatroom::find($chatRoomId)->messages()->latest('send_at')->skip($skipParam)->limit(5)->get()->reverse(),
             'currentUserId' => Auth::user()->id,
-            'chatRoomId' => $chatRoomId,
-            'chatRoomPartnerId' => Chatroom::find($chatRoomId)->users()->where('users.id','!=',Auth::user()->id)->first()->id
+            'skipparam' => $skipParam
         ];
     }
 
@@ -57,6 +69,11 @@ class Messages extends ComponentBase
         $newMsg->chatroom_id = Input::get('chatroom_id');
         $newMsg->save();
 
-        return $this->onChatroom();
+        $this->page['latestMessage'] = $newMsg->message;
+        $this->page['latestMessageTime'] = $newMsg->send_at;
+
+        return [
+            'latest_message_area' => $this->renderPartial('@latest_message')
+        ];
     }
 }
