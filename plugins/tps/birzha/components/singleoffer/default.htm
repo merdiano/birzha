@@ -4,18 +4,34 @@
 <div class="detail_body">
     <div class="detail_gallery">
         <div class="detail_photo_box">
-            {% for image in offer.product.images %}
-            <div class="detail_photo">
-                <img src="{{ image.thumb(575,290,{'mode':'crop'}) }}" alt="">
-            </div>
-            {% endfor %}
+            {% if offer.images[0] %}
+                {% for image in offer.images %}
+                <div class="detail_photo">
+                    <img src="{{ image.thumb(575,290,{'mode':'crop'}) }}" alt="">
+                </div>
+                {% endfor %}
+            {% else %}
+                {% for image in offer.product.images %}
+                <div class="detail_photo">
+                    <img src="{{ image.thumb(575,290,{'mode':'crop'}) }}" alt="">
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
         <div class="detail_for_navs">
-            {% for image in offer.product.images %}
-            <div class="detail_photo_nav">
-                <img src="{{ image.thumb(98,60,{'mode':'crop'}) }}" alt="">
-            </div>
-            {% endfor %}
+            {% if offer.images[0] %}
+                {% for image in offer.images %}
+                <div class="detail_photo_nav">
+                    <img src="{{ image.thumb(98,60,{'mode':'crop'}) }}" alt="">
+                </div>
+                {% endfor %}
+            {% else %}
+                {% for image in offer.product.images %}
+                <div class="detail_photo_nav">
+                    <img src="{{ image.thumb(98,60,{'mode':'crop'}) }}" alt="">
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
     <div class="detail_info">
@@ -114,7 +130,7 @@
             {{'page.payment_cond'|_}}
         </div>
         <div class="table_item">
-            Предоплата
+            {{offer.payment_term.name}}
         </div>
     </div>
     <div class="table_group">
@@ -122,7 +138,7 @@
             {{'page.delivery_cond'|_}}
         </div>
         <div class="table_item">
-            FOB
+            {{offer.delivery_term.name}}
         </div>
     </div>
     <div class="table_group">

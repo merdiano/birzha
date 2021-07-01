@@ -3,13 +3,13 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableUpdateTpsBirzhaMessages extends Migration
+class BuilderTableUpdateTpsBirzhaMessages2 extends Migration
 {
     public function up()
     {
         Schema::table('tps_birzha_messages', function($table)
         {
-            $table->integer('chat_id');
+            $table->renameColumn('chat_id', 'chatroom_id');
         });
     }
     
@@ -17,7 +17,7 @@ class BuilderTableUpdateTpsBirzhaMessages extends Migration
     {
         Schema::table('tps_birzha_messages', function($table)
         {
-            $table->dropColumn('chat_id');
+            $table->renameColumn('chatroom_id', 'chat_id');
         });
     }
 }

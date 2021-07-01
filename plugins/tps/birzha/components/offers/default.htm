@@ -15,7 +15,7 @@
             № {{offer.id}}
         </div>
         <div class="item_photo">
-            <img src="{{ offer.product.images[0].thumb(308,180,{'mode':'crop'}) }}" alt="">
+            <img src="{{ offer.images[0] ? offer.images[0].thumb(308,180,{'mode':'crop'}) : offer.product.images[0].thumb(308,180,{'mode':'crop'}) }}" alt="">
         </div>
         <div class="item_group">
             <div class="item_title">

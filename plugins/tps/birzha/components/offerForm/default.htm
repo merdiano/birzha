@@ -1,0 +1,167 @@
+{% set measures = __SELF__.measures %}
+{% set paymentTerms = __SELF__.paymentTerms %}
+{% set deliveryTerms = __SELF__.deliveryTerms %}
+{% set currencies = __SELF__.currencies %}
+
+<!-- Add post ============================================================= -->
+<section class="post">
+    <div class="auto_container">
+        {% if user.is_activated  %}
+        <div class="post_wrap">
+            <div class="contact_title">
+                Добавить объявление
+            </div>
+
+            <form action="#" class="post_form" autocomplete="off">
+                <div class="post_input">
+                    <label for="name">Наименование лота</label>
+                    <input type="text" placeholder="Пример: Гидравлическое масло" id="name" name="name" autocomplete="new-password">
+                    <div class="suggestions">
+                        <p></p>
+                        <!-- <p data-id="productId" data-marka="productmarka">product name</p> -->
+                    </div>
+                </div>
+
+                <div class="post_input">
+                    <label for="mark">Марка товара</label>
+                    <input type="text" placeholder="Пример: Гидравлическое масло ЛУКОЙЛ 46" id="mark" name="mark">
+                </div>
+
+                <div class="post_input">
+                    <label for="units">Единицы измерения</label>
+                    <div class="custom-select">
+                        <select id="units">
+                            <option value="">&nbsp;</option> <!-- initial option, do not remove -->
+                            {% for measure in measures %}
+                            <option value="{{ measure.id }}">{{ measure.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="post_input">
+                    <label for="quantity">Колличество товара</label>
+                    <input type="text" placeholder="Пример: 3 литра" id="quantity" name="quantity">
+                </div>
+
+                <div class="post_input">
+                    <label for="producer">Производитель</label>
+                    <input type="text" placeholder="Пример: ЛУКОЙЛ" id="producer" name="producer">
+                </div>
+
+                <div class="post_input">
+                    <label for="country">Страна производителя</label>
+                    <div class="custom-select">
+                        <select id="country">
+                            <option value="0">Россия</option>
+                            <option value="1">Turkmenistan</option>
+                            <option value="2">Австралия</option>
+                            <option value="3">Россия</option>
+                            <option value="4">Канада</option>
+                            <option value="5">Китай </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="post_input">
+                    <label for="money">Валюта</label>
+                    <div class="custom-select">
+                        <select id="money">
+                            <option value="">&nbsp;</option> <!-- initial option, do not remove -->
+                            {% for currency in currencies %}
+                            <option value="{{ currency.id }}">{{ currency.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="post_input">
+                    <label for="cost">Стартовая цена за единицу</label>
+                    <input type="text" placeholder="Пример: 120" id="cost" name="cost">
+                </div>
+
+                <div class="post_input">
+                    <label for="payment">Условия оплаты</label>
+                    <div class="custom-select">
+                        <select id="payment">
+                            <option value="">&nbsp;</option> <!-- initial option, do not remove -->
+                            {% for pt in paymentTerms %}
+                            <option value="{{ pt.id }}">{{ pt.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="post_input">
+                    <label for="location">Пункт</label>
+                    <div class="custom-select">
+                        <select id="location">
+                            <option value="0">Бекдаш</option>
+                            <option value="1">Бекдаш</option>
+                            <option value="2">Бекдаш</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="post_input">
+                    <label for="packaging">Упаковка</label>
+                    <div class="custom-select">
+                        <select id="packaging">
+                            <option value="0">Есть</option>
+                            <option value="1">Нет</option>
+                            <option value="2">Есть</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="btn_bg">
+                    <button class="post_btn" type="submit">
+                        Отправить на биржу
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        {% else %}
+        <div class="post_wrap">
+            <div class="contact_title">
+                Activation is required
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+<!-- Add post end ========================================================= -->
+
+{% put scripts %}
+<script>
+    $('input[name="name"]').keyup(function() {
+        thisInput = $(this);
+        queryString = thisInput.val();
+
+        thisInput.request('onInput',  {
+            data: {query: queryString},
+            success: function(data) {
+                $('.suggestions').empty();
+                $('#mark').val('');
+                
+                $.each(data.products, function( index, element ) {
+                    $('.suggestions').append(`
+                        <p
+                            data-id="${element.id}"
+                            data-name="${element.name}"
+                            data-mark="${element.mark}"
+                        >${element.name}</p>
+                    `);
+                })
+            }
+        });
+    });
+      
+    $(document).on('click', '.suggestions p', function(e) {
+        // console.log($(e.target).attr('data-mark'));
+        $('#mark').val($(e.target).attr('data-mark'));
+        $('#name').val($(e.target).attr('data-name'));
+    });
+</script>
+{% endput %}

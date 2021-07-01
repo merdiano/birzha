@@ -1,0 +1,18 @@
+title = "Add offer"
+url = "/add-offer"
+layout = "default"
+is_hidden = 0
+
+[offerform]
+
+[session]
+security = "user"
+redirect = "index"
+==
+<!-- here is component offerForm -->
+{% component 'offerform' %}
+<!-- end offerForm -->
+
+{% put scripts %}
+<script src="{{ 'assets/js/custom-select.js'|theme }}"></script>
+{% endput %}

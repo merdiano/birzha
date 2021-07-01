@@ -168,7 +168,9 @@ class Plugin extends PluginBase
             'TPS\Birzha\Components\Categories' => 'categories',
             'TPS\Birzha\Components\Sliders' => 'sliders',
             'TPS\Birzha\Components\Offers' => 'offers',
-            'TPS\Birzha\Components\Singleoffer' => 'singleoffer'
+            'TPS\Birzha\Components\Singleoffer' => 'singleoffer',
+            'TPS\Birzha\Components\OfferForm' => 'offerform',
+            'TPS\Birzha\Components\Messages' => 'messages'
         ];
     }
 

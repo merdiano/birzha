@@ -134,3 +134,21 @@
 1.0.46:
     - 'Updated table tps_birzha_category'
     - builder_table_update_tps_birzha_categories.php
+1.0.47:
+    - 'Created table tps_birzha_chatrooms'
+    - builder_table_create_tps_birzha_chatrooms.php
+1.0.48:
+    - 'Updated table tps_birzha_chatrooms'
+    - builder_table_update_tps_birzha_chatrooms.php
+1.0.49:
+    - 'Created table tps_birzha_chatrooms_users'
+    - builder_table_create_tps_birzha_chatrooms_users.php
+1.0.50:
+    - 'Updated table tps_birzha_chatrooms_users'
+    - builder_table_update_tps_birzha_chatrooms_users.php
+1.0.51:
+    - 'Updated table tps_birzha_messages'
+    - builder_table_update_tps_birzha_messages.php
+1.0.52:
+    - 'Updated table tps_birzha_messages'
+    - builder_table_update_tps_birzha_messages_2.php
