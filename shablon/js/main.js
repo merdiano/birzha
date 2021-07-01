@@ -1,12 +1,5 @@
 
 // 
-// 
-// 
-// 
-// 
-// 
-// 
-
 
 
 // selector =============
@@ -15,7 +8,7 @@ const selectElement = function (element) {
 };
 // selector end=============
 
-let drop = document.querySelectorAll('.profile_drop');
+let drop = document.querySelector('.profile_drop');
 let profile_head = document.querySelectorAll('.profile_head');
 let register = document.querySelector('.register');
 let register_btn = document.querySelectorAll('.register_btn');
@@ -23,12 +16,26 @@ let log_in = document.querySelectorAll('.log_in');
 let btn_1 = document.querySelector('#btn-1');
 let btn_2 = document.querySelector('#btn-2');
 
+let inline = document.querySelector('#inline');
+let card = document.querySelector('#card');
+
+let forget = document.querySelector('#forget');
+let password = document.querySelector('.password');
+
 let register_content = document.querySelector('.register_content');
 let register_content_2 = document.querySelector('.register_content_2');
-
 //  Fixed header ====================================
+
 window.onscroll = function () {
     scrollFunc();
+
+    // drops.forEach(drop => {
+    //     if (drop != undefined) {
+    //         drop.classList.remove('active');
+    //     }
+    // }
+    // );
+
 
     if (drop != undefined) {
         drop.classList.remove('active');
@@ -74,7 +81,13 @@ window.onclick = function (e) {
         }
     }
 
-    if (selectElement('.links').classList.contains('active')&& !e.target.closest('.profile_head')) {
+    if (forget != undefined) {
+        if (password.classList.contains('active') && !e.target.closest('.pass_mail') && !e.target.closest('.pass_mail')) {
+            password.classList.remove('active');
+        }
+    }
+
+    if (selectElement('.links').classList.contains('active') && !e.target.closest('.profile_head')) {
         selectElement('.links').classList.remove('active');
     }
 
@@ -99,12 +112,10 @@ if (profile_head != undefined) {
     profile_head.forEach(r => {
         r.addEventListener('click', function () {
             sleep(2).then(() => {
-                drop.forEach(d => {
-                    d.classList.toggle('active');
-                }) 
+                drop.classList.toggle('active');
+                })
             });
         });
-    }) 
 }
 
 
@@ -169,14 +180,27 @@ if (btn_2 != undefined) {
     });
 }
 
+if (forget != undefined) {
+    forget.addEventListener('click', function () {
+        sleep(2).then(() => {
+            password.classList.add('active');
+
+            register.classList.remove('active');
+        });
+    });
+}
+
 
 
 // Clicks end ================================================================
 
 
 // Category Tabs ==========================================
-const tabsBtn = document.querySelectorAll(".tab_link");
-const tabsItems = document.querySelectorAll(".tab_source");
+// const tabsBtn = document.querySelectorAll(".tab_link");
+// const tabsItems = document.querySelectorAll(".tab_source");
+
+const tabsBtn = document.querySelectorAll(".tab_btn");
+const tabsItems = document.querySelectorAll(".tab_info");
 tabsBtn.forEach((e) => {
     onTabClick(tabsBtn, tabsItems, e);
 });
@@ -211,31 +235,38 @@ function onTabClick(tabBtns, tabItems, item) {
 
 
 // Sort by ==============================================================
-selectElement('#inline').addEventListener('click', () => {
-    document.documentElement.setAttribute("data-theme", "row");
-    localStorage.setItem("theme", "row");
-    selectElement('#inline').style.opacity = 1;
-    selectElement('#card').style.opacity = .5;
-    selectElement('.item_btn').style.display = 'none';
 
-    document.querySelectorAll('.item_btn').forEach(el => { el.style.display = 'none'; })
-    document.querySelectorAll('.item_head').forEach(el => { el.style.display = 'none'; })
-    document.querySelectorAll('.item_sub_name').forEach(el => { el.style.display = 'none'; })
-    document.querySelectorAll('.inline_head').forEach(el => { el.style.display = 'flex'; })
-    document.querySelectorAll('.inline_num').forEach(el => { el.style.display = 'flex'; })
+if (inline != undefined) {
+    inline.addEventListener('click', () => {
+        document.documentElement.setAttribute("data-theme", "row");
+        localStorage.setItem("theme", "row");
+        selectElement('#inline').style.opacity = 1;
+        selectElement('#card').style.opacity = .5;
+        selectElement('.item_btn').style.display = 'none';
+    
+        document.querySelectorAll('.item_btn').forEach(el => { el.style.display = 'none'; })
+        document.querySelectorAll('.item_head').forEach(el => { el.style.display = 'none'; })
+        document.querySelectorAll('.item_sub_name').forEach(el => { el.style.display = 'none'; })
+        document.querySelectorAll('.inline_head').forEach(el => { el.style.display = 'flex'; })
+        document.querySelectorAll('.inline_num').forEach(el => { el.style.display = 'flex'; })
+    
+    })
+}
 
-})
 
-selectElement('#card').addEventListener('click', () => {
-    document.documentElement.setAttribute("data-theme", "col");
-    selectElement('#inline').style.opacity = .5;
-    selectElement('#card').style.opacity = 1;
-    document.querySelectorAll('.item_btn').forEach(el => { el.style.display = 'block'; })
-    document.querySelectorAll('.item_head').forEach(el => { el.style.display = 'block'; })
-    document.querySelectorAll('.item_sub_name').forEach(el => { el.style.display = 'block'; })
-    document.querySelectorAll('.inline_head').forEach(el => { el.style.display = 'none'; })
-    document.querySelectorAll('.inline_num').forEach(el => { el.style.display = 'none'; })
-})
+if (card != undefined) {
+    card.addEventListener('click', () => {
+        document.documentElement.setAttribute("data-theme", "col");
+        selectElement('#inline').style.opacity = .5;
+        selectElement('#card').style.opacity = 1;
+        document.querySelectorAll('.item_btn').forEach(el => { el.style.display = 'block'; })
+        document.querySelectorAll('.item_head').forEach(el => { el.style.display = 'block'; })
+        document.querySelectorAll('.item_sub_name').forEach(el => { el.style.display = 'block'; })
+        document.querySelectorAll('.inline_head').forEach(el => { el.style.display = 'none'; })
+        document.querySelectorAll('.inline_num').forEach(el => { el.style.display = 'none'; })
+    })
+}
+
 
 // Sort by end ==============================================================
 

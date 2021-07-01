@@ -1,0 +1,98 @@
+<div class="chat_area-inner">
+
+    <button
+        onclick="loadMoreMeassges()"
+        
+        id="more_btn"
+        data-chatroom-id="{{ chat_room_id }}"
+        data-skip="5"
+    >Load More</button>
+
+    <!-- more_messages_area -->
+
+    <!-- end more_messages_area -->
+
+    {% for message in result %}
+        <div class="{{ message.sender_id == currentUserId ? 'my_message' : 'friend_message' }}">
+            <div class="message_time">{{ message.send_at|date('H:s - d.m.Y') }}</div>
+            <div class="message_text">
+                {{ message.message }}
+            </div>
+        </div>
+    {% endfor %}
+
+    <!-- latest message -->
+    
+    <!-- end latest message -->
+
+    <form action="#" class="message_form"
+        data-request="onMessageSend"
+        data-request-success="showLatestMessage(data)"
+    >
+        <input type="hidden" name="reciver_id" value="{{chatRoomPartnerId}}">
+        <input type="hidden" name="chatroom_id" value="{{chat_room_id}}">
+
+        <div class="message_input">
+            <textarea name="msg" required></textarea>
+        </div>
+
+        <button class="message_btn" type="submit" data-attach-loading>
+            <img src="{{'assets/images/svg/plane.svg'|theme}}" alt="send">
+        </button>
+    </form>
+</div>
+
+<script>
+    function loadMoreMeassges() {
+        $('#more_btn').text('Loading...');
+
+        $(this).request('onLoadMore',{
+            data: {
+                chatroom_id: $('#more_btn').attr('data-chatroom-id'),
+                skip: $('#more_btn').attr('data-skip')
+            },
+            success: function(data) {
+                $.each(data.more_messages,function(index,element) {
+                    $(`
+                    <div class="${ element.sender_id == data.currentUserId ? 'my_message' : 'friend_message' }">
+                        <div class="message_time">
+                            ${
+                                new Date(element.send_at).getHours() + 
+                                ':' + 
+                                (new Date(element.send_at).getMinutes() < 10 ? '0' : '') +
+                                new Date(element.send_at).getMinutes() + 
+                                ' - ' + 
+                                new Date(element.send_at).getDate() + 
+                                '.' + 
+                                (+new Date(element.send_at).getMonth()+1 < 10 ? '0' : '') +
+                                (+new Date(element.send_at).getMonth()+1) + 
+                                '.' + 
+                                new Date(element.send_at).getFullYear()
+                            }    
+                        </div>
+                        <div class="message_text">
+                            ${ element.message }
+                        </div>
+                    </div>
+                    `).insertAfter('#more_btn');
+                });
+
+                skip = $('#more_btn').attr('data-skip');
+                
+                $('#more_btn').attr('data-skip',+skip + 5);
+
+                $('#more_btn').text('Load more');
+            }
+        })
+    }
+
+    function showLatestMessage(data) {
+        $('.message_form textarea').val('');
+        $(data.latest_message_area).insertBefore('.message_form')
+
+        var bottom= $('.chat_area-inner').height()+$('.chat_area-inner').prop('scrollHeight');    
+        $('.chat_area-inner').scrollTop(bottom);
+    }
+    
+</script>
+

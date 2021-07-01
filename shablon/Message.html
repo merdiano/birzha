@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="css/slick-theme.css">
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Personal data</title>
+    <title>Message </title>
 </head>
 
 <body>
+
     <!-- Header Top ========================================================= -->
     <section class="header_top" id="head-top">
         <div class="auto_container">
@@ -222,79 +223,20 @@
     </nav>
     <!--Navs  end ========================================================= -->
 
-    <!-- Add post ============================================================= -->
-    <section class="post">
+    <!-- Thanks =========================================================== -->
+    <section class="thanks">
         <div class="auto_container">
-            <div class="post_wrap">
-                <div class="contact_title">
-                    Персональные данные
+            <div class="thanks_wrap">
+                <div class="thanks_title">
+                    Спасибо за оставленный вами запрос
                 </div>
-
-                <form action="#" class="post_form">
-                    <div class="post_input">
-                        <label for="name">Имя</label>
-                        <input type="text" placeholder="Аман" id="name" name="name">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="last_name">Фамилия</label>
-                        <input type="text" placeholder="Аманов" id="last_name" name="last_name">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="blue_mail">Электронный адрес</label>
-                        <input type="email" placeholder="amanamanow@gmail.com" id="blue_mail" name="blue_mail">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="phone_num">Номер телефона</label>
-                        <input type="text" placeholder="+993 65656565" id="phone_num" name="phone_num">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="password"> new Пароль</label>
-                        <input type="password" placeholder="************" id="password" name="password">
-                        <div class="eye">
-                            <img class="eye_off" src="images/svg/eye-off.svg" alt="eye">
-                            <img class="eye_on" src="images/svg/eye.svg" alt="eye">
-                        </div>
-                    </div>
-
-                    <div class="post_input">
-                        <label for="password"> old Пароль</label>
-                        <input type="password" placeholder="************" id="password" name="password">
-                        <div class="eye">
-                            <img class="eye_off" src="images/svg/eye-off.svg" alt="eye">
-                            <img class="eye_on" src="images/svg/eye.svg" alt="eye">
-                        </div>
-                    </div>
-
-                    <div class="post_input">
-                        <label for="log-in">Kompanmiya</label>
-                        <input type="text" placeholder="Aman Amanow" id="log-in" name="log-in">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="log-in">nomer legalizasiya</label>
-                        <input type="text" placeholder="Aman Amanow" id="log-in" name="log-in">
-                    </div>
-
-                    <div class="post_input">
-                        <label for="log-in">Dolznost</label>
-                        <input type="text" placeholder="Aman Amanow" id="log-in" name="log-in">
-                    </div>
-
-                    <div class="btn_bg">
-                        <button class="post_btn" type="submit">
-                            Сохранить
-                        </button>
-                    </div>
-
-                </form>
+                <div class="thanks_text">
+                    После проверки нашим Админом ваш лот будет размещен на нашем сайте!
+                </div>
             </div>
         </div>
     </section>
-    <!-- Add post end ========================================================= -->
+    <!-- Thanks end ======================================================= -->
 
     <!--Footer ============================================================= -->
     <footer class="footer">
@@ -353,32 +295,7 @@
     <script src="js/slick.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/custom-select.js"></script>
-    <script>
-
-        document.querySelector('.eye_off').addEventListener('click', function () {
-            document.getElementById('password').type = "password"
-
-            document.querySelector('.eye_on').classList.remove('active');
-            document.querySelector('.eye_off').classList.remove('active');
-        })
-
-        document.querySelector('.eye_on').addEventListener('click', function () {
-            document.getElementById('password').type = "text";
-
-            document.querySelector('.eye_on').classList.add('active');
-            document.querySelector('.eye_off').classList.add('active');
-        })
-
-        document.querySelector('.profile_head').addEventListener('click', function () {
-            sleep(2).then(() => {
-                document.querySelector('.profile_drop').classList.toggle('active');
-            });
-        });
-
-    </script>
     <script src="js/main.js"></script>
-
-
 </body>
 
 </html>
