@@ -18,7 +18,7 @@ tabs:
         email:
             label: rainlab.user::lang.user.email
             tab: rainlab.user::lang.user.account
-            span: full
+            span: left
 
         send_invite:
             type: checkbox
@@ -59,10 +59,10 @@ tabs:
             context: [create, update]
 
         username:
-            label: rainlab.user::lang.user.username
+            label: Username/Phone
             tab: rainlab.user::lang.user.account
             hidden: true
-            span: left
+            span: right
 
         groups:
             label: rainlab.user::lang.user.groups

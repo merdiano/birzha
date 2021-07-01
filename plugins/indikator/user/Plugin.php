@@ -47,9 +47,9 @@ class Plugin extends PluginBase
         UserModel::extend(function($model)
         {
             $model->addFillable([
-                'iu_gender',
-                'iu_telephone',
-                'iu_job',
+//                'iu_gender',
+//                'iu_telephone',
+//                'iu_job',
                 'iu_company',
                 'iu_about',
 //                'iu_webpage',
@@ -80,16 +80,16 @@ class Plugin extends PluginBase
 //                    ],
 //                    'span'    => 'auto'
 //                ],
-                'iu_telephone' => [
+                'username' => [
                     'label' => 'indikator.user::lang.personal.telephone',
                     'tab'   => 'indikator.user::lang.personal.tab',
                     'span'  => 'auto'
                 ],
-                'iu_job' => [
-                    'label' => 'indikator.user::lang.personal.job',
-                    'tab'   => 'indikator.user::lang.personal.tab',
-                    'span'  => 'auto'
-                ],
+//                'iu_job' => [
+//                    'label' => 'indikator.user::lang.personal.job',
+//                    'tab'   => 'indikator.user::lang.personal.tab',
+//                    'span'  => 'auto'
+//                ],
                 'iu_company' => [
                     'label' => 'indikator.user::lang.personal.company',
                     'tab'   => 'indikator.user::lang.personal.tab',
