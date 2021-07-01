@@ -21,6 +21,7 @@ en:
   account.save: Save
   account.current_password: Current password
   account.new_password: New password
+  account.info: Account info
   topnav.reg: Sign up
   topnav.login: Sign in
   nav.home: Home
@@ -85,6 +86,7 @@ ru:
   account.save: Ýatla
   account.current_password: Açar sözüňiz
   account.new_password: Täze açar söz
+  account.info: Персональные данные
   topnav.reg: Регистрация
   topnav.login: Sign in
   nav.home: Главная
@@ -149,6 +151,7 @@ tm:
   account.save: Ýatla
   account.current_password: Açar sözüňiz
   account.new_password: Täze açar söz
+  account.info: Şahsy maglumatlar
   topnav.reg: Agza bol
   topnav.login: Giriş
   nav.home: Baş sahypa
