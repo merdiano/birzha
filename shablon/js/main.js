@@ -8,7 +8,7 @@ const selectElement = function (element) {
 };
 // selector end=============
 
-let drop = document.querySelector('.profile_drop');
+let drop = document.querySelectorAll('.profile_drop');
 let profile_head = document.querySelectorAll('.profile_head');
 let register = document.querySelector('.register');
 let register_btn = document.querySelectorAll('.register_btn');
@@ -22,24 +22,33 @@ let card = document.querySelector('#card');
 let forget = document.querySelector('#forget');
 let password = document.querySelector('.password');
 
-let register_content = document.querySelector('.register_content');
-let register_content_2 = document.querySelector('.register_content_2');
+let eye_off = document.querySelectorAll('.eye_off');
+let eye_on = document.querySelectorAll('.eye_on');
+let pass = document.querySelector('#password');
+let pass_2 = document.querySelector('#password_2');
+let person = document.querySelectorAll('.person');
+let chat_alert = document.querySelectorAll('.chat_alert');
+
+let chat_burger = document.querySelector('.chat_burger');
+let chat_people = document.querySelector('.chat_people');
+
+
+
 //  Fixed header ====================================
 
 window.onscroll = function () {
     scrollFunc();
 
-    // drops.forEach(drop => {
-    //     if (drop != undefined) {
-    //         drop.classList.remove('active');
-    //     }
-    // }
-    // );
-
-
-    if (drop != undefined) {
-        drop.classList.remove('active');
+    drop.forEach(drop => {
+        if (drop != undefined) {
+            drop.classList.remove('active');
+        }
     }
+    );
+
+    // if (drop != undefined) {
+    //     drop.classList.remove('active');
+    // }
 
 };
 
@@ -69,11 +78,19 @@ function sleep(time) {
 
 window.onclick = function (e) {
 
-    if (drop != undefined) {
-        if (document.querySelector('.profile_drop').classList.contains('active') && !e.target.closest('.profile_head')) {
-            document.querySelector('.profile_drop').classList.remove('active');
+    // if (drop != undefined) {
+    //     if (document.querySelector('.profile_drop').classList.contains('active') && !e.target.closest('.profile_head')) {
+    //         document.querySelector('.profile_drop').classList.remove('active');
+    //     }
+    // }
+
+    drop.forEach(drop => {
+        if (drop != undefined) {
+            drop.classList.contains('active') && !e.target.closest('.profile_head');
+            drop.classList.remove('active')
         }
     }
+    );
 
     if (register != undefined) {
         if (register.classList.contains('active') && !e.target.closest('.register_body')) {
@@ -87,11 +104,17 @@ window.onclick = function (e) {
         }
     }
 
-    if (selectElement('.links').classList.contains('active') && !e.target.closest('.profile_head')) {
+    if (chat_people != undefined) {
+        if (chat_people.classList.contains('active')  && !e.target.closest('.chat_burger') ) {
+            chat_people.classList.remove('active');
+        }
+    }
+
+    if (selectElement('.links').classList.contains('active') && !e.target.closest('.profile_head') && !e.target.closest('.links')) {
         selectElement('.links').classList.remove('active');
     }
 
-    if (selectElement('.links_bg').classList.contains('active') && !e.target.closest('.profile_head')) {
+    if (selectElement('.links_bg').classList.contains('active') && !e.target.closest('.profile_head') && !e.target.closest('.links')) {
         selectElement('.links_bg').classList.remove('active');
     }
 
@@ -104,7 +127,6 @@ selectElement('.burger').addEventListener('click', function () {
     sleep(2).then(() => {
         selectElement('.links_bg').classList.toggle('active');
         selectElement('.links').classList.toggle('active');
-
     });
 });
 
@@ -112,13 +134,13 @@ if (profile_head != undefined) {
     profile_head.forEach(r => {
         r.addEventListener('click', function () {
             sleep(2).then(() => {
-                drop.classList.toggle('active');
+                drop.forEach(p => {
+                    p.classList.toggle('active');
                 })
-            });
+            })
         });
+    });
 }
-
-
 
 if (register_btn != undefined) {
     register_btn.forEach(x => {
@@ -135,7 +157,6 @@ if (register_btn != undefined) {
     })
 }
 
-
 if (log_in != undefined) {
     log_in.forEach(x => {
         x.addEventListener('click', function () {
@@ -149,9 +170,7 @@ if (log_in != undefined) {
             });
         });
     })
-
 }
-
 
 if (btn_1 != undefined) {
     btn_1.addEventListener('click', function () {
@@ -161,12 +180,9 @@ if (btn_1 != undefined) {
 
             register_content.classList.remove('active');
             register_content_2.classList.add('active');
-
         });
     });
 }
-
-
 
 if (btn_2 != undefined) {
     btn_2.addEventListener('click', function () {
@@ -190,6 +206,77 @@ if (forget != undefined) {
     });
 }
 
+if (eye_off != undefined) {
+    eye_off.forEach(x => {
+        x.addEventListener('click', function () {
+            sleep(2).then(() => {
+
+                pass.type = "password";
+                pass_2.type = "password";
+
+                eye_on.forEach(e => {
+                    e.classList.toggle('active');
+                })
+                eye_off.forEach(w => {
+                    w.classList.toggle('active');
+                })
+            });
+        });
+    })
+}
+
+if (eye_on != undefined) {
+    eye_on.forEach(q => {
+        q.addEventListener('click', function () {
+            sleep(2).then(() => {
+
+                pass.type = "text";
+                pass_2.type = "text";
+
+                eye_on.forEach(e => {
+                    e.classList.toggle('active');
+                })
+                eye_off.forEach(w => {
+                    w.classList.toggle('active');
+                })
+            });
+        });
+    })
+}
+
+if (btn_1 != undefined) {
+    btn_1.addEventListener('click', function () {
+        sleep(2).then(() => {
+            btn_1.classList.add('active');
+            btn_2.classList.remove('active');
+
+            register_content.classList.remove('active');
+            register_content_2.classList.add('active');
+        });
+    });
+}
+
+if (chat_burger != undefined) {
+    chat_burger.addEventListener('click', function () {
+        sleep(2).then(() => {
+            chat_people.classList.toggle('active');
+        });
+    });
+}
+
+// if (person != undefined) {
+//     person.forEach(y => {
+//         y.addEventListener('click', function () {
+//             sleep(2).then(() => {
+//                 // chat_alert.forEach(e => {
+//                 //     e.classList.add('active');
+//                 // })
+
+//                 chat_alert.classList.add('active');
+//             });
+//         });
+//     })
+// }
 
 
 // Clicks end ================================================================
@@ -231,6 +318,42 @@ function onTabClick(tabBtns, tabItems, item) {
     });
 }
 
+// -----------------------------------------------------------------------------------------------
+const tabsBtn_2 = document.querySelectorAll(".open_link");
+const tabsItems_2 = document.querySelectorAll(".open_info");
+tabsBtn_2.forEach((e) => {
+    onTabClick(tabsBtn_2, tabsItems_2, chat_alert, e);
+
+});
+function onTabClick(tabBtns_2, tabItems_2, chat_alert, item) {
+    item.addEventListener("click", function (e) {
+        let currentBtn_2 = item;
+        let tabId = currentBtn_2.getAttribute("data-tab");
+        let currentTab_2 = document.querySelector(tabId);
+        if (e.srcElement.classList.contains("active")) {
+            // e.srcElement.classList.remove("active");
+            // e.srcElement.parentElement
+            //     .querySelector(".tab__btn")
+            //     .classList.remove("active");
+            // console.log(e.srcElement.parentElement.querySelector(".event"));
+            // e.srcElement.parentElement
+            //     .querySelector(".event")
+            //     .classList.remove("active");
+        } else if (!currentBtn_2.classList.contains("active")) {
+            tabBtns_2.forEach(function (item) {
+                item.classList.remove("active");
+            });
+            tabItems_2.forEach(function (item) {
+                item.classList.remove("active");
+            });
+            currentBtn_2.classList.add("active");
+            currentTab_2.classList.add("active");
+        }
+    });
+}
+
+
+
 // Category Tabs end ==========================================
 
 
@@ -243,13 +366,13 @@ if (inline != undefined) {
         selectElement('#inline').style.opacity = 1;
         selectElement('#card').style.opacity = .5;
         selectElement('.item_btn').style.display = 'none';
-    
+
         document.querySelectorAll('.item_btn').forEach(el => { el.style.display = 'none'; })
         document.querySelectorAll('.item_head').forEach(el => { el.style.display = 'none'; })
         document.querySelectorAll('.item_sub_name').forEach(el => { el.style.display = 'none'; })
         document.querySelectorAll('.inline_head').forEach(el => { el.style.display = 'flex'; })
         document.querySelectorAll('.inline_num').forEach(el => { el.style.display = 'flex'; })
-    
+
     })
 }
 

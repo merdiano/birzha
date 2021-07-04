@@ -309,89 +309,74 @@
     <section class="chat">
         <div class="auto_container">
             <div class="chat_wrap">
+                <div class="chat_burger">
+                    <svg viewBox="0 0 32 32" fill="#003197" xmlns="http://www.w3.org/2000/svg">
+                        <g data-name="menu " id="menu_">
+                            <path d="M29,6H3A1,1,0,0,0,3,8H29a1,1,0,0,0,0-2Z" />
+                            <path d="M3,17H16a1,1,0,0,0,0-2H3a1,1,0,0,0,0,2Z" />
+                            <path d="M25,24H3a1,1,0,0,0,0,2H25a1,1,0,0,0,0-2Z" />
+                        </g>
+                    </svg>
+                </div>
+
                 <div class="chat_box">
                     <div class="chat_people">
-                        <div class="person">
+                        <div class="person open_link" data-tab="#chat-tab-1">
                             <div class="person_name">
                                 Aman Amanow
                             </div>
                             <div class="person_message">
                                 Lorem ipsum dolor sit amet, consetetur sadi...
                             </div>
+                            <div class="chat_alert">
+                                1
+                            </div>
                         </div>
-                        <div class="person">
+                        <div class="person open_link" data-tab="#chat-tab-2">
                             <div class="person_name">
                                 Aman Amanow
                             </div>
                             <div class="person_message">
                                 Lorem ipsum dolor sit amet, consetetur sadi jfdurjfurj j furjfu jfurj ufj urjfuj
                             </div>
+                            <div class="chat_alert">
+                                5
+                            </div>
                         </div>
-                        <div class="person active">
+                        <div class="person open_link" data-tab="#chat-tab-3">
                             <div class="person_name">
                                 Aman Amanow
                             </div>
                             <div class="person_message">
                                 Lorem ipsum dolor sit amet, consetetur sadi...
                             </div>
+                            <div class="chat_alert">
+                                10
+                            </div>
                         </div>
-                        <div class="person">
+                        <div class="person open_link" data-tab="#chat-tab-4">
                             <div class="person_name">
                                 Aman Amanow
                             </div>
                             <div class="person_message">
                                 Lorem ipsum dolor sit amet, consetetur sadi...
                             </div>
+                            <div class="chat_alert">
+                                20
+                            </div>
                         </div>
-                        <div class="person">
+                        <div class="person open_link" data-tab="#chat-tab-5">
                             <div class="person_name">
                                 Aman Amanow
                             </div>
                             <div class="person_message">
                                 Lorem ipsum dolor sit amet, consetetur sadi...
                             </div>
-                        </div>
-                        <div class="person">
-                            <div class="person_name">
-                                Aman Amanow
-                            </div>
-                            <div class="person_message">
-                                Lorem ipsum dolor sit amet, consetetur sadi...
+                            <div class="chat_alert">
+                                3
                             </div>
                         </div>
-                        <div class="person">
-                            <div class="person_name">
-                                Aman Amanow
-                            </div>
-                            <div class="person_message">
-                                Lorem ipsum dolor sit amet, consetetur sadi...
-                            </div>
-                        </div>
-                        <div class="person">
-                            <div class="person_name">
-                                Aman Amanow
-                            </div>
-                            <div class="person_message">
-                                Lorem ipsum dolor sit amet, consetetur sadi...
-                            </div>
-                        </div>
-                        <div class="person">
-                            <div class="person_name">
-                                Aman Amanow
-                            </div>
-                            <div class="person_message">
-                                Lorem ipsum dolor sit amet, consetetur sadi...
-                            </div>
-                        </div>
-                        <div class="person">
-                            <div class="person_name">
-                                Aman Amanow
-                            </div>
-                            <div class="person_message">
-                                Lorem ipsum dolor sit amet, consetetur sadi...
-                            </div>
-                        </div>
-                        <div class="person">
+                        <div class="person open_link" data-tab="#chat-tab-6">
                             <div class="person_name">
                                 Aman Amanow
                             </div>
@@ -401,7 +386,17 @@
                         </div>
                     </div>
                     <div class="chat_area">
-                        <div class="chat_area-inner">
+                        <div class="chat_wall">
+                            <div class="chat_wall_img">
+                                <img src="images/big_logo.png" alt="logo">
+                            </div>
+                            <div class="chat_wall_text">
+                                Выберите один из активных диалоговых окон
+                                чтоб начать переписку!
+                            </div>
+                        </div>
+
+                        <div class="chat_area-inner open_info" id="chat-tab-1">
                             <div class="friend_message">
                                 <div class="message_time">
                                     12:00 - 14.05.2021
@@ -501,6 +496,491 @@
                             </form>
                         </div>
 
+                        <div class="chat_area-inner open_info" id="chat-tab-2">
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    lovrpokoikvps  okoslfpokelcolrpolplpfrpflrpflprf lrpflrpflrpflrfplprl
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <form action="#" class="message_form">
+                                <div class="message_input">
+                                    <textarea></textarea>
+                                </div>
+
+                                <div class="form_file">
+                                    <label for="file-1" class="anchor">
+                                        <div class="label_img">
+                                            <img src="images/svg/ad.svg" alt="add">
+                                        </div>
+                                        <span></span>
+                                    </label>
+                                    <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1"
+                                        data-multiple-caption="{count} files selected" multiple />
+                                </div>
+
+                                <button class="message_btn">
+                                    <img src="images/svg/plane.svg" alt="send">
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="chat_area-inner open_info" id="chat-tab-3">
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    kfodkfdokfodkfodkf odkfodkfodkfo dkfodkfodkfo dkfodkfodkfodkfodkfod
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    ppleplrpelrpelrpelrpelrpelrpelrpelrpelrpelrpleprleprleplrpelrpelre
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <form action="#" class="message_form">
+                                <div class="message_input">
+                                    <textarea></textarea>
+                                </div>
+
+                                <div class="form_file">
+                                    <label for="file-1" class="anchor">
+                                        <div class="label_img">
+                                            <img src="images/svg/ad.svg" alt="add">
+                                        </div>
+                                        <span></span>
+                                    </label>
+                                    <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1"
+                                        data-multiple-caption="{count} files selected" multiple />
+                                </div>
+
+                                <button class="message_btn">
+                                    <img src="images/svg/plane.svg" alt="send">
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="chat_area-inner open_info" id="chat-tab-4">
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    mbvkbmkvmbkmbkv mbkvmbkvmbkvm bkmvkbmvkbmvkbm r vmbkvmkbmvkbmkvmbkvmb
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    plgpflgpflgpflpglfgplfgplfpglfpglpflgpflgpflgpflgpflgpflgpf
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <form action="#" class="message_form">
+                                <div class="message_input">
+                                    <textarea></textarea>
+                                </div>
+
+                                <div class="form_file">
+                                    <label for="file-1" class="anchor">
+                                        <div class="label_img">
+                                            <img src="images/svg/ad.svg" alt="add">
+                                        </div>
+                                        <span></span>
+                                    </label>
+                                    <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1"
+                                        data-multiple-caption="{count} files selected" multiple />
+                                </div>
+
+                                <button class="message_btn">
+                                    <img src="images/svg/plane.svg" alt="send">
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="chat_area-inner open_info" id="chat-tab-5">
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    jghjug hjguhjghjug hjughjgujhguj  hugjhughjug
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    mnvcmnvmncvmncnvcmnvmcnvmcnvmcnvmcnvmcnvmncmvcn
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <form action="#" class="message_form">
+                                <div class="message_input">
+                                    <textarea></textarea>
+                                </div>
+
+                                <div class="form_file">
+                                    <label for="file-1" class="anchor">
+                                        <div class="label_img">
+                                            <img src="images/svg/ad.svg" alt="add">
+                                        </div>
+                                        <span></span>
+                                    </label>
+                                    <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1"
+                                        data-multiple-caption="{count} files selected" multiple />
+                                </div>
+
+                                <button class="message_btn">
+                                    <img src="images/svg/plane.svg" alt="send">
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="chat_area-inner open_info" id="chat-tab-6">
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="my_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <div class="friend_message">
+                                <div class="message_time">
+                                    12:00 - 14.05.2021
+                                </div>
+                                <div class="message_text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor
+                                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+                                </div>
+                            </div>
+
+                            <form action="#" class="message_form">
+                                <div class="message_input">
+                                    <textarea></textarea>
+                                </div>
+
+                                <div class="form_file">
+                                    <label for="file-1" class="anchor">
+                                        <div class="label_img">
+                                            <img src="images/svg/ad.svg" alt="add">
+                                        </div>
+                                        <span></span>
+                                    </label>
+                                    <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1"
+                                        data-multiple-caption="{count} files selected" multiple />
+                                </div>
+
+                                <button class="message_btn">
+                                    <img src="images/svg/plane.svg" alt="send">
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -514,7 +994,13 @@
             <div class="footer_wrap">
                 <div class="footer_content">
                     <a href="index.html" class="foot_logo">
-                        <img src="images/foot_logo.png" alt="">
+                        <div class="footer_img">
+                            <img src="images/register_logo.png" alt="logo">
+                        </div>
+                        <div class="foot_logo_text">
+                            Государственная товарно-сырьевая <br>
+                            биржа Туркменистана
+                        </div>
                     </a>
                     <div class="foot_outer">
                         <div class="foot_col">

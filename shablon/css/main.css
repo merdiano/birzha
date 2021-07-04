@@ -1004,7 +1004,7 @@ li {
     top: 0;
     left: 0;
     width: calc(100% - 0px);
-    z-index: 3;
+    z-index: 10;
     padding: 15px 0;
     background: #f9f9f9;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -1016,10 +1016,10 @@ li {
 
 .stick-2 {
     position: fixed;
-    top: 52px;
+    top: 50px;
     left: 0;
     width: calc(100% - 0px);
-    z-index: 2;
+    z-index: 10;
     transition: all .1s linear;
     -o-transition: all .1s linear;
     -moz-transition: all .1s linear;
@@ -1273,6 +1273,7 @@ li {
 
 .category_select {
     position: relative;
+    width: 250px;
 }
 
 .category_select::after {
@@ -1295,7 +1296,7 @@ li {
     padding: 15px 15px 15px 15px;
     cursor: pointer;
     margin-bottom: 10px;
-    width: 150px;
+    width: 100%;
     appearance: none;
 
 }
@@ -2029,6 +2030,7 @@ li {
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
 
+    resize: none;
     font-size: var(--text-20);
     font-weight: 400;
     line-height: 1.4;
@@ -2144,6 +2146,17 @@ li {
     -moz-flex-wrap: wrap;
 
     margin: -25px -20px;
+}
+
+.simple_group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+
 }
 
 .post_input {
@@ -2373,6 +2386,205 @@ li {
     padding: 100px 0;
 }
 
+.upload_group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #E2E2E2;
+    border-radius: 5px;
+}
+
+.upload_group label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+    background: #E2E2E2;
+    border-radius: 5px;
+    margin: 0;
+    padding: 15px 30px;
+    cursor: pointer;
+}
+
+.form_group {
+    width: calc(100% - 155px);
+}
+
+.form_group label {
+    background: transparent;
+    width: calc(100% - 0px);
+    cursor: unset;
+    padding: 0 0 0 10px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.form_group label span {
+    color: rgba(0, 0, 0, .4);
+}
+
+.post_input_box {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.post_input_text {
+    width: calc(100% - 210px);
+    color: rgba(0, 0, 0, .4);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.post_input_gal {
+    display: flex;
+    align-items: center;
+}
+
+.post_input_img {
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+}
+
+.post_input_img:last-child {
+    margin-right: 0;
+}
+
+.my-select {
+    width: 100%;
+    position: relative;
+}
+
+.my-select::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 30px;
+    transform: translateY(-30%);
+    width: 0;
+    height: 0;
+    border: 6px solid #000;
+    border-color: #000 transparent transparent transparent;
+}
+
+.my-select select {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, .5);
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: var(--text-20);
+    font-weight: 400;
+    line-height: 1.3;
+
+    appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    /* box-sizing: content-box; */
+}
+
+.my-select select option:first-child {
+    display: none;
+}
+
+.my-select select option {
+    font-size: 16px;
+    line-height: 2.5 !important;
+    padding: 30px 0 !important;
+    font-weight: 400;
+    height: 50px;
+    min-height: 50px !important;
+    margin: 20px 0 !important;
+}
+
+/* .add_upload {
+    text-align: center;
+    width: fit-content;
+    margin: 30px auto 20px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    color: var(--blue);
+    user-select: none;
+} */
+
+.select_trash {
+    position: absolute;
+    top: 60%;
+    right: 10px;
+
+    width: 15px;
+    height: 20px;
+
+    cursor: pointer;
+}
+
+.select_trash img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
+}
+
+.select_delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+}
+
+.select_delete img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
+}
+
+.hidden {
+    display: none;
+}
+
+.post_upload_box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.post_upload_item {
+    width: calc(33.33% - 40px);
+    margin: 25px 20px;
+}
+
+.post_upload_img {
+    margin: 0 auto 20px;
+    width: 80%;
+    height: 150px;
+}
+
+.post_upload_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
+}
+
+.post_upload_item .post_input {
+    width: 100%;
+    margin: 0;
+}
+
 /* Add post end ======================================= */
 
 
@@ -2382,11 +2594,18 @@ li {
     padding: 100px 0;
 }
 
+.chat_wrap {
+    position: relative;
+}
+
 .chat_box {
     display: flex;
     border: 1px solid #e2e2e2;
     border-radius: 10px;
     overflow: hidden;
+
+    z-index: 7;
+    position: relative;
 }
 
 .chat_people {
@@ -2432,17 +2651,70 @@ li {
     position: relative;
 }
 
+.chat_wall {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -moz-flex-direction: column;
+    -o-flex-direction: column;
+    -webkit-flex-direction: column;
+    z-index: -1;
+}
+
+.chat_wall_img {
+    width: 100px;
+    height: 100px;
+}
+
+.chat_wall_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
+}
+
+.chat_wall_text {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--blue);
+    margin-top: 10px;
+    text-align: center;
+    width: 60%;
+}
+
 .chat_area-inner {
     overflow-y: auto;
     height: 100%;
     padding: 20px;
+    /* z-index: 3; */
+    background: #fff;
+
+    display: none;
+}
+
+.chat_area-inner.active {
+    display: block;
 }
 
 .person {
     background: #f5f5f5;
     padding: 30px;
     border-bottom: 1px solid #e2e2e2;
-
+    position: relative;
     cursor: pointer;
 }
 
@@ -2478,6 +2750,31 @@ li {
     text-overflow: ellipsis;
 }
 
+.chat_alert {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    background: var(--blue);
+
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+.chat_alert.active {
+    display: none;
+}
+
 .friend_message {
     width: 60%;
     border-bottom-right-radius: 10px;
@@ -2488,6 +2785,7 @@ li {
     margin-bottom: 30px;
 
     background: #f5f5f5;
+    overflow-x: hidden;
 }
 
 .my_message {
@@ -2501,6 +2799,7 @@ li {
 
     background: var(--blue);
     color: #fff;
+    overflow-x: hidden;
 }
 
 .friend_message .message_time {
@@ -2531,6 +2830,25 @@ li {
     border-radius: 10px;
     overflow: hidden;
     background: #fff;
+}
+
+.chat_burger {
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+    top: -40px;
+    left: 20px;
+
+    display: none;
+    cursor: pointer;
+}
+
+.chat_burger svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
 }
 
 .message_input {
@@ -2679,14 +2997,14 @@ li {
 }
 
 .basket_data {
-    width: calc(60% - 30px);
+    width: calc(65% - 30px);
     margin-right: 30px;
     overflow: hidden;
     border-radius: 10px;
 }
 
 .basket_info {
-    width: calc(30% - 30px);
+    width: calc(35% - 30px);
     margin-left: 30px;
     border: 1px solid #f1f1f1;
     /* overflow: hidden; */
@@ -2720,6 +3038,18 @@ li {
     border: 1px solid #f1f1f1;
 }
 
+.basket_table table thead tr th:last-child {
+    width: 15%;
+}
+
+.basket_table table tbody tr td:last-child {
+    width: 15%;
+}
+
+.basket_table table tbody tr td:nth-child(2) {
+    padding: 20px 10px;
+}
+
 .basket_item_title {
     font-size: 20px;
     font-weight: 700;
@@ -2749,8 +3079,8 @@ li {
 }
 
 .basket_img {
-    width: calc(100% - 40px);
-    height: 125px;
+    width: calc(100% - 20px);
+    height: 95px;
     margin: auto;
 }
 
@@ -2827,15 +3157,9 @@ li {
     border: 1px solid #E2E2E2;
 }
 
-.basket_info_select .custom-select .select-selected {
-    border: 1px solid #E2E2E2;
-}
-
 .basket_info_select .select-items div:hover {
     background: #E2E2E2;
 }
-
-
 
 /* Basket end ======================================= */
 
@@ -3106,7 +3430,6 @@ li {
     }
 
     .categories {
-        /* justify-content: center; */
         flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         -webkit-flex-wrap: wrap;
@@ -3142,6 +3465,49 @@ li {
 
     .tab_link:nth-child(2) {
         margin-right: 0;
+    }
+
+    /* Basket =============== */
+
+    .basket_item_title {
+        font-size: 18px;
+    }
+
+    .basket_box {
+        flex-direction: column;
+        -ms-flex-direction: column;
+        -moz-flex-direction: column;
+        -o-flex-direction: column;
+        -webkit-flex-direction: column;
+    }
+
+    .basket_data {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .basket_table table tbody tr td:nth-child(2) {
+        padding: 10px;
+    }
+
+    .basket_img {
+        height: 95px;
+    }
+
+    .basket_info {
+        width: 500px;
+        margin-left: 0;
+        margin-top: 50px;
+    }
+
+    .chat_wall_text {
+        width: 70%;
+        font-size: 22px;
+    }
+
+    .chat_wall_img {
+        width: 80px;
+        height: 80px;
     }
 
 }
@@ -3206,6 +3572,31 @@ li {
         margin-top: 60px;
     }
 
+    .post {
+        padding: 60px 0;
+    }
+
+    .contact_title {
+        margin-bottom: 35px;
+    }
+
+    .thanks_title {
+        font-size: 28px;
+    }
+
+    .thanks_text {
+        font-size: 21px;
+    }
+
+    .person {
+        padding: 20px;
+    }
+
+    .chat_area,
+    .chat_people {
+        height: 550px;
+    }
+
 }
 
 @media(max-width: 1000px) {
@@ -3232,7 +3623,7 @@ li {
         width: 100%;
         height: 100%;
         background: rgba(0, 49, 151, .5);
-        z-index: 5;
+        z-index: 15;
         transition: all .3s linear;
         -ms-transition: all .3s linear;
         -moz-transition: all .3s linear;
@@ -3261,7 +3652,7 @@ li {
 
         overflow: auto;
         background: #fff;
-        z-index: 10;
+        z-index: 15;
     }
 
     .links.active {
@@ -3392,6 +3783,93 @@ li {
         font-size: 16px;
     }
 
+    /* My post 2 =================== */
+
+    .post_upload_box {
+        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        -o-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+
+        overflow: hidden;
+    }
+
+    .post_upload_item {
+        width: calc(50% - 40px);
+    }
+
+    .upload_group label {
+        padding: 10px;
+    }
+
+    .form_group label {
+        padding: 0 0 0 10px;
+    }
+
+    /* Basket ============= */
+
+    .basket_table {
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+
+    .basket_table::-webkit-scrollbar {
+        height: 10px;
+        top: 20px;
+        overflow: visible;
+    }
+
+    .basket_table::-webkit-scrollbar-thumb {
+        height: 5px;
+        background: #d5d5d5;
+        border-radius: 20px;
+    }
+
+    .basket_table table {
+        width: 1100px;
+    }
+
+    .basket_info_cash {
+        font-size: 18px;
+    }
+
+    .basket_info_select .custom-select {
+        font-size: 16px;
+    }
+
+    /* Chat ==================== */
+
+    .chat_people {
+        position: absolute;
+        top: 0;
+        left: -100%;
+
+        transition: all .3s linear;
+        -ms-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        -o-transition: all .3s linear;
+        -webkit-transition: all .3s linear;
+        z-index: 5;
+
+    }
+
+    .chat_people.active {
+        left: 0;
+    }
+
+    .chat_people.active .chat_area {
+        margin-left: 100px;
+    }
+
+    .chat_area {
+        width: 100%;
+    }
+
+    .chat_burger {
+        display: block;
+    }
 
 }
 
@@ -3470,6 +3948,26 @@ li {
         margin: 20px 0;
     }
 
+    .basket_table table {
+        width: 1000px;
+    }
+
+    .thanks_title {
+        font-size: 24px;
+    }
+
+    .thanks_text {
+        font-size: 18px;
+    }
+
+    .thanks {
+        padding: 150px 0;
+    }
+
+    .chat_people {
+        width: 40%;
+    }
+
 }
 
 @media(max-width: 800px) {
@@ -3509,11 +4007,25 @@ li {
     .top_btn {
         display: none !important;
     }
+
+    .basket_table table {
+        width: 900px;
+    }
+
+    .category_select {
+        width: 180px;
+    }
+
+    .friend_message,
+    .my_message {
+        width: 70%;
+    }
 }
 
 @media(max-width: 700px) {
     :root {
-        --text-32: 28px;
+        --text-32: 26px;
+        --text-18: 16px
     }
 
     .languages {
@@ -3610,6 +4122,7 @@ li {
 
     .contact_title {
         margin-bottom: 40px;
+
     }
 
     .copyright {
@@ -3618,13 +4131,44 @@ li {
 
 
     /* --------------------------------- */
+    .post {
+        padding: 60px 0 90px;
+    }
+
     .post_form {
         margin: -25px 0;
     }
 
+    .post_input label {
+        margin: 0 0 12px 10px;
+    }
+
+    .upload_group label {
+        margin: 0;
+    }
+
     .post_input {
         width: 100%;
-        margin: 25px 0;
+        margin: 12px 0;
+    }
+
+    .post_upload_item {
+        width: 100%;
+        margin: 12px 0;
+    }
+
+    .post_upload_img {
+        width: 40%;
+        height: 130px;
+    }
+
+    .post_btn {
+        padding: 14px 30px;
+    }
+
+    .add_post_text {
+        margin-top: 10px;
+        font-size: 17px;
     }
 
     .post_text {
@@ -3643,6 +4187,58 @@ li {
     .profile_item {
         padding: 15px 10px;
     }
+
+    .basket_table table {
+        width: 800px;
+    }
+
+    .basket_info {
+        width: 90%;
+        margin: 30px auto 0;
+    }
+
+    .chat_people {
+        width: 50%;
+    }
+
+    .chat_wall_text {
+        width: 80%;
+        font-size: 20px;
+    }
+
+    .chat_wall_img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .friend_message,
+    .my_message {
+        width: 80%;
+    }
+
+    .person {
+        padding: 10px 20px;
+    }
+
+    .person_name {
+        font-size: 14px;
+    }
+
+    .chat_alert {
+        width: 18px;
+        height: 18px;
+        font-size: 8px;
+    }
+
+    .person_message {
+        font-size: 12px;
+    }
+
+    .chat_area,
+    .chat_people {
+        height: 470px;
+    }
+
 }
 
 @media(max-width: 600px) {
@@ -3755,12 +4351,88 @@ li {
     .profile_drop {
         bottom: -300px;
     }
+
+    .category_search {
+        flex-direction: column;
+        -ms-flex-direction: column;
+        -moz-flex-direction: column;
+        -o-flex-direction: column;
+        -webkit-flex-direction: column;
+        align-items: unset;
+    }
+
+    .category_input {
+        width: 100%;
+    }
+
+    .category_loupe {
+        width: 16px;
+    }
+
+    .category_select {
+        width: 200px;
+        margin-top: 20px;
+    }
+
+    .thanks_title {
+        font-size: 20px;
+    }
+
+    .thanks_text {
+        font-size: 16px;
+    }
+
+    .friend_message,
+    .my_message {
+        width: 90%;
+    }
+
+    .chat_area, .chat_people {
+        height: 400px;
+    }
+
+    .chat_area {
+        padding: 7px 7px 40px;
+    }
+
+    .chat_area-inner {
+        padding: 5px;
+    }
+
+    .message_form {
+        bottom: 10px;
+        width: calc(100% - 30px);
+        left: 48%;
+    }
+
+    .chat {
+        padding: 75px 0;
+    }
+
+    .form_file {
+        top: 55px;
+        right: 20px;
+    }
+
+    .message_input textarea {
+        padding: 20px 50px 20px 20px;
+    }
+
+    .friend_message,
+    .my_message {
+        padding: 20px;
+    }
+
 }
 
 @media(max-width: 500px) {
     :root {
         --text-32: 22px;
         --text-20: 14px;
+    }
+
+    .links {
+        width: 85%;
     }
 
     .form_title {
@@ -3858,10 +4530,6 @@ li {
         height: 85px;
     }
 
-    .post_btn {
-        padding: 20px 30px;
-    }
-
     .profile_drop {
         width: 200px;
         bottom: -315px;
@@ -3886,6 +4554,71 @@ li {
 
     .foot_logo_text {
         font-size: 14px;
+    }
+
+    .basket_info {
+        width: 100%;
+        margin: 30px auto 0;
+    }
+
+    .basket_info_item {
+        padding: 20px;
+    }
+
+    .basket_img {
+        height: 70px;
+    }
+
+    .basket_table table {
+        width: 650px;
+    }
+
+    .basket_table table thead th,
+    .basket_item_title,
+    .basket_item_text,
+    .basket_info_name,
+    .basket_info_cash {
+        font-size: 14px;
+    }
+
+    .contact_input {
+        margin: 10px 0;
+    }
+
+    .contact_input label,
+    .contact_comment label {
+        margin-left: 15px;
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        padding: 15px 35px;
+    }
+
+    .contact_input input,
+    .contact_comment textarea {
+        padding: 10px 15px;
+    }
+
+    .thanks {
+        padding: 100px 0;
+    }
+
+    .thanks_title {
+        font-size: 18px;
+    }
+
+    .thanks_text {
+        font-size: 14px;
+    }
+
+    .chat_people {
+        width: 70%;
+    }
+
+    .chat_wall_text {
+        width: 98%;
+        font-size: 17px;
     }
 
 }
@@ -3927,6 +4660,31 @@ li {
         font-size: 14px;
         right: -23px;
         padding-bottom: 30px;
+    }
+
+    .post {
+        padding: 30px 0 55px;
+    }
+
+    .post_btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .add_post_text {
+        font-size: 15px;
+    }
+
+    .post_upload_img {
+        height: 85px;
+    }
+
+    .post_input label {
+        font-size: 14px;
+    }
+
+    .foot_logo_text {
+        font-size: 12px;
     }
 
 }
