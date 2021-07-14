@@ -1,0 +1,29 @@
+{% for p in products %}
+<a href="#" 
+    data-request="onChooseSuggestion" 
+    data-request-data="product_id: {{ p.id }}"
+    data-request-success="pasteAllInfo(data)"
+>{{p.name}}</a> <br>
+{% endfor %}
+
+<script>
+    function pasteAllInfo(data) {
+
+        $(`.my-select select[name="category_id"] option[value=${data.product.categories[0].id}]`).prop('selected', true);
+        $(`.my-select select[name="country_id"] option[value=${data.product.country.id}]`).prop('selected', true);
+        
+        $('input[name="name_ru"]').val(data.product_ru_name);
+        $('input[name="name_en"]').val(data.product_en_name);
+        $('input[name="name_tm"]').val(data.product.name);
+
+        $('input[name="mark"]').val(data.product.mark);
+
+        $('input[name="manufacturer"]').val(data.product.manufacturer);
+
+        $('#suggestions').empty();
+
+        $('input[name="product_id"]').val(data.product.id);
+
+        $('.first-step-form input:not(:hidden), .first-step-form select').prop('disabled', true);
+    }
+</script>

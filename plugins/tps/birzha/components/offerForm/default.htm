@@ -1,126 +1,104 @@
-{% set measures = __SELF__.measures %}
-{% set paymentTerms = __SELF__.paymentTerms %}
-{% set deliveryTerms = __SELF__.deliveryTerms %}
-{% set currencies = __SELF__.currencies %}
+
+{% set categories = __SELF__.categories %}
+{% set countries = __SELF__.countries %}
 
 <!-- Add post ============================================================= -->
 <section class="post">
     <div class="auto_container">
         {% if user.is_activated  %}
-        <div class="post_wrap">
+        <div class="post_wrap" id="form-steps">
             <div class="contact_title">
-                Добавить объявление
+                Добавить объявление (Step 1)
             </div>
 
             <form action="#" class="post_form" autocomplete="off">
                 <div class="post_input">
-                    <label for="name">Наименование лота</label>
-                    <input type="text" placeholder="Пример: Гидравлическое масло" id="name" name="name" autocomplete="new-password">
-                    <div class="suggestions">
-                        <p></p>
-                        <!-- <p data-id="productId" data-marka="productmarka">product name</p> -->
+                    <label>Начните вводить Наименование лота <span>*</span></label>
+                    <input type="text" name="name" data-belongsto="product" placeholder="Пример: Гидравлическое масло">
+                    <div id="suggestions">
+                        {% partial __SELF__~'::suggestions' %}
                     </div>
                 </div>
+                <div class="post-input">
+                    <button class="clear-form">Очистить форму</button>
+                </div>
+            </form>
 
+            <form action="#" 
+                data-request="onSave"
+                data-request-validate 
+                data-request-flash
+                class="post_form post_form-2 first-step-form">
+                
+                <input type="hidden" name="product_id" data-belongsto="product">
+                
+                <!-- ru name -->
                 <div class="post_input">
-                    <label for="mark">Марка товара</label>
-                    <input type="text" placeholder="Пример: Гидравлическое масло ЛУКОЙЛ 46" id="mark" name="mark">
+                    <label>Наименование лота (RU) <span>*</span></label>
+                    <input type="text" name="name_ru" data-belongsto="product" placeholder="Пример: Гидравлическое масло">
+                    <span data-validate-for="name_ru" style="color: red;"></span>
+                </div>
+                <!-- en name -->
+                <div class="post_input">
+                    <label>Наименование лота (EN) <span>*</span></label>
+                    <input type="text" name="name_en" data-belongsto="product" placeholder="Пример: Гидравлическое масло">
+                    <span data-validate-for="name_en" style="color: red;"></span>
+                </div>
+                <!-- tm name -->
+                <div class="post_input">
+                    <label>Наименование лота (TM) <span>*</span></label>
+                    <input type="text" name="name_tm" data-belongsto="product" placeholder="Пример: Гидравлическое масло">
+                    <span data-validate-for="name_tm" style="color: red;"></span>
                 </div>
 
                 <div class="post_input">
-                    <label for="units">Единицы измерения</label>
-                    <div class="custom-select">
-                        <select id="units">
-                            <option value="">&nbsp;</option> <!-- initial option, do not remove -->
-                            {% for measure in measures %}
-                            <option value="{{ measure.id }}">{{ measure.name }}</option>
+                    <label for="mark-goods">Марка товара <span>*</span></label>
+                    <input type="text" name="mark" data-belongsto="product" placeholder="Пример: Гидравлическое масло ЛУКОЙЛ 46" id="mark-goods">
+                    <span data-validate-for="mark" style="color: red;"></span>
+                </div>
+
+                <div class="post_input">
+                    <label for="owner">Производитель <span>*</span></label>
+                    <input type="text" name="manufacturer" data-belongsto="product" placeholder="Пример: ЛУКОЙЛ" id="owner">
+                    <span data-validate-for="manufacturer" style="color: red;"></span>
+                </div>
+
+                <div class="post_input">
+                    <label>Категория <span>*</span> <span data-validate-for="category_id" style="color: red;"></span> </label>
+                    <div class="my-select">
+                        <select class="category-select" data-belongsto="product" name="category_id">
+                            <option value="0">Category</option>
+                            {% for c in categories %}
+                            <option value="{{ c.id }}">{{ c.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
                 </div>
 
                 <div class="post_input">
-                    <label for="quantity">Колличество товара</label>
-                    <input type="text" placeholder="Пример: 3 литра" id="quantity" name="quantity">
-                </div>
-
-                <div class="post_input">
-                    <label for="producer">Производитель</label>
-                    <input type="text" placeholder="Пример: ЛУКОЙЛ" id="producer" name="producer">
-                </div>
-
-                <div class="post_input">
-                    <label for="country">Страна производителя</label>
-                    <div class="custom-select">
-                        <select id="country">
-                            <option value="0">Россия</option>
-                            <option value="1">Turkmenistan</option>
-                            <option value="2">Австралия</option>
-                            <option value="3">Россия</option>
-                            <option value="4">Канада</option>
-                            <option value="5">Китай </option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="post_input">
-                    <label for="money">Валюта</label>
-                    <div class="custom-select">
-                        <select id="money">
-                            <option value="">&nbsp;</option> <!-- initial option, do not remove -->
-                            {% for currency in currencies %}
-                            <option value="{{ currency.id }}">{{ currency.name }}</option>
+                    <label>Страна производителя <span>*</span> <span data-validate-for="country_id" style="color: red;"></span></label>
+                    <div class="my-select">
+                        <select name="country_id" data-belongsto="product">
+                            <option value="0">Страна производителя</option>
+                            {% for country in countries %}
+                            <option value="{{ country.id }}">{{country.name}}</option>
                             {% endfor %}
-                        </select>
-                    </div>
-                </div>
-
-                <div class="post_input">
-                    <label for="cost">Стартовая цена за единицу</label>
-                    <input type="text" placeholder="Пример: 120" id="cost" name="cost">
-                </div>
-
-                <div class="post_input">
-                    <label for="payment">Условия оплаты</label>
-                    <div class="custom-select">
-                        <select id="payment">
-                            <option value="">&nbsp;</option> <!-- initial option, do not remove -->
-                            {% for pt in paymentTerms %}
-                            <option value="{{ pt.id }}">{{ pt.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-
-                <div class="post_input">
-                    <label for="location">Пункт</label>
-                    <div class="custom-select">
-                        <select id="location">
-                            <option value="0">Бекдаш</option>
-                            <option value="1">Бекдаш</option>
-                            <option value="2">Бекдаш</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="post_input">
-                    <label for="packaging">Упаковка</label>
-                    <div class="custom-select">
-                        <select id="packaging">
-                            <option value="0">Есть</option>
-                            <option value="1">Нет</option>
-                            <option value="2">Есть</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="btn_bg">
-                    <button class="post_btn" type="submit">
+                    <button class="post_btn" type="submit" data-attach-loading>
                         Отправить на биржу
                     </button>
                 </div>
 
+                <div class="add_post_text">
+                    Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+                </div>
+
             </form>
+            
         </div>
         {% else %}
         <div class="post_wrap">
@@ -135,33 +113,26 @@
 
 {% put scripts %}
 <script>
+    
     $('input[name="name"]').keyup(function() {
         thisInput = $(this);
         queryString = thisInput.val();
 
         thisInput.request('onInput',  {
-            data: {query: queryString},
-            success: function(data) {
-                $('.suggestions').empty();
-                $('#mark').val('');
-                
-                $.each(data.products, function( index, element ) {
-                    $('.suggestions').append(`
-                        <p
-                            data-id="${element.id}"
-                            data-name="${element.name}"
-                            data-mark="${element.mark}"
-                        >${element.name}</p>
-                    `);
-                })
+            data: {
+                query: queryString
             }
         });
     });
-      
-    $(document).on('click', '.suggestions p', function(e) {
-        // console.log($(e.target).attr('data-mark'));
-        $('#mark').val($(e.target).attr('data-mark'));
-        $('#name').val($(e.target).attr('data-name'));
-    });
+
+    $('.clear-form').click(function() {
+        $('form input[data-belongsto="product"]').val('');
+        $('form input[data-belongsto="product"], select[data-belongsto="product"]').prop('disabled', false);
+        $('select[name="country_id"] option:first').prop('selected',true);
+        $('select[name="category_id"] option:first').prop('selected',true);
+        $('#suggestions').empty();
+
+        return false;
+    })
 </script>
 {% endput %}

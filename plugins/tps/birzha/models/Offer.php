@@ -81,9 +81,14 @@ class Offer extends Model
 
     public function beforeValidate()
     {
-        if ($this->status && $this->status =='denied') {
-            $this->rules['status_note'] = 'required';
+        if(\App::runningInBackend()) {
+            if ($this->status && $this->status =='denied') {
+                $this->rules['status_note'] = 'required';
+            }
+        } else {
+            $this->rules = [];
         }
+        
     }
 
 }

@@ -28,7 +28,8 @@ class Product extends Model
         'categories' => 'required',
         'status' => 'required',
         'name' => 'required',
-        'slug' => 'required'
+        'slug' => 'required',
+        'images' => 'required'
     ];
 
     public $customMessages = [
@@ -64,9 +65,14 @@ class Product extends Model
 
     public function beforeValidate()
     {
-        if ($this->status && $this->status =='denied') {
-            $this->rules['status_note'] = 'required';
+        if(\App::runningInBackend()) {
+            if ($this->status && $this->status =='denied') {
+                $this->rules['status_note'] = 'required';
+            }
+        } else {
+            $this->rules = [];
         }
+        
     }
 
     public static function getMenuTypeInfo($type){

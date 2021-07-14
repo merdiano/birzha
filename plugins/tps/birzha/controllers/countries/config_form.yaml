@@ -1,6 +1,6 @@
 name: Countries
 form: $/tps/birzha/models/countries/fields.yaml
-modelClass: TPS\Birzha\Models\Countries
+modelClass: TPS\Birzha\Models\Country
 defaultRedirect: tps/birzha/countries
 create:
     redirect: 'tps/birzha/countries/update/:id'

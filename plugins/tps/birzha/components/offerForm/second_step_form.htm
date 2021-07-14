@@ -1,0 +1,159 @@
+<div class="contact_title">
+    Добавить объявление (Step 2)
+</div>
+
+<form action="#" class="post_form" enctype="multipart/form-data" 
+    data-request="onOfferFill"
+    data-request-validate 
+    data-request-flash
+    data-request-files
+>
+    <input type="hidden" name="product_id" value="{{product.id}}">
+    <input type="hidden" name="product_exists" value="{{ product_exists }}">
+
+    <div class="post_input">
+        <label>Единицы измерения <span>*</span> </label>
+        <div class="my-select">
+            <select name="measure_id">
+                {% for m in measures %}
+                <option value="{{m.id}}">{{m.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="post_input">
+        <label for="good-count">Количество товара <span>*</span> </label>
+        <input type="text" name="quantity" placeholder="Пример: 3 литра" id="good-count">
+        <span data-validate-for="quantity" style="color: red;"></span>
+    </div>
+
+    <div class="post_input">
+        <label>Валюта  <span>*</span> </label>
+        <div class="my-select">
+            <select name="currency_id">
+                {% for currency in currencies %}
+                <option value="{{currency.id}}">{{currency.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="post_input">
+        <label for="good-cost">Стартовая цена за единицу <span>*</span> </label>
+        <input type="text" name="price" placeholder="Пример: 120" id="good-cost">
+        <span data-validate-for="price" style="color: red;"></span>
+    </div>
+
+    <div class="post_input">
+        <label>Условия поставки <span>*</span> </label>
+        <div class="my-select">
+            <select name="delivery_term_id">
+                {% for dt in deliveryTerms %}
+                <option value="{{dt.id}}">{{dt.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="post_input">
+        <label for="good-cost">Пункт <span>*</span> </label>
+        <input type="text" name="place" placeholder="Пример: 120" id="good-cost">
+        <span data-validate-for="place" style="color: red;"></span>
+    </div>
+
+    <div class="post_input">
+        <label>Упаковка <span>*</span></label>
+        <div class="my-select">
+            <select name="packaging">
+                <option value="yes">Есть</option>
+                <option value="no">Нет</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="post_input">
+        <label>Условия оплаты  <span>*</span></label>
+        <div class="my-select">
+            <select name="payment_term_id">
+                {% for pt in paymentTerms %}
+                <option value="{{pt.id}}">{{pt.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="post_input">
+        <label for="good-cost">Ends at <span>*</span> </label>
+        <input type="datetime" name="ends_at">
+        <span data-validate-for="ends_at" style="color: red;"></span>
+    </div>
+
+    <div class="post_comment">
+        <label for="description_ru">Описание (RU) <span>*</span></label>
+        <textarea id="description_ru" name="description_ru"></textarea>
+        <span data-validate-for="description_ru" style="color: red;"></span>
+    </div>
+    <div class="post_comment">
+        <label for="description_en">Описание (EN) <span>*</span></label>
+        <textarea id="description_en" name="description_en"></textarea>
+        <span data-validate-for="description_en" style="color: red;"></span>
+    </div>
+    <div class="post_comment">
+        <label for="description_tm">Описание (TM) <span>*</span></label>
+        <textarea id="description_tm" name="description_tm"></textarea>
+        <span data-validate-for="description_tm" style="color: red;"></span>
+    </div>
+
+    <span data-validate-for="new_img" style="color: red;"></span>
+    <span data-validate-for="new_img_size_error" style="color: red;"></span>
+    <span data-validate-for="new_img_type_error" style="color: red;"></span>
+    <div class="post_upload_box">
+        
+        {% for i in 0..2 %}
+        <div class="post_upload_item">
+            {% if product.images[i] %}
+            <div class="post_upload_img">
+                <img src="{{ product.images[i].thumb(277,150,{'mode':'crop'}) }}" alt="photo">
+            </div>
+            {% endif %}
+            <div class="post_input">
+                <label>Загрузить фото #{{i+1}} <span>*</span></label>
+                <div class="upload_group">
+                    <label for="file-{{i}}">Загрузить файл</label>
+                    <div class="form_group">
+                        <label class="additional">
+                            <span>Ничего не выбранo</span>
+                        </label>
+                        <input type="file" 
+                            {% if product.images[i] %}
+                                name="new_img[{{product.images[i].id}}]" 
+                            {% else %}
+                                name="new_img[-{{i}}]"
+                            {% endif %}
+                            id="file-{{i}}" class="inputfile inputfile-1"
+                            data-multiple-caption="{count} files selected" 
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="btn_bg">
+        <button class="post_btn" type="submit">
+            Отправить на биржу
+        </button>
+    </div>
+
+    <div class="add_post_text">
+        Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+    </div>
+
+</form>
+
+
+
+<script src="{{ 'assets/js/custom-file-input.js'|theme }}"></script>
