@@ -228,9 +228,13 @@ class OfferForm extends ComponentBase
             $this->validateForm($data, $rules);
 
             foreach($data['new_img'] as $key => $img) {
+                // add images to new offer
                 $newOffer->images = $img;
-
                 $newOffer->save();
+
+                // add images to completely new product
+                $attachedProduct->images = $img;
+                $attachedProduct->save();
             }
         }
 
