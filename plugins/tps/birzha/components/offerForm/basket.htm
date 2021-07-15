@@ -35,9 +35,12 @@
                             </div>
                         </td>
                         <td>
-                            <div class="basket_delete">
+                            <a href="#" 
+                                data-request="onDeleteOfferFromBasket"
+                                data-request-data="offer_id: {{ offer.id }}"
+                                class="basket_delete">
                                 <img src="{{ 'assets/images/svg/garbage.svg'|theme }}" alt="delete-icon">
-                            </div>
+                            </a>
                         </td>
                     </tr>
                     {% endfor %}

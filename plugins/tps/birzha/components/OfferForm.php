@@ -252,6 +252,28 @@ class OfferForm extends ComponentBase
         ];
     }
 
+    public function onDeleteOfferFromBasket() {
+        // delete offer from basket, from db
+        $offer = Offer::find(Input::get('offer_id'));
+        $offer->images()->delete();
+        $offer->translations()->delete();
+        $offer->delete();
+
+        // then display the rest of offers
+        $draft_offers = \Auth::user()->offers()
+            ->where('status','draft')
+            ->orderBy('created_at', 'desc')->get();
+
+        $this->page['draft_offers'] = $draft_offers;
+        $this->page['draft_offers_count'] = count($draft_offers);
+        $this->page['fee'] = Settings::getValue('fee');
+
+
+        return [
+            '#form-steps' => $this->renderPartial('@basket')
+        ];
+    }
+
     protected function validateFileType($data, $rules) {
         $validator = Validator::make($data, $rules);
 
