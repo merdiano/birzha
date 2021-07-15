@@ -51,6 +51,10 @@ class User extends UserBase
         'avatar' => \System\Models\File::class
     ];
 
+    public $hasMany = [
+        'offers' => ['TPS\Birzha\Models\Offer', 'key' => 'vendor_id']
+    ];
+
     /**
      * @var array The attributes that are mass assignable.
      */

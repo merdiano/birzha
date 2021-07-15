@@ -16,121 +16,31 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for offer in draft_offers %}
                     <tr>
                         <td>
-                            № 49378
+                            № {{offer.id}}
                         </td>
                         <td>
                             <div class="basket_img">
-                                <img src="images/goods.png" alt="cat_photo">
+                                <img src="{{ offer.images[0].thumb(165,95,{'mode':'crop'}) }}" alt="cat_photo">
                             </div>
                         </td>
                         <td>
                             <div class="basket_item_title">
-                                Сера молотая
+                                {{offer.product.name}}
                             </div>
                             <div class="basket_item_text">
-                                Сера молотая
+                                {{offer.product.name}}
                             </div>
                         </td>
                         <td>
                             <div class="basket_delete">
-                                <img src="images/svg/garbage.svg" alt="delete-icon">
+                                <img src="{{ 'assets/images/svg/garbage.svg'|theme }}" alt="delete-icon">
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            № 49378
-                        </td>
-                        <td>
-                            <div class="basket_img">
-                                <img src="images/goods.png" alt="cat_photo">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="basket_item_title">
-                                Сера молотая
-                            </div>
-                            <div class="basket_item_text">
-                                Сера молотая
-                            </div>
-                        </td>
-                        <td>
-                            <div class="basket_delete">
-                                <img src="images/svg/garbage.svg" alt="delete-icon">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            № 49378
-                        </td>
-                        <td>
-                            <div class="basket_img">
-                                <img src="images/goods.png" alt="cat_photo">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="basket_item_title">
-                                Сера молотая
-                            </div>
-                            <div class="basket_item_text">
-                                Сера молотая
-                            </div>
-                        </td>
-                        <td>
-                            <div class="basket_delete">
-                                <img src="images/svg/garbage.svg" alt="delete-icon">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            № 49378
-                        </td>
-                        <td>
-                            <div class="basket_img">
-                                <img src="images/goods.png" alt="cat_photo">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="basket_item_title">
-                                Сера молотая
-                            </div>
-                            <div class="basket_item_text">
-                                Сера молотая
-                            </div>
-                        </td>
-                        <td>
-                            <div class="basket_delete">
-                                <img src="images/svg/garbage.svg" alt="delete-icon">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            № 49378
-                        </td>
-                        <td>
-                            <div class="basket_img">
-                                <img src="images/goods.png" alt="cat_photo">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="basket_item_title">
-                                Сера молотая
-                            </div>
-                            <div class="basket_item_text">
-                                Сера молотая
-                            </div>
-                        </td>
-                        <td>
-                            <div class="basket_delete">
-                                <img src="images/svg/garbage.svg" alt="delete-icon">
-                            </div>
-                        </td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -145,7 +55,7 @@
                     Цена за один пост:
                 </div>
                 <div class="basket_info_cash">
-                    500 TMT
+                    {{fee}} TMT
                 </div>
             </div>
             <div class="basket_info_box">
@@ -153,7 +63,7 @@
                     Количество постов:
                 </div>
                 <div class="basket_info_cash">
-                    5
+                    {{draft_offers_count}}
                 </div>
             </div>
         </div>
@@ -163,17 +73,15 @@
                     Итоговая сумма
                 </div>
                 <div class="basket_info_cash">
-                    5200 TMT
+                    {{draft_offers_count * fee}} TMT
                 </div>
             </div>
             <div class="basket_info_select">
                 <label>Метод оплаты</label>
-                <div class="custom-select">
-                    <select>
-                        <option value="0">Машиностроение</option>
-                        <option value="1">Машиностроение</option>
-                        <option value="2">Машиностроение</option>
-                        <option value="3">Машиностроение</option>
+                <div class="my-select">
+                    <select class="category-select" data-belongsto="product" name="category_id">
+                        <option value="1">Pay 1</option>
+                        <option value="2">Pay 2</option>
                     </select>
                 </div>
             </div>

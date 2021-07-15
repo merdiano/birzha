@@ -11,6 +11,7 @@ use Tps\Birzha\Models\Currency;
 use Tps\Birzha\Models\Product;
 use Tps\Birzha\Models\Category;
 use Tps\Birzha\Models\Country;
+use TPS\Birzha\Models\Settings;
 use Flash;
 use Session;
 use DB;
@@ -233,7 +234,14 @@ class OfferForm extends ComponentBase
             }
         }
 
-        // $this->page['draft_offers'] = \Auth::user()->offers()->where('status','draft')->get();
+        $draft_offers = \Auth::user()->offers()
+            ->where('status','draft')
+            ->orderBy('created_at', 'desc')->get();
+
+        $this->page['draft_offers'] = $draft_offers;
+        $this->page['draft_offers_count'] = count($draft_offers);
+        $this->page['fee'] = Settings::getValue('fee');
+
 
         return [
             '#form-steps' => $this->renderPartial('@basket')
