@@ -71,10 +71,12 @@ class OfferForm extends ComponentBase
 
         $product_en = DB::table('rainlab_translate_attributes')
             ->where('model_id',$product->id)
+            ->where('model_type', 'TPS\Birzha\Models\Product')
             ->where('locale','en')->first();
             
         $product_ru = DB::table('rainlab_translate_attributes')
             ->where('model_id',$product->id)
+            ->where('model_type', 'TPS\Birzha\Models\Product')
             ->where('locale','ru')->first();
 
 
@@ -170,7 +172,7 @@ class OfferForm extends ComponentBase
         ];
         $this->validateFileType($data, $rules);
         
-        // seaparate validation for image size
+        // separate validation for image size
         $rules = [
             'new_img.*' => 'max:1024'
         ];
@@ -218,7 +220,7 @@ class OfferForm extends ComponentBase
             DB::table('system_files')->insert($insertionArray);
         } 
         else { //completely new product 
-            // seaprate validation for image requirement
+            // separate validation for image requirement
             $rules = [
                 'new_img' => 'required'
             ];
@@ -230,6 +232,8 @@ class OfferForm extends ComponentBase
                 $newOffer->save();
             }
         }
+
+        // $this->page['draft_offers'] = \Auth::user()->offers()->where('status','draft')->get();
 
         return [
             '#form-steps' => $this->renderPartial('@basket')
