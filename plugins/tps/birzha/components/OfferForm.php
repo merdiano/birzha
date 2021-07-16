@@ -12,6 +12,7 @@ use Tps\Birzha\Models\Product;
 use Tps\Birzha\Models\Category;
 use Tps\Birzha\Models\Country;
 use TPS\Birzha\Models\Settings;
+use TPS\Birzha\Models\Payment;
 use Flash;
 use Session;
 use DB;
@@ -271,6 +272,54 @@ class OfferForm extends ComponentBase
 
         return [
             '#form-steps' => $this->renderPartial('@basket')
+        ];
+    }
+
+    public function onStartToPay() {
+        $pay_type = Input::get('pay_type');
+        if($pay_type == "bank") {
+            return [
+                '#form-steps' => $this->renderPartial('@bank_transfer_pay')
+            ];
+        } else {
+            // ...
+        }
+    }
+
+    public function onPayByBankTransfer() {
+        $data = input();
+
+        $rules = [
+            'bank_file' => 'required|mimes:pdf,jpg,png',
+        ];
+
+        $this->validateForm($data, $rules);
+        
+        $newPayment = new Payment;
+        $newPayment->user_id = \Auth::user()->id;
+        
+        $draft_offers = \Auth::user()->offers()
+            ->where('status','draft')
+            ->orderBy('created_at', 'desc')->get();
+        $newPayment->amount = count($draft_offers) * Settings::getValue('fee');
+        
+        $newPayment->payment_type = "bank";
+        $newPayment->status = "new";
+        $newPayment->save();
+        $newPaymentId = $newPayment->id;
+
+        DB::transaction(function() use ($draft_offers, $newPaymentId) {
+            foreach($draft_offers as $df) {
+                $df->payment_id = $newPaymentId;
+                $draft_offers->status = 'new';
+                $df->save();
+            }
+        });
+
+        // attach file to payment
+
+        return [
+            '#form-steps' => $this->renderPartial('@message')
         ];
     }
 

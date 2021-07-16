@@ -48,7 +48,7 @@
             </table>
         </div>
     </div>
-    <div class="basket_info">
+    <form data-request="onStartToPay" class="basket_info">
         <div class="basket_info_title">
             Стоимость
         </div>
@@ -82,12 +82,25 @@
             <div class="basket_info_select">
                 <label>Метод оплаты</label>
                 <div class="my-select">
-                    <select class="category-select" data-belongsto="product" name="category_id">
-                        <option value="1">Pay 1</option>
-                        <option value="2">Pay 2</option>
+                    <select class="category-select" name="pay_type">
+                        <option value="bank">Bank transfer</option>
+                        <option value="online">Online payment</option>
                     </select>
                 </div>
             </div>
+            <div class="btn_bg">
+                <button class="post_btn" type="submit" data-attach-loading>
+                    Отправить на биржу
+                </button>
+            </div>
+            <a href="{{ 'kabinet/add_offer'|page }}" class="add_post_btn">
+                <div class="post_icon">
+                    <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
+                </div>
+                <div class="post_text">
+                    Добавить объявление
+                </div>
+            </a>
         </div>
-    </div>
+    </form>
 </div>

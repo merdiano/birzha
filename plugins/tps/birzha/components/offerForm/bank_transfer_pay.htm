@@ -1,0 +1,35 @@
+<div class="contact_title">
+    Bank transfer payment
+</div>
+<form class="post_form" 
+    data-request="onPayByBankTransfer"
+    data-request-validate 
+    data-request-flash
+    data-request-files>
+    <div class="post_upload_box">
+        <div class="post_upload_item">
+            <div class="post_input">
+                <label>Загрузить файл<span>*</span></label>
+                <span data-validate-for="bank_file" style="color: red;"></span>
+                <div class="upload_group">
+                    <label for="file-1">Загрузить файл</label>
+                    <div class="form_group">
+                        <label class="additional">
+                            <span>Ничего не выбранo</span>
+                        </label>
+                        <input type="file" 
+                            name="bank_file" 
+                            id="file-1" class="inputfile inputfile-1"
+                            data-multiple-caption="{count} files selected" 
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn_bg">
+        <button class="post_btn" type="submit">
+            Отправить на биржу
+        </button>
+    </div>
+</form>
