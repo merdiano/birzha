@@ -113,7 +113,7 @@ tabs:
             tab: Status
         payment:
             label: Payment
-            nameFrom: created_at
+            nameFrom: amount
             descriptionFrom: description
             span: auto
             readOnly: 1
