@@ -37,3 +37,12 @@ fields:
         size: ''
         span: auto
         type: textarea
+    bank_file:
+        label: 'Bank file'
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

@@ -311,12 +311,14 @@ class OfferForm extends ComponentBase
         DB::transaction(function() use ($draft_offers, $newPaymentId) {
             foreach($draft_offers as $df) {
                 $df->payment_id = $newPaymentId;
-                $draft_offers->status = 'new';
+                $df->status = 'new';
                 $df->save();
             }
         });
 
         // attach file to payment
+        $newPayment->bank_file = Input::file('bank_file');
+        $newPayment->save();
 
         return [
             '#form-steps' => $this->renderPartial('@message')

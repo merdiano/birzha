@@ -33,4 +33,8 @@ class Payment extends Model
     public $belongsTo = [
         'user' => 'RainLab\User\Models\User'
     ];
+
+    public $attachOne = [
+        'bank_file' => 'System\Models\File'
+    ];
 }

@@ -152,3 +152,6 @@
 1.0.52:
     - 'Updated table tps_birzha_messages'
     - builder_table_update_tps_birzha_messages_2.php
+1.0.53:
+    - 'Updated table tps_birzha_payments'
+    - builder_table_update_tps_birzha_payments_2.php
