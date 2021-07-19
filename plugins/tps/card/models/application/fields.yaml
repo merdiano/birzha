@@ -1,0 +1,61 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    firstname:
+        label: First name
+        disabled: false
+    lastname:
+        label: Last name
+        disabled: false
+    middlename:
+        label: Middle name
+        disabled: false
+    birthdate:
+        label: Birthday
+        disabled: false
+    phone:
+        label: Phone number
+        disabled: false
+        type: number
+        min: 5
+        max: 13
+    mobile:
+        label: Mobile number
+        disabled: false
+        type: number
+        min: 6
+        max: 10
+    email:
+        label: Email
+        type: email
+        disabled: false
+    passport_id:
+        label: Passport ID
+        disabled: false
+    passport_date:
+        label: Passport issue date
+        disabled: false
+    passport_by:
+        label: Passport issued by
+        disabled: false
+    address:
+        label: Address
+        disabled: false
+        type: textarea
+    work:
+        label: Work
+        disabled: false
+    passport_scan:
+        label: Passport scan
+        disabled: false
+    orderId:
+        label: Order ID
+        disabled: true
+    payed:
+        label: Payed
+        disabled: true
+        type: checkbox
+
+

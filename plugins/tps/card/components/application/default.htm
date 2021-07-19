@@ -1,0 +1,35 @@
+<form method="POST"
+      data-request="onSend"
+      data-request-validate
+      data-request-success="this.reset(); alert('Thank you for submitting your inquiry')"
+>
+    <div>
+
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" class="form-control">
+        <p data-validate-for="firstname" class="text-danger"></p>
+    </div>
+
+    <div>
+        <label for="lastname">Last Name</label>
+        <input type="text" name="lastname" class="form-control">
+
+        <p data-validate-for="lastname" class="text-danger"></p>
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" class="form-control">
+        <p data-validate-for="email" class="text-danger"></p>
+    </div>
+
+    <div>
+        <label for="address">Address</label>
+        <textarea rows="6" cols="20" name="address" class="form-control"></textarea>
+        <p data-validate-for="address"  class="text-danger"></p>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary" data-attach-loading>Send</button>
+    </div>
+</form>

@@ -1,0 +1,8 @@
+fields:
+    bank_api_user:
+        label: Bank API user
+    bank_api_password:
+        label: Bank API password
+    application_fee:
+        label: Application fee
+        type: number

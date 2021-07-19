@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Application
+
+# Model Form Field configuration
+form: $/tps/card/models/application/fields.yaml
+
+# Model Class name
+modelClass: TPS\Card\Models\Application
+
+# Default redirect location
+defaultRedirect: tps/card/applications
+
+# Create page
+create:
+    title: Create Application
+    redirect: tps/card/applications/update/:id
+    redirectClose: tps/card/applications
+
+# Update page
+update:
+    title: Edit Application
+    redirect: tps/card/applications
+    redirectClose: tps/card/applications
+
+# Preview page
+preview:
+    title: Preview Application

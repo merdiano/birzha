@@ -1,0 +1,26 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    passport_id:
+        label: Passport ID
+        searchable: true
+    firstname:
+        label: First name
+        searchable: true
+    lastname:
+        label: Last name
+        searchable: true
+    middlename:
+        label: Middle name
+        searchable: true
+    birthdate:
+        label: Birth date
+        searchable: true
+    mobile:
+        label: Mobile number
+        searchable: true
+    payed:
+        label: Payment
+        searchable: true

@@ -1,0 +1,4 @@
+1.0.1: First version of CardApplication
+1.0.2:
+    - create tables
+    - create_applications_table.php
