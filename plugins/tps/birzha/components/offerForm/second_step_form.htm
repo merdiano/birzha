@@ -12,9 +12,10 @@
     <input type="hidden" name="product_exists" value="{{ product_exists }}">
 
     <div class="post_input">
-        <label>Единицы измерения <span>*</span> </label>
+        <label>Единицы измерения <span>*</span> <span data-validate-for="measure_id" style="color: red;"></span></label>
         <div class="my-select">
             <select name="measure_id">
+                <option value="">Единицы измерения</option>
                 {% for m in measures %}
                 <option value="{{m.id}}">{{m.name}}</option>
                 {% endfor %}
@@ -29,9 +30,10 @@
     </div>
 
     <div class="post_input">
-        <label>Валюта  <span>*</span> </label>
+        <label>Валюта  <span>*</span> <span data-validate-for="currency_id" style="color: red;"></span></label>
         <div class="my-select">
             <select name="currency_id">
+                <option value="">Валюта</option>
                 {% for currency in currencies %}
                 <option value="{{currency.id}}">{{currency.name}}</option>
                 {% endfor %}
@@ -46,9 +48,10 @@
     </div>
 
     <div class="post_input">
-        <label>Условия поставки <span>*</span> </label>
+        <label>Условия поставки <span>*</span> <span data-validate-for="delivery_term_id" style="color: red;"></span></label>
         <div class="my-select">
             <select name="delivery_term_id">
+                <option value="">Условия поставки</option>
                 {% for dt in deliveryTerms %}
                 <option value="{{dt.id}}">{{dt.name}}</option>
                 {% endfor %}
@@ -63,9 +66,10 @@
     </div>
 
     <div class="post_input">
-        <label>Упаковка <span>*</span></label>
+        <label>Упаковка <span>*</span><span data-validate-for="packaging" style="color: red;"></span></label>
         <div class="my-select">
             <select name="packaging">
+                <option value="">Упаковка</option>
                 <option value="yes">Есть</option>
                 <option value="no">Нет</option>
             </select>
@@ -73,9 +77,10 @@
     </div>
 
     <div class="post_input">
-        <label>Условия оплаты  <span>*</span></label>
+        <label>Условия оплаты  <span>*</span><span data-validate-for="payment_term_id" style="color: red;"></span></label>
         <div class="my-select">
             <select name="payment_term_id">
+                <option value="">Условия оплаты</option>
                 {% for pt in paymentTerms %}
                 <option value="{{pt.id}}">{{pt.name}}</option>
                 {% endfor %}

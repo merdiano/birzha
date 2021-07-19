@@ -106,11 +106,7 @@ class OfferForm extends ComponentBase
                 'country_id' => 'exists:tps_birzha_countries,id'
             ];
 
-            $validator = Validator::make($data, $rules);
-
-            if($validator->fails()) {
-                throw new ValidationException($validator);
-            }
+            $this->validateForm($data, $rules);
             
             $category = Category::find(Input::get('category_id'));
                 
@@ -163,7 +159,12 @@ class OfferForm extends ComponentBase
             'description_tm' => 'required',
             'description_en' => 'required',
             'description_ru' => 'required',
-            'ends_at' => 'required|date'
+            'ends_at' => 'required|date',
+            'payment_term_id' => 'required',
+            'packaging' => 'required',
+            'delivery_term_id' => 'required',
+            'currency_id' => 'required',
+            'measure_id' => 'required',
         ];
 
         $this->validateForm($data, $rules);
@@ -276,7 +277,15 @@ class OfferForm extends ComponentBase
     }
 
     public function onStartToPay() {
-        $pay_type = Input::get('pay_type');
+        $data = input();
+
+        $rules = [
+            'pay_type' => 'required',
+        ];
+
+        $this->validateForm($data, $rules);
+
+        $pay_type = $data['pay_type'];
         if($pay_type == "bank") {
             return [
                 '#form-steps' => $this->renderPartial('@bank_transfer_pay')
@@ -399,6 +408,6 @@ class OfferForm extends ComponentBase
 
     public function onRun() {
         $this->countries = Country::all();
-        $this->categories = Category::select('id','name')->get();
+        $this->categories = Category::select('id','name','status')->where('status',1)->get();
     }
 } 

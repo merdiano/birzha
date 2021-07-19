@@ -48,7 +48,10 @@
             </table>
         </div>
     </div>
-    <form data-request="onStartToPay" class="basket_info">
+    <form data-request="onStartToPay" 
+        data-request-validate 
+        data-request-flash
+        class="basket_info">
         <div class="basket_info_title">
             Стоимость
         </div>
@@ -80,9 +83,10 @@
                 </div>
             </div>
             <div class="basket_info_select">
-                <label>Метод оплаты</label>
+                <label>Метод оплаты <span>*</span> <span data-validate-for="pay_type" style="color: red;"></span></label>
                 <div class="my-select">
                     <select class="category-select" name="pay_type">
+                        <option value="">Method</option>
                         <option value="bank">Bank transfer</option>
                         <option value="online">Online payment</option>
                     </select>
