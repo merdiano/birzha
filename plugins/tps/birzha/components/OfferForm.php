@@ -306,6 +306,7 @@ class OfferForm extends ComponentBase
         
         $newPayment = new Payment;
         $newPayment->user_id = \Auth::user()->id;
+        $newPayment->created_at = Carbon::now('Asia/Ashgabat');
         
         $draft_offers = \Auth::user()->offers()
             ->where('status','draft')
@@ -400,6 +401,7 @@ class OfferForm extends ComponentBase
         $newOffer->place = $data['place'];
         $newOffer->name = $attachedProduct->name;
         $newOffer->currency_id = $data['currency_id'];
+        $newOffer->created_at = Carbon::now('Asia/Ashgabat');
         $newOffer->ends_at = $data['ends_at'];
         $newOffer->save();
 
