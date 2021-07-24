@@ -1,6 +1,7 @@
 <?php namespace TPS\Birzha\Models;
 
 use Model;
+use RainLab\User\Models\User;
 
 /**
  * Model
@@ -29,7 +30,11 @@ class Product extends Model
         'status' => 'required',
         'name' => 'required',
         'slug' => 'required',
-        'images' => 'required'
+        'images' => 'required',
+        'quantity' => 'required',
+        'measure' => 'required',
+        'price' => 'required|numeric',
+        'currency' => 'required',
     ];
 
     public $customMessages = [
@@ -41,7 +46,13 @@ class Product extends Model
     ];
 
     public $belongsTo = [
-        'country' => ['TPS\Birzha\Models\Country']
+        'country' => ['TPS\Birzha\Models\Country'],
+        'measure'       => ['TPS\Birzha\Models\Measure','key' => 'measure_id'],
+        'currency'      => ['TPS\Birzha\Models\Currency'],
+        'payment_term'  => ['TPS\Birzha\Models\Term','key' => 'payment_term_id'],
+        'delivery_term' => ['TPS\Birzha\Models\Term','key' => 'delivery_term_id'],
+        'vendor'        => User::class,
+        'payment'       => ['TPS\Birzha\Models\Payment'],
     ];
 
     public $hasMany = [
@@ -55,6 +66,7 @@ class Product extends Model
     public $translatable = [
         ['name', 'index' => true],
         ['slug', 'index' => true],
+        'description',
     ];
 
     public function beforeCreate()

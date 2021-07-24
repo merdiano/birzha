@@ -9,7 +9,7 @@
     data-request-files
 >
     <input type="hidden" name="product_id" value="{{product.id}}">
-    <input type="hidden" name="product_exists" value="{{ product_exists }}">
+    <!-- <input type="hidden" name="product_exists" value="{{ product_exists }}"> -->
 
     <div class="post_input">
         <label>Единицы измерения <span>*</span> <span data-validate-for="measure_id" style="color: red;"></span></label>
@@ -117,11 +117,7 @@
         
         {% for i in 0..2 %}
         <div class="post_upload_item">
-            {% if product.images[i] %}
-            <div class="post_upload_img">
-                <img src="{{ product.images[i].thumb(277,150,{'mode':'crop'}) }}" alt="photo">
-            </div>
-            {% endif %}
+            
             <div class="post_input">
                 <label>Загрузить фото #{{i+1}} <span>*</span></label>
                 <div class="upload_group">
@@ -131,11 +127,7 @@
                             <span>Ничего не выбранo</span>
                         </label>
                         <input type="file" 
-                            {% if product.images[i] %}
-                                name="new_img[{{product.images[i].id}}]" 
-                            {% else %}
-                                name="new_img[-{{i}}]"
-                            {% endif %}
+                            name="new_img[{{i}}]" 
                             id="file-{{i}}" class="inputfile inputfile-1"
                             data-multiple-caption="{count} files selected" 
                         />

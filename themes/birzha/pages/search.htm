@@ -38,14 +38,14 @@ visitPageMessage = "Visit page"
                         </div>
                     </div>
                     <div class="item_photo">
-                        <img src="{{ result.model.product.images[0].thumb(308,180,{'mode':'crop'}) }}" alt="">
+                        <img src="{{ result.model.images[0].thumb(308,180,{'mode':'crop'}) }}" alt="">
                     </div>
                     <div class="item_group">
                         <div class="item_title">
-                            {{ result.model.product.name }}
+                            {{ result.model.name }}
                         </div>
                         <div class="item_sub_title">
-                            {{ result.model.product.name }}
+                            {{ result.model.name }}
                         </div>
                     </div>
                     <div class="item_group">
@@ -72,7 +72,7 @@ visitPageMessage = "Visit page"
                             {{ result.model.ends_at|date('d.m.Y') }}
                         </div>
                     </div>
-                    <a href="{{ 'offer'|page({ slug: result.model.product.slug, id: result.model.id }) }}" class="item_btn">
+                    <a href="{{ 'offer'|page({ slug: result.model.slug, id: result.model.id }) }}" class="item_btn">
                         {{ 'page.more'|_ }}
                     </a>
                 </div>

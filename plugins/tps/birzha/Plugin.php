@@ -85,26 +85,31 @@ class Plugin extends PluginBase
             
             if($locale == 'tm') {
                 // user enters product name
-                $products = Models\Product
+                $items = Models\Product
                     ::where('name', 'like', "%${query}%")
+                    ->where('status','approved')
+                    ->where('ends_at','>=',\DB::raw('curdate()'))->orderBy('created_at', 'desc')
                     ->get();
             } else {
                 $queryString = $query;
                 
                 // user enters product name
-                $products =  Models\Product::whereHas('translations', function ($query) use ($locale,$queryString) {
+                $items =  Models\Product::whereHas('translations', function ($query) use ($locale,$queryString) {
                     $query->where('locale', $locale)->where('attribute_data', 'like', "%${queryString}%");
-                })->get();
+                })
+                    ->where('status','approved')
+                    ->where('ends_at','>=',\DB::raw('curdate()'))->orderBy('created_at', 'desc')
+                    ->get();
             }
             
             
             // show all offers that have that product
-            $items = collect(new Offer);
-            foreach($products as $p) {
-                foreach($p->offers as $of) {
-                    $items->add($of);
-                }
-            }
+            // $items = collect(new Offer);
+            // foreach($products as $p) {
+            //     foreach($p->offers()->where('status','approved')->get() as $of) {
+            //         $items->add($of);
+            //     }
+            // }
 
             // Now build a results array
             $results = $items->map(function ($item) use ($query, $controller) {
@@ -120,8 +125,8 @@ class Plugin extends PluginBase
                 // }
 
                 return [
-                    'title'     => $item->product->name,
-                    'url'       => $controller->pageUrl('offer', ['slug' => $item->product->slug, 'id' => $item->id]),
+                    'title'     => $item->name,
+                    'url'       => $controller->pageUrl('offer', ['slug' => $item->slug, 'id' => $item->id]),
                     // 'thumb'     => optional($item->product->images)->first(), // Instance of System\Models\File
                     'relevance' => $relevance, // higher relevance results in a higher
                                             // position in the results listing

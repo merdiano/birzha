@@ -18,6 +18,9 @@ use Session;
 use DB;
 use Str;
 use ValidationException;
+use October\Rain\Network\Http;
+use October\Rain\Exception\AjaxException;
+use Carbon\Carbon;
 
 class OfferForm extends ComponentBase 
 {
@@ -30,6 +33,8 @@ class OfferForm extends ComponentBase
      * @var string A collection of countries in dropdown
      */
     public $countries;
+
+    
 
     public function componentDetails() {
         return [
@@ -90,47 +95,38 @@ class OfferForm extends ComponentBase
     }
 
     public function onSave() {
-        $product = null;
-        $flag_existed_product = null;
-        if(!Input::get('product_id')) {
-            $flag_existed_product = false;
-            $data = post();
+        $data = post();
 
-            $rules = [
-                'name_ru' => 'required',
-                'name_en' => 'required',
-                'name_tm' => 'required',
-                'category_id' => 'exists:tps_birzha_categories,id',
-                'mark' => 'required',
-                'manufacturer' => 'required',
-                'country_id' => 'exists:tps_birzha_countries,id'
-            ];
+        $rules = [
+            'name_ru' => 'required',
+            'name_en' => 'required',
+            'name_tm' => 'required',
+            'category_id' => 'exists:tps_birzha_categories,id',
+            'mark' => 'required',
+            'manufacturer' => 'required',
+            'country_id' => 'exists:tps_birzha_countries,id'
+        ];
 
-            $this->validateForm($data, $rules);
+        $this->validateForm($data, $rules);
+        
+        $category = Category::find(Input::get('category_id'));
             
-            $category = Category::find(Input::get('category_id'));
-                
-            $product = new Product;
-            $product->name = Input::get('name_tm');
-            // Sets a single translated attribute for a language
-            $product->setAttributeTranslated('name', Input::get('name_ru'), 'ru');
-            $product->setAttributeTranslated('name', Input::get('name_en'), 'en');
-            // Sets a single translated attribute for a language
-            $product->setAttributeTranslated('slug', Str::slug(Input::get('name_ru'),'-'), 'ru');
-            $product->setAttributeTranslated('slug', Str::slug(Input::get('name_en'),'-'), 'en');
+        $product = new Product;
+        $product->name = Input::get('name_tm');
+        // Sets a single translated attribute for a language
+        $product->setAttributeTranslated('name', Input::get('name_ru'), 'ru');
+        $product->setAttributeTranslated('name', Input::get('name_en'), 'en');
+        // Sets a single translated attribute for a language
+        $product->setAttributeTranslated('slug', Str::slug(Input::get('name_ru'),'-'), 'ru');
+        $product->setAttributeTranslated('slug', Str::slug(Input::get('name_en'),'-'), 'en');
 
-            $product->slug = Str::slug(Input::get('name_tm'),'-');
-            $product->status = 'new';
-            $product->mark = Input::get('mark');
-            $product->manufacturer = Input::get('manufacturer');
-            $product->country_id = Input::get('country_id');
+        $product->slug = Str::slug(Input::get('name_tm'),'-');
+        $product->status = 'draft';
+        $product->mark = Input::get('mark');
+        $product->manufacturer = Input::get('manufacturer');
+        $product->country_id = Input::get('country_id');
 
-            $category->products()->save($product);
-        } else {
-            $product = Product::find(Input::get('product_id'));
-            
-            $flag_existed_product = true;
-        }
+        $category->products()->save($product);
 
         // go to next step - next form
         $this->page['measures'] = Measure::all();
@@ -138,7 +134,6 @@ class OfferForm extends ComponentBase
         $this->page['deliveryTerms'] = Term::where('type','delivery')->get();
         $this->page['currencies'] = Currency::all();
         $this->page['product'] = $product;
-        $this->page['product_exists'] = $flag_existed_product;
 
         return [
             '#form-steps' => $this->renderPartial('@second_step_form')
@@ -148,9 +143,6 @@ class OfferForm extends ComponentBase
 
     public function onOfferFill() {
         $data = input();
-
-        $existedProductButNewPhotosAdded = $data['product_exists'] && isset($data['new_img']);
-        $existedProductButNoPhotosAdded = $data['product_exists'] && !isset($data['new_img']);
 
         $rules = [
             'quantity' => 'required|numeric',
@@ -165,6 +157,7 @@ class OfferForm extends ComponentBase
             'delivery_term_id' => 'required',
             'currency_id' => 'required',
             'measure_id' => 'required',
+            'new_img' => 'required'
         ];
 
         $this->validateForm($data, $rules);
@@ -183,64 +176,15 @@ class OfferForm extends ComponentBase
 
         $attachedProduct = Product::find($data['product_id']);
 
-        $newOffer = $this->createNewOffer($data,$attachedProduct);
+        $attachedProduct = $this->fillProduct($data,$attachedProduct);
 
-        if($existedProductButNoPhotosAdded){
-            // bind product's images to new offer
-            DB::table('system_files')->insert($this->makeInsertionArray($attachedProduct,$newOffer));
-        } 
-        elseif($existedProductButNewPhotosAdded) {
-            $replacedImagesIds = array();
-
-            // images: add new images to new offer
-            foreach($data['new_img'] as $key => $img) {
-                $replacedImagesIds[] = $key;
-
-                $newOffer->images = $img;
-
-                $newOffer->save();
-            }
-            
-            $insertionArray = array();
-            foreach($attachedProduct->images as $img) {
-                
-                if(!in_array($img->id, $replacedImagesIds)) {
-                    // make insertion array
-                    $insertionArray[] = [
-                        'disk_name' => $img->disk_name,
-                        'file_name' => $img->file_name,
-                        'file_size' => $img->file_size,
-                        'content_type' => $img->content_type,
-                        'field' => $img->field,
-                        'attachment_id' => $newOffer->id,
-                        'attachment_type' => 'TPS\Birzha\Models\Offer',
-                        'is_public' => $img->is_public
-                    ];           
-                }
-            }
-
-            // db table add not replaced img refs as above
-            DB::table('system_files')->insert($insertionArray);
-        } 
-        else { //completely new product 
-            // separate validation for image requirement
-            $rules = [
-                'new_img' => 'required'
-            ];
-            $this->validateForm($data, $rules);
-
-            foreach($data['new_img'] as $key => $img) {
-                // add images to new offer
-                $newOffer->images = $img;
-                $newOffer->save();
-
-                // add images to completely new product
-                $attachedProduct->images = $img;
-                $attachedProduct->save();
-            }
+        foreach($data['new_img'] as $key => $img) {
+            // add images to completely new product
+            $attachedProduct->images = $img;
+            $attachedProduct->save();
         }
 
-        $draft_offers = \Auth::user()->offers()
+        $draft_offers = \Auth::user()->products()
             ->where('status','draft')
             ->orderBy('created_at', 'desc')->get();
 
@@ -256,13 +200,13 @@ class OfferForm extends ComponentBase
 
     public function onDeleteOfferFromBasket() {
         // delete offer from basket, from db
-        $offer = Offer::find(Input::get('offer_id'));
+        $offer = Product::find(Input::get('offer_id'));
         $offer->images()->delete();
         $offer->translations()->delete();
         $offer->delete();
 
         // then display the rest of offers
-        $draft_offers = \Auth::user()->offers()
+        $draft_offers = \Auth::user()->products()
             ->where('status','draft')
             ->orderBy('created_at', 'desc')->get();
 
@@ -291,9 +235,16 @@ class OfferForm extends ComponentBase
                 '#form-steps' => $this->renderPartial('@bank_transfer_pay')
             ];
         } else {
-            // ...
+            $url = $this->payOnline();
+
+            $this->page['url'] = $url;
+            return [
+                '#form-steps' => $this->renderPartial('@redirect')
+            ];
         }
     }
+
+    
 
     public function onPayByBankTransfer() {
         $data = input();
@@ -303,17 +254,25 @@ class OfferForm extends ComponentBase
         ];
 
         $this->validateForm($data, $rules);
-        
+
+        $this->createNewPayment(Input::file('bank_file'), 'bank');
+
+        return [
+            '#form-steps' => $this->renderPartial('@message')
+        ];
+    }
+
+    protected function createNewPayment($bankFile, $payMethod) {
         $newPayment = new Payment;
         $newPayment->user_id = \Auth::user()->id;
         $newPayment->created_at = Carbon::now('Asia/Ashgabat');
         
-        $draft_offers = \Auth::user()->offers()
+        $draft_offers = \Auth::user()->products()
             ->where('status','draft')
-            ->orderBy('created_at', 'desc')->get();
+            ->get();
         $newPayment->amount = count($draft_offers) * Settings::getValue('fee');
         
-        $newPayment->payment_type = "bank";
+        $newPayment->payment_type = $payMethod;
         $newPayment->status = "new";
         $newPayment->save();
         $newPaymentId = $newPayment->id;
@@ -327,12 +286,12 @@ class OfferForm extends ComponentBase
         });
 
         // attach file to payment
-        $newPayment->bank_file = Input::file('bank_file');
-        $newPayment->save();
+        if($bankFile) {
+            $newPayment->bank_file = $bankFile;
+            $newPayment->save();
+        }
 
-        return [
-            '#form-steps' => $this->renderPartial('@message')
-        ];
+        return $newPayment;
     }
 
     protected function validateFileType($data, $rules) {
@@ -384,32 +343,36 @@ class OfferForm extends ComponentBase
         return $insertionArray;
     }
 
-    protected function createNewOffer($data,$attachedProduct) {
-        $newOffer = new Offer;
-        $newOffer->product_id = $attachedProduct->id;
-        $newOffer->vendor_id = \Auth::user()->id;
-        $newOffer->description = $data['description_tm'];
+    protected function fillProduct($data,$attachedProduct) {
+        // $newOffer = new Offer;
+        // $newOffer->product_id = $attachedProduct->id;
+        
+        $attachedProduct->vendor_id = \Auth::user()->id;
+        $attachedProduct->description = $data['description_tm'];
         // Sets a single translated attribute for a language
-        $newOffer->setAttributeTranslated('description', $data['description_ru'], 'ru');
-        $newOffer->setAttributeTranslated('description', $data['description_en'], 'en');
-        $newOffer->quantity = $data['quantity'];
-        $newOffer->price = $data['price'];
-        $newOffer->measure_id = $data['measure_id'];
-        $newOffer->payment_term_id = $data['payment_term_id'];
-        $newOffer->delivery_term_id = $data['delivery_term_id'];
-        $newOffer->packaging = $data['packaging'];
-        $newOffer->place = $data['place'];
-        $newOffer->name = $attachedProduct->name;
-        $newOffer->currency_id = $data['currency_id'];
-        $newOffer->created_at = Carbon::now('Asia/Ashgabat');
-        $newOffer->ends_at = $data['ends_at'];
-        $newOffer->save();
+        $attachedProduct->setAttributeTranslated('description', $data['description_ru'], 'ru');
+        $attachedProduct->setAttributeTranslated('description', $data['description_en'], 'en');
+        $attachedProduct->quantity = $data['quantity'];
+        $attachedProduct->price = $data['price'];
+        $attachedProduct->measure_id = $data['measure_id'];
+        $attachedProduct->payment_term_id = $data['payment_term_id'];
+        $attachedProduct->delivery_term_id = $data['delivery_term_id'];
+        $attachedProduct->packaging = $data['packaging'];
+        $attachedProduct->place = $data['place'];
+        // $attachedProduct->name = $attachedProduct->name;
+        $attachedProduct->currency_id = $data['currency_id'];
+        $attachedProduct->created_at = Carbon::now('Asia/Ashgabat');
+        $attachedProduct->ends_at = $data['ends_at'];
+        $attachedProduct->save();
 
-        return $newOffer;
+        return $attachedProduct;
     }
 
     public function onRun() {
         $this->countries = Country::all();
         $this->categories = Category::select('id','name','status')->where('status',1)->get();
     }
+
+    // payment
+    
 } 

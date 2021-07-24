@@ -15,14 +15,14 @@
             № {{offer.id}}
         </div>
         <div class="item_photo">
-            <img src="{{ offer.images[0] ? offer.images[0].thumb(308,180,{'mode':'crop'}) : offer.product.images[0].thumb(308,180,{'mode':'crop'}) }}" alt="">
+            <img src="{{ offer.images[0].thumb(308,180,{'mode':'crop'}) }}" alt="">
         </div>
         <div class="item_group">
             <div class="item_title">
-                {{ offer.product.name }}
+                {{ offer.name }}
             </div>
             <div class="item_sub_title">
-                {{ offer.product.name }}
+                {{ offer.name }}
             </div>
         </div>
         <div class="item_group">
@@ -49,7 +49,7 @@
                 {{ offer.ends_at|date('d.m.Y') }}
             </div>
         </div>
-        <a href="{{ 'offer'|page({ slug: offer.product.slug, id: offer.id }) }}" class="item_btn">
+        <a href="{{ 'offer'|page({ slug: offer.slug, id: offer.id }) }}" class="item_btn">
             {{ 'page.more'|_ }}
         </a>
     </div>

@@ -1,7 +1,7 @@
 <?php namespace TPS\Birzha\Components;
 
 use Cms\Classes\ComponentBase;
-use TPS\Birzha\Models\Offer;
+// use TPS\Birzha\Models\Offer;
 use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Product;
 use Session;
@@ -72,21 +72,21 @@ class Offers extends ComponentBase
         $productSlug = $this->property('productSlug');
         $offerId = $this->property('offerId');
 
-        $query = Offer::where('status', 'approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
+        $query = Product::where('status', 'approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
 
         if($cSlug != '') { //fetch offers by the category of the product
             $category = Category::transWhere('slug', $cSlug, Session::get('rainlab.translate.locale'))->first();
             if($category) {
                 $offersIds = array();
 
-                $productsOfOneCategory = $category->products; //categories have many products
+                $query = $category->products()->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage); //categories have many products
 
-                foreach($productsOfOneCategory as $p) {
-                    foreach($p->offers as $of) { //but only one product can have many offers and one offer can have just one product
-                        $offersIds[] = $of->id;
-                    }
-                }
-                $query = Offer::whereIn('id',$offersIds)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
+                // foreach($productsOfOneCategory as $p) {
+                //     foreach($p->offers as $of) { //but only one product can have many offers and one offer can have just one product
+                //         $offersIds[] = $of->id;
+                //     }
+                // }
+                // $query = Offer::whereIn('id',$offersIds)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
             } else {
                 $query = null;
             }
@@ -95,7 +95,7 @@ class Offers extends ComponentBase
         if($productSlug != '' && $offerId != '') { // fetch offers with similar products
             $product = Product::transWhere('slug', $productSlug, Session::get('rainlab.translate.locale'))->first();
             if($product) {
-                $query = Offer::where('product_id',$product->id)->where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
+                $query = Product::where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
             } else {
                 $query = null;
             }

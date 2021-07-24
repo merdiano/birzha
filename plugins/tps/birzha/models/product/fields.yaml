@@ -27,10 +27,72 @@ fields:
         span: auto
         type: text
     country:
-        label: 'Manufactured country'
+        label: 'Maufactured country'
         nameFrom: name
         descriptionFrom: description
         span: auto
+        type: relation
+    quantity:
+        label: Quantity
+        span: auto
+        type: number
+    ends_at:
+        label: 'Ends at'
+        mode: datetime
+        span: auto
+        type: datepicker
+    measure:
+        label: Measure
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    price:
+        label: Number
+        span: auto
+        type: number
+    description:
+        label: Description
+        size: ''
+        mode: tab
+        span: auto
+        type: markdown
+    currency:
+        label: Currency
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    payment_term:
+        label: 'Payment term'
+        nameFrom: name
+        descriptionFrom: description
+        scope: payment
+        span: auto
+        type: relation
+    delivery_term:
+        label: 'Delivery term'
+        nameFrom: name
+        descriptionFrom: description
+        scope: delivery
+        span: auto
+        type: relation
+    place:
+        label: Place
+        span: auto
+        type: text
+    vendor:
+        label: Seller
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    payment:
+        label: 'Payment ID'
+        nameFrom: id
+        descriptionFrom: description
+        span: auto
+        readOnly: 1
         type: relation
     images:
         label: Images
@@ -43,6 +105,13 @@ fields:
             extension: auto
         span: auto
         type: fileupload
+    packaging:
+        label: Packaging
+        options:
+            'no': 'no'
+            'yes': 'yes'
+        span: auto
+        type: balloon-selector
 tabs:
     fields:
         categories:

@@ -1,7 +1,7 @@
 <?php namespace TPS\Birzha\Components;
 
 use Cms\Classes\ComponentBase;
-use TPS\Birzha\Models\Offer;
+use TPS\Birzha\Models\Product;
 
 class Singleoffer extends ComponentBase
 {
@@ -38,7 +38,7 @@ class Singleoffer extends ComponentBase
     protected function loadOffer() {
         $id = $this->property('offerId');
 
-        return Offer::find($id);
+        return Product::find($id);
     }
 
     public $offer;

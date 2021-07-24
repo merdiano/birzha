@@ -10,23 +10,11 @@
                     <img src="{{ image.thumb(575,290,{'mode':'crop'}) }}" alt="">
                 </div>
                 {% endfor %}
-            {% else %}
-                {% for image in offer.product.images %}
-                <div class="detail_photo">
-                    <img src="{{ image.thumb(575,290,{'mode':'crop'}) }}" alt="">
-                </div>
-                {% endfor %}
             {% endif %}
         </div>
         <div class="detail_for_navs">
             {% if offer.images[0] %}
                 {% for image in offer.images %}
-                <div class="detail_photo_nav">
-                    <img src="{{ image.thumb(98,60,{'mode':'crop'}) }}" alt="">
-                </div>
-                {% endfor %}
-            {% else %}
-                {% for image in offer.product.images %}
                 <div class="detail_photo_nav">
                     <img src="{{ image.thumb(98,60,{'mode':'crop'}) }}" alt="">
                 </div>
@@ -37,7 +25,7 @@
     <div class="detail_info">
         <div class="detail_about">
             <div class="detail_title">
-                {{offer.product.name}}
+                {{offer.name}}
             </div>
             <div class="detail_row">
                 <div class="detail_name">
@@ -78,7 +66,7 @@
                     {{'page.prod_mark'|_}}:
                 </div>
                 <div class="detail_value">
-                    {{offer.product.mark}}
+                    {{offer.mark}}
                 </div>
             </div>
             <div class="detail_row">
@@ -86,7 +74,7 @@
                     {{'page.prod_vendor'|_}}:
                 </div>
                 <div class="detail_value">
-                    ГК "Туркменхимия"
+                    {{offer.manufacturer}}
                 </div>
             </div>
             <div class="detail_row">
@@ -94,7 +82,7 @@
                     {{'page.prod_vendor_country'|_}} :
                 </div>
                 <div class="detail_value">
-                    Туркменистан
+                    {{offer.country.name}}
                 </div>
             </div>
             <div class="detail_row">
