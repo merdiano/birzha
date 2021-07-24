@@ -7,3 +7,6 @@ Route::namespace('TPS\Birzha\Controllers')->group(function () {
         Route::get('version', 'Settings@version')->name('version');
     });
 });
+
+
+// Route::get('payment-result', ['as'=>'paymentReturn','uses'=>'...@checkPayment'] );

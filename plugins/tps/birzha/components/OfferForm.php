@@ -34,7 +34,11 @@ class OfferForm extends ComponentBase
      */
     public $countries;
 
-    
+    const REGISTRATION_URI = 'register.do';
+
+    const STATUS_URI = 'getOrderStatus.do';
+
+    const API_URL = 'https://mpi.gov.tm/payment/rest/';
 
     public function componentDetails() {
         return [
@@ -244,7 +248,26 @@ class OfferForm extends ComponentBase
         }
     }
 
-    
+    protected function payOnline() {
+        $payment = $this->createNewPayment(false, 'online');
+        
+        $response = $this->registerOrder($payment);
+
+        $result = json_decode($response->body,true);
+
+        if($result['errorCode'] == 0){
+            $payment->order_id = $result['orderId'];
+
+            $payment->save();
+
+            return $result['formUrl'];
+        }
+        else{
+            throw new AjaxException(
+                $result
+            );
+        }
+    }
 
     public function onPayByBankTransfer() {
         $data = input();
@@ -374,5 +397,31 @@ class OfferForm extends ComponentBase
     }
 
     // payment
-    
+    protected function registerOrder($payment) {
+        $client = self::getClient(self::REGISTRATION_URI);
+
+        $url = $this->controller->pageUrl('bank_result.htm', ['payment_id' => $payment->id]);
+        
+        $client->data([
+            'amount'      => $payment->amount * 100,//multiply by 100 to obtain tenge
+            'currency' => 934,
+            'description' => 'Kart üçin döwlet pajy.',
+            'orderNumber'     => strtoupper(str_random(5)) . date('jn'),
+
+            'failUrl'     => $url . '?status=success',
+            'returnUrl' => $url . '?status=failed',
+
+        ]);
+
+        $client->setOption(CURLOPT_POSTFIELDS,$client->getRequestData());
+//        dd($client);
+        return $client->send();
+    }
+
+    private static function getClient($url){
+        return Http::make(self::API_URL.$url, Http::METHOD_POST)->data([
+                'userName' => Settings::getValue('api_login'),
+                'password' => Settings::getValue('api_password'),
+        ])->timeout(3600);
+    }
 } 

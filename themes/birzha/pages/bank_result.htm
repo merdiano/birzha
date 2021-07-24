@@ -1,0 +1,17 @@
+title = "bank_result"
+url = "/bank_result/:payment_id"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeTitle[en] = "bank_result"
+localeTitle[ru] = "bank_result"
+localeUrl[en] = "/bank_result/:payment_id/:is_payment_cancelled/:is_payment_successful"
+localeUrl[ru] = "/bank_result/:payment_id/:is_payment_cancelled/:is_payment_successful"
+
+[paymentapi]
+payment_id = "{{ :payment_id }}"
+is_payment_cancelled = "{{ :is_payment_cancelled }}"
+is_payment_successful = "{{ :is_payment_successful }}"
+==
+{% component 'paymentapi' %}
