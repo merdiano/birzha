@@ -1,12 +1,18 @@
 <section class="thanks">
     <div class="auto_container">
         <div class="thanks_wrap">
+            {% if err_message is defined %}
+                <div class="thanks_text">
+                    {{err_message}}
+                </div>
+            {% else %}
             <div class="thanks_title">
                 Спасибо за оставленный вами запрос
             </div>
             <div class="thanks_text">
                 После проверки нашим Админом ваш лот будет размещен на нашем сайте!
             </div>
+            {% endif %}
         </div>
     </div>
 </section>

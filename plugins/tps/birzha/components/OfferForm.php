@@ -77,27 +77,6 @@ class OfferForm extends ComponentBase
         ];
     }
 
-    public function onChooseSuggestion() {
-        $product = Product::with(['categories:id', 'country:id'])->find(Input::get('product_id'));
-
-        $product_en = DB::table('rainlab_translate_attributes')
-            ->where('model_id',$product->id)
-            ->where('model_type', 'TPS\Birzha\Models\Product')
-            ->where('locale','en')->first();
-            
-        $product_ru = DB::table('rainlab_translate_attributes')
-            ->where('model_id',$product->id)
-            ->where('model_type', 'TPS\Birzha\Models\Product')
-            ->where('locale','ru')->first();
-
-
-        return [
-            'product' => $product,
-            'product_en_name' => json_decode($product_en->attribute_data)->name,
-            'product_ru_name' => json_decode($product_ru->attribute_data)->name
-        ];
-    }
-
     public function onSave() {
         $data = post();
 
@@ -240,6 +219,12 @@ class OfferForm extends ComponentBase
             ];
         } else {
             $url = $this->payOnline();
+            if(!$url) {
+                $this->page['err_message'] = 'Не удается подключиться к сервисам банка. Попробуйте позже';
+                return [
+                    '#form-steps' => $this->renderPartial('@message')
+                ];
+            }
 
             $this->page['url'] = $url;
             return [
@@ -263,9 +248,11 @@ class OfferForm extends ComponentBase
             return $result['formUrl'];
         }
         else{
-            throw new AjaxException(
-                $result
-            );
+            return false;
+            // dd($result['formUrl']);
+            // throw new AjaxException(
+            //     $result
+            // );
         }
     }
 
@@ -414,7 +401,7 @@ class OfferForm extends ComponentBase
         ]);
 
         $client->setOption(CURLOPT_POSTFIELDS,$client->getRequestData());
-//        dd($client);
+    //    dd($client);
         return $client->send();
     }
 
@@ -422,6 +409,6 @@ class OfferForm extends ComponentBase
         return Http::make(self::API_URL.$url, Http::METHOD_POST)->data([
                 'userName' => Settings::getValue('api_login'),
                 'password' => Settings::getValue('api_password'),
-        ])->timeout(3600);
+        ])->timeout(120);
     }
 } 
