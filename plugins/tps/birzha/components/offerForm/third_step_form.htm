@@ -2,9 +2,17 @@
     Добавить объявление (Step 3)
 </div>
 
+
+
 <form action="#" class="post_form" enctype="multipart/form-data" 
     data-request="onPublish"
+    data-request-validate
 >
+    <!-- сообщение пополните баланс -->
+    <div class="alert alert-danger" data-validate-error>
+        <p data-message style="color: red;"></p> <br>
+    </div>
+
     <input type="hidden" name="product_id" value="{{product.id}}">
 
     

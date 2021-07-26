@@ -147,6 +147,7 @@ class OfferForm extends ComponentBase
         $user = \Auth::user();
         if($user->balance - Settings::getValue('fee') < 0) {
             // ... message about not enough money
+            throw new ValidationException(['money' => 'Пополните баланс']);
         } else {
             $user->balance = $user->balance - Settings::getValue('fee');
             $user->save();
