@@ -87,13 +87,11 @@ fields:
         descriptionFrom: description
         span: auto
         type: relation
-    payment:
-        label: 'Payment ID'
-        nameFrom: id
-        descriptionFrom: description
+    payed_fee_for_publ:
+        label: 'Payed for publication'
         span: auto
-        readOnly: 1
-        type: relation
+        disabled: 1
+        type: number
     images:
         label: Images
         mode: image

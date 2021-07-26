@@ -2,6 +2,8 @@
 
 use Model;
 use RainLab\User\Models\User;
+use Carbon\Carbon;
+use TPS\Birzha\Models\Settings;
 
 /**
  * Model
@@ -81,6 +83,20 @@ class Product extends Model
             $this->rules = [];
         }
         
+    }
+
+    public function beforeUpdate()
+    {
+        if($this->status == 'approved' && !$this->ends_at) {
+            $createdAt = Carbon::parse($this->created_at);
+            $this->ends_at = $createdAt->addDays(Settings::getValue('duration'));
+        }
+        if($this->status == 'denied') {
+            // give fee back to the user, because his post has been denied
+            $user = User::find($this->vendor->id);
+            $user->balance = $user->balance + $this->payed_fee_for_publ;
+            $user->save();
+        }
     }
 
     public static function getMenuTypeInfo($type){
