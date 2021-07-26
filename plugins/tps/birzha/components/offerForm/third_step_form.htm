@@ -1,0 +1,30 @@
+<div class="contact_title">
+    Добавить объявление (Step 3)
+</div>
+
+<form action="#" class="post_form" enctype="multipart/form-data" 
+    data-request="onPublish"
+>
+    <input type="hidden" name="product_id" value="{{product.id}}">
+
+    
+    <div class="thanks_title">
+        За публикацию с вашего баланса будет снято {{fee}} TMT
+    </div>
+
+    <div class="btn_bg">
+        <button class="post_btn" type="submit">
+            Опубликовать
+        </button>
+    </div>
+
+    <div class="add_post_text">
+        Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+    </div>
+
+</form>
+
+
+
+<script src="{{ 'assets/js/custom-file-input.js'|theme }}"></script>
+<script src="{{ 'assets/js/scrollTopOnSteps.js'|theme }}"></script>

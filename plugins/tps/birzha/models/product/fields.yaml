@@ -48,7 +48,7 @@ fields:
         span: auto
         type: relation
     price:
-        label: Number
+        label: Price
         span: auto
         type: number
     description:
