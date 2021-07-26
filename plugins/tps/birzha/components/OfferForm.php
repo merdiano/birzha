@@ -73,6 +73,8 @@ class OfferForm extends ComponentBase
         $product->mark = $data['mark'];
         $product->manufacturer = $data['manufacturer'];
         $product->country_id = $data['country_id'];
+        $product->created_at = Carbon::now('Asia/Ashgabat');
+        $product->vendor_id = \Auth::user()->id;
 
         $category->products()->save($product);
 
@@ -132,12 +134,6 @@ class OfferForm extends ComponentBase
             $attachedProduct->save();
         }
 
-        // $draft_offers = \Auth::user()->products()
-        //     ->where('status','draft')
-        //     ->orderBy('created_at', 'desc')->get();
-
-        // $this->page['draft_offers'] = $draft_offers;
-        // $this->page['draft_offers_count'] = count($draft_offers);
         $this->page['fee'] = Settings::getValue('fee');
         $this->page['product'] = $attachedProduct;
 
@@ -156,6 +152,9 @@ class OfferForm extends ComponentBase
             $user->save();
 
             $product = Product::find(Input::get('product_id'));
+            //save how much user payed because fee can be changed by admin tomorrow
+            // if post is denied we get back payed fee, not admin's set fee
+            $product->payed_fee_for_publ = Settings::getValue('fee');
             $product->status = 'new';
             $product->save();
 
@@ -190,7 +189,6 @@ class OfferForm extends ComponentBase
     }
 
     protected function fillProduct($data,$attachedProduct) {
-        $attachedProduct->vendor_id = \Auth::user()->id;
         $attachedProduct->description = $data['description_tm'];
         // Sets a single translated attribute for a language
         $attachedProduct->setAttributeTranslated('description', $data['description_ru'], 'ru');
@@ -204,7 +202,6 @@ class OfferForm extends ComponentBase
         $attachedProduct->packaging = $data['packaging'];
         $attachedProduct->place = $data['place'];
         $attachedProduct->currency_id = $data['currency_id'];
-        $attachedProduct->created_at = Carbon::now('Asia/Ashgabat');
         // $attachedProduct->ends_at = $data['ends_at'];
         $attachedProduct->save();
 

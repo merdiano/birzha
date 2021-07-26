@@ -55,10 +55,6 @@ class Product extends Model
         'payment'       => ['TPS\Birzha\Models\Payment'],
     ];
 
-    public $hasMany = [
-        'offers' => 'TPS\Birzha\Models\Offer'
-    ];
-
     public $attachMany = [
         'images' => 'System\Models\File'
     ];

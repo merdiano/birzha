@@ -206,3 +206,9 @@
 1.0.70:
     - 'Updated table tps_birzha_payments'
     - builder_table_update_tps_birzha_payments_4.php
+1.0.71:
+    - 'Created table tps_birzha_publications_history'
+    - builder_table_create_tps_birzha_publications_history.php
+1.0.72:
+    - 'Updated table tps_birzha_products'
+    - builder_table_update_tps_birzha_products_17.php
