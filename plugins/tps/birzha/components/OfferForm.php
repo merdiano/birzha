@@ -136,15 +136,19 @@ class OfferForm extends ComponentBase
             'description_tm' => 'required',
             'description_en' => 'required',
             'description_ru' => 'required',
-            // 'ends_at' => 'required|date',
             'payment_term_id' => 'required',
             'packaging' => 'required',
             'delivery_term_id' => 'required',
             'currency_id' => 'required',
             'measure_id' => 'required',
-            'new_img' => 'required'
+            // 'new_img' => 'required'
         ];
         $this->validateForm($data, $rules);
+
+        // validate if no old images and new images
+        if(!isset($data['new_img']) && !isset($data['old_img'])) {
+            throw new ValidationException(['no_images' => 'Хотя бы 1 фото должно быть']);
+        }
 
         // seaparate validation for file type
         $rules = [
@@ -162,10 +166,11 @@ class OfferForm extends ComponentBase
 
         $attachedProduct = $this->fillProduct($data,$attachedProduct);
     
-        // add images to completely new product
-        foreach($data['new_img'] as $key => $img) {
-            $attachedProduct->images = $img;
-            $attachedProduct->save();
+        if(isset($data['new_img'])) {
+            foreach($data['new_img'] as $key => $img) {
+                $attachedProduct->images = $img;
+                $attachedProduct->save();
+            }
         }
 
         $this->page['fee'] = Settings::getValue('fee');
@@ -197,6 +202,24 @@ class OfferForm extends ComponentBase
                 '#form-steps' => $this->renderPartial('@message')
             ];
         }
+    }
+
+    // after deleting a photo go the second form_step
+    public function onImageDelete() {
+        // dd(Input::get('product_image_id'));
+        $product = Product::find(Input::get('being_edited_product_id'));
+        
+        $product->images()->find(Input::get('product_image_id'))->delete();
+
+        $this->page['measures'] = Measure::all();
+        $this->page['paymentTerms'] = Term::where('type','payment')->get();
+        $this->page['deliveryTerms'] = Term::where('type','delivery')->get();
+        $this->page['currencies'] = Currency::all();
+        $this->page['product'] = $product;
+
+        return [
+            '#form-steps' => $this->renderPartial('@second_step_form')
+        ];
     }
 
     protected function validateFileType($data, $rules) {

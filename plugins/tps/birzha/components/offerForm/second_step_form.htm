@@ -130,7 +130,7 @@
         <span data-validate-for="description_tm" style="color: red;"></span>
     </div>
 
-    <span data-validate-for="new_img" style="color: red;"></span>
+    <span data-validate-for="no_images" style="color: red;"></span>
     <span data-validate-for="new_img_size_error" style="color: red;"></span>
     <span data-validate-for="new_img_type_error" style="color: red;"></span>
     <div class="post_upload_box">
@@ -140,11 +140,12 @@
             {% if product.images[i] %}
             <div class="post_upload_img">
                 <img src="{{ product.images[i].thumb(347,150,{'mode':'crop'}) }}" alt="photo">
-                <input type="hidden" name="old_imgs[{{i}}]">
+                <input type="hidden" name="old_img[{{i}}]">
             </div>
             {% endif %}
 
             <div class="post_input">
+                {% if not product.images[i] %}
                 <label>Загрузить фото #{{i+1}} <span>*</span></label>
                 <div class="upload_group">
                     <label for="file-{{i}}">Загрузить файл</label>
@@ -159,10 +160,13 @@
                         />
                     </div>
                 </div>
-                {% if product.images[i] %}
-                <div class="select_delete" onclick="removeFunction()">
+                {% else %}
+                <a href="#" 
+                    data-request="onImageDelete"
+                    data-request-data="being_edited_product_id: {{product.id}}, product_image_id: {{product.images[i].id}}"
+                    class="select_delete delete-btn">
                     <img src="{{'assets/images/svg/red-close.svg'|theme}}" alt="">
-                </div>
+                </a>
                 {% endif %}
             </div>
         </div>
@@ -186,3 +190,4 @@
 
 <script src="{{ 'assets/js/custom-file-input.js'|theme }}"></script>
 <script src="{{ 'assets/js/scrollTopOnSteps.js'|theme }}"></script>
+
