@@ -33,11 +33,32 @@ class OfferForm extends ComponentBase
      * @var string A collection of countries in dropdown
      */
     public $countries;
+    
+    /**
+     * @var string A string with product id
+     */
+    public $productIdOption;
+    
+    /**
+     * @var string A product which is being edited
+     */
+    public $productForEditing;
 
     public function componentDetails() {
         return [
             'name' => 'Offer Form',
             'description' => 'Add offer'
+        ];
+    }
+
+    public function defineProperties() {
+        return [
+            'productId' => [
+                'title' => 'Edit post :id',
+                'description' => 'Edit post :id',
+                'type' => 'string',
+                'default' => ''
+            ],
         ];
     }
 
@@ -58,8 +79,13 @@ class OfferForm extends ComponentBase
         $this->validateForm($data, $rules);
         
         $category = Category::find($data['category_id']);
-            
-        $product = new Product;
+          
+        if(isset($data['productForEditing'])) {
+            $product = Product::find($data['productForEditing']);
+        } else {
+            $product = new Product;
+        }
+        
         $product->name = $data['name_tm'];
         // Sets a single translated attribute for a language
         $product->setAttributeTranslated('name', $data['name_ru'], 'ru');
@@ -73,10 +99,18 @@ class OfferForm extends ComponentBase
         $product->mark = $data['mark'];
         $product->manufacturer = $data['manufacturer'];
         $product->country_id = $data['country_id'];
-        $product->created_at = Carbon::now('Asia/Ashgabat');
+        
+        
+        
         $product->vendor_id = \Auth::user()->id;
 
-        $category->products()->save($product);
+        
+        if(!isset($data['productForEditing'])) {
+            $product->created_at = Carbon::now('Asia/Ashgabat');
+            $category->products()->save($product);
+        } else {
+            $product->save();
+        }
 
         // go to next step - next form
         $this->page['measures'] = Measure::all();
@@ -212,5 +246,15 @@ class OfferForm extends ComponentBase
     public function onRun() {
         $this->countries = Country::all();
         $this->categories = Category::select('id','name','status')->where('status',1)->get();
+        
+        $this->productIdOption = $this->property('productId');
+
+        // form will be filled with product's info if we have productIdOption
+        if($this->productIdOption) {
+            $this->productForEditing = Product::find($this->productIdOption);
+            // dd($this->productForEditing->categories->first()->id);
+        } else {
+            $this->productForEditing = null;
+        }
     }
 } 

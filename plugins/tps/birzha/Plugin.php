@@ -176,7 +176,8 @@ class Plugin extends PluginBase
             'TPS\Birzha\Components\Singleoffer' => 'singleoffer',
             'TPS\Birzha\Components\OfferForm' => 'offerform',
             'TPS\Birzha\Components\Messages' => 'messages',
-            'TPS\Birzha\Components\PaymentApi' => 'paymentapi'
+            'TPS\Birzha\Components\PaymentApi' => 'paymentapi',
+            'TPS\Birzha\Components\MyOffers' => 'myOffers',
         ];
     }
 

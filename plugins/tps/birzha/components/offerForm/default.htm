@@ -1,6 +1,7 @@
 
 {% set categories = __SELF__.categories %}
 {% set countries = __SELF__.countries %}
+{% set productForEditing = __SELF__.productForEditing %}
 
 <!-- Add post ============================================================= -->
 <section class="post">
@@ -17,36 +18,58 @@
                 data-request-flash
                 class="post_form post_form-2 first-step-form">
                 
-                <!-- <input type="hidden" name="product_id" data-belongsto="product"> -->
+                {% if productForEditing %}
+                    <input type="hidden" name="productForEditing" value="{{productForEditing.id}}">
+                {% endif %}
                 
                 <!-- ru name -->
                 <div class="post_input">
                     <label>Наименование лота (RU) <span>*</span></label>
-                    <input type="text" name="name_ru" data-belongsto="product" placeholder="Пример: Гидравлическое масло">
+                    <input type="text" name="name_ru" data-belongsto="product" placeholder="Пример: Гидравлическое масло"
+                        {% if productForEditing %}
+                         value="{{ productForEditing.lang('ru').name }}"
+                        {% endif %}
+                    >
                     <span data-validate-for="name_ru" style="color: red;"></span>
                 </div>
                 <!-- en name -->
                 <div class="post_input">
                     <label>Наименование лота (EN) <span>*</span></label>
-                    <input type="text" name="name_en" data-belongsto="product" placeholder="Пример: Гидравлическое масло">
+                    <input type="text" name="name_en" data-belongsto="product" placeholder="Пример: Гидравлическое масло"
+                        {% if productForEditing %}
+                         value="{{ productForEditing.lang('en').name }}"
+                        {% endif %}
+                    >
                     <span data-validate-for="name_en" style="color: red;"></span>
                 </div>
                 <!-- tm name -->
                 <div class="post_input">
                     <label>Наименование лота (TM) <span>*</span></label>
-                    <input type="text" name="name_tm" data-belongsto="product" placeholder="Пример: Гидравлическое масло">
+                    <input type="text" name="name_tm" data-belongsto="product" placeholder="Пример: Гидравлическое масло"
+                        {% if productForEditing %}
+                        value="{{ productForEditing.name }}"
+                        {% endif %}
+                    >
                     <span data-validate-for="name_tm" style="color: red;"></span>
                 </div>
 
                 <div class="post_input">
                     <label for="mark-goods">Марка товара <span>*</span></label>
-                    <input type="text" name="mark" data-belongsto="product" placeholder="Пример: Гидравлическое масло ЛУКОЙЛ 46" id="mark-goods">
+                    <input type="text" name="mark" data-belongsto="product" placeholder="Пример: Гидравлическое масло ЛУКОЙЛ 46" id="mark-goods"
+                        {% if productForEditing %}
+                        value="{{ productForEditing.mark }}"
+                        {% endif %}
+                    >
                     <span data-validate-for="mark" style="color: red;"></span>
                 </div>
 
                 <div class="post_input">
                     <label for="owner">Производитель <span>*</span></label>
-                    <input type="text" name="manufacturer" data-belongsto="product" placeholder="Пример: ЛУКОЙЛ" id="owner">
+                    <input type="text" name="manufacturer" data-belongsto="product" placeholder="Пример: ЛУКОЙЛ" id="owner"
+                        {% if productForEditing %}
+                        value="{{ productForEditing.manufacturer }}"
+                        {% endif %}
+                    >
                     <span data-validate-for="manufacturer" style="color: red;"></span>
                 </div>
 
@@ -56,7 +79,11 @@
                         <select class="category-select" data-belongsto="product" name="category_id">
                             <option value="0">Category</option>
                             {% for c in categories %}
-                            <option value="{{ c.id }}">{{ c.name }}</option>
+                            <option value="{{ c.id }}"
+                                {% if productForEditing and productForEditing.categories.first.id == c.id %}
+                                    selected
+                                {% endif %}
+                            >{{ c.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -68,7 +95,11 @@
                         <select name="country_id" data-belongsto="product">
                             <option value="0">Страна производителя</option>
                             {% for country in countries %}
-                            <option value="{{ country.id }}">{{country.name}}</option>
+                            <option value="{{ country.id }}"
+                                {% if productForEditing and productForEditing.country.id == country.id %}
+                                    selected
+                                {% endif %}
+                            >{{country.name}}</option>
                             {% endfor %}
                         </select>
                     </div>

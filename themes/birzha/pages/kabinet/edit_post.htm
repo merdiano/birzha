@@ -1,0 +1,13 @@
+title = "Edit post"
+url = "/edit-post/:id"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/edit-post/:id"
+localeUrl[ru] = "/edit-post/:id"
+
+[offerform]
+productId = "{{ :id }}"
+==
+{% component 'offerform' %}

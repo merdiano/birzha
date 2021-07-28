@@ -1,2 +1,15 @@
-title = "My offers"
+title = "My posts"
+url = "/my-posts"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeTitle[en] = "My posts"
+localeTitle[ru] = "My posts"
+localeUrl[en] = "/my-posts"
+localeUrl[ru] = "/my-posts"
+
+[myOffers]
+perPage = 0
 ==
+{% component 'myOffers' %}

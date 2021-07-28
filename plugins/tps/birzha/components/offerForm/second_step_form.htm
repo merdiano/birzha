@@ -16,7 +16,11 @@
             <select name="measure_id">
                 <option value="">Единицы измерения</option>
                 {% for m in measures %}
-                <option value="{{m.id}}">{{m.name}}</option>
+                <option value="{{m.id}}"
+                    {% if product.measure.id == m.id %}
+                        selected
+                    {% endif %}
+                >{{m.name}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -24,7 +28,8 @@
 
     <div class="post_input">
         <label for="good-count">Количество товара <span>*</span> </label>
-        <input type="text" name="quantity" placeholder="Пример: 3 литра" id="good-count">
+        <input type="text" name="quantity" placeholder="Пример: 3 литра" id="good-count"
+        value="{{ product.quantity }}">
         <span data-validate-for="quantity" style="color: red;"></span>
     </div>
 
@@ -34,7 +39,11 @@
             <select name="currency_id">
                 <option value="">Валюта</option>
                 {% for currency in currencies %}
-                <option value="{{currency.id}}">{{currency.name}}</option>
+                <option value="{{currency.id}}"
+                    {% if product.currency.id == currency.id %}
+                        selected
+                    {% endif %}
+                >{{currency.name}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -42,7 +51,8 @@
 
     <div class="post_input">
         <label for="good-cost">Стартовая цена за единицу <span>*</span> </label>
-        <input type="text" name="price" placeholder="Пример: 120" id="good-cost">
+        <input type="text" name="price" placeholder="Пример: 120" id="good-cost"
+        value="{{ product.price }}">
         <span data-validate-for="price" style="color: red;"></span>
     </div>
 
@@ -52,7 +62,11 @@
             <select name="delivery_term_id">
                 <option value="">Условия поставки</option>
                 {% for dt in deliveryTerms %}
-                <option value="{{dt.id}}">{{dt.name}}</option>
+                <option value="{{dt.id}}"
+                    {% if product.delivery_term.id == dt.id %}
+                        selected
+                    {% endif %}
+                >{{dt.name}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -60,7 +74,8 @@
 
     <div class="post_input">
         <label for="good-cost">Пункт <span>*</span> </label>
-        <input type="text" name="place" placeholder="Пример: 120" id="good-cost">
+        <input type="text" name="place" placeholder="Пример: 120" id="good-cost"
+        value="{{ product.place }}">
         <span data-validate-for="place" style="color: red;"></span>
     </div>
 
@@ -69,8 +84,16 @@
         <div class="my-select">
             <select name="packaging">
                 <option value="">Упаковка</option>
-                <option value="yes">Есть</option>
-                <option value="no">Нет</option>
+                <option value="yes"
+                    {% if product.packaging == "yes" %}
+                        selected
+                    {% endif %}
+                >Есть</option>
+                <option value="no"
+                    {% if product.packaging == "no" %}
+                        selected
+                    {% endif %}
+                >Нет</option>
             </select>
         </div>
     </div>
@@ -81,31 +104,29 @@
             <select name="payment_term_id">
                 <option value="">Условия оплаты</option>
                 {% for pt in paymentTerms %}
-                <option value="{{pt.id}}">{{pt.name}}</option>
+                <option value="{{pt.id}}"
+                    {% if product.payment_term.id == pt.id %}
+                        selected
+                    {% endif %}
+                >{{pt.name}}</option>
                 {% endfor %}
             </select>
         </div>
     </div>
 
-    <!-- <div class="post_input">
-        <label for="good-cost">Ends at <span>*</span> </label>
-        <input type="datetime-local" name="ends_at">
-        <span data-validate-for="ends_at" style="color: red;"></span>
-    </div> -->
-
     <div class="post_comment">
         <label for="description_ru">Описание (RU) <span>*</span></label>
-        <textarea id="description_ru" name="description_ru"></textarea>
+        <textarea id="description_ru" name="description_ru">{{product.lang('ru').description}}</textarea>
         <span data-validate-for="description_ru" style="color: red;"></span>
     </div>
     <div class="post_comment">
         <label for="description_en">Описание (EN) <span>*</span></label>
-        <textarea id="description_en" name="description_en"></textarea>
+        <textarea id="description_en" name="description_en">{{product.lang('en').description}}</textarea>
         <span data-validate-for="description_en" style="color: red;"></span>
     </div>
     <div class="post_comment">
         <label for="description_tm">Описание (TM) <span>*</span></label>
-        <textarea id="description_tm" name="description_tm"></textarea>
+        <textarea id="description_tm" name="description_tm">{{product.lang('tm').description}}</textarea>
         <span data-validate-for="description_tm" style="color: red;"></span>
     </div>
 
@@ -116,7 +137,13 @@
         
         {% for i in 0..2 %}
         <div class="post_upload_item">
-            
+            {% if product.images[i] %}
+            <div class="post_upload_img">
+                <img src="{{ product.images[i].thumb(347,150,{'mode':'crop'}) }}" alt="photo">
+                <input type="hidden" name="old_imgs[{{i}}]">
+            </div>
+            {% endif %}
+
             <div class="post_input">
                 <label>Загрузить фото #{{i+1}} <span>*</span></label>
                 <div class="upload_group">
@@ -132,6 +159,11 @@
                         />
                     </div>
                 </div>
+                {% if product.images[i] %}
+                <div class="select_delete" onclick="removeFunction()">
+                    <img src="{{'assets/images/svg/red-close.svg'|theme}}" alt="">
+                </div>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
