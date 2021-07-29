@@ -92,16 +92,22 @@
                             {{ 'page.prod_finishdate'|_ }}:
                         </div>
                         <div class="item_name">
-                            {{ offer.ends_at|date('d.m.Y') }}
+                            {{ offer.ends_at ? offer.ends_at|date('d.m.Y') : '' }}
                         </div>
                     </div>
 
                     
-                    {% if offer.status == "approved" %}
+                    {% if offer.status == "approved" and offer.ends_at >= __SELF__.today %}
                         <span style="color:green">{{offer.status}}</span>
                         <a href="{{ 'offer'|page({ slug: offer.slug, id: offer.id }) }}" class="item_btn">
                             На сайте
                         </a>
+                    {% elseif offer.status == "approved" and offer.ends_at < __SELF__.today %}
+                        <span style="color:black">Date is expired</span>
+                        <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
+                            Продлить
+                        </a>
+                        
                     {% elseif offer.status == "denied" %}
                         <span style="color:red">{{offer.status}}</span> <br>
                         <span style="color:red">{{ offer.status_note }}</span>
@@ -117,11 +123,6 @@
                         <span style="color:blue">{{offer.status}}</span>
                         <a href="#" style="pointer-events: none; background-color: cornflowerblue;" class="item_btn">
                             Admin is checking
-                        </a>
-                    {% elseif offer.status == "disabled" %}
-                        <span style="color:black">{{offer.status}}</span>
-                        <a href="#" class="item_btn">
-                            Продлить
                         </a>
                     {% endif %}
                 </div>

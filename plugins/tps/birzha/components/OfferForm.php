@@ -100,9 +100,8 @@ class OfferForm extends ComponentBase
         $product->manufacturer = $data['manufacturer'];
         $product->country_id = $data['country_id'];
         
-        
-        
         $product->vendor_id = \Auth::user()->id;
+        $product->ends_at = null; // if approved but date was expired
 
         
         if(!isset($data['productForEditing'])) {
