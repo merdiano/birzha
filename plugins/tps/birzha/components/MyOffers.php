@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use TPS\Birzha\Models\Product;
+use Input;
 
 class MyOffers extends ComponentBase
 {
@@ -46,6 +47,15 @@ class MyOffers extends ComponentBase
             //     'default' => ''
             // ]
         ];
+    }
+
+    public function onDeleteOffer() {
+        $product = Product::find(Input::get('deleting_product_id'));
+        $product->images()->delete();
+        $product->translations()->delete();
+        $product->delete();
+
+        return \Redirect::back();
     }
 
     public function onRun() {

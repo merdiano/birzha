@@ -102,10 +102,19 @@
                         <a href="{{ 'offer'|page({ slug: offer.slug, id: offer.id }) }}" class="item_btn">
                             На сайте
                         </a>
+                        <a href="#"
+                            data-request="onDeleteOffer"
+                            data-request-data="deleting_product_id: {{offer.id}}"
+                            class="item_btn">
+                            Удалить
+                        </a>
                     {% elseif offer.status == "approved" and offer.ends_at < __SELF__.today %}
                         <span style="color:black">Date is expired</span>
                         <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
                             Продлить
+                        </a>
+                        <a href="#" class="item_btn">
+                            Удалить
                         </a>
                         
                     {% elseif offer.status == "denied" %}
@@ -114,10 +123,16 @@
                         <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
                             Edit
                         </a>
+                        <a href="#" class="item_btn">
+                            Удалить
+                        </a>
                     {% elseif offer.status == "draft" %}
                         <span style="color:yellow">{{offer.status}}</span>
                         <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
                             Complete
+                        </a>
+                        <a href="#" class="item_btn">
+                            Удалить
                         </a>
                     {% elseif offer.status == "new" %}
                         <span style="color:blue">{{offer.status}}</span>
