@@ -4,9 +4,18 @@ use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
 use Illuminate\Validation\Rule;
 use TPS\Birzha\Models\Payment;
+use October\Rain\Network\Http;
+use TPS\Birzha\Models\Settings;
 
 class Balance extends ComponentBase
 {
+    // bank api configs and urls
+    const REGISTRATION_URI = 'register.do';
+
+    const STATUS_URI = 'getOrderStatus.do';
+
+    const API_URL = 'https://mpi.gov.tm/payment/rest/';
+
     public function componentDetails()
     {
         return [
@@ -32,9 +41,60 @@ class Balance extends ComponentBase
                     '#form-steps' => $this->renderPartial('@bank_transfer_pay')
                 ];
             case 'online':
-                // ...
-                break;
+                $url = $this->payOnline($data);
+                if(!$url) {
+                    $this->page['err_message'] = 'Не удается подключиться к сервисам банка. Попробуйте позже';
+                    return [
+                        '#form-steps' => $this->renderPartial('@message')
+                    ];
+                }
+
+                $this->page['url'] = $url;
+                return [
+                    '#form-steps' => $this->renderPartial('@redirect')
+                ];
         }
+    }
+
+    protected function payOnline($formData) {
+        $payment = $this->createNewPayment(false, $formData);
+        $response = $this->registerOrder($payment);
+
+        $result = json_decode($response->body,true);
+
+        if($result['errorCode'] == 0) {
+            $payment->order_id = $result['orderId'];
+
+            $payment->save();
+
+            return $result['formUrl'];
+        } else {
+            return false;
+        }
+    }
+
+    protected function registerOrder($payment) {
+        $client = self::getClient(self::REGISTRATION_URI);
+
+        $url = $this->controller->pageUrl('bank_result.htm', ['payment_id' => $payment->id]);
+
+        $client->data([
+            'amount'      => $payment->amount * 100,//multiply by 100 to obtain tenge
+            'currency' => 934,
+            'description' => 'Kart üçin döwlet pajy.',
+            'orderNumber'     => strtoupper(str_random(5)) . date('jn'),
+            'failUrl'     => $url . '?status=failed',
+            'returnUrl' => $url . '?status=success',
+        ]);
+        $client->setOption(CURLOPT_POSTFIELDS,$client->getRequestData());
+        return $client->send();
+    }
+
+    private static function getClient($url) {
+        return Http::make(self::API_URL.$url, Http::METHOD_POST)->data([
+            'userName' => Settings::getValue('api_login'),
+            'password' => Settings::getValue('api_password'),
+        ])->timeout(3600);
     }
 
     public function onPayByBankTransfer() {
@@ -67,5 +127,22 @@ class Balance extends ComponentBase
         if($validator->fails()) {
             throw new \ValidationException($validator);
         }
+    }
+
+    protected function createNewPayment($bank_file, $formData) {
+        $newPayment = new Payment;
+        $newPayment->user_id = \Auth::user()->id;
+        $newPayment->amount = $formData['amount'];
+        $newPayment->payment_type = $formData['payment_type'];
+        $newPayment->status = "new";
+        $newPayment->save();
+
+        // attach file to payment
+        if($bank_file) {
+            $newPayment->bank_file = $bank_file;
+            $newPayment->save();
+        }
+
+        return $newPayment;
     }
 }
