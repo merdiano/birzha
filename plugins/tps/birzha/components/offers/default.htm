@@ -59,13 +59,13 @@
 {% if offers.total > offers.perPage %}
 
 <div class="cat_end">
-    <a href="{{ offers.previousPageUrl|default('#') }}" class="cat_arrow left">
+    <a href="{{ offers.previousPageUrl|default('#') }}&sort_order={{ __SELF__.sortParam }}" class="cat_arrow left">
         <img src="{{ 'assets/images/svg/arrow-right.svg'|theme }}" alt="">
     </a>
     <form method="get" class="cat_form">
         <input type="text" value="{{offers.currentPage|default('1')}}" name="page"> 
     </form>
-    <a href="{{ offers.nextPageUrl|default('#') }}" class="cat_arrow ">
+    <a href="{{ offers.nextPageUrl|default('#') }}&sort_order={{ __SELF__.sortParam }}" class="cat_arrow ">
         <img src="{{ 'assets/images/svg/arrow-right.svg'|theme }}" alt="">
     </a>
     <div class="cat_page">

@@ -52,6 +52,26 @@ sortOrder = "desc"
                         </div>
                     </div>
                 </div>
+                <form action="{{ 'search' | page }}" method="get" class="category_search">
+                    <div class="category_input">
+                        <input name="q" type="text" placeholder="Поиск" autocomplete="off">
+                        <button class="category_loupe" type="submit">
+                            <img src="{{ 'assets/images/svg/loupe.svg'|theme }}" alt="loupe">
+                        </button>
+                    </div>
+                </form>
+                <form action="#" class="sort-order">
+                    <div class="category_select">
+                        <select name="sort_order">
+                            <option value="1">По дате</option>
+                            <option value="desc">Decrease</option>
+                            <option value="asc">Increase</option>
+                        </select>
+                        {% if input('page') %}
+                            <input type="hidden" name="page" value="{{ input('page') }}">
+                        {% endif %}
+                    </div>
+                </form>
                 <div class="inline_head">
                     <div class="inline_item">
                         Лот №:
@@ -85,3 +105,11 @@ sortOrder = "desc"
     </div>
 </section>
 <!--Category end ========================================================= -->
+
+{% put scripts %}
+<script>
+    $('form.sort-order select').change(function() {
+        $('form.sort-order').submit();
+    })
+</script>
+{% endput %}
