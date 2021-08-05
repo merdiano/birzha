@@ -9,6 +9,11 @@ use DB;
 
 class Offers extends ComponentBase
 {
+    /*
+    * sort order parametr in a url string
+    */
+    public $sortParam = '';
+
     public function componentDetails()
     {
         return [
@@ -66,7 +71,16 @@ class Offers extends ComponentBase
     }
 
     protected function loadOffers() {
-        $sortOrder = $this->property('sortOrder');
+        $sortOrderParam = strtolower(\Input::get('sort_order'));
+        
+        // protect from sql injection
+        if($sortOrderParam != 'asc' && $sortOrderParam != 'desc') {
+            $sortOrder = $this->property('sortOrder');
+        } else {
+            $sortOrder = $sortOrderParam;
+            $this->sortParam = $sortOrderParam;
+        }
+        
         $cSlug = $this->property('categorySlug');
         $perPage = $this->property('perPage');
         $productSlug = $this->property('productSlug');
