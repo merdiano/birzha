@@ -25,7 +25,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/*** 
+/***
 ====================================================================
     Global Settings
 ====================================================================
@@ -459,7 +459,7 @@ li {
 
     position: absolute;
     /* top: calc(100% + 52px); */
-    bottom: -360px;
+    bottom: -439px;
     left: 0;
 
     width: 400px;
@@ -504,6 +504,8 @@ li {
 
 .profile_item:last-child {
     border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .add_post_btn {
@@ -1584,7 +1586,7 @@ li {
 
 /* Footer end =================================================== */
 
-/* Category Page 
+/* Category Page
 ==================================================================== */
 /* Category ======================================================== */
 
@@ -1718,7 +1720,7 @@ li {
     margin-left: 20px;
 }
 
-/* Product detail Page 
+/* Product detail Page
 ==================================================================== */
 /* Product detail ======================================================== */
 
@@ -1936,7 +1938,7 @@ li {
     margin-top: 50px;
 }
 
-/* Contact Page 
+/* Contact Page
 ======================================================================== */
 /* Contact ============================================================= */
 
@@ -2111,6 +2113,10 @@ li {
     padding: 100px 0;
 }
 
+.post_wrap {
+    overflow: hidden;
+}
+
 .post_tabs {
     display: flex;
     align-items: center;
@@ -2131,6 +2137,46 @@ li {
     cursor: pointer;
 }
 
+.error_span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.show_span {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.new_group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.new_group .item_btn {
+    margin-top: 0;
+    padding: 10px 15px;
+    width: calc(50% - 10px);
+}
+
+.new_group .item_btn:first-child {
+    margin-right: 10px;
+}
+
+.delete_item_btn {
+    background: rgb(255, 0, 0);
+}
+
+.full_btn {
+    width: 100%;
+    max-width: 100%;
+}
+
 .post_link.active {
     color: #fff;
     background: var(--blue);
@@ -2145,7 +2191,7 @@ li {
     -webkit-flex-wrap: wrap;
     -moz-flex-wrap: wrap;
 
-    margin: -25px -20px;
+    margin: -25px -20px 0;
 }
 
 .simple_group {
@@ -2161,8 +2207,9 @@ li {
 
 .post_input {
     width: calc(33.33% - 40px);
-    margin: 25px 20px;
+    margin: 25px 20px 0;
     position: relative;
+    padding-bottom: 25px;
 }
 
 .post_input input {
@@ -2205,6 +2252,7 @@ li {
     width: calc(100% - 40px);
     margin: 25px 20px;
     position: relative;
+    padding-bottom: 25px;
 }
 
 .post_comment textarea {
@@ -2282,15 +2330,15 @@ li {
 }
 
 .eye_on.active {
-    display: none;
+    display: block;
 }
 
-.eye_off {
+.eye_on {
     display: none;
 }
 
 .eye_off.active {
-    display: block;
+    display: none;
 }
 
 .add_post_text {
@@ -2400,12 +2448,18 @@ li {
     background: #E2E2E2;
     border-radius: 5px;
     margin: 0;
-    padding: 15px 30px;
+    padding: 15px;
     cursor: pointer;
 }
 
 .form_group {
-    width: calc(100% - 155px);
+    width: calc(100% - 170px);
+}
+
+.alert-danger p {
+    font-size: 20px ;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
 .form_group label {
@@ -2457,12 +2511,17 @@ li {
 .my-select {
     width: 100%;
     position: relative;
+    padding-bottom: 25px;
+}
+
+.p-b {
+    padding-bottom: 0;
 }
 
 .my-select::after {
     position: absolute;
     content: "";
-    top: 50%;
+    top: 37%;
     right: 30px;
     transform: translateY(-30%);
     width: 0;
@@ -3379,7 +3438,7 @@ li {
     }
 
     .profile_drop {
-        bottom: -350px;
+        bottom: -439px;
     }
 }
 
@@ -3465,6 +3524,10 @@ li {
 
     .tab_link:nth-child(2) {
         margin-right: 0;
+    }
+
+    .profile_drop {
+        bottom: -429px;
     }
 
     /* Basket =============== */
@@ -3755,9 +3818,9 @@ li {
     }
 
     .profile_drop {
-        right: -45px;
+        right: 0;
         left: unset;
-        bottom: -365px;
+        bottom: -429px;
         width: 320px;
     }
 
@@ -3882,6 +3945,11 @@ li {
         padding: 10px 20px;
     }
 
+    .post_comment textarea {
+        padding: 10px 15px;
+        height: 50px;
+    }
+
     .burger {
         width: 25px;
         height: 25px;
@@ -3976,6 +4044,10 @@ li {
         font-size: 28px;
     }
 
+    .contact_title {
+        font-size: 22px;
+    }
+
     .register_body {
         height: auto;
         flex-direction: column;
@@ -4028,6 +4100,24 @@ li {
         --text-18: 16px
     }
 
+    .new_group {
+        flex-direction: column;
+        -ms-flex-direction: column;
+        -moz-flex-direction: column;
+        -o-flex-direction: column;
+        -webkit-flex-direction: column;
+    }
+
+    .new_group .item_btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .new_group .item_btn:first-child {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
     .languages {
         padding: 10px;
     }
@@ -4066,11 +4156,13 @@ li {
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         -moz-flex-wrap: wrap;
         -o-flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap; */
+
+        flex-direction: column;
 
         margin-top: 50px;
     }
@@ -4147,7 +4239,8 @@ li {
         margin: 0;
     }
 
-    .post_input {
+    .post_input,
+    .post_comment {
         width: 100%;
         margin: 12px 0;
     }
@@ -4176,10 +4269,10 @@ li {
     }
 
     .profile_drop {
-        width: 270px;
-        bottom: -350px;
+        width: 300px;
+        bottom: -400px;
         font-size: 14px;
-        right: -55px;
+        right: -75px;
 
         margin-bottom: 50px;
     }
@@ -4321,7 +4414,9 @@ li {
     }
 
     .add_post_btn {
-        padding: 10px;
+        /* padding: 10px; */
+        width: 100%;
+        justify-content: center;
     }
 
     .post_text {
@@ -4338,7 +4433,7 @@ li {
 
     .profile_icon {
         width: 15px;
-        height: 15px;
+        height: 20px;
     }
 
     .profile_icon img {
@@ -4349,7 +4444,7 @@ li {
     }
 
     .profile_drop {
-        bottom: -300px;
+        bottom: -360px;
     }
 
     .category_search {
@@ -4429,6 +4524,10 @@ li {
     :root {
         --text-32: 22px;
         --text-20: 14px;
+    }
+
+    .contact_title {
+        font-size: 18px;
     }
 
     .links {
@@ -4531,10 +4630,10 @@ li {
     }
 
     .profile_drop {
-        width: 200px;
+        width: 300px;
         bottom: -315px;
         font-size: 14px;
-        right: -23px;
+        right: -72px;
         margin-bottom: 0;
     }
 
@@ -4632,6 +4731,10 @@ li {
         width: 95%;
     }
 
+    .form_group {
+        width: calc(100% - 130px);
+    }
+
     .cat_photo {
         width: 75px;
         height: 80px;
@@ -4655,11 +4758,15 @@ li {
     }
 
     .profile_drop {
-        width: 200px;
-        bottom: -290px;
+        width: 240px;
+        bottom: -345px;
         font-size: 14px;
-        right: -23px;
+        right: -42px;
         padding-bottom: 30px;
+    }
+
+    .links {
+        padding: 20px;
     }
 
     .post {

@@ -48,7 +48,7 @@
     </div>
     <div class="post_input">
         <label for="password_current">{{'account.current_password'}}</label>
-        <input type="password" placeholder="************" id="password_current" name="password_current">
+        <input type="password" placeholder="************" id="password_2" name="password_current">
         <div class="eye">
             <img class="eye_off" src="{{'assets/images/svg/eye-off.svg'|theme}}" alt="eye">
             <img class="eye_on" src="{{'assets/images/svg/eye.svg'|theme}}" alt="eye">
@@ -66,27 +66,28 @@
 {% put scripts %}
 <script>
 
-    document.querySelector('.eye_off').addEventListener('click', function () {
-        document.getElementById('password').type = "password"
-        document.getElementById('password_current').type = "password"
+    // document.querySelector('.eye_off').addEventListener('click', function () {
+    //     document.getElementById('password').type = "password"
+    //     document.getElementById('password_current').type = "password"
 
-        document.querySelector('.eye_on').classList.remove('active');
-        document.querySelector('.eye_off').classList.remove('active');
-    })
+    //     document.querySelector('.eye_on').classList.remove('active');
+    //     document.querySelector('.eye_off').classList.remove('active');
+    // })
 
-    document.querySelector('.eye_on').addEventListener('click', function () {
-        document.getElementById('password').type = "text";
-        document.getElementById('password_current').type = "text";
+    // document.querySelector('.eye_on').addEventListener('click', function () {
+    //     document.getElementById('password').type = "text";
+    //     document.getElementById('password_current').type = "text";
 
-        document.querySelector('.eye_on').classList.add('active');
-        document.querySelector('.eye_off').classList.add('active');
-    })
+    //     document.querySelector('.eye_on').classList.add('active');
+    //     document.querySelector('.eye_off').classList.add('active');
+    // })
 
-    document.querySelector('.profile_head').addEventListener('click', function () {
-        sleep(2).then(() => {
-            document.querySelector('.profile_drop').classList.toggle('active');
-        });
-    });
+    // document.querySelector('.profile_head').addEventListener('click', function () {
+    //     sleep(2).then(() => {
+    //         document.querySelector('.profile_drop').classList.toggle('active');
+    //     });
+    // });
 
 </script>
 {% endput %}
+
