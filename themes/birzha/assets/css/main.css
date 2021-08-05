@@ -459,7 +459,7 @@ li {
 
     position: absolute;
     /* top: calc(100% + 52px); */
-    bottom: -439px;
+    bottom: -515px;
     left: 0;
 
     width: 400px;
@@ -3438,7 +3438,7 @@ li {
     }
 
     .profile_drop {
-        bottom: -439px;
+        bottom: -515px;
     }
 }
 
@@ -3527,7 +3527,7 @@ li {
     }
 
     .profile_drop {
-        bottom: -429px;
+        bottom: -505px;
     }
 
     /* Basket =============== */
@@ -3820,7 +3820,7 @@ li {
     .profile_drop {
         right: 0;
         left: unset;
-        bottom: -429px;
+        bottom: -517px;
         width: 320px;
     }
 
@@ -4269,10 +4269,10 @@ li {
     }
 
     .profile_drop {
-        width: 300px;
-        bottom: -400px;
+        width: 270px;
+        bottom: -445px;
         font-size: 14px;
-        right: -75px;
+        right: -58px;
 
         margin-bottom: 50px;
     }
@@ -4444,7 +4444,7 @@ li {
     }
 
     .profile_drop {
-        bottom: -360px;
+        bottom: -420px;
     }
 
     .category_search {
@@ -4631,7 +4631,7 @@ li {
 
     .profile_drop {
         width: 300px;
-        bottom: -315px;
+        bottom: -360px;
         font-size: 14px;
         right: -72px;
         margin-bottom: 0;
@@ -4759,7 +4759,7 @@ li {
 
     .profile_drop {
         width: 240px;
-        bottom: -345px;
+        bottom: -385px;
         font-size: 14px;
         right: -42px;
         padding-bottom: 30px;
