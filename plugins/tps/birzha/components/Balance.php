@@ -6,16 +6,10 @@ use Illuminate\Validation\Rule;
 use TPS\Birzha\Models\Payment;
 use October\Rain\Network\Http;
 use TPS\Birzha\Models\Settings;
+use TPS\Birzha\Classes\Payment as CardApi;
 
 class Balance extends ComponentBase
 {
-    // bank api configs and urls
-    const REGISTRATION_URI = 'register.do';
-
-    const STATUS_URI = 'getOrderStatus.do';
-
-    const API_URL = 'https://mpi.gov.tm/payment/rest/';
-
     public function componentDetails()
     {
         return [
@@ -58,7 +52,10 @@ class Balance extends ComponentBase
 
     protected function payOnline($formData) {
         $payment = $this->createNewPayment(false, $formData);
-        $response = $this->registerOrder($payment);
+        
+        $url = $this->controller->pageUrl('bank_result.htm', ['payment_id' => $payment->id]);
+
+        $response = CardApi::registerOrder($payment, $url);
 
         $result = json_decode($response->body,true);
 
@@ -71,30 +68,6 @@ class Balance extends ComponentBase
         } else {
             return false;
         }
-    }
-
-    protected function registerOrder($payment) {
-        $client = self::getClient(self::REGISTRATION_URI);
-
-        $url = $this->controller->pageUrl('bank_result.htm', ['payment_id' => $payment->id]);
-
-        $client->data([
-            'amount'      => $payment->amount * 100,//multiply by 100 to obtain tenge
-            'currency' => 934,
-            'description' => 'Kart üçin döwlet pajy.',
-            'orderNumber'     => strtoupper(str_random(5)) . date('jn'),
-            'failUrl'     => $url . '?status=failed',
-            'returnUrl' => $url . '?status=success',
-        ]);
-        $client->setOption(CURLOPT_POSTFIELDS,$client->getRequestData());
-        return $client->send();
-    }
-
-    private static function getClient($url) {
-        return Http::make(self::API_URL.$url, Http::METHOD_POST)->data([
-            'userName' => Settings::getValue('api_login'),
-            'password' => Settings::getValue('api_password'),
-        ])->timeout(3600);
     }
 
     public function onPayByBankTransfer() {
