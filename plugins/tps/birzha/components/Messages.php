@@ -18,19 +18,57 @@ class Messages extends ComponentBase
         ];
     }
 
-    protected function loadMessages() {
+    protected function loadMessages($sellerId) {
+        $newChatRoomNeeded = true;
+
         $this->chatrooms = Auth::user()->chatrooms;
+        
+
         foreach($this->chatrooms as $room) {
             $room->last_message = $room->messages()->latest('send_at')->first();
             $room->message_partner = $room->users()->where('users.id','!=',Auth::user()->id)->first();
             $room->count_unread_messages = $room->messages()->where('read_at',null)->where('reciver_id',Auth::user()->id)->count();
+
+            if($room->message_partner->id == $sellerId) {
+                $newChatRoomNeeded = false;
+            }
+        }
+        // dump($this->chatrooms);
+        
+        if($sellerId) {
+            if(!$newChatRoomNeeded) {
+                // dump('open an existing chat');
+
+            } else {
+                // dump('create new chat');
+                $seller = User::findOrFail($sellerId);
+
+                $chatroom = new Chatroom;
+                $chatroom->save();
+
+                $chatroom->users()->attach($seller->id);
+                $chatroom->users()->attach(Auth::user()->id);
+
+                // add this newly added chatroom to the collection "chatrooms"
+                $chatroom->message_partner = $seller;
+                $this->chatrooms->push($chatroom);
+                // dd($this->chatrooms);
+            }
+        } else {
+            // dump("don't do anything");
         }
     }
 
     public $chatrooms;
 
     public function onRun() {
-        $this->loadMessages();
+        $sellerId = null;
+
+        if(Input::get('seller_id') && is_numeric(Input::get('seller_id')) && Input::get('seller_id') != Auth::user()->id) {
+            $sellerId = Input::get('seller_id');
+        }
+
+        $this->loadMessages($sellerId);
     }
 
     public function onChatroom() {

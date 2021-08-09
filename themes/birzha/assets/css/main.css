@@ -2762,7 +2762,7 @@ li {
     /* z-index: 3; */
     background: #fff;
 
-    display: none;
+    /* display: none; */
 }
 
 .chat_area-inner.active {

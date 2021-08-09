@@ -151,12 +151,11 @@
         {{'page.seller_cont'|_}}
     </a>
     <div class="btn_group">
-        <a href="#" class="btn btn--border">
-            {{'page.buy_now'|_}}
-        </a>
-        <a href="#" class="btn btn--blue">
-            {{'page.send_prod_request'|_}}
-        </a>
+        {% if account.user and account.user.id != offer.vendor.id %}
+            <a href="{{ 'kabinet/messages'|page }}?seller_id={{offer.vendor.id}}" class="btn btn--blue">
+                Сообщение продавцу 
+            </a>
+        {% endif %}
     </div>
 </div>
 {% endif %}
