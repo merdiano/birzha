@@ -121,7 +121,7 @@ code = "main-top"
                                 <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
                             </div>
                             <div class="profile_text">
-                                {{user.balance}} TMT
+                                Баланс: {{user.balance}} TMT
                             </div>
                         </div>
 
@@ -130,7 +130,7 @@ code = "main-top"
                                 <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
                             </div>
                             <div class="profile_text">
-                                Персональные данные
+                                {{ 'auth.personal_data'|_ }}
                             </div>
                         </a>
 
@@ -139,7 +139,7 @@ code = "main-top"
                                 <img src="{{'assets/images/svg/clipboard.svg'|theme}}" alt="">
                             </div>
                             <div class="profile_text">
-                                Мои объявления
+                                {{ 'auth.my_announces'|_ }}
                             </div>
                         </a>
 
@@ -148,7 +148,7 @@ code = "main-top"
                                 <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
                             </div>
                             <div class="profile_text">
-                                Сообщения
+                                {{ 'auth.messages'|_ }}
                             </div>
                         </a>
 
@@ -166,7 +166,7 @@ code = "main-top"
                                 <img src="{{'assets/images/svg/log-out.svg'|theme}}" alt="">
                             </div>
                             <div class="profile_text">
-                                Выйти
+                                {{ 'auth.logout'|_ }}
                             </div>
                         </a>
 
@@ -178,7 +178,7 @@ code = "main-top"
                         <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
                     </div>
                     <div class="post_text">
-                        Добавить объявление
+                        {{ 'auth.add_announce'|_ }}
                     </div>
                 </a>
             </div>
@@ -229,7 +229,7 @@ code = "main-top"
                                     <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
                                 </div>
                                 <div class="profile_text">
-                                    Аман Аманов
+                                    {{user.name}}
                                 </div>
                                 <div class="prodile_arrow">
                                     <img src="{{'assets/images/svg/arrow-down.svg'|theme}}" alt="">
@@ -241,11 +241,11 @@ code = "main-top"
                                         <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
                                     </div>
                                     <div class="profile_text">
-                                        Баланс: 4334.30
+                                        Баланс: {{user.balance}} TMT
                                     </div>
                                 </div>
 
-                                <a href="personal_data.html" class="profile_item">
+                                <a href="{{'kabinet/profile'|page}}" class="profile_item">
                                     <div class="profile_icon">
                                         <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
                                     </div>
@@ -254,7 +254,7 @@ code = "main-top"
                                     </div>
                                 </a>
 
-                                <a href="my_post.html" class="profile_item">
+                                <a href="{{'kabinet/my_offers'|page}}" class="profile_item">
                                     <div class="profile_icon">
                                         <img src="{{'assets/images/svg/clipboard.svg'|theme}}" alt="">
                                     </div>
@@ -263,7 +263,7 @@ code = "main-top"
                                     </div>
                                 </a>
 
-                                <a href="#" class="profile_item">
+                                <a href="{{ 'kabinet/messages'|page }}" class="profile_item">
                                     <div class="profile_icon">
                                         <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
                                     </div>
@@ -272,7 +272,7 @@ code = "main-top"
                                     </div>
                                 </a>
 
-                                <a href="#" class="profile_item">
+                                <a href="{{ 'kabinet/balance'|page }}" class="profile_item">
                                     <div class="profile_icon">
                                         <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
                                     </div>
@@ -282,7 +282,7 @@ code = "main-top"
                                 </a>
 
 
-                                <a href="#" class="profile_item">
+                                <a href="#" data-request="onLogout" data-request-data="redirect: '/'" class="profile_item">
                                     <div class="profile_icon">
                                         <img src="{{'assets/images/svg/log-out.svg'|theme}}" alt="">
                                     </div>
@@ -294,7 +294,7 @@ code = "main-top"
                             </div>
                         </div>
 
-                        <a href="add_post.html" class="add_post_btn">
+                        <a href="{{ 'kabinet/add_offer'|page }}" class="add_post_btn">
                             <div class="post_icon">
                                 <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
                             </div>
