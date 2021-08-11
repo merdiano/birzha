@@ -179,6 +179,7 @@ class Plugin extends PluginBase
             'TPS\Birzha\Components\PaymentApi' => 'paymentapi',
             'TPS\Birzha\Components\MyOffers' => 'myOffers',
             'TPS\Birzha\Components\Balance' => 'balance',
+            'TPS\Birzha\Components\ContactForm' => 'contactForm',
         ];
     }
 

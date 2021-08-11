@@ -41,11 +41,9 @@ items:
             isExternal: '0'
     -
         title: 'Habarlaşmak üçin'
-        nesting: 0
-        type: static-page
+        type: cms-page
         code: ''
-        reference: habarlasmak-ucin
-        replace: 0
+        reference: contact-us
         viewBag:
             locale:
                 en:
