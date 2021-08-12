@@ -56,7 +56,7 @@ fields:
         size: ''
         mode: tab
         span: auto
-        type: markdown
+        type: text
     currency:
         label: Currency
         nameFrom: name

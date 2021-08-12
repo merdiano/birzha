@@ -22,23 +22,23 @@ use October\Rain\Network\Http;
 use October\Rain\Exception\AjaxException;
 use Carbon\Carbon;
 
-class OfferForm extends ComponentBase 
+class OfferForm extends ComponentBase
 {
     /**
      * @var string A collection of categories in dropdown
      */
     public $categories;
-    
+
     /**
      * @var string A collection of countries in dropdown
      */
     public $countries;
-    
+
     /**
      * @var string A string with product id
      */
     public $productIdOption;
-    
+
     /**
      * @var string A product which is being edited
      */
@@ -77,15 +77,15 @@ class OfferForm extends ComponentBase
         ];
 
         $this->validateForm($data, $rules);
-        
+
         $category = Category::find($data['category_id']);
-          
+
         if(isset($data['productForEditing'])) {
             $product = Product::find($data['productForEditing']);
         } else {
             $product = new Product;
         }
-        
+
         $product->name = $data['name_tm'];
         // Sets a single translated attribute for a language
         $product->setAttributeTranslated('name', $data['name_ru'], 'ru');
@@ -99,12 +99,12 @@ class OfferForm extends ComponentBase
         $product->mark = $data['mark'];
         $product->manufacturer = $data['manufacturer'];
         $product->country_id = $data['country_id'];
-        
-        
-        
+
+
+
         $product->vendor_id = \Auth::user()->id;
 
-        
+
         if(!isset($data['productForEditing'])) {
             $product->created_at = Carbon::now('Asia/Ashgabat');
             $category->products()->save($product);
@@ -151,7 +151,7 @@ class OfferForm extends ComponentBase
             'new_img.*' => 'mimes:jpg,png'
         ];
         $this->validateFileType($data, $rules);
-        
+
         // separate validation for image size
         $rules = [
             'new_img.*' => 'max:1024'
@@ -161,7 +161,7 @@ class OfferForm extends ComponentBase
         $attachedProduct = Product::find($data['product_id']);
 
         $attachedProduct = $this->fillProduct($data,$attachedProduct);
-    
+
         // add images to completely new product
         foreach($data['new_img'] as $key => $img) {
             $attachedProduct->images = $img;
@@ -224,10 +224,10 @@ class OfferForm extends ComponentBase
     }
 
     protected function fillProduct($data,$attachedProduct) {
-        $attachedProduct->description = $data['description_tm'];
         // Sets a single translated attribute for a language
-        $attachedProduct->setAttributeTranslated('description', $data['description_ru'], 'ru');
-        $attachedProduct->setAttributeTranslated('description', $data['description_en'], 'en');
+
+//        $attachedProduct->setAttributeTranslated('description', $data['description_tm'], 'tm');
+        $attachedProduct->description = $data['description_tm'];
 
         $attachedProduct->quantity = $data['quantity'];
         $attachedProduct->price = $data['price'];
@@ -238,15 +238,17 @@ class OfferForm extends ComponentBase
         $attachedProduct->place = $data['place'];
         $attachedProduct->currency_id = $data['currency_id'];
         // $attachedProduct->ends_at = $data['ends_at'];
+//        dd($data,$attachedProduct);
+        $attachedProduct->setAttributeTranslated('description', $data['description_ru'], 'ru');
+        $attachedProduct->setAttributeTranslated('description', $data['description_en'], 'en');
         $attachedProduct->save();
-
         return $attachedProduct;
     }
 
     public function onRun() {
         $this->countries = Country::all();
         $this->categories = Category::select('id','name','status')->where('status',1)->get();
-        
+
         $this->productIdOption = $this->property('productId');
 
         // form will be filled with product's info if we have productIdOption
@@ -257,4 +259,4 @@ class OfferForm extends ComponentBase
             $this->productForEditing = null;
         }
     }
-} 
+}
