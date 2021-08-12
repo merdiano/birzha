@@ -15,7 +15,7 @@ class Product extends Model
 
     use \October\Rain\Database\Traits\SoftDelete;
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at','created_at','ends_at'];
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 
@@ -67,6 +67,8 @@ class Product extends Model
         'description',
     ];
 
+    public $fillable = ['name','slug','description'];
+
     public function beforeCreate()
     {
         if(!$this->status)
@@ -82,18 +84,18 @@ class Product extends Model
         } else {
             $this->rules = [];
         }
-        
+
     }
 
     public function beforeUpdate()
     {
         if($this->status == 'approved' && !$this->ends_at) {
-            $createdAt = Carbon::parse($this->created_at);
-            $this->ends_at = $createdAt->addDays(Settings::getValue('duration'));
+//            $createdAt = Carbon::parse($this->created_at);
+            $this->ends_at = $this->created_at->addDays(Settings::getValue('duration'));
         }
         if($this->status == 'denied') {
             // give fee back to the user, because his post has been denied
-            $user = User::find($this->vendor->id);
+            $user = $this->vendor;
             $user->balance = $user->balance + $this->payed_fee_for_publ;
             $user->save();
         }
