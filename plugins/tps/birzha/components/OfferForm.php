@@ -146,7 +146,7 @@ class OfferForm extends ComponentBase
 
         // validate if no old images and new images
         if(!isset($data['new_img']) && !isset($data['old_img'])) {
-            throw new ValidationException(['no_images' => 'Хотя бы 1 фото должно быть']);
+            throw new ValidationException(['no_images' => trans('validation.atleast_1_image')]);
         }
 
         // seaparate validation for file type
@@ -225,7 +225,7 @@ class OfferForm extends ComponentBase
         $validator = Validator::make($data, $rules);
 
         if($validator->fails()) {
-            throw new ValidationException(['new_img_type_error' => 'You must upload jpg,png!']);
+            throw new ValidationException(['new_img_type_error' => trans('validation.image_type', ['image_type' => 'jpg,png'])]);
         }
     }
 
@@ -233,7 +233,7 @@ class OfferForm extends ComponentBase
         $validator = Validator::make($data, $rules);
 
         if($validator->fails()) {
-            throw new ValidationException(['new_img_size_error' => 'Max file size 1 Mb!']);
+            throw new ValidationException(['new_img_size_error' => trans('validation.image_size', ['size'=> 1])]);
         }
     }
 
