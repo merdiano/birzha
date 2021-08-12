@@ -12,16 +12,16 @@
                 Добавить объявление (Step 1)
             </div>
 
-            <form action="#" 
+            <form action="#"
                 data-request="onSave"
-                data-request-validate 
+                data-request-validate
                 data-request-flash
                 class="post_form post_form-2 first-step-form">
-                
+
                 {% if productForEditing %}
                     <input type="hidden" name="productForEditing" value="{{productForEditing.id}}">
                 {% endif %}
-                
+
                 <!-- ru name -->
                 <div class="post_input">
                     <label>Наименование лота (RU) <span>*</span></label>
@@ -30,7 +30,7 @@
                          value="{{ productForEditing.lang('ru').name }}"
                         {% endif %}
                     >
-                    <span data-validate-for="name_ru" style="color: red;"></span>
+                    <span class="error_span" data-validate-for="name_ru" style="color: red;"></span>
                 </div>
                 <!-- en name -->
                 <div class="post_input">
@@ -40,7 +40,7 @@
                          value="{{ productForEditing.lang('en').name }}"
                         {% endif %}
                     >
-                    <span data-validate-for="name_en" style="color: red;"></span>
+                    <span class="error_span" data-validate-for="name_en" style="color: red;"></span>
                 </div>
                 <!-- tm name -->
                 <div class="post_input">
@@ -50,7 +50,7 @@
                         value="{{ productForEditing.name }}"
                         {% endif %}
                     >
-                    <span data-validate-for="name_tm" style="color: red;"></span>
+                    <span class="error_span" data-validate-for="name_tm" style="color: red;"></span>
                 </div>
 
                 <div class="post_input">
@@ -60,7 +60,7 @@
                         value="{{ productForEditing.mark }}"
                         {% endif %}
                     >
-                    <span data-validate-for="mark" style="color: red;"></span>
+                    <span class="error_span" data-validate-for="mark" style="color: red;"></span>
                 </div>
 
                 <div class="post_input">
@@ -70,11 +70,11 @@
                         value="{{ productForEditing.manufacturer }}"
                         {% endif %}
                     >
-                    <span data-validate-for="manufacturer" style="color: red;"></span>
+                    <span class="error_span" data-validate-for="manufacturer" style="color: red;"></span>
                 </div>
 
-                <div class="post_input">
-                    <label>Категория <span>*</span> <span data-validate-for="category_id" style="color: red;"></span> </label>
+                <div class="post_input p-b">
+                    <label>Категория <span>*</span>  </label>
                     <div class="my-select">
                         <select class="category-select" data-belongsto="product" name="category_id">
                             <option value="0">Category</option>
@@ -86,11 +86,12 @@
                             >{{ c.name }}</option>
                             {% endfor %}
                         </select>
+                        <span class="error_span" data-validate-for="category_id" style="color: red;"></span>
                     </div>
                 </div>
 
-                <div class="post_input">
-                    <label>Страна производителя <span>*</span> <span data-validate-for="country_id" style="color: red;"></span></label>
+                <div class="post_input p-b">
+                    <label>Страна производителя <span>*</span> </label>
                     <div class="my-select">
                         <select name="country_id" data-belongsto="product">
                             <option value="0">Страна производителя</option>
@@ -102,6 +103,7 @@
                             >{{country.name}}</option>
                             {% endfor %}
                         </select>
+                        <span class="error_span" data-validate-for="country_id" style="color: red;"></span>
                     </div>
                 </div>
 
@@ -116,7 +118,7 @@
                 </div>
 
             </form>
-            
+
         </div>
         {% else %}
         <div class="post_wrap">
@@ -128,4 +130,5 @@
     </div>
 </section>
 <!-- Add post end ========================================================= -->
+
 

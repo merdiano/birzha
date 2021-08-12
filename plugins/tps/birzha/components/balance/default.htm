@@ -1,0 +1,66 @@
+
+{% set categories = __SELF__.categories %}
+{% set countries = __SELF__.countries %}
+{% set productForEditing = __SELF__.productForEditing %}
+
+<!-- Add post ============================================================= -->
+<section class="post">
+    <div class="auto_container">
+        {% if user.is_activated  %}
+        <div class="post_wrap" id="form-steps">
+            <div class="contact_title">
+                Пополнение баланса
+            </div>
+
+            {% flash success %}
+            <p style="color: green;">{{ message }}</p>
+            {% endflash %}
+
+            <form action="#" 
+                data-request="onSend"
+                data-request-validate 
+                data-request-flash
+                class="post_form post_form-2 first-step-form">
+               
+                <div class="post_upload_item">
+        
+                    <div class="post_input">
+                        <label for="good-count">Сумма (TMT)<span>*</span> </label>
+                        <input type="number" step="0.01" name="amount" placeholder="100" id="good-count" required>
+                        <span data-validate-for="amount" style="color: red;"></span>
+                    </div>
+                    
+                    <div class="post_input">
+                        <label>Метод оплаты <span>*</span> <span data-validate-for="payment_type" style="color: red;"></span></label>
+                        <div class="my-select">
+                            <select name="payment_type" required>
+                                <option value="">Метод оплаты</option>
+                                <option value="bank">Bank transfer</option>
+                                <option value="online">Online payment</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="btn_bg">
+                    <button class="post_btn" type="submit" data-attach-loading>
+                        Pay
+                    </button>
+                </div>
+
+            </form>
+            
+        </div>
+        {% else %}
+        <div class="post_wrap">
+            <div class="contact_title">
+                Activation is required
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+<!-- Add post end ========================================================= -->
+
+

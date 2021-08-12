@@ -37,4 +37,12 @@ class Payment extends Model
     public $attachOne = [
         'bank_file' => 'System\Models\File'
     ];
+
+    public function beforeUpdate() {
+        if($this->status == 'payed') {
+            $user = $this->user;
+            $user->balance +=$this->amount;
+            $user->save();
+        }
+    }
 }

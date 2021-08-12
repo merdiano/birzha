@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use TPS\Birzha\Models\Product;
+use Input;
 
 class MyOffers extends ComponentBase
 {
@@ -9,6 +10,11 @@ class MyOffers extends ComponentBase
      * @var Collection A collection of user's posts
      */
     public $offers;
+    
+    /**
+     * today's date
+     */
+    public $today;
     
     public function componentDetails()
     {
@@ -43,26 +49,22 @@ class MyOffers extends ComponentBase
         ];
     }
 
+    public function onDeleteOffer() {
+        $product = Product::find(Input::get('deleting_product_id'));
+        $product->images()->delete();
+        $product->translations()->delete();
+        $product->delete();
+
+        return \Redirect::back();
+    }
+
     public function onRun() {
         $this->offers = $this->loadOffers();
+        $this->today = \Carbon\Carbon::now();
     }
 
     protected function loadOffers() {
         $perPage = $this->property('perPage');
-        // $productSlug = $this->property('productSlug');
-        // $offerId = $this->property('offerId');
-
-        // $user = \Auth::user();
-        // $query = $user->products()->query();
-// orderBy('created_at', $sortOrder)->paginate($perPage);
-        // $query = query()->
-
-        // if($productSlug != '' && $offerId != '') { // fetch offers with similar products
-        //     $product = Product::transWhere('slug', $productSlug, Session::get('rainlab.translate.locale'))->first();
-        //     if($product) {
-        //         $query = Product::where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
-        //     }
-        // }
 
         return \Auth::user()->products()
             ->orderBy('created_at', 'desc')

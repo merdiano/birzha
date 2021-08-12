@@ -25,7 +25,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/*** 
+/***
 ====================================================================
     Global Settings
 ====================================================================
@@ -41,6 +41,10 @@ body {
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
+}
+
+body.active {
+    overflow: hidden;
 }
 
 a {
@@ -459,10 +463,10 @@ li {
 
     position: absolute;
     /* top: calc(100% + 52px); */
-    bottom: -360px;
-    left: 0;
+    bottom: -515px;
+    left: -30px;
 
-    width: 400px;
+    width: 350px;
 
     background: #fff;
     z-index: -1;
@@ -504,6 +508,8 @@ li {
 
 .profile_item:last-child {
     border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .add_post_btn {
@@ -755,8 +761,8 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    -webkit-box-shadow: 0px 15px 4px -10px var(--rgba-black);
-    box-shadow: 0px 15px 4px -10px var(--rgba-black);
+    /* -webkit-box-shadow: 0px 15px 4px -10px var(--rgba-black);
+    box-shadow: 0px 15px 4px -10px var(--rgba-black); */
 }
 
 .header_logo {
@@ -1584,7 +1590,7 @@ li {
 
 /* Footer end =================================================== */
 
-/* Category Page 
+/* Category Page
 ==================================================================== */
 /* Category ======================================================== */
 
@@ -1718,7 +1724,7 @@ li {
     margin-left: 20px;
 }
 
-/* Product detail Page 
+/* Product detail Page
 ==================================================================== */
 /* Product detail ======================================================== */
 
@@ -1936,7 +1942,85 @@ li {
     margin-top: 50px;
 }
 
-/* Contact Page 
+.seller_info {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(5px);
+    z-index: 20;
+    display: none;
+}
+
+.seller_info.active {
+    display: block;
+}
+
+.seller_inner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    width: 700px;
+}
+
+.seller_title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 50px;
+}
+
+.seller_row {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.seller_row:last-child {
+    margin-bottom: 0;
+}
+
+.seller_icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.seller_icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
+}
+
+.seller_label {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 5px;
+    color: var(--blue);
+}
+
+.seller_text {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+
+
+
+/* Contact Page
 ======================================================================== */
 /* Contact ============================================================= */
 
@@ -2111,6 +2195,10 @@ li {
     padding: 100px 0;
 }
 
+.post_wrap {
+    overflow: hidden;
+}
+
 .post_tabs {
     display: flex;
     align-items: center;
@@ -2131,6 +2219,46 @@ li {
     cursor: pointer;
 }
 
+.error_span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.show_span {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.new_group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.new_group .item_btn {
+    margin-top: 0;
+    padding: 10px 15px;
+    width: calc(50% - 10px);
+}
+
+.new_group .item_btn:first-child {
+    margin-right: 10px;
+}
+
+.delete_item_btn {
+    background: rgb(255, 0, 0);
+}
+
+.full_btn {
+    width: 100%;
+    max-width: 100%;
+}
+
 .post_link.active {
     color: #fff;
     background: var(--blue);
@@ -2145,7 +2273,7 @@ li {
     -webkit-flex-wrap: wrap;
     -moz-flex-wrap: wrap;
 
-    margin: -25px -20px;
+    margin: -25px -20px 0;
 }
 
 .simple_group {
@@ -2161,8 +2289,9 @@ li {
 
 .post_input {
     width: calc(33.33% - 40px);
-    margin: 25px 20px;
+    margin: 25px 20px 0;
     position: relative;
+    padding-bottom: 25px;
 }
 
 .post_input input {
@@ -2205,6 +2334,7 @@ li {
     width: calc(100% - 40px);
     margin: 25px 20px;
     position: relative;
+    padding-bottom: 25px;
 }
 
 .post_comment textarea {
@@ -2282,15 +2412,15 @@ li {
 }
 
 .eye_on.active {
-    display: none;
+    display: block;
 }
 
-.eye_off {
+.eye_on {
     display: none;
 }
 
 .eye_off.active {
-    display: block;
+    display: none;
 }
 
 .add_post_text {
@@ -2400,12 +2530,18 @@ li {
     background: #E2E2E2;
     border-radius: 5px;
     margin: 0;
-    padding: 15px 30px;
+    padding: 15px;
     cursor: pointer;
 }
 
 .form_group {
-    width: calc(100% - 155px);
+    width: calc(100% - 170px);
+}
+
+.alert-danger p {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
 .form_group label {
@@ -2457,12 +2593,17 @@ li {
 .my-select {
     width: 100%;
     position: relative;
+    padding-bottom: 25px;
+}
+
+.p-b {
+    padding-bottom: 0;
 }
 
 .my-select::after {
     position: absolute;
     content: "";
-    top: 50%;
+    top: 37%;
     right: 30px;
     transform: translateY(-30%);
     width: 0;
@@ -2598,6 +2739,49 @@ li {
     position: relative;
 }
 
+#more_btn {
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-style: italic;
+}
+
+#more_btn::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    border: 6px solid #000;
+    border-color: transparent transparent #000 transparent;
+    animation: load_arrow .8s ease-in infinite;
+}
+
+@keyframes load_arrow {
+    0% {
+        top: -12px;
+    }
+
+    50% {
+        top: -15px;
+    }
+
+    100% {
+        top: -12px;
+    }
+}
+
 .chat_box {
     display: flex;
     border: 1px solid #e2e2e2;
@@ -2605,7 +2789,7 @@ li {
     overflow: hidden;
 
     z-index: 7;
-    position: relative;
+    /* position: relative; */
 }
 
 .chat_people {
@@ -2614,6 +2798,7 @@ li {
     height: 620px;
     overflow-y: auto;
     position: relative;
+    background: #fff;
 }
 
 .chat_people::-webkit-scrollbar {
@@ -2703,7 +2888,7 @@ li {
     /* z-index: 3; */
     background: #fff;
 
-    display: none;
+    /* display: none; */
 }
 
 .chat_area-inner.active {
@@ -3379,7 +3564,7 @@ li {
     }
 
     .profile_drop {
-        bottom: -350px;
+        bottom: -515px;
     }
 }
 
@@ -3465,6 +3650,10 @@ li {
 
     .tab_link:nth-child(2) {
         margin-right: 0;
+    }
+
+    .profile_drop {
+        bottom: -505px;
     }
 
     /* Basket =============== */
@@ -3755,9 +3944,9 @@ li {
     }
 
     .profile_drop {
-        right: -45px;
+        right: -35px;
         left: unset;
-        bottom: -365px;
+        bottom: -517px;
         width: 320px;
     }
 
@@ -3853,6 +4042,8 @@ li {
         -webkit-transition: all .3s linear;
         z-index: 5;
 
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
     .chat_people.active {
@@ -3871,6 +4062,28 @@ li {
         display: block;
     }
 
+    /* Seller ---------------- */
+
+    .seller_inner {
+        padding: 30px;
+        width: 80%;
+    }
+
+    .seller_title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .seller_label,
+    .seller_text {
+        font-size: 14px;
+    }
+
+    .seller_icon {
+        width: 30px;
+        height: 30px;
+    }
+
 }
 
 @media(max-width: 900px) {
@@ -3880,6 +4093,11 @@ li {
 
     .navs_wrap {
         padding: 10px 20px;
+    }
+
+    .post_comment textarea {
+        padding: 10px 15px;
+        height: 50px;
     }
 
     .burger {
@@ -3976,6 +4194,10 @@ li {
         font-size: 28px;
     }
 
+    .contact_title {
+        font-size: 22px;
+    }
+
     .register_body {
         height: auto;
         flex-direction: column;
@@ -4028,6 +4250,24 @@ li {
         --text-18: 16px
     }
 
+    .new_group {
+        flex-direction: column;
+        -ms-flex-direction: column;
+        -moz-flex-direction: column;
+        -o-flex-direction: column;
+        -webkit-flex-direction: column;
+    }
+
+    .new_group .item_btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .new_group .item_btn:first-child {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
     .languages {
         padding: 10px;
     }
@@ -4066,11 +4306,13 @@ li {
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         -moz-flex-wrap: wrap;
         -o-flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap; */
+
+        flex-direction: column;
 
         margin-top: 50px;
     }
@@ -4147,7 +4389,8 @@ li {
         margin: 0;
     }
 
-    .post_input {
+    .post_input,
+    .post_comment {
         width: 100%;
         margin: 12px 0;
     }
@@ -4177,9 +4420,15 @@ li {
 
     .profile_drop {
         width: 270px;
-        bottom: -350px;
+        bottom: -445px;
         font-size: 14px;
-        right: -55px;
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
 
         margin-bottom: 50px;
     }
@@ -4321,7 +4570,9 @@ li {
     }
 
     .add_post_btn {
-        padding: 10px;
+        /* padding: 10px; */
+        width: 100%;
+        justify-content: center;
     }
 
     .post_text {
@@ -4338,7 +4589,7 @@ li {
 
     .profile_icon {
         width: 15px;
-        height: 15px;
+        height: 20px;
     }
 
     .profile_icon img {
@@ -4349,7 +4600,7 @@ li {
     }
 
     .profile_drop {
-        bottom: -300px;
+        bottom: -420px;
     }
 
     .category_search {
@@ -4387,7 +4638,8 @@ li {
         width: 90%;
     }
 
-    .chat_area, .chat_people {
+    .chat_area,
+    .chat_people {
         height: 400px;
     }
 
@@ -4423,12 +4675,36 @@ li {
         padding: 20px;
     }
 
+    /* Seller ---------------- */
+
+    .seller_inner {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .seller_title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .seller_label,
+    .seller_text {
+        font-size: 14px;
+    }
+
+    .seller_row {
+        margin-bottom: 10px;
+    }
 }
 
 @media(max-width: 500px) {
     :root {
         --text-32: 22px;
         --text-20: 14px;
+    }
+
+    .contact_title {
+        font-size: 18px;
     }
 
     .links {
@@ -4531,10 +4807,10 @@ li {
     }
 
     .profile_drop {
-        width: 200px;
-        bottom: -315px;
+        width: 300px;
+        bottom: -360px;
         font-size: 14px;
-        right: -23px;
+        right: -72px;
         margin-bottom: 0;
     }
 
@@ -4632,6 +4908,10 @@ li {
         width: 95%;
     }
 
+    .form_group {
+        width: calc(100% - 130px);
+    }
+
     .cat_photo {
         width: 75px;
         height: 80px;
@@ -4655,11 +4935,15 @@ li {
     }
 
     .profile_drop {
-        width: 200px;
-        bottom: -290px;
+        width: 240px;
+        bottom: -385px;
         font-size: 14px;
-        right: -23px;
+        right: -42px;
         padding-bottom: 30px;
+    }
+
+    .links {
+        padding: 20px;
     }
 
     .post {
@@ -4686,5 +4970,21 @@ li {
     .foot_logo_text {
         font-size: 12px;
     }
+
+    .seller_title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .seller_label,
+    .seller_text {
+        font-size: 12px;
+    }
+
+    .seller_icon {
+        width: 26px;
+        height: 26px;
+    }
+
 
 }

@@ -100,9 +100,8 @@ class OfferForm extends ComponentBase
         $product->manufacturer = $data['manufacturer'];
         $product->country_id = $data['country_id'];
 
-
-
         $product->vendor_id = \Auth::user()->id;
+        $product->ends_at = null; // if approved but date was expired
 
 
         if(!isset($data['productForEditing'])) {
@@ -146,6 +145,11 @@ class OfferForm extends ComponentBase
         ];
         $this->validateForm($data, $rules);
 
+        // validate if no old images and new images
+        if(!isset($data['new_img']) && !isset($data['old_img'])) {
+            throw new ValidationException(['no_images' => 'Хотя бы 1 фото должно быть']);
+        }
+
         // seaparate validation for file type
         $rules = [
             'new_img.*' => 'mimes:jpg,png'
@@ -162,10 +166,11 @@ class OfferForm extends ComponentBase
 
         $attachedProduct = $this->fillProduct($data,$attachedProduct);
 
-        // add images to completely new product
-        foreach($data['new_img'] as $key => $img) {
-            $attachedProduct->images = $img;
-            $attachedProduct->save();
+        if(isset($data['new_img'])) {
+            foreach($data['new_img'] as $key => $img) {
+                $attachedProduct->images = $img;
+                $attachedProduct->save();
+            }
         }
 
         $this->page['fee'] = Settings::getValue('fee');
@@ -199,6 +204,24 @@ class OfferForm extends ComponentBase
         }
     }
 
+    // after deleting a photo go the second form_step
+    public function onImageDelete() {
+        // dd(Input::get('product_image_id'));
+        $product = Product::find(Input::get('being_edited_product_id'));
+
+        $product->images()->find(Input::get('product_image_id'))->delete();
+
+        $this->page['measures'] = Measure::all();
+        $this->page['paymentTerms'] = Term::where('type','payment')->get();
+        $this->page['deliveryTerms'] = Term::where('type','delivery')->get();
+        $this->page['currencies'] = Currency::all();
+        $this->page['product'] = $product;
+
+        return [
+            '#form-steps' => $this->renderPartial('@second_step_form')
+        ];
+    }
+
     protected function validateFileType($data, $rules) {
         $validator = Validator::make($data, $rules);
 
@@ -224,10 +247,10 @@ class OfferForm extends ComponentBase
     }
 
     protected function fillProduct($data,$attachedProduct) {
-        // Sets a single translated attribute for a language
-
-//        $attachedProduct->setAttributeTranslated('description', $data['description_tm'], 'tm');
         $attachedProduct->description = $data['description_tm'];
+        // Sets a single translated attribute for a language
+        $attachedProduct->setAttributeTranslated('description', $data['description_ru'], 'ru');
+        $attachedProduct->setAttributeTranslated('description', $data['description_en'], 'en');
 
         $attachedProduct->quantity = $data['quantity'];
         $attachedProduct->price = $data['price'];
@@ -238,10 +261,8 @@ class OfferForm extends ComponentBase
         $attachedProduct->place = $data['place'];
         $attachedProduct->currency_id = $data['currency_id'];
         // $attachedProduct->ends_at = $data['ends_at'];
-//        dd($data,$attachedProduct);
-        $attachedProduct->setAttributeTranslated('description', $data['description_ru'], 'ru');
-        $attachedProduct->setAttributeTranslated('description', $data['description_en'], 'en');
         $attachedProduct->save();
+
         return $attachedProduct;
     }
 

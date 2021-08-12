@@ -2,8 +2,8 @@ fields:
     amount:
         label: Amount
         span: auto
-        disabled: 1
-        readOnly: 1
+        disabled: 0
+        readOnly: 0
         type: number
     user:
         label: Payer

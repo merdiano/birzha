@@ -4,6 +4,15 @@
 <section class="chat">
     <div class="auto_container">
         <div class="chat_wrap">
+            <div class="chat_burger">
+                <svg viewBox="0 0 32 32" fill="#003197" xmlns="http://www.w3.org/2000/svg">
+                    <g data-name="menu " id="menu_">
+                        <path d="M29,6H3A1,1,0,0,0,3,8H29a1,1,0,0,0,0-2Z" />
+                        <path d="M3,17H16a1,1,0,0,0,0-2H3a1,1,0,0,0,0,2Z" />
+                        <path d="M25,24H3a1,1,0,0,0,0,2H25a1,1,0,0,0,0-2Z" />
+                    </g>
+                </svg>
+            </div>
             <div class="chat_box">
                 <div class="chat_people">
 
@@ -23,16 +32,16 @@
                                 {{chatroom.message_partner.email}}
                             {% endif %}
                             
-                            &nbsp;
-                            <span class="unread-messages-count">
-                                {% if chatroom.count_unread_messages %}
-                                    ({{chatroom.count_unread_messages}})
-                                {% endif %}
-                            </span>
+                           
                         </div>
                         <div class="person_message">
                             {{chatroom.last_message.message}}
                         </div>
+                        {% if chatroom.count_unread_messages %}
+                            <div class="chat_alert">
+                                {{chatroom.count_unread_messages}}
+                            </div>
+                        {% endif %}
                     </a>
                     {% endfor %}
                     
@@ -40,6 +49,16 @@
                 <div class="chat_area" id="chatroom">
 
                     <!-- chat_area -->
+
+                    <div class="chat_wall">
+                        <div class="chat_wall_img">
+                            <img src="{{'assets/images/big_logo.png'|theme}}" alt="logo">
+                        </div>
+                        <div class="chat_wall_text">
+                            Выберите один из активных диалоговых окон
+                            чтоб начать переписку!
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -59,5 +78,27 @@
 
             $('.unread-messages-count').text('');
         }
+    </script>
+    <script>
+        $(window).on('load', function() {
+            var params = window
+                .location
+                .search
+                .replace('?','')
+                .split('&')
+                .reduce(
+                    function(p,e){
+                        var a = e.split('=');
+                        p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                        return p;
+                    },
+                    {}
+                );
+
+            if(params['seller_id']) {
+                $('.chat_people').find(`a[data-partner-id="${params['seller_id']}"]`)
+                    .click()
+            }
+        })
     </script>
 {% endput %}

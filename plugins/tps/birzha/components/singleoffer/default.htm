@@ -147,16 +147,65 @@
     </div>
 </div>
 <div class="detail_buttons">
-    <a href="#" class="btn btn--green">
+    <a href="#" class="btn btn--green seller_btn">
         {{'page.seller_cont'|_}}
     </a>
     <div class="btn_group">
-        <a href="#" class="btn btn--border">
-            {{'page.buy_now'|_}}
-        </a>
-        <a href="#" class="btn btn--blue">
-            {{'page.send_prod_request'|_}}
-        </a>
+        {% if account.user and account.user.id != offer.vendor.id %}
+            <a href="{{ 'kabinet/messages'|page }}?seller_id={{offer.vendor.id}}" class="btn btn--blue">
+                Сообщение продавцу
+            </a>
+        {% endif %}
     </div>
 </div>
+
+<div class="seller_info">
+    <div class="seller_inner">
+        <div class="seller_title">
+            Контакты продавца
+        </div>
+        <div class="sller_box">
+            <div class="seller_row">
+                <div class="seller_icon">
+                    <img src="../../../../../themes/birzha/assets/images/svg/seller-profile.svg" alt="icon">
+                </div>
+                <div class="seller_group">
+                    <div class="seller_label">
+                        ФИО
+                    </div>
+                    <div class="seller_text">
+                        Аман Аманов
+                    </div>
+                </div>
+            </div>
+            <div class="seller_row">
+                <div class="seller_icon">
+                    <img src="../../../../../themes/birzha/assets/images/svg/seller-phone.svg" alt="icon">
+                </div>
+                <div class="seller_group">
+                    <div class="seller_label">
+                        Телефон:
+                    </div>
+                    <div class="seller_text">
+                        +99312446015
+                    </div>
+                </div>
+            </div>
+            <div class="seller_row">
+                <div class="seller_icon">
+                    <img src="../../../../../themes/birzha/assets/images/svg/seller-mail.svg" alt="icon">
+                </div>
+                <div class="seller_group">
+                    <div class="seller_label">
+                        E-mail:
+                    </div>
+                    <div class="seller_text">
+                        info@exchange.gov.tm
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endif %}
