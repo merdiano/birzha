@@ -167,40 +167,40 @@
         <div class="sller_box">
             <div class="seller_row">
                 <div class="seller_icon">
-                    <img src="../../../../../themes/birzha/assets/images/svg/seller-profile.svg" alt="icon">
+                    <img src="{{'assets/images/svg/seller-profile.svg'|theme}}" alt="icon">
                 </div>
                 <div class="seller_group">
                     <div class="seller_label">
                         ФИО
                     </div>
                     <div class="seller_text">
-                        Аман Аманов
+                        {{offer.vendor.name}} {{offer.vendor.surname}}
                     </div>
                 </div>
             </div>
             <div class="seller_row">
                 <div class="seller_icon">
-                    <img src="../../../../../themes/birzha/assets/images/svg/seller-phone.svg" alt="icon">
+                    <img src="{{'assets/images/svg/seller-phone.svg'|theme}}" alt="icon">
                 </div>
                 <div class="seller_group">
                     <div class="seller_label">
                         Телефон:
                     </div>
                     <div class="seller_text">
-                        +99312446015
+                        {{offer.vendor.iu_telephone}}
                     </div>
                 </div>
             </div>
             <div class="seller_row">
                 <div class="seller_icon">
-                    <img src="../../../../../themes/birzha/assets/images/svg/seller-mail.svg" alt="icon">
+                    <img src="{{'assets/images/svg/seller-mail.svg'|theme}}" alt="icon">
                 </div>
                 <div class="seller_group">
                     <div class="seller_label">
                         E-mail:
                     </div>
                     <div class="seller_text">
-                        info@exchange.gov.tm
+                        {{offer.vendor.email}}
                     </div>
                 </div>
             </div>
