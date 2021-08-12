@@ -2220,9 +2220,11 @@ li {
 }
 
 .error_span {
-    position: absolute;
+    /* position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 0; */
+    margin-top: 5px;
+    display: block;
 }
 
 .show_span {
@@ -2272,7 +2274,7 @@ li {
     -o-flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
     -moz-flex-wrap: wrap;
-
+    position: relative;
     margin: -25px -20px 0;
 }
 
@@ -2291,7 +2293,7 @@ li {
     width: calc(33.33% - 40px);
     margin: 25px 20px 0;
     position: relative;
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
 }
 
 .post_input input {
@@ -2593,7 +2595,7 @@ li {
 .my-select {
     width: 100%;
     position: relative;
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
 }
 
 .p-b {
@@ -2603,14 +2605,16 @@ li {
 .my-select::after {
     position: absolute;
     content: "";
-    top: 37%;
+    top: 30px;
     right: 30px;
     transform: translateY(-30%);
     width: 0;
     height: 0;
+    /* display: ; */
     border: 6px solid #000;
     border-color: #000 transparent transparent transparent;
 }
+
 
 .my-select select {
     width: 100%;
@@ -4378,7 +4382,7 @@ li {
     }
 
     .post_form {
-        margin: -25px 0;
+        margin: 0px 0;
     }
 
     .post_input label {
@@ -4820,7 +4824,7 @@ li {
     }
 
     .logo_text {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .footer_img {
@@ -4855,6 +4859,10 @@ li {
     .basket_info_name,
     .basket_info_cash {
         font-size: 14px;
+    }
+
+    .error_span {
+        font-size: 12px;
     }
 
     .contact_input {
