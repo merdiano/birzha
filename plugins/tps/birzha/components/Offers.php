@@ -86,14 +86,14 @@ class Offers extends ComponentBase
         $productSlug = $this->property('productSlug');
         $offerId = $this->property('offerId');
 
-        $query = Product::where('status', 'approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
+        $query = Product::where('status', 'approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder);
 
         if($cSlug != '') { //fetch offers by the category of the product
             $category = Category::transWhere('slug', $cSlug, Session::get('rainlab.translate.locale'))->first();
             if($category) {
                 $offersIds = array();
 
-                $query = $category->products()->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage); //categories have many products
+                $query = $category->products()->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder); //categories have many products
 
                 // foreach($productsOfOneCategory as $p) {
                 //     foreach($p->offers as $of) { //but only one product can have many offers and one offer can have just one product
@@ -109,13 +109,13 @@ class Offers extends ComponentBase
         if($productSlug != '' && $offerId != '') { // fetch offers with similar products
             $product = Product::transWhere('slug', $productSlug, Session::get('rainlab.translate.locale'))->first();
             if($product) {
-                $query = Product::where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
+                $query = Product::where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder);
             } else {
                 $query = null;
             }
         }
 
-        return $query;
+        return $query ? $query->paginate($perPage) : null;
     }
 
     public $offers;
