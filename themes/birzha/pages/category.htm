@@ -11,16 +11,14 @@ localeUrl[ru] = "/kategoriya/:slug"
 
 [categories]
 active = 0
-categoryImages = "without_images"
 slug = "{{ :slug }}"
+renderFeatures = "without_images"
 
 [offers]
 categorySlug = "{{ :slug }}"
 perPage = 2
 sortOrder = "desc"
 ==
-
-
 <!--Category ============================================================= -->
 <section class="category">
     <div class="auto_container">
@@ -63,9 +61,9 @@ sortOrder = "desc"
                 <form action="#" class="sort-order">
                     <div class="category_select">
                         <select name="sort_order">
-                            <option value="1">По дате</option>
-                            <option value="desc">Decrease</option>
-                            <option value="asc">Increase</option>
+                            <option value="1">{{'page.sort_by_date'|_}}</option>
+                            <option value="desc">{{'page.date_decrease'|_}}</option>
+                            <option value="asc">{{'page.date_increase'|_}}</option>
                         </select>
                         {% if input('page') %}
                             <input type="hidden" name="page" value="{{ input('page') }}">
@@ -74,22 +72,22 @@ sortOrder = "desc"
                 </form>
                 <div class="inline_head">
                     <div class="inline_item">
-                        Лот №:
+                        {{page.prod_id|_}} №:
                     </div>
                     <div class="inline_item">
-                        Изображение
+                        {{ 'page.prod_img'|_ }}
                     </div>
                     <div class="inline_item">
-                        Товар
+                        {{ 'page.prod_title'|_ }}
                     </div>
                     <div class="inline_item">
-                        Дата окончания:
+                        {{ 'page.prod_amount'|_ }}
                     </div>
                     <div class="inline_item">
-                        Количество:
+                        {{ 'page.prod_price'|_ }}
                     </div>
                     <div class="inline_item">
-                        Стартовая цена:
+                        {{ 'page.prod_finishdate'|_ }}
                     </div>
                 </div>
 

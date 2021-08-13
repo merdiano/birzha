@@ -10,14 +10,13 @@ localeTitle[ru] = "Главная страница"
 localeUrl[en] = "/"
 localeUrl[ru] = "/"
 
-[categories]
-active = 0
-categoryImages = "with_images"
-slug = "{{ :slug }}"
-
 [offers]
 perPage = 0
 sortOrder = "desc"
+
+[categories]
+slug = "{{ :slug }}"
+renderFeatures = "with_images"
 ==
 {% put styles %}
 <link rel="stylesheet" href="{{['assets/css/slick-theme.css','assets/css/slick.css']|theme}}">
@@ -33,6 +32,8 @@ sortOrder = "desc"
             {% partial 'slider' %}
 
             {% component 'categories' %}
+            
+            
         </div>
     </div>
 </section>
@@ -75,13 +76,13 @@ sortOrder = "desc"
                     {{ 'page.prod_title'|_ }}
                 </div>
                 <div class="inline_item">
-                    {{ 'page.prod_amount'|_ }}:
+                    {{ 'page.prod_amount'|_ }}
                 </div>
                 <div class="inline_item">
-                    {{ 'page.prod_price'|_ }}:
+                    {{ 'page.prod_price'|_ }}
                 </div>
                 <div class="inline_item">
-                    {{ 'page.prod_finishdate'|_ }}:
+                    {{ 'page.prod_finishdate'|_ }}
                 </div>
             </div>
             {% component 'offers' %}

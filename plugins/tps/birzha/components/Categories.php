@@ -37,24 +37,25 @@ class Categories extends ComponentBase
                 'description' => 'Filter active categories only',
                 'type'        => 'checkbox'
             ],
-            'categoryImages' => [
-                'title' => 'Images of categories',
-                'description' => 'Ctaegories with images or without them',
-                'type' => 'dropdown'
-            ],
             'slug' => [
                 'title'       => 'Slug',
                 'description' => 'Category slug',
                 'default'     => '{{ :slug }}',
                 'type'        => 'string',
             ],
+            'renderFeatures' => [
+                'title' => 'Render features',
+                'description' => 'How to render',
+                'type' => 'dropdown'
+            ],
         ];
     }
 
-    public function getCategoryImagesOptions() {
+    public function getRenderFeaturesOptions() {
         return [
             'with_images' => 'With images',
-            'without_images' => 'Without images'
+            'without_images' => 'Without images',
+            'footer' => 'As links in footer'
         ];
     }
 
