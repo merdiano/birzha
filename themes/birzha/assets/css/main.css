@@ -2336,7 +2336,7 @@ li {
     width: calc(100% - 40px);
     margin: 25px 20px;
     position: relative;
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
 }
 
 .post_comment textarea {
