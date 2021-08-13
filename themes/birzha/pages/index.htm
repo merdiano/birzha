@@ -4,6 +4,12 @@ layout = "default"
 description = "Baş sahypa. Türkmenistanyň biržasy."
 is_hidden = 0
 
+[viewBag]
+localeTitle[en] = "Home page"
+localeTitle[ru] = "Главная страница"
+localeUrl[en] = "/"
+localeUrl[ru] = "/"
+
 [categories]
 active = 0
 categoryImages = "with_images"
@@ -12,12 +18,6 @@ slug = "{{ :slug }}"
 [offers]
 perPage = 0
 sortOrder = "desc"
-
-[viewBag]
-localeTitle[en] = "Home page"
-localeTitle[ru] = "Главная страница"
-localeUrl[en] = "/home-page"
-localeUrl[ru] = "/glavnaya-stranica"
 ==
 {% put styles %}
 <link rel="stylesheet" href="{{['assets/css/slick-theme.css','assets/css/slick.css']|theme}}">
