@@ -90,8 +90,9 @@ class Balance extends ComponentBase
         $newPayment->bank_file = \Input::file('bank_file');
         $newPayment->save();
 
-        \Flash::success('Администратор просмотрит ваш документ оплаты, и средства перейдут на ваш баланс. Спасибо');
-        return \Redirect::back();
+        return [
+            '#form-steps' => $this->renderPartial('@payment_finish')
+        ];
     }
 
     protected function validateForm($data, $rules) {

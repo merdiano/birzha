@@ -3,14 +3,12 @@
     <div class="auto_container">
         <div class="contact_wrap">
             <div class="contact_body">
-                <div class="contact_content">
+                <div class="contact_content" id="form-steps">
                     <div class="contact_title">
                         Обратная связь
                     </div>
                     
-                    {% flash success %}
-                        <p style="color: green;">{{ message }}</p>
-                    {% endflash %}
+                    
 
                     <form action="#" data-request="onSend" data-request-validate data-request-flash class="contact_form">
                         <div class="contact_input">

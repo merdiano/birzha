@@ -40,8 +40,9 @@ class ContactForm extends ComponentBase
                 $message->subject('Birzha web site contact form');
             });
 
-            \Flash::success('Сообщение отправлено');
-            return \Redirect::back();
+            return [
+                '#form-steps' => $this->renderPartial('@message_sent')
+            ];
         }
     }
 }
