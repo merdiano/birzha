@@ -141,7 +141,7 @@ class OfferForm extends ComponentBase
             'delivery_term_id' => 'required',
             'currency_id' => 'required',
             'measure_id' => 'required',
-            'new_img' => 'required'
+            // 'new_img' => 'required'
         ];
         $this->validateForm($data, $rules);
 

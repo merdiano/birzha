@@ -1,16 +1,41 @@
 <div class="contact_title">
     Bank transfer payment
 </div>
-<form class="post_form" 
-    data-request="onPayByBankTransfer"
-    data-request-validate 
-    data-request-flash
-    data-request-files
+<form class="post_form bank_form" data-request="onPayByBankTransfer" data-request-validate data-request-flash data-request-files
     data-request-data="amount: {{amount}}">
-    
-    <p>Банковские реквизиты:</p>
-    <p>Банковские реквизиты:</p>
-    
+
+    <div class="bank">
+        <div class="bank_group">
+            <div class="bank_title">
+                Банковские реквизиты:
+            </div>
+            <div class="bank_text">
+                - 1234-1234-1234-1234
+            </div>
+            <div class="bank_text">
+                - 1234-1234-1234-1234
+            </div>
+        </div>
+        <div class="bank_group">
+            <div class="bank_title">
+                Bank address
+            </div>
+            <div class="bank_text">
+                744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+            </div>
+        </div>
+        <div class="bank_group">
+            <div class="bank_title">
+                Our реквизиты:
+            </div>
+            <div class="bank_text">
+                - 1234-1234-1234-1234
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="post_input">
         <label for="good-count">Сумма (TMT)<span>*</span> </label>
         <input type="text" placeholder="100" id="good-count" disabled value="{{amount}}">
@@ -19,24 +44,18 @@
 
     <div class="post_upload_box">
         <div class="post_upload_item">
-
-            <div class="post_input">
-                <label>Загрузить файл<span>*</span></label>
-                <div class="upload_group">
-                    <label for="file-1">Загрузить файл</label>
-                    <div class="form_group">
-                        <label class="additional">
-                            <span>Ничего не выбранo</span>
-                        </label>
-                        <input type="file" 
-                            name="bank_file" 
-                            id="file-1" class="inputfile inputfile-1"
-                            data-multiple-caption="{count} files selected" 
-                        />
-                    </div>
+            <label class="upload_label" >Загрузить файл<span>*</span></label>
+            <div class="upload_group">
+                <label for="file-1">Загрузить файл</label>
+                <div class="form_group">
+                    <label class="additional">
+                        <span>Ничего не выбранo</span>
+                    </label>
+                    <input type="file" name="bank_file" id="file-1" class="inputfile inputfile-1"
+                        data-multiple-caption="{count} files selected" />
                 </div>
-                <span data-validate-for="bank_file" style="color: red;"></span>
             </div>
+            <span data-validate-for="bank_file" style="color: red;"></span>
         </div>
     </div>
     <div class="btn_bg">
