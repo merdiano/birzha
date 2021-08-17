@@ -1,5 +1,5 @@
 <div class="contact_title">
-    Добавить объявление (Step 2)
+    {{'account.add_post'|_({ step_number: 2 })}}
 </div>
 
 <form action="#" class="post_form" enctype="multipart/form-data"
@@ -11,10 +11,10 @@
     <input type="hidden" name="product_id" value="{{product.id}}">
 
     <div class="post_input p-b">
-        <label>Единицы измерения <span>*</span> </label>
+        <label>{{'page.measure'|_}} <span>*</span> </label>
         <div class="my-select">
             <select name="measure_id">
-                <option value="">Единицы измерения</option>
+                <option value="">{{'page.measure'|_}}</option>
                 {% for m in measures %}
                 <option value="{{m.id}}"
                     {% if product.measure.id == m.id %}
@@ -28,17 +28,17 @@
     </div>
 
     <div class="post_input">
-        <label for="good-count">Количество товара <span>*</span> </label>
-        <input type="text" name="quantity" placeholder="Пример: 3 литра" id="good-count"
+        <label for="good-count">{{'page.prod_amount_2'|_}} <span>*</span> </label>
+        <input type="number" name="quantity" placeholder="{{'page.example'|_}}: {{'account.quantity_example'|_}}" id="good-count"
         value="{{ product.quantity }}">
         <span class="error_span" data-validate-for="quantity" style="color: red;"></span>
     </div>
 
     <div class="post_input p-b">
-        <label>Валюта  <span>*</span> </label>
+        <label>{{'account.currency'|_}}  <span>*</span> </label>
         <div class="my-select">
             <select name="currency_id">
-                <option value="">Валюта</option>
+                <option value="">{{'account.currency'|_}}</option>
                 {% for currency in currencies %}
                 <option value="{{currency.id}}"
                     {% if product.currency.id == currency.id %}
@@ -52,17 +52,17 @@
     </div>
 
     <div class="post_input">
-        <label for="good-cost">Стартовая цена за единицу <span>*</span> </label>
-        <input type="text" name="price" placeholder="Пример: 120" id="good-cost"
+        <label for="good-cost">{{'page.prod_price'|_}} <span>*</span> </label>
+        <input type="text" name="price" placeholder="{{'page.example'|_}}: 120" id="good-cost"
         value="{{ product.price }}">
         <span class="error_span" data-validate-for="price" style="color: red;"></span>
     </div>
 
     <div class="post_input p-b">
-        <label>Условия поставки <span>*</span> </label>
+        <label>{{'page.delivery_cond'|_}} <span>*</span> </label>
         <div class="my-select">
             <select name="delivery_term_id">
-                <option value="">Условия поставки</option>
+                <option value="">{{'page.delivery_cond'|_}}</option>
                 {% for dt in deliveryTerms %}
                 <option value="{{dt.id}}"
                     {% if product.delivery_term.id == dt.id %}
@@ -76,17 +76,17 @@
     </div>
 
     <div class="post_input">
-        <label for="good-cost">Пункт <span>*</span> </label>
-        <input type="text" name="place" placeholder="Пример: 120" id="good-cost"
+        <label for="good-cost">{{'page.delivery_point'|_}} <span>*</span> </label>
+        <input type="text" name="place" placeholder="{{'page.example'|_}}: {{'account.delivery_point_example'|_}}" id="good-cost"
         value="{{ product.place }}">
         <span class="error_span" data-validate-for="place" style="color: red;"></span>
     </div>
 
     <div class="post_input p-b">
-        <label>Упаковка <span>*</span></label>
+        <label>{{'page.packaging'|_}} <span>*</span></label>
         <div class="my-select">
             <select name="packaging">
-                <option value="">Упаковка</option>
+                <option value="">{{'page.packaging'|_}}</option>
                 <option value="yes"
                     {% if product.packaging == "yes" %}
                         selected
@@ -103,10 +103,10 @@
     </div>
 
     <div class="post_input p-b">
-        <label>Условия оплаты  <span>*</span></label>
+        <label>{{'page.payment_cond'|_}}  <span>*</span></label>
         <div class="my-select">
             <select name="payment_term_id">
-                <option value="">Условия оплаты</option>
+                <option value="">{{'page.payment_cond'|_}}</option>
                 {% for pt in paymentTerms %}
                 <option value="{{pt.id}}"
                     {% if product.payment_term.id == pt.id %}
@@ -120,17 +120,17 @@
     </div>
 
     <div class="post_comment">
-        <label for="description_ru">Описание (RU) <span>*</span></label>
+        <label for="description_ru">{{'page.prod_desc'|_}} (RU) <span>*</span></label>
         <textarea id="description_ru" name="description_ru">{{product.lang('ru').description}}</textarea>
         <span class="error_span" data-validate-for="description_ru" style="color: red;"></span>
     </div>
     <div class="post_comment">
-        <label for="description_en">Описание (EN) <span>*</span></label>
+        <label for="description_en">{{'page.prod_desc'|_}} (EN) <span>*</span></label>
         <textarea id="description_en" name="description_en">{{product.lang('en').description}}</textarea>
         <span class="error_span" data-validate-for="description_en" style="color: red;"></span>
     </div>
     <div class="post_comment">
-        <label for="description_tm">Описание (TM) <span>*</span></label>
+        <label for="description_tm">{{'page.prod_desc'|_}} (TM) <span>*</span></label>
         <textarea id="description_tm" name="description_tm">{{product.lang('tm').description}}</textarea>
         <span class="error_span" data-validate-for="description_tm" style="color: red;"></span>
     </div>
@@ -148,12 +148,12 @@
 
             <div class="post_input">
                 {% if not product.images[i] %}
-                <label>Загрузить фото #{{i+1}} <span>*</span></label>
+                <label>{{'account.upload_photo'|_}} #{{i+1}} <span>*</span></label>
                 <div class="upload_group">
-                    <label for="file-{{i}}">Загрузить файл</label>
+                    <label for="file-{{i}}">{{'account.upload_photo'|_}}</label>
                     <div class="form_group">
                         <label class="additional">
-                            <span>Ничего не выбранo</span>
+                            <span>{{'account.nothing_chosen'|_}}</span>
                         </label>
                         <input type="file"
                             name="new_img[{{i}}]"
@@ -181,12 +181,12 @@
 
     <div class="btn_bg">
         <button class="post_btn" type="submit">
-            Шаг 3
+            {{'account.step'|_({ step_number: 3 })}}
         </button>
     </div>
 
     <div class="add_post_text">
-        Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+        {{'account.required_fields'|_}}
     </div>
 
 </form>

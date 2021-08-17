@@ -153,7 +153,7 @@
     <div class="btn_group">
         {% if account.user and account.user.id != offer.vendor.id %}
             <a href="{{ 'kabinet/messages'|page }}?seller_id={{offer.vendor.id}}" class="btn btn--blue">
-                Сообщение продавцу
+                {{'page.message_to_seller'|_}}
             </a>
         {% endif %}
     </div>
@@ -162,7 +162,7 @@
 <div class="seller_info">
     <div class="seller_inner">
         <div class="seller_title">
-            Контакты продавца
+            {{'page.seller_cont'|_}}
         </div>
         <div class="sller_box">
             <div class="seller_row">
@@ -171,7 +171,7 @@
                 </div>
                 <div class="seller_group">
                     <div class="seller_label">
-                        ФИО
+                        {{'page.fio'|_}}
                     </div>
                     <div class="seller_text">
                         {{offer.vendor.name}} {{offer.vendor.surname}}
@@ -184,7 +184,7 @@
                 </div>
                 <div class="seller_group">
                     <div class="seller_label">
-                        Телефон:
+                        {{'footer.tel'|_}}:
                     </div>
                     <div class="seller_text">
                         {{offer.vendor.iu_telephone}}

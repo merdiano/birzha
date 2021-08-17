@@ -3,14 +3,14 @@ url = "/messages"
 layout = "default"
 is_hidden = 0
 
+[viewBag]
+localeTitle[ru] = "Сообщения"
+localeUrl[ru] = "/soobshcheniya"
+
 [messages]
 
 [session]
 security = "user"
 redirect = "index"
-
-[viewBag]
-localeTitle[ru] = "Сообщения"
-localeUrl[ru] = "/soobshcheniya"
 ==
 {% component 'messages' %}

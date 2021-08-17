@@ -1,5 +1,5 @@
 <div class="contact_title">
-    Bank transfer payment
+    {{'account.bank_transfer'|_}}
 </div>
 <form class="post_form bank_form" data-request="onPayByBankTransfer" data-request-validate data-request-flash data-request-files
     data-request-data="amount: {{amount}}">
@@ -7,7 +7,7 @@
     <div class="bank">
         <div class="bank_group">
             <div class="bank_title">
-                Банковские реквизиты:
+                {{'account.bank_details'|_}}:
             </div>
             <div class="bank_text">
                 - 1234-1234-1234-1234
@@ -18,15 +18,15 @@
         </div>
         <div class="bank_group">
             <div class="bank_title">
-                Bank address
+                {{'account.bank_address'|_}}:
             </div>
             <div class="bank_text">
-                744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+                {{'account.bank_1'|_}}
             </div>
         </div>
         <div class="bank_group">
             <div class="bank_title">
-                Our реквизиты:
+                {{'account.our_bank_details'|_}}:
             </div>
             <div class="bank_text">
                 - 1234-1234-1234-1234
@@ -37,19 +37,19 @@
 
 
     <div class="post_input">
-        <label for="good-count">Сумма (TMT)<span>*</span> </label>
+        <label for="good-count">{{'account.amount'|_}} (TMT)<span>*</span> </label>
         <input type="text" placeholder="100" id="good-count" disabled value="{{amount}}">
         <span data-validate-for="amount" style="color: red;"></span>
     </div>
 
     <div class="post_upload_box">
         <div class="post_upload_item">
-            <label class="upload_label" >Загрузить файл<span>*</span></label>
+            <label class="upload_label" >{{'account.upload_file'|_}}<span>*</span></label>
             <div class="upload_group">
-                <label for="file-1">Загрузить файл</label>
+                <label for="file-1">{{'account.upload_file'|_}}</label>
                 <div class="form_group">
                     <label class="additional">
-                        <span>Ничего не выбранo</span>
+                        <span>{{'account.nothing_chosen'|_}}</span>
                     </label>
                     <input type="file" name="bank_file" id="file-1" class="inputfile inputfile-1"
                         data-multiple-caption="{count} files selected" />
@@ -60,7 +60,7 @@
     </div>
     <div class="btn_bg">
         <button class="post_btn" type="submit">
-            Отправить
+            {{'account.send'|_}}
         </button>
     </div>
 </form>

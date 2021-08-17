@@ -9,7 +9,7 @@
         {% if user.is_activated  %}
         <div class="post_wrap" id="form-steps">
             <div class="contact_title">
-                Добавить объявление (Step 1)
+                {{'account.add_post'|_({ step_number: 1 })}}
             </div>
 
             <form action="#"
@@ -24,8 +24,8 @@
 
                 <!-- ru name -->
                 <div class="post_input">
-                    <label>Наименование лота (RU) <span>*</span></label>
-                    <input type="text" name="name_ru" data-belongsto="product" placeholder="Пример: Гидравлическое масло"
+                    <label>{{'account.lot_title'|_}} (RU) <span>*</span></label>
+                    <input type="text" name="name_ru" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.lot_title_example'|_}}"
                         {% if productForEditing %}
                          value="{{ productForEditing.lang('ru').name }}"
                         {% endif %}
@@ -34,8 +34,8 @@
                 </div>
                 <!-- en name -->
                 <div class="post_input">
-                    <label>Наименование лота (EN) <span>*</span></label>
-                    <input type="text" name="name_en" data-belongsto="product" placeholder="Пример: Гидравлическое масло"
+                    <label>{{'account.lot_title'|_}} (EN) <span>*</span></label>
+                    <input type="text" name="name_en" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.lot_title_example'|_}}"
                         {% if productForEditing %}
                          value="{{ productForEditing.lang('en').name }}"
                         {% endif %}
@@ -44,8 +44,8 @@
                 </div>
                 <!-- tm name -->
                 <div class="post_input">
-                    <label>Наименование лота (TM) <span>*</span></label>
-                    <input type="text" name="name_tm" data-belongsto="product" placeholder="Пример: Гидравлическое масло"
+                    <label>{{'account.lot_title'|_}} (TM) <span>*</span></label>
+                    <input type="text" name="name_tm" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.lot_title_example'|_}}"
                         {% if productForEditing %}
                         value="{{ productForEditing.name }}"
                         {% endif %}
@@ -54,8 +54,8 @@
                 </div>
 
                 <div class="post_input">
-                    <label for="mark-goods">Марка товара <span>*</span></label>
-                    <input type="text" name="mark" data-belongsto="product" placeholder="Пример: Гидравлическое масло ЛУКОЙЛ 46" id="mark-goods"
+                    <label for="mark-goods">{{'page.prod_mark'|_}} <span>*</span></label>
+                    <input type="text" name="mark" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.mark_example'|_}}" id="mark-goods"
                         {% if productForEditing %}
                         value="{{ productForEditing.mark }}"
                         {% endif %}
@@ -64,8 +64,8 @@
                 </div>
 
                 <div class="post_input">
-                    <label for="owner">Производитель <span>*</span></label>
-                    <input type="text" name="manufacturer" data-belongsto="product" placeholder="Пример: ЛУКОЙЛ" id="owner"
+                    <label for="owner">{{'page.prod_vendor'|_}} <span>*</span></label>
+                    <input type="text" name="manufacturer" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.mark_example'|_}}" id="owner"
                         {% if productForEditing %}
                         value="{{ productForEditing.manufacturer }}"
                         {% endif %}
@@ -74,10 +74,10 @@
                 </div>
 
                 <div class="post_input p-b">
-                    <label>Категория <span>*</span>  </label>
+                    <label>{{'account.category'|_}} <span>*</span>  </label>
                     <div class="my-select">
                         <select class="category-select" data-belongsto="product" name="category_id">
-                            <option value="0">Category</option>
+                            <option value="0">{{'account.category'|_}}</option>
                             {% for c in categories %}
                             <option value="{{ c.id }}"
                                 {% if productForEditing and productForEditing.categories.first.id == c.id %}
@@ -91,10 +91,10 @@
                 </div>
 
                 <div class="post_input p-b">
-                    <label>Страна производителя <span>*</span> </label>
+                    <label>{{'page.prod_vendor_country'|_}} <span>*</span> </label>
                     <div class="my-select">
                         <select name="country_id" data-belongsto="product">
-                            <option value="0">Страна производителя</option>
+                            <option value="0">{{'page.prod_vendor_country'|_}}</option>
                             {% for country in countries %}
                             <option value="{{ country.id }}"
                                 {% if productForEditing and productForEditing.country.id == country.id %}
@@ -109,12 +109,12 @@
 
                 <div class="btn_bg">
                     <button class="post_btn" type="submit" data-attach-loading>
-                        Шаг 2
+                        {{'account.step'|_({ step_number: 2 })}} 
                     </button>
                 </div>
 
                 <div class="add_post_text">
-                    Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+                    {{'account.required_fields'|_}}
                 </div>
 
             </form>
@@ -123,7 +123,7 @@
         {% else %}
         <div class="post_wrap">
             <div class="contact_title">
-                Activation is required
+                {{'account.activation_required'|_}}
             </div>
         </div>
         {% endif %}

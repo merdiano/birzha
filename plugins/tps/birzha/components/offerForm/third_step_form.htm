@@ -1,5 +1,5 @@
 <div class="contact_title">
-    Добавить объявление (Step 3)
+    {{'account.add_post'|_({ step_number: 3 })}}
 </div>
 
 
@@ -17,17 +17,17 @@
 
     
     <div class="thanks_title">
-        За публикацию с вашего баланса будет снято {{fee}} TMT
+        {{'account.fee_for_publishing'|_({ fee: fee })}}
     </div>
 
     <div class="btn_bg">
         <button class="post_btn" type="submit">
-            Опубликовать
+            {{'account.publish'|_}}
         </button>
     </div>
 
     <div class="add_post_text">
-        Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+        {{'account.required_fields'|_}}
     </div>
 
 </form>

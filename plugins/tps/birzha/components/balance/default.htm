@@ -9,7 +9,7 @@
         {% if user.is_activated  %}
         <div class="post_wrap" id="form-steps">
             <div class="contact_title">
-                Пополнение баланса
+                {{'account.fill_up_balance'|_}}
             </div>
 
 
@@ -21,25 +21,25 @@
                 class="post_form post_form-2 first-step-form">
 
                     <div class="post_input">
-                        <label for="good-count">Сумма (TMT)<span>*</span> </label>
+                        <label for="good-count">{{'account.amount'|_}} (TMT)<span>*</span> </label>
                         <input type="number" step="0.01" name="amount" placeholder="100" id="good-count" required>
                         <span data-validate-for="amount" style="color: red;"></span>
                     </div>
 
                     <div class="post_input">
-                        <label>Метод оплаты <span>*</span> <span data-validate-for="payment_type" style="color: red;"></span></label>
+                        <label>{{'account.payment_type'|_}} <span>*</span> <span data-validate-for="payment_type" style="color: red;"></span></label>
                         <div class="my-select">
                             <select name="payment_type" required>
-                                <option value="">Метод оплаты</option>
-                                <option value="bank">Bank transfer</option>
-                                <option value="online">Online payment</option>
+                                <option value="">{{'account.payment_type'|_}}</option>
+                                <option value="bank">{{'account.bank_transfer'|_}}</option>
+                                <option value="online">{{'account.online_payment'|_}}</option>
                             </select>
                         </div>
                     </div>
 
                 <div class="btn_bg">
                     <button class="post_btn" type="submit" data-attach-loading>
-                        Pay
+                        {{'account.pay'|_}}
                     </button>
                 </div>
 
