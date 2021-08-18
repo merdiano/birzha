@@ -43,7 +43,6 @@ tabs:
         api_password:
             tab: Payment
             label: Payment api password
-            type: password
             span: right
         fee:
             tab: Payment
