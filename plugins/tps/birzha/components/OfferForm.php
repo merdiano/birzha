@@ -108,7 +108,10 @@ class OfferForm extends ComponentBase
             $product->created_at = Carbon::now('Asia/Ashgabat');
             $category->products()->save($product);
         } else {
-            $product->save();
+            // detach from all other categories
+            $product->categories()->detach();
+            // attach to a new category
+            $category->products()->save($product);
         }
 
         // go to next step - next form
