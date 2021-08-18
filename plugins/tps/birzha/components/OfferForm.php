@@ -86,6 +86,8 @@ class OfferForm extends ComponentBase
             $product = new Product;
         }
 
+        $product->translateContext('tm');
+
         $product->name = $data['name_tm'];
         // Sets a single translated attribute for a language
         $product->setAttributeTranslated('name', $data['name_ru'], 'ru');
@@ -250,6 +252,8 @@ class OfferForm extends ComponentBase
     }
 
     protected function fillProduct($data,$attachedProduct) {
+        $attachedProduct->translateContext('tm');
+
         $attachedProduct->description = $data['description_tm'];
         // Sets a single translated attribute for a language
         $attachedProduct->setAttributeTranslated('description', $data['description_ru'], 'ru');

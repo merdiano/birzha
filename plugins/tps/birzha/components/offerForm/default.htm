@@ -9,7 +9,7 @@
         {% if user.is_activated  %}
         <div class="post_wrap" id="form-steps">
             <div class="contact_title">
-                {{'account.add_post'|_({ step_number: 1 })}}
+                {{'account.add_post'|_({ step_number: 1 })}} {{productForEditing.name}}
             </div>
 
             <form action="#"
@@ -47,7 +47,7 @@
                     <label>{{'account.lot_title'|_}} (TM) <span>*</span></label>
                     <input type="text" name="name_tm" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.lot_title_example'|_}}"
                         {% if productForEditing %}
-                        value="{{ productForEditing.name }}"
+                        value="{{ productForEditing.lang('tm').name }}"
                         {% endif %}
                     >
                     <span class="error_span" data-validate-for="name_tm" style="color: red;"></span>
