@@ -24,7 +24,7 @@ visitPageMessage = "Visit page"
 
 <section class="product">
     <div class="auto_container">
-        <h2>Search results</h2>
+        <!-- <h2>{{'page.search_result'|_}}</h2> -->
         <div class="product_wrap">
             <div class="product_box">
                 {% for result in results %}
@@ -78,7 +78,7 @@ visitPageMessage = "Visit page"
                 </div>
                 {% else %}
                 {# No results found #}
-                <h1>No results found</h1>
+                <h2>{{'page.no_results_found'|_}}</h2>
                 {% endfor %}
 
                 

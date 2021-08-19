@@ -6,7 +6,7 @@
         <div class="library_wrap">
             <div class="product_head">
                 <div class="product_title">
-                    Мои объявления
+                    {{'auth.my_announces'|_}}
                 </div>
                 <!-- <div class="sort_by">
                     <div class="sort_icon">
@@ -101,23 +101,23 @@
                         <span class="show_span" style="color:green">{{offer.status}}</span>
                         <div class="new_group">
                             <a href="{{ 'offer'|page({ slug: offer.slug, id: offer.id }) }}" class="item_btn">
-                                На сайте
+                                {{'account.on_site'|_}}
                             </a>
                             <a href="#"
                                 data-request="onDeleteOffer"
                                 data-request-data="deleting_product_id: {{offer.id}}"
                                 class="item_btn delete_item_btn">
-                                Удалить
+                                {{'account_delete'|_}}
                             </a>
                         </div>
                     {% elseif offer.status == "approved" and offer.ends_at < __SELF__.today %}
                         <span class="show_span" style="color:black">Date is expired</span>
                         <div class="new_group">
                             <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
-                                Продлить
+                                {{'account.prolong'|_}}
                             </a>
                             <a href="#" class="item_btn delete_item_btn">
-                                Удалить
+                                {{'account_delete'|_}}
                             </a>
                         </div>
 
@@ -126,26 +126,26 @@
                         <span class="show_span" style="color:red">{{ offer.status_note }}</span>
                         <div class="new_group">
                             <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
-                                Edit
+                                {{'account.edit'|_}}
                             </a>
                             <a href="#" class="item_btn delete_item_btn">
-                                Удалить
+                                {{'account_delete'|_}}
                             </a>
                         </div>
                     {% elseif offer.status == "draft" %}
                         <span class="show_span" style="color:yellow">{{offer.status}}</span>
                         <div class="new_group">
                             <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
-                                Complete
+                                {{'account.complete'|_}}
                             </a>
                             <a href="#" class="item_btn delete_item_btn">
-                                Удалить
+                                {{'account_delete'|_}}
                             </a>
                         </div>
                     {% elseif offer.status == "new" %}
                         <span class="show_span" style="color:blue">{{offer.status}}</span>
                         <a href="#" style="pointer-events: none; background-color: cornflowerblue;" class="item_btn full_btn">
-                            Admin is checking
+                            {{'account.admin_checking'|_}}
                         </a>
                     {% endif %}
                 </div>

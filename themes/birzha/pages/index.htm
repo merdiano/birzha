@@ -4,20 +4,20 @@ layout = "default"
 description = "Baş sahypa. Türkmenistanyň biržasy."
 is_hidden = 0
 
-[categories]
-active = 0
-categoryImages = "with_images"
-slug = "{{ :slug }}"
+[viewBag]
+localeTitle[en] = "Home page"
+localeTitle[ru] = "Главная страница"
+localeUrl[en] = "/"
+localeUrl[ru] = "/"
 
 [offers]
 perPage = 0
 sortOrder = "desc"
 
-[viewBag]
-localeTitle[en] = "Home page"
-localeTitle[ru] = "Главная страница"
-localeUrl[en] = "/home-page"
-localeUrl[ru] = "/glavnaya-stranica"
+[categories]
+active = 1
+slug = "{{ :slug }}"
+renderFeatures = "with_images"
 ==
 {% put styles %}
 <link rel="stylesheet" href="{{['assets/css/slick-theme.css','assets/css/slick.css']|theme}}">
@@ -33,6 +33,8 @@ localeUrl[ru] = "/glavnaya-stranica"
             {% partial 'slider' %}
 
             {% component 'categories' %}
+            
+            
         </div>
     </div>
 </section>
@@ -75,13 +77,13 @@ localeUrl[ru] = "/glavnaya-stranica"
                     {{ 'page.prod_title'|_ }}
                 </div>
                 <div class="inline_item">
-                    {{ 'page.prod_amount'|_ }}:
+                    {{ 'page.prod_amount'|_ }}
                 </div>
                 <div class="inline_item">
-                    {{ 'page.prod_price'|_ }}:
+                    {{ 'page.prod_price'|_ }}
                 </div>
                 <div class="inline_item">
-                    {{ 'page.prod_finishdate'|_ }}:
+                    {{ 'page.prod_finishdate'|_ }}
                 </div>
             </div>
             {% component 'offers' %}

@@ -212,3 +212,21 @@
 1.0.72:
     - 'Updated table tps_birzha_products'
     - builder_table_update_tps_birzha_products_17.php
+1.0.73:
+    - 'Drop table tps_birzha_offers'
+    - builder_table_delete_tps_birzha_offers.php
+1.0.74:
+    - 'Updated table tps_birzha_products'
+    - builder_table_update_tps_birzha_products_18.php
+1.0.75:
+    - 'Updated table tps_birzha_products'
+    - builder_table_update_tps_birzha_products_19.php
+1.0.76:
+    - 'Updated table tps_birzha_products'
+    - builder_table_update_tps_birzha_products_20.php
+1.0.77:
+    - 'Updated table tps_birzha_products'
+    - builder_table_update_tps_birzha_products_21.php
+1.0.78:
+    - 'Updated table tps_birzha_products'
+    - builder_table_update_tps_birzha_products_22.php

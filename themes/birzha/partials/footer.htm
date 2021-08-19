@@ -1,3 +1,10 @@
+[categories categories3]
+active = 1
+slug = "{{ :slug }}"
+renderFeatures = "footer"
+
+[viewBag]
+==
 <footer class="footer">
     <div class="auto_container">
         <div class="footer_wrap">
@@ -16,18 +23,7 @@
                             {{ 'footer.categories'|_ }}
                         </div>
                         <div class="foot_box">
-                            <a href="#" class="foot_item">
-                                Нефтехимия
-                            </a>
-                            <a href="#" class="foot_item">
-                                Машиностроение
-                            </a>
-                            <a href="#" class="foot_item">
-                                Легкая промышленность
-                            </a>
-                            <a href="#" class="foot_item">
-                                Стройматериалы
-                            </a>
+                            {% component 'categories3' %}
                         </div>
                     </div>
                     <div class="foot_col">

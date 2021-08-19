@@ -22,6 +22,44 @@ en:
   account.current_password: Current password
   account.new_password: New password
   account.info: Account info
+  account.balance: Balance
+  account.fill_up_balance: Fill up balance
+  account.bank_details: Банковские реквизиты
+  account.bank_address: Bank address
+  account.bank_1: 744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+  account.our_bank_details: Our реквизиты
+  account.amount: Сумма
+  account.upload_file: Загрузить файл
+  account.nothing_chosen: Ничего не выбранo
+  account.send: Отправить
+  account.bank_transfer: Bank transfer
+  account.online_payment: Online payment
+  account.pay: Pay
+  account.bank_transfer_message: Администратор просмотрит ваш документ оплаты, и средства перейдут на ваш баланс. Спасибо
+  account.payment_type: Метод оплаты
+  account.choose_chat: Выберите один из активных диалоговых окон чтоб начать переписку!
+  account.on_site: На сайте
+  account_delete: Удалить
+  account.prolong: Продлить
+  account.edit: Edit
+  account.complete: Complete
+  account.admin_checking: Admin is checking
+  account.add_post: Добавить объявление (Step :step_number)
+  account.lot_title: Наименование лота
+  account.lot_title_example: Гидравлическое масло
+  account.mark_example: ЛУКОЙЛ 46
+  account.category: Категория
+  account.step: Step :step_number
+  account.required_fields: Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+  account.activation_required: Activation is required
+  account.thanks_for_posting: Спасибо за оставленный вами запрос
+  account.admin_check_and_approve: После проверки нашим Админом ваш лот будет размещен на нашем сайте!
+  account.quantity_example: 3 литра
+  account.currency: Валюта
+  account.delivery_point_example: Mary
+  account.upload_photo: Загрузить фото
+  account.fee_for_publishing: За публикацию с вашего баланса будет снято :fee TMT
+  account.publish: Опубликовать
   topnav.reg: Sign up
   topnav.login: Sign in
   nav.home: Home
@@ -40,6 +78,17 @@ en:
   page.prod_mark: Product mark
   page.prod_vendor: Manufacturer
   page.prod_vendor_country: Manufactured country
+  page.contact_us: Обратная связь
+  page.your_firstname: Ваше имя
+  page.your_lastname: Ваша фамилия
+  page.example: Пример
+  page.example_firstname: Аман
+  page.example_lastname: Аманов
+  page.message: Сообщение
+  page.describe_your_problem: Опишите вашу проблемму
+  page.message_sent: Сообщение отправлено
+  page.message_to_seller: Сообщение продавцу
+  page.fio: ФИО
   page.prod_desc: Description
   page.prod_amount: Quantity
   page.prod_amount_2: Product quantity
@@ -57,6 +106,10 @@ en:
   page.seller_cont: Контакты продавца
   page.buy_now: Купить сейчас
   page.send_prod_request: Отправить запрос на лот
+  page.date_decrease: По убыванию
+  page.date_increase: По возрастанию
+  page.no_results_found: No results found
+  page.sort_by_date: По дате
   footer.contacts: Контакты
   footer.tel: Тел
   footer.email: Эл. почта
@@ -87,6 +140,44 @@ ru:
   account.current_password: Açar sözüňiz
   account.new_password: Täze açar söz
   account.info: Персональные данные
+  account.balance: Balance
+  account.fill_up_balance: Fill up balance
+  account.bank_details: Банковские реквизиты
+  account.bank_address: Bank address
+  account.bank_1: 744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+  account.our_bank_details: Our реквизиты
+  account.amount: Сумма
+  account.upload_file: Загрузить файл
+  account.nothing_chosen: Ничего не выбранo
+  account.send: Отправить
+  account.bank_transfer: Bank transfer
+  account.online_payment: Online payment
+  account.pay: Pay
+  account.bank_transfer_message: Администратор просмотрит ваш документ оплаты, и средства перейдут на ваш баланс. Спасибо
+  account.payment_type: Метод оплаты
+  account.choose_chat: Выберите один из активных диалоговых окон чтоб начать переписку!
+  account.on_site: На сайте
+  account_delete: Удалить
+  account.prolong: Продлить
+  account.edit: Edit
+  account.complete: Complete
+  account.admin_checking: Admin is checking
+  account.add_post: Добавить объявление (Step :step_number)
+  account.lot_title: Наименование лота
+  account.lot_title_example: Гидравлическое масло
+  account.mark_example: ЛУКОЙЛ 46
+  account.category: Категория
+  account.step: Step :step_number
+  account.required_fields: Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+  account.activation_required: Activation is required
+  account.thanks_for_posting: Спасибо за оставленный вами запрос
+  account.admin_check_and_approve: После проверки нашим Админом ваш лот будет размещен на нашем сайте!
+  account.quantity_example: 3 литра
+  account.currency: Валюта
+  account.delivery_point_example: Mary
+  account.upload_photo: Загрузить фото
+  account.fee_for_publishing: За публикацию с вашего баланса будет снято :fee TMT
+  account.publish: Опубликовать
   topnav.reg: Регистрация
   topnav.login: Sign in
   nav.home: Главная
@@ -105,6 +196,17 @@ ru:
   page.prod_mark: Марка товара
   page.prod_vendor: Производитель
   page.prod_vendor_country: Страна производителя
+  page.contact_us: Обратная связь
+  page.your_firstname: Ваше имя
+  page.your_lastname: Ваша фамилия
+  page.example: Пример
+  page.example_firstname: Аман
+  page.example_lastname: Аманов
+  page.message: Сообщение
+  page.describe_your_problem: Опишите вашу проблемму
+  page.message_sent: Сообщение отправлено
+  page.message_to_seller: Сообщение продавцу
+  page.fio: ФИО
   page.prod_desc: Описание
   page.prod_amount: Количество
   page.prod_amount_2: Количество товара
@@ -122,6 +224,10 @@ ru:
   page.send_prod_request: Отправить запрос на лот
   page.prod_kg: кг
   page.pages: Страниц
+  page.date_decrease: По убыванию
+  page.date_increase: По возрастанию
+  page.no_results_found: No results found
+  page.sort_by_date: По дате
   footer.contacts: Контакты
   footer.tel: Тел
   footer.email: Эл. почта
@@ -152,6 +258,44 @@ tm:
   account.current_password: Açar sözüňiz
   account.new_password: Täze açar söz
   account.info: Şahsy maglumatlar
+  account.balance: Balance
+  account.fill_up_balance: Fill up balance
+  account.bank_details: Банковские реквизиты
+  account.bank_address: Bank address
+  account.bank_1: 744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+  account.our_bank_details: Our реквизиты
+  account.amount: Сумма
+  account.upload_file: Загрузить файл
+  account.nothing_chosen: Ничего не выбранo
+  account.send: Отправить
+  account.bank_transfer: Bank transfer
+  account.online_payment: Online payment
+  account.pay: Pay
+  account.bank_transfer_message: Администратор просмотрит ваш документ оплаты, и средства перейдут на ваш баланс. Спасибо
+  account.payment_type: Метод оплаты
+  account.choose_chat: Выберите один из активных диалоговых окон чтоб начать переписку!
+  account.on_site: На сайте
+  account_delete: Удалить
+  account.prolong: Продлить
+  account.edit: Edit
+  account.complete: Complete
+  account.admin_checking: Admin is checking
+  account.add_post: Добавить объявление (Step :step_number)
+  account.lot_title: Наименование лота
+  account.lot_title_example: Гидравлическое масло
+  account.mark_example: ЛУКОЙЛ 46
+  account.category: Категория
+  account.step: Step :step_number
+  account.required_fields: Пункты отмеченные  ( <span>*</span> ) обязательны для заполнения
+  account.activation_required: Activation is required
+  account.thanks_for_posting: Спасибо за оставленный вами запрос
+  account.admin_check_and_approve: После проверки нашим Админом ваш лот будет размещен на нашем сайте!
+  account.quantity_example: 3 литра
+  account.currency: Валюта
+  account.delivery_point_example: Mary
+  account.upload_photo: Загрузить фото
+  account.fee_for_publishing: За публикацию с вашего баланса будет снято :fee TMT
+  account.publish: Опубликовать
   topnav.reg: Agza bol
   topnav.login: Giriş
   nav.home: Baş sahypa
@@ -170,6 +314,17 @@ tm:
   page.prod_finishdate: Gutarýan wagty
   page.prod_kg: kg
   page.pages: Sahypa
+  page.contact_us: Обратная связь
+  page.your_firstname: Ваше имя
+  page.your_lastname: Ваша фамилия
+  page.example: Пример
+  page.example_firstname: Аман
+  page.example_lastname: Аманов
+  page.message: Сообщение
+  page.describe_your_problem: Опишите вашу проблемму
+  page.message_sent: Сообщение отправлено
+  page.message_to_seller: Сообщение продавцу
+  page.fio: ФИО
   footer.contacts: Kontaktlar
   footer.tel: Tel
   footer.email: El. bukja
@@ -187,6 +342,10 @@ tm:
   page.prod_startdate: Дата начала
   page.measure: Единица измерения
   page.payment_cond: Условия оплаты
+  page.date_decrease: По убыванию
+  page.date_increase: По возрастанию
+  page.no_results_found: No results found
+  page.sort_by_date: По дате
   page.delivery_cond: Условия поставки
   page.delivery_point: Пункт
   page.packaging: Упаковка

@@ -1,20 +1,16 @@
 items:
     -
-        title: Kategoriýalar
-        nesting: null
-        type: url
-        url: /
+        title: 'Baş sahypa'
+        type: cms-page
         code: ''
-        reference: null
-        cmsPage: null
-        replace: null
+        reference: index
         viewBag:
             locale:
                 en:
-                    title: Categories
+                    title: 'Main page'
                     url: ''
                 ru:
-                    title: Категории
+                    title: Главная
                     url: ''
             isHidden: '0'
             cssClass: ''

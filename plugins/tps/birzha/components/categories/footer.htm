@@ -1,0 +1,6 @@
+
+{% for category in categories %}
+<a href="{{ 'category'|page({ slug: category.slug }) }}" class="foot_item">
+    {{ category.name }}
+</a>
+{% endfor %}

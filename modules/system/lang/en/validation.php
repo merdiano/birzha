@@ -116,6 +116,9 @@ return [
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
     'uuid'                 => 'The :attribute must be a valid UUID.',
+    'atleast_1_image' => 'You have to upload at least 1 image.',
+    'image_type' => 'You must upload :image_type!',
+    'image_size' => 'Max file size :size Mb!',
 
     /*
     |--------------------------------------------------------------------------
@@ -145,6 +148,26 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name_en' => 'Lot title EN',
+        'name_ru' => 'Lot title RU',
+        'name_tm' => 'Lot title TM',
+        'mark' => 'Product mark',
+        'manufacturer' => 'Vendor',
+        'category_id' => 'Category',
+        'country_id' => "Vendor's country",
+        'measure_id' => 'Measure',
+        'quantity' => 'Quantity',
+        'currency_id' => 'Currency',
+        'price' => 'Price',
+        'delivery_term_id' => 'Delivery term',
+        'place' => 'Destination',
+        'packaging' => 'Packaging',
+        'payment_term_id' => 'Payment term',
+        'description_ru' => 'Description RU',
+        'description_en' => 'Description EN',
+        'description_tm' => 'Description TM',
+        'bank_file' => 'File from bank',
+    ],
 
 ];

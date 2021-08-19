@@ -3,49 +3,47 @@
     <div class="auto_container">
         <div class="contact_wrap">
             <div class="contact_body">
-                <div class="contact_content">
+                <div class="contact_content" id="form-steps">
                     <div class="contact_title">
-                        Обратная связь
+                        {{'page.contact_us'|_}}
                     </div>
                     
-                    {% flash success %}
-                        <p style="color: green;">{{ message }}</p>
-                    {% endflash %}
+                    
 
                     <form action="#" data-request="onSend" data-request-validate data-request-flash class="contact_form">
                         <div class="contact_input">
-                            <label for="name">Ваше имя</label>
-                            <input type="text" id="name" name="firstname" placeholder="Пример: Аман" required>
+                            <label for="name">{{'page.your_firstname'|_}}</label>
+                            <input type="text" id="name" name="firstname" placeholder="{{'page.example'|_}}: {{'page.example_firstname'|_}}" required>
                             <span class=" " data-validate-for="firstname" style="color: red;"></span>
                         </div>
                         <div class="contact_input">
-                            <label for="surname">Ваша фамилия</label>
-                            <input type="text" id="surname" name="lastname" placeholder="Пример: Аманов" required>
+                            <label for="surname">{{'page.your_lastname'|_}}</label>
+                            <input type="text" id="surname" name="lastname" placeholder="{{'page.example'|_}}: {{'page.example_lastname'|_}}" required>
                             <span class=" " data-validate-for="lastname" style="color: red;"></span>
                         </div>
                         <div class="contact_input">
-                            <label for="mobile">Номер телефона</label>
-                            <input type="tel" id="mobile" name="mobile" placeholder="Пример: +993 65 656565" required>
+                            <label for="mobile">{{'auth.phone'|_}}</label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="{{'page.example'|_}}: +993 65 656565" required>
                             <span class=" " data-validate-for="mobile" style="color: red;"></span>
                         </div>
                         <div class="contact_input">
-                            <label for="mail">Электронная почта</label>
-                            <input type="email" id="email" name="email" placeholder="Пример: amanamanov@mail.ru" required>
+                            <label for="mail">{{'auth.email'|_}}</label>
+                            <input type="email" id="email" name="email" placeholder="{{'page.example'|_}}: amanamanov@mail.ru" required>
                             <span class=" " data-validate-for="email" style="color: red;"></span>
                         </div>
                         <div class="contact_comment">
-                            <label for="comment">Сообщение</label>
-                            <textarea id="message" name="message" placeholder="Опишите вашу проблемму" required></textarea>
+                            <label for="comment">{{'page.message'|_}}</label>
+                            <textarea id="message" name="message" placeholder="{{'page.describe_your_problem'|_}}" required></textarea>
                             <span class=" " data-validate-for="message" style="color: red;"></span>
                         </div>
                         <button type="submit" class="btn btn--blue" data-attach-loading>
-                            Отправить сообщение
+                            {{'account.send'|_}}
                         </button>
                     </form>
                 </div>
                 <div class="contact_info">
                     <div class="contact_title">
-                        Наши контакты
+                        {{'footer.contacts'|_}}
                     </div>
                     <div class="contact_box">
                         <div class="contact_row">
@@ -54,7 +52,7 @@
                             </div>
                             <div class="row_content">
                                 <div class="contact_sub_title">
-                                    Телефон:
+                                    {{'footer.tel'|_}}:
                                 </div>
                                 <div class="contact_text">
                                     +99312446015
@@ -86,10 +84,10 @@
                             </div>
                             <div class="row_content">
                                 <div class="contact_sub_title">
-                                    Адрес:
+                                    {{'footer.address'|_}}:
                                 </div>
                                 <div class="contact_text">
-                                    744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+                                    {{ address|raw }}
                                 </div>
                             </div>
                         </div>

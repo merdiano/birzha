@@ -4,6 +4,16 @@ default = 0
 
 [localePicker]
 forceUrl = 1
+
+[account]
+redirect = "index"
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+view = "signin"
+
+[session]
+security = "all"
 ==
 <?php
 function onStart(){

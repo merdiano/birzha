@@ -1,4 +1,4 @@
-title = "Edit post"
+title = "Bilidiriş üýtgetmek"
 url = "/edit-post/:id"
 layout = "default"
 is_hidden = 0
@@ -6,8 +6,13 @@ is_hidden = 0
 [viewBag]
 localeUrl[en] = "/edit-post/:id"
 localeUrl[ru] = "/edit-post/:id"
+localeTitle[ru] = "Изменить объявление"
 
 [offerform]
 productId = "{{ :id }}"
+
+[session]
+security = "user"
+redirect = "index"
 ==
 {% component 'offerform' %}
