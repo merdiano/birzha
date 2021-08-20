@@ -144,9 +144,6 @@
 1.0.50:
     - 'Updated table tps_birzha_chatrooms_users'
     - builder_table_update_tps_birzha_chatrooms_users.php
-1.0.51:
-    - 'Updated table tps_birzha_messages'
-    - builder_table_update_tps_birzha_messages.php
 1.0.52:
     - 'Updated table tps_birzha_messages'
     - builder_table_update_tps_birzha_messages_2.php
