@@ -3,11 +3,11 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableCreateTpsBirzha extends Migration
+class BuilderTableCreateTpsBirzhaMessages extends Migration
 {
     public function up()
     {
-        Schema::create('tps_birzha_', function($table)
+        Schema::create('tps_birzha_messages', function($table)
         {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unsigned();
@@ -19,7 +19,7 @@ class BuilderTableCreateTpsBirzha extends Migration
             $table->timestamp('deleted_at')->nullable();
         });
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('tps_birzha_');
