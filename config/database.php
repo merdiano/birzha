@@ -116,7 +116,7 @@ return [
 
     'redis' => [
 
-        'client' => 'predis',
+        'client' => 'phpredis',
         'cluster' => false,
 
         'default' => [
