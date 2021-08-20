@@ -341,4 +341,5 @@
   'Tps\\Birzha\\Models\\Currency' => 'plugins/tps/birzha/models/Currency.php',
   'TPS\\Birzha\\Components\\MyOffers' => 'plugins/tps/birzha/components/MyOffers.php',
   'TPS\\Birzha\\Models\\Country' => 'plugins/tps/birzha/models/Country.php',
+  'TPS\\Birzha\\Components\\ContactForm' => 'plugins\\tps\\birzha\\components\\ContactForm.php',
 );
