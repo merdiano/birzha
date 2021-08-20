@@ -22,7 +22,7 @@
     - builder_table_update_tps_birzha_product.php
 1.0.9:
     - 'Created table tps_birzha_'
-    - builder_table_create_tps_birzha_.php
+    - builder_table_create_tps_birzha_messages.php
 1.0.10:
     - 'Updated table tps_birzha_'
     - builder_table_update_tps_birzha_message.php
