@@ -1,0 +1,38 @@
+<div class="contact_title">
+    {{'account.add_post'|_({ step_number: 3 })}}
+</div>
+
+
+
+<form action="#" class="post_form" enctype="multipart/form-data" 
+    data-request="onPublish"
+    data-request-validate
+>
+    <!-- сообщение пополните баланс -->
+    <div class="alert alert-danger" data-validate-error>
+        <p data-message style="color: red;"></p> <br>
+    </div>
+
+    <input type="hidden" name="product_id" value="{{product.id}}">
+
+    
+    <div class="thanks_title">
+        {{'account.fee_for_publishing'|_({ fee: fee })}}
+    </div>
+
+    <div class="btn_bg">
+        <button class="post_btn" type="submit">
+            {{'account.publish'|_}}
+        </button>
+    </div>
+
+    <div class="add_post_text">
+        {{'account.required_fields'|_}}
+    </div>
+
+</form>
+
+
+
+<script src="{{ 'assets/js/custom-file-input.js'|theme }}"></script>
+<script src="{{ 'assets/js/scrollTopOnSteps.js'|theme }}"></script>
