@@ -341,5 +341,8 @@
   'Tps\\Birzha\\Models\\Currency' => 'plugins/tps/birzha/models/Currency.php',
   'TPS\\Birzha\\Components\\MyOffers' => 'plugins/tps/birzha/components/MyOffers.php',
   'TPS\\Birzha\\Models\\Country' => 'plugins/tps/birzha/models/Country.php',
-  'TPS\\Birzha\\Components\\ContactForm' => 'plugins\\tps\\birzha\\components\\ContactForm.php',
+  'TPS\\Birzha\\Components\\ContactForm' => 'plugins/tps/birzha/components/ContactForm.php',
+  'TPS\\Birzha\\Components\\Messages' => 'plugins/tps/birzha/components/Messages.php',
+  'TPS\\Birzha\\Components\\PaymentApi' => 'plugins/tps/birzha/components/PaymentApi.php',
+  'TPS\\Birzha\\Components\\Balance' => 'plugins/tps/birzha/components/Balance.php',
 );
