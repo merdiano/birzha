@@ -35,3 +35,4 @@ package-lock.json
 /storage/app
 /storage/framework/cache
 /storage/framework/sessions
+/storage/framework/classes.php
