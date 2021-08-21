@@ -472,4 +472,11 @@
   'Backend\\FormWidgets\\Relation' => 'modules/backend/formwidgets/Relation.php',
   'Backend\\FormWidgets\\FileUpload' => 'modules/backend/formwidgets/FileUpload.php',
   'System\\Models\\EventLog' => 'modules/system/models/EventLog.php',
+  'System\\Classes\\SystemController' => 'modules/system/classes/SystemController.php',
+  'Cms\\Classes\\Asset' => 'modules/cms/classes/Asset.php',
+  'Backend\\Behaviors\\ReorderController' => 'modules/backend/behaviors/ReorderController.php',
+  'Backend\\FormWidgets\\Repeater' => 'modules/backend/formwidgets/Repeater.php',
+  'Backend\\FormWidgets\\MediaFinder' => 'modules/backend/formwidgets/MediaFinder.php',
+  'System\\Classes\\MediaLibraryItem' => 'modules/system/classes/MediaLibraryItem.php',
+  'Cms\\Twig\\PutNode' => 'modules/cms/twig/PutNode.php',
 );
