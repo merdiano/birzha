@@ -1,13 +1,13 @@
-title = "Kategoriýa"
-url = "/kategoriya/:slug"
+title = "Kategoriýalar"
+url = "/kategoriyalar"
 layout = "default"
 is_hidden = 0
 
 [viewBag]
-localeTitle[en] = "Category"
-localeTitle[ru] = "Категория"
-localeUrl[en] = "/category/:slug"
-localeUrl[ru] = "/category/:slug"
+localeTitle[en] = "Categories"
+localeTitle[ru] = "Категории"
+localeUrl[en] = "/categories"
+localeUrl[ru] = "/kategorii"
 
 [categories]
 active = 1
@@ -15,9 +15,9 @@ slug = "{{ :slug }}"
 renderFeatures = "without_images"
 
 [offers]
-categorySlug = "{{ :slug }}"
 perPage = 2
 sortOrder = "desc"
+productSlug = "{{ :slug }}"
 ==
 <!--Category ============================================================= -->
 <section class="category">

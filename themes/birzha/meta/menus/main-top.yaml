@@ -1,16 +1,16 @@
 items:
     -
-        title: 'Baş sahypa'
+        title: Kategoriýalar
         type: cms-page
         code: ''
-        reference: index
+        reference: kategorii
         viewBag:
             locale:
                 en:
-                    title: 'Main page'
+                    title: Categories
                     url: ''
                 ru:
-                    title: Главная
+                    title: Категории
                     url: ''
             isHidden: '0'
             cssClass: ''
@@ -37,9 +37,13 @@ items:
             isExternal: '0'
     -
         title: 'Habarlaşmak üçin'
+        nesting: null
         type: cms-page
+        url: null
         code: ''
         reference: contact-us
+        cmsPage: null
+        replace: null
         viewBag:
             locale:
                 en:
