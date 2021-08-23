@@ -282,7 +282,9 @@ class OfferForm extends ComponentBase
         // form will be filled with product's info if we have productIdOption
         if($this->productIdOption) {
             $this->productForEditing = Product::find($this->productIdOption);
-            // dd($this->productForEditing->categories->first()->id);
+            if($this->productForEditing->status == 'new' || ($this->productForEditing->status == 'approved' && $this->productForEditing->ends_at >= \Carbon\Carbon::now())) {
+                return \Redirect::to('my-posts');
+            }
         } else {
             $this->productForEditing = null;
         }
