@@ -22,12 +22,6 @@ navigation:
                 icon: icon-cube
                 permissions:
                     - product
-            offers:
-                label: Offers
-                url: tps/birzha/offers
-                icon: icon-cubes
-                permissions:
-                    - offer
             measure:
                 label: Measure
                 url: tps/birzha/measures
