@@ -28,7 +28,7 @@ class Product extends Model
      * @var array Validation rules
      */
     public $rules = [
-        'categories' => 'required',
+        'categories' => 'required|max:1', // not to allow admin to check more than 1 category for a product
         'status' => 'required',
         'name' => 'required',
         'slug' => 'required',
