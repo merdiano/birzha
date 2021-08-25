@@ -70,7 +70,7 @@ en:
   page.search: Search
   page.search_result: 'The search results found: :number articles'
   page.new_prods: New products
-  page.similar_prods: Похожие товары
+  page.similar_prods: Из этой же категории
   page.prod_id: Lot
   page.prod_img: Image
   page.prod_title: Product
@@ -188,7 +188,7 @@ ru:
   page.search: Поиск
   page.search_result: 'По результату поиска было найдено: :number статьи'
   page.new_prods: Новые товары
-  page.similar_prods: Похожие товары
+  page.similar_prods: Из этой же категории
   page.prod_id: Лот
   page.prod_img: Изображение
   page.prod_title: Товар
@@ -331,7 +331,7 @@ tm:
   footer.address: Adres
   footer.copyright: © TDÇMB ähli hukuklar goralan
   footer.categories: Kategoriýalar
-  page.similar_prods: Похожие товары
+  page.similar_prods: Из этой же категории
   page.prod_no: Номер лота
   page.prod_mark: Марка товара
   page.prod_vendor: Производитель
