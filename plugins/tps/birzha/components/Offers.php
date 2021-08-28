@@ -109,7 +109,9 @@ class Offers extends ComponentBase
         if($productSlug != '' && $offerId != '') { // fetch offers with similar products
             $product = Product::transWhere('slug', $productSlug, Session::get('rainlab.translate.locale'))->first();
             if($product) {
-                $query = Product::where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder);
+                $category = $product->categories->first();
+                
+                $query = $category->products()->where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder);
             } else {
                 $query = null;
             }
