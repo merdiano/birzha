@@ -75,6 +75,10 @@ class Product extends Model
             $this->status = 'draft';
     }
 
+    public function scopeApprovedAndFreshEndDate($query) {
+        return $query->where('status', 'approved')->where('ends_at','>=',\DB::raw('curdate()'));
+    }
+
     public function beforeValidate()
     {
         if(\App::runningInBackend()) {
