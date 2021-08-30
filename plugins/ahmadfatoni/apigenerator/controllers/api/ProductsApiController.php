@@ -41,7 +41,7 @@ class ProductsAPIController extends Controller
                 'images:attachment_id,attachment_type,disk_name,file_name'
             ])
             ->approvedAndFreshEndDate()
-            ->orderBy('created_at', $sortOrder);
+            ->orderBy('updated_at', $sortOrder);
 
         if($categoryId) { // fetch offers by the category of the product
             $category = Category::find($categoryId);
@@ -50,7 +50,7 @@ class ProductsAPIController extends Controller
                 // ->with('categories:id,name')
                 ->with('translations:locale,model_id,attribute_data')
                 ->approvedAndFreshEndDate()
-                ->orderBy('created_at', $sortOrder);
+                ->orderBy('updated_at', $sortOrder);
             } else {
                 $query = null;
             }
@@ -68,7 +68,7 @@ class ProductsAPIController extends Controller
                     // ->with('categories:id,name')
                     ->with('translations:locale,model_id,attribute_data')
                     ->approvedAndFreshEndDate()
-                    ->orderBy('created_at', $sortOrder);
+                    ->orderBy('updated_at', $sortOrder);
             } else {
                 $query = null;
             }

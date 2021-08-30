@@ -67,7 +67,7 @@ class MyOffers extends ComponentBase
         $perPage = $this->property('perPage');
 
         return \Auth::user()->products()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('updated_at', 'desc')
             ->paginate($perPage);
     }
 

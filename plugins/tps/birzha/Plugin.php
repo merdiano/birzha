@@ -88,7 +88,7 @@ class Plugin extends PluginBase
                 $items = Models\Product
                     ::where('name', 'like', "%${query}%")
                     ->where('status','approved')
-                    ->where('ends_at','>=',\DB::raw('curdate()'))->orderBy('created_at', 'desc')
+                    ->where('ends_at','>=',\DB::raw('curdate()'))->orderBy('updated_at', 'desc')
                     ->get();
             } else {
                 $queryString = $query;
@@ -98,7 +98,7 @@ class Plugin extends PluginBase
                     $query->where('locale', $locale)->where('attribute_data', 'like', "%${queryString}%");
                 })
                     ->where('status','approved')
-                    ->where('ends_at','>=',\DB::raw('curdate()'))->orderBy('created_at', 'desc')
+                    ->where('ends_at','>=',\DB::raw('curdate()'))->orderBy('updated_at', 'desc')
                     ->get();
             }
             
