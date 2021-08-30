@@ -95,7 +95,7 @@ class Product extends Model
     {
         if($this->status == 'approved' && !$this->ends_at) {
 //            $createdAt = Carbon::parse($this->created_at);
-            $this->ends_at = $this->created_at->addDays(Settings::getValue('duration'));
+            $this->ends_at = \Carbon\Carbon::now()->addDays(Settings::getValue('duration'));
         }
         if($this->status == 'denied') {
             // give fee back to the user, because his post has been denied
