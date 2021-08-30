@@ -6,5 +6,5 @@ Route::get('fatoni/delete/api/{id}', array('as' => 'fatoni.delete.api', 'uses' =
 
 Route::resource('api/v1/categories', 'AhmadFatoni\ApiGenerator\Controllers\API\CategoriesAPIController', ['except' => ['destroy', 'create', 'edit']]);
 Route::get('api/v1/categories/{id}/delete', ['as' => 'api/v1/categories.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\CategoriesAPIController@destroy']);
-Route::resource('api/v1/products', 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsAPIController', ['except' => ['destroy', 'create', 'edit']]);
-Route::get('api/v1/products/{id}/delete', ['as' => 'api/v1/products.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsAPIController@destroy']);
+Route::resource('api/v1/products', 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController', ['except' => ['destroy', 'create', 'edit']]);
+Route::get('api/v1/products/{id}/delete', ['as' => 'api/v1/products.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@destroy']);
