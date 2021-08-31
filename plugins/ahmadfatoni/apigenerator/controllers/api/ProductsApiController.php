@@ -98,7 +98,7 @@ class ProductsAPIController extends Controller
             'images:attachment_id,attachment_type,disk_name,file_name'
         ])->find($id);
 
-        if ($data){
+        if ($data && $data->status == 'approved' && $data->ends_at >= \Carbon\Carbon::now()){
             return $this->helpers->apiArrayResponseBuilder(200, 'success', [$data]);
         } else {
             return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);

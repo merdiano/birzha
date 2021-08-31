@@ -36,9 +36,13 @@ class Singleoffer extends ComponentBase
     }
 
     protected function loadOffer() {
-        $id = $this->property('offerId');
 
-        return Product::find($id);
+        $product = Product::find($this->property('offerId'));
+
+        if($product && $product->status == 'approved' && $product->ends_at >= \Carbon\Carbon::now()) {
+            return $product;
+        }
+        return null;
     }
 
     public $offer;
