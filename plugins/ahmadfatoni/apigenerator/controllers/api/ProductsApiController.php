@@ -48,7 +48,10 @@ class ProductsAPIController extends Controller
             if($category) {
                 $query = $category->products()
                 // ->with('categories:id,name')
-                ->with('translations:locale,model_id,attribute_data')
+                ->with([
+                    'translations:locale,model_id,attribute_data',
+                    'images:attachment_id,attachment_type,disk_name,file_name'
+                ])
                 ->approvedAndFreshEndDate()
                 ->orderBy('updated_at', $sortOrder);
             } else {
@@ -66,7 +69,10 @@ class ProductsAPIController extends Controller
                 $query = $category->products()
                     ->where('id','!=',$productId)
                     // ->with('categories:id,name')
-                    ->with('translations:locale,model_id,attribute_data')
+                    ->with([
+                        'translations:locale,model_id,attribute_data',
+                        'images:attachment_id,attachment_type,disk_name,file_name'
+                    ])
                     ->approvedAndFreshEndDate()
                     ->orderBy('updated_at', $sortOrder);
             } else {
@@ -87,12 +93,15 @@ class ProductsAPIController extends Controller
 
     public function show($id){
 
-        $data = $this->Product::find($id);
+        $data = $this->Product::with([
+            'translations:locale,model_id,attribute_data',
+            'images:attachment_id,attachment_type,disk_name,file_name'
+        ])->find($id);
 
         if ($data){
             return $this->helpers->apiArrayResponseBuilder(200, 'success', [$data]);
         } else {
-            $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
         }
 
     }
