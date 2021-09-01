@@ -34,6 +34,8 @@ class ProductsAPIController extends Controller
         $categoryId = intval(input('category_id')); // intval protects from injection
         $perPage = intval(input('custom_per_page')); // intval protects from injection
         $productId = intval(input('product_id')); // intval protects from injection
+        $queryString = input('q');
+        $locale = input('locale');
 
         // $query = $this->Product::with('categories:id,name')
         $query = $this->Product::with([
@@ -78,6 +80,15 @@ class ProductsAPIController extends Controller
             } else {
                 $query = null;
             }
+        }
+
+        if($queryString && $locale) {
+            $query = $this->Product::searched($locale, $queryString)
+            ->with([
+                'translations:locale,model_id,attribute_data',
+                'images:attachment_id,attachment_type,disk_name,file_name'
+            ])
+            ->orderBy('updated_at', $sortOrder);
         }
 
         $data = $query ? $query->paginate($perPage) : null;

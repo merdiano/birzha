@@ -79,6 +79,21 @@ class Product extends Model
         return $query->where('status', 'approved')->where('ends_at','>=',\DB::raw('curdate()'));
     }
 
+    public function scopeSearched($query, $locale, $queryString) {
+
+        if($locale == 'tm') {
+            $query = $query->approvedAndFreshEndDate()
+                ->where('name', 'like', "%${queryString}%");
+        } else {
+            $query = $query->approvedAndFreshEndDate()
+            ->whereHas('translations', function ($innerQuery) use ($locale, $queryString) {
+                $innerQuery->where('locale', $locale)->where('attribute_data', 'like', "%${queryString}%");
+            });
+        }
+
+        return $query;
+    }
+
     public function beforeValidate()
     {
         if(\App::runningInBackend()) {
