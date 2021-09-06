@@ -261,12 +261,15 @@ class User extends UserBase
 
         /*
          * When the username is not used, the email is substituted.
+         * This should not work with api routes - the username must be filled out
          */
-        if (
-            (!$this->username) ||
-            ($this->isDirty('email') && $this->getOriginal('email') == $this->username)
-        ) {
-            $this->username = $this->email;
+        if(!str_contains(url()->current(), '/api/signup')) {
+            if (
+                (!$this->username) ||
+                ($this->isDirty('email') && $this->getOriginal('email') == $this->username)
+            ) {
+                $this->username = $this->email;
+            }
         }
 
         /*

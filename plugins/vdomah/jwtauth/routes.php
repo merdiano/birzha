@@ -87,6 +87,10 @@ Route::group(['prefix' => 'api'], function() {
         $credentials = Input::only($login_fields);
 
         try {
+            // password_confirmation is required but not used when signing up like on web-site
+            if (!array_key_exists('password_confirmation', $credentials) && array_key_exists('password', $credentials)) {
+                $credentials['password_confirmation'] = $credentials['password'];
+            }
             $userModel = UserModel::create($credentials);
 
             if ($userModel->methodExists('getAuthApiSignupAttributes')) {
