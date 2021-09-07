@@ -25,6 +25,11 @@ Route::group(['prefix' => 'api'], function() {
 
         $userModel = JWTAuth::authenticate($token);
 
+        // if user is not activated, he will not get token
+        if(!$userModel->is_activated) {
+            return response()->json(['error' => 'Not activated'], 403);
+        }
+
         if ($userModel->methodExists('getAuthApiSigninAttributes')) {
             $user = $userModel->getAuthApiSigninAttributes();
         } else {
@@ -87,7 +92,8 @@ Route::group(['prefix' => 'api'], function() {
         $credentials = Input::only($login_fields);
 
         try {
-            // password_confirmation is required but not used when signing up like on web-site
+            // password_confirmation is required 
+            // but not used when signing up like on web-site
             if (!array_key_exists('password_confirmation', $credentials) && array_key_exists('password', $credentials)) {
                 $credentials['password_confirmation'] = $credentials['password'];
             }
@@ -111,6 +117,11 @@ Route::group(['prefix' => 'api'], function() {
 
         $token = JWTAuth::fromUser($userModel);
 
-        return Response::json(compact('token', 'user'));
+        // by default sent token, but user must be activated first
+        // for security purpose token is not sent
+
+        // return Response::json(compact('token', 'user'));
+
+        return Response::json(compact('user'));
     });
 });
