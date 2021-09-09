@@ -138,7 +138,17 @@ class ProductsAPIController extends Controller
             ],
             'mark' => 'required',
             'manufacturer' => 'required',
-            'country_id' => 'required|exists:tps_birzha_countries,id'
+            'country_id' => 'required|exists:tps_birzha_countries,id',
+            
+            // if product is being edited - not added 
+            'productForEditing' => [
+                // validation for product deleted_at field - it should
+                // be null, means it should not be deleted (exists rule not working)
+                function ($attribute, $value, $fail) {
+                    $p = Product::find($value);
+                    if(!$p) $fail(":attribute is invalid");
+                }
+            ]
         ];
 
         $validator = $this->validateForm($data, $rules);
@@ -148,7 +158,7 @@ class ProductsAPIController extends Controller
 
         $category = Category::find($data['category_id']);
 
-        if(isset($data['productForEditing'])) { // if product is being edited - not new
+        if(isset($data['productForEditing'])) { // if product is being edited - not added
             $product = $this->Product::find($data['productForEditing']);
         } else {
             $product = new $this->Product;
