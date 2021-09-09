@@ -117,24 +117,78 @@ class ProductsAPIController extends Controller
 
     }
 
+    // step1
     public function store(Request $request){
+        $data = $request->all();
 
-    	$arr = $request->all();
+        $rules = [
+            'name_ru' => 'required',
+            'name_en' => 'required',
+            'name_tm' => 'required',
+            'category_id' => [
+                'required',
+                'exists:tps_birzha_categories,id',
+                // validation for category status - it should be active
+                function ($attribute, $value, $fail) {
+                    $c = Category::find($value);
+                    if($c) {
+                        if($c->status != 1) $fail(":attribute is non-active!");
+                    }
+                }
+            ],
+            'mark' => 'required',
+            'manufacturer' => 'required',
+            'country_id' => 'required|exists:tps_birzha_countries,id'
+        ];
 
-        while ( $data = current($arr)) {
-            $this->Product->{key($arr)} = $data;
-            next($arr);
+        $validator = $this->validateForm($data, $rules);
+        if($validator->fails()) {
+            return $this->helpers->apiArrayResponseBuilder(400, 'fail', $validator->errors() );
         }
 
-        $validation = Validator::make($request->all(), $this->Product->rules);
+        $category = Category::find($data['category_id']);
+
+        if(isset($data['productForEditing'])) { // if product is being edited - not new
+            $product = $this->Product::find($data['productForEditing']);
+        } else {
+            $product = new $this->Product;
+        }
+
+        $product->translateContext('tm');
+
+        $product->name = $data['name_tm'];
+        // Sets a single translated attribute for a language
+        $product->setAttributeTranslated('name', $data['name_ru'], 'ru');
+        $product->setAttributeTranslated('name', $data['name_en'], 'en');
+        // Sets a single translated attribute for a language
+        $product->setAttributeTranslated('slug', \Str::slug($data['name_ru'],'-'), 'ru');
+        $product->setAttributeTranslated('slug', \Str::slug($data['name_en'],'-'), 'en');
+
+        $product->slug = \Str::slug($data['name_tm'],'-');
+        $product->status = 'draft';
+        $product->mark = $data['mark'];
+        $product->manufacturer = $data['manufacturer'];
+        $product->country_id = $data['country_id'];
+
+        $product->vendor_id = \JWTAuth::parseToken()->authenticate()->id;
+
+        $product->ends_at = null; // if approved but date was expired
+
+
+        if(!isset($data['productForEditing'])) {
+            // $product->created_at = Carbon::now('Asia/Ashgabat');
+            $category->products()->save($product);
+        } else {
+            // detach from all other categories
+            $product->categories()->detach();
+            // attach to a new category
+            $category->products()->save($product);
+        }
         
-        if( $validation->passes() ){
-            $this->Product->save();
-            return $this->helpers->apiArrayResponseBuilder(201, 'created', ['id' => $this->Product->id]);
-        }else{
-            return $this->helpers->apiArrayResponseBuilder(400, 'fail', $validation->errors() );
-        }
-
+        return $this->helpers->apiArrayResponseBuilder(200, 'ok', ['product' => $product]);
+        
+        //     $this->Product->save();
+        //     return $this->helpers->apiArrayResponseBuilder(201, 'created', ['id' => $this->Product->id]);
     }
 
     public function update($id, Request $request){
@@ -172,6 +226,15 @@ class ProductsAPIController extends Controller
     public static function getMiddleware() {return [];}
     public function callAction($method, $parameters=false) {
         return call_user_func_array(array($this, $method), $parameters);
+    }
+
+    protected function validateForm($data, $rules) {
+
+        // dd($rules);
+        return Validator::make($data, $rules);
+
+        
+        // dd('validator does not fail');
     }
     
 }
