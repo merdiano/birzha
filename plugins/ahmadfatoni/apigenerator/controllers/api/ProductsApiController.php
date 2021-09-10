@@ -8,6 +8,8 @@ use AhmadFatoni\ApiGenerator\Helpers\Helpers;
 use Illuminate\Support\Facades\Validator;
 use TPS\Birzha\Models\Product;
 use TPS\Birzha\Models\Category;
+use TPS\Birzha\Models\Term;
+use TPS\Birzha\Models\Measure;
 class ProductsAPIController extends Controller
 {
 	protected $Product;
@@ -203,17 +205,115 @@ class ProductsAPIController extends Controller
 
     public function update($id, Request $request){
 
-        $status = $this->Product->where('id',$id)->update($data);
+        // $status = $this->Product->where('id',$id)->update($data);
     
-        if( $status ){
+        // if( $status ){
             
-            return $this->helpers->apiArrayResponseBuilder(200, 'success', 'Data has been updated successfully.');
+        //     return $this->helpers->apiArrayResponseBuilder(200, 'success', 'Data has been updated successfully.');
 
-        }else{
+        // }else{
 
-            return $this->helpers->apiArrayResponseBuilder(400, 'bad request', 'Error, data failed to update.');
+        //     return $this->helpers->apiArrayResponseBuilder(400, 'bad request', 'Error, data failed to update.');
 
+        // }
+        $attachedProduct = $this->Product::find($id);
+        if(!$attachedProduct) {
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
         }
+
+        $data = $request->all();
+
+        $rules = [
+            'quantity' => 'required|numeric|integer',
+            'price' => 'required|numeric',
+            'place' => 'required',
+            'description_tm' => 'required',
+            'description_en' => 'required',
+            'description_ru' => 'required',
+            'payment_term_id' => [
+                'required',
+                'exists:tps_birzha_terms,id',
+                // in terms table it must have type = payment
+                function ($attribute, $value, $fail) {
+                    $t = Term::find($value);
+                    if($t) {
+                        if($t->type != 'payment') $fail(":attribute is invalid");
+                    }
+                }
+            ],
+            'packaging' => 'required|in:yes,no',
+            'delivery_term_id' => [
+                'required',
+                'exists:tps_birzha_terms,id',
+                // in terms table it must have type = delivery
+                function ($attribute, $value, $fail) {
+                    $t = Term::find($value);
+                    if($t) {
+                        if($t->type != 'delivery') $fail(":attribute is invalid");
+                    }
+                }
+            ],
+            'currency_id' => 'required|exists:tps_birzha_currencies,id',
+            'measure_id' => [
+                'required',
+                // validation for measure deleted_at field - it should
+                // be null, means it should not be deleted (exists rule not working)
+                function ($attribute, $value, $fail) {
+                    $m = Measure::find($value);
+                    if(!$m) $fail(":attribute is invalid");
+                }
+            ],
+            'old_img' => 'array',
+            'new_img' => 'array',
+            // allowed only jpg & png files with size <= 1024
+            'new_img.*' => 'mimes:jpg,png|max:1024',
+        ];
+
+        $validator = $this->validateForm($data, $rules);
+        if($validator->fails()) {
+            return $this->helpers->apiArrayResponseBuilder(400, 'fail', $validator->errors() );
+        }
+
+        // validate if no old images and no new images
+        if((!$request->has('new_img') && !$request->has('old_img'))) {
+            return $this->helpers->apiArrayResponseBuilder(400, 'fail', ['no_images' => trans('validation.atleast_1_image')]);
+        }
+
+        // if new_img field is passed but empty
+        if($request->has('new_img')) {
+            $rules = [
+                'new_img' => 'required'
+            ];
+            $validator = $this->validateForm($data, $rules);
+            if($validator->fails()) {
+                return $this->helpers->apiArrayResponseBuilder(400, 'fail', $validator->errors() );
+            }
+        }
+        
+        // if old_img field is passed but empty
+        if($request->has('old_img')) {
+            $rules = [
+                'old_img' => 'required'
+            ];
+            $validator = $this->validateForm($data, $rules);
+            if($validator->fails()) {
+                return $this->helpers->apiArrayResponseBuilder(400, 'fail', $validator->errors() );
+            }
+        }
+
+        // product found, validation passed -> can fill product &save
+        try {
+            $attachedProduct = $this->fillProduct($data,$attachedProduct);
+
+            foreach($data['new_img'] ?? [] as $key => $img) {
+                $attachedProduct->images = $img;
+                $attachedProduct->save();
+            }
+        } catch (Exception $e) {
+            return $this->helpers->apiArrayResponseBuilder(500, 'server error', ['message' => 'something went wrong']);
+        }
+
+        return $this->helpers->apiArrayResponseBuilder(200, 'ok', ['message' => 'put request passed successfully']);
     }
 
     public function delete($id){
@@ -247,4 +347,24 @@ class ProductsAPIController extends Controller
         // dd('validator does not fail');
     }
     
+    protected function fillProduct($data, $attachedProduct) {
+        $attachedProduct->translateContext('tm');
+
+        $attachedProduct->description = $data['description_tm'];
+        // Sets a single translated attribute for a language
+        $attachedProduct->setAttributeTranslated('description', $data['description_ru'], 'ru');
+        $attachedProduct->setAttributeTranslated('description', $data['description_en'], 'en');
+
+        $attachedProduct->quantity = $data['quantity'];
+        $attachedProduct->price = $data['price'];
+        $attachedProduct->measure_id = $data['measure_id'];
+        $attachedProduct->payment_term_id = $data['payment_term_id'];
+        $attachedProduct->delivery_term_id = $data['delivery_term_id'];
+        $attachedProduct->packaging = $data['packaging'];
+        $attachedProduct->place = $data['place'];
+        $attachedProduct->currency_id = $data['currency_id'];
+        $attachedProduct->save();
+
+        return $attachedProduct;
+    }
 }
