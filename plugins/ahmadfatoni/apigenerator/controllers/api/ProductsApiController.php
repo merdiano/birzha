@@ -6,6 +6,7 @@ use BackendMenu;
 use Illuminate\Http\Request;
 use AhmadFatoni\ApiGenerator\Helpers\Helpers;
 use Illuminate\Support\Facades\Validator;
+use PHPUnit\TextUI\Help;
 use TPS\Birzha\Models\Product;
 use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Term;
@@ -205,17 +206,6 @@ class ProductsAPIController extends Controller
 
     public function update($id, Request $request){
 
-        // $status = $this->Product->where('id',$id)->update($data);
-    
-        // if( $status ){
-            
-        //     return $this->helpers->apiArrayResponseBuilder(200, 'success', 'Data has been updated successfully.');
-
-        // }else{
-
-        //     return $this->helpers->apiArrayResponseBuilder(400, 'bad request', 'Error, data failed to update.');
-
-        // }
         $attachedProduct = $this->Product::find($id);
         if(!$attachedProduct) {
             return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
@@ -313,7 +303,7 @@ class ProductsAPIController extends Controller
             return $this->helpers->apiArrayResponseBuilder(500, 'server error', ['message' => 'something went wrong']);
         }
 
-        return $this->helpers->apiArrayResponseBuilder(200, 'ok', ['message' => 'put request passed successfully']);
+        return $this->helpers->apiArrayResponseBuilder(200, 'ok', ['message' => 'updated successfully']);
     }
 
     public function delete($id){
@@ -328,6 +318,33 @@ class ProductsAPIController extends Controller
         $this->Product->where('id',$id)->delete();
 
         return $this->helpers->apiArrayResponseBuilder(200, 'success', 'Data has been deleted successfully.');
+    }
+
+    public function imageDelete($id, $image_id)
+    {
+        $product = $this->Product::find($id);
+
+        if(!$product) {
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
+        }
+
+        try {
+            $image = $product->images()->find($image_id);
+
+            if(!$image) {
+                return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $image_id . ' could not be found']);
+            }
+
+            
+
+            $image->delete();
+            
+
+        } catch(\Throwable $e) {
+            return $this->helpers->apiArrayResponseBuilder(500, 'server error', ['message' => 'Something went wrong']);
+        }
+
+        return $this->helpers->apiArrayResponseBuilder(200, 'success', ['message' => 'Image deleted successfully']);
     }
 
 

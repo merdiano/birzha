@@ -11,4 +11,5 @@ Route::get('api/v1/products', ['as' => 'products.index', 'uses' => 'AhmadFatoni\
 Route::get('api/v1/products/{id}', ['as' => 'products.show', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@show']);
 Route::post('api/v1/products', ['as' => 'products.store', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@store'])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 Route::post('api/v1/products/{id}', ['as' => 'products.complete.step2', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@update'])->where('id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+Route::delete('api/v1/products/{id}/image-delete/{image_id}', ['as' => 'products.images.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@imageDelete'])->where(['id' => '[0-9]+', 'image_id' => '[0-9]+'])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 // Route::get('api/v1/products/{id}/delete', ['as' => 'api/v1/products.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@destroy']);
