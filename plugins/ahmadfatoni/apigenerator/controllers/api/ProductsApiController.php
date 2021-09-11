@@ -309,7 +309,7 @@ class ProductsAPIController extends Controller
                 $attachedProduct->images = $img;
                 $attachedProduct->save();
             }
-        } catch (Exception $e) {
+        } catch(\Throwable $e) {
             return $this->helpers->apiArrayResponseBuilder(500, 'server error', ['message' => 'something went wrong']);
         }
 
