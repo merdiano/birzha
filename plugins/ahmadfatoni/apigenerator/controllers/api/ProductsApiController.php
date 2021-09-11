@@ -11,6 +11,7 @@ use TPS\Birzha\Models\Product;
 use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Term;
 use TPS\Birzha\Models\Measure;
+use TPS\Birzha\Models\Settings;
 class ProductsAPIController extends Controller
 {
 	protected $Product;
@@ -347,6 +348,36 @@ class ProductsAPIController extends Controller
         return $this->helpers->apiArrayResponseBuilder(200, 'success', ['message' => 'Image deleted successfully']);
     }
 
+    public function publish($id)
+    {
+        $product = $this->Product::find($id);
+
+        if(!$product) {
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
+        }
+
+        try {
+            $user = \JWTAuth::parseToken()->authenticate();
+
+            if($user->balance - Settings::getValue('fee') < 0) {
+                // ... message about not enough money
+                return $this->helpers->apiArrayResponseBuilder(300, 'redirect', ['message' => 'fill up your balance']);
+            } else {
+                $user->balance = $user->balance - Settings::getValue('fee');
+                $user->save();
+
+                //save how much user payed because fee can be changed by admin tomorrow
+                // if post is denied we get back payed fee, not admin's set fee
+                $product->payed_fee_for_publ = Settings::getValue('fee');
+                $product->status = 'new';
+                $product->save();
+            }
+        } catch (\Throwable $th) {
+            return $this->helpers->apiArrayResponseBuilder(500, 'server error', ['message' => 'Something went wrong']);
+        }
+
+        return $this->helpers->apiArrayResponseBuilder(200, 'ok', ['message' => 'published successfully']);
+    }
 
     public static function getAfterFilters() {return [];}
     public static function getBeforeFilters() {return [];}
