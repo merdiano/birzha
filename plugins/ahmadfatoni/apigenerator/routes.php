@@ -23,3 +23,6 @@ Route::resource('api/v1/currencies', 'AhmadFatoni\ApiGenerator\Controllers\API\C
 
 Route::resource('api/v1/measures', 'AhmadFatoni\ApiGenerator\Controllers\API\MeasuresapiController', ['except' => ['destroy', 'create', 'edit']]);
 // Route::get('api/v1/measures/{id}/delete', ['as' => 'api/v1/measures.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\MeasuresapiController@destroy']);
+
+Route::resource('api/v1/terms', 'AhmadFatoni\ApiGenerator\Controllers\API\TermsapiController', ['except' => ['destroy', 'create', 'edit']]);
+// Route::get('api/v1/terms/{id}/delete', ['as' => 'api/v1/terms.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\TermsapiController@destroy']);
