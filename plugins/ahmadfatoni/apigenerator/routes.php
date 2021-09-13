@@ -17,3 +17,6 @@ Route::post('api/v1/products/{id}/publish', ['as' => 'products.publish', 'uses' 
 
 Route::resource('api/v1/countries', 'AhmadFatoni\ApiGenerator\Controllers\API\CountriesapiController', ['except' => ['destroy', 'create', 'edit']]);
 // Route::get('api/v1/countries/{id}/delete', ['as' => 'api/v1/countries.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\CountriesapiController@destroy']);
+
+Route::resource('api/v1/currencies', 'AhmadFatoni\ApiGenerator\Controllers\API\CurrenciesapiController', ['except' => ['destroy', 'create', 'edit']]);
+// Route::get('api/v1/currencies/{id}/delete', ['as' => 'api/v1/currencies.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\CurrenciesapiController@destroy']);
