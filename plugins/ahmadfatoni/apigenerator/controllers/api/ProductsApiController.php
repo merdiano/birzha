@@ -415,4 +415,23 @@ class ProductsAPIController extends Controller
 
         return $attachedProduct;
     }
+
+    public function myProducts()
+    {
+        $perPage = intval(input('custom_per_page')); // intval protects from injection
+
+        try {
+            $products = \JWTAuth::parseToken()->authenticate()
+                ->products()
+                ->with('translations:locale,model_id,attribute_data',
+                    'images:attachment_id,attachment_type,disk_name,file_name')
+                ->orderBy('updated_at', 'desc')
+                ->paginate($perPage);
+        } catch (\Throwable $th) {
+            return $this->helpers->apiArrayResponseBuilder(500, 'server error', ['message' => 'Something went wrong']);
+        }
+        
+        
+        return $this->helpers->apiArrayResponseBuilder(200, 'success', [$products]);
+    }
 }
