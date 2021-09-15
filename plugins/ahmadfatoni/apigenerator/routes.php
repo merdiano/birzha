@@ -27,3 +27,6 @@ Route::resource('api/v1/measures', 'AhmadFatoni\ApiGenerator\Controllers\API\Mea
 
 Route::resource('api/v1/terms', 'AhmadFatoni\ApiGenerator\Controllers\API\TermsapiController', ['except' => ['destroy', 'create', 'edit']]);
 // Route::get('api/v1/terms/{id}/delete', ['as' => 'api/v1/terms.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\TermsapiController@destroy']);
+
+Route::resource('api/v1/messages', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController', ['except' => ['destroy', 'create', 'edit']])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+// Route::get('api/v1/messages/{id}/delete', ['as' => 'api/v1/messages.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@destroy']);
