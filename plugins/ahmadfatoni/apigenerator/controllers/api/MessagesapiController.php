@@ -8,6 +8,7 @@ use AhmadFatoni\ApiGenerator\Helpers\Helpers;
 use Illuminate\Support\Facades\Validator;
 use RainLab\User\Models\User;
 use TPS\Birzha\Models\Message;
+use Tps\Birzha\Models\Chatroom;
 class MessagesapiController extends Controller
 {
 	protected $Message;
@@ -115,6 +116,26 @@ class MessagesapiController extends Controller
         return $this->helpers->apiArrayResponseBuilder(200, 'success', 'Data has been deleted successfully.');
     }
 
+    public function enterChatroom($id)
+    {
+        $currentUser = \JWTAuth::parseToken()->authenticate();
+        
+        $chatroom = $currentUser->chatrooms()
+            ->find($id);
+
+        if(!$chatroom) {
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
+        }
+
+        $chatroom->messages()
+            ->where('reciver_id', $currentUser->id)
+            ->readAtNull()
+            ->update(['read_at'=>\Carbon\Carbon::now()]);
+
+        $messages = $chatroom->messages()->latest('send_at')->limit(5)->get()->reverse();
+
+        return $this->helpers->apiArrayResponseBuilder(200, 'success', ['messages' => $messages]);
+    }
 
     public static function getAfterFilters() {return [];}
     public static function getBeforeFilters() {return [];}

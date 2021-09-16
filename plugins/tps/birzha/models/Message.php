@@ -34,4 +34,9 @@ class Message extends Model
     public $hasOne = [
         'chatroom' => ['TPS\Birzha\Models\Chatroom'],
     ];
+
+    public function scopeReadAtNull($query)
+    {
+        return $query->where('read_at',null);
+    }
 }
