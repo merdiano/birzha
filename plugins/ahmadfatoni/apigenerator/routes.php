@@ -30,4 +30,5 @@ Route::resource('api/v1/terms', 'AhmadFatoni\ApiGenerator\Controllers\API\Termsa
 
 Route::resource('api/v1/messages', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController', ['except' => ['destroy', 'create', 'edit']])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 Route::get('api/v1/messages/chatroom/{id}', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@enterChatroom')->where('id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+Route::get('api/v1/messages/chatroom/{id}/load-more', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@loadMore')->where('id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 // Route::get('api/v1/messages/{id}/delete', ['as' => 'api/v1/messages.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@destroy']);

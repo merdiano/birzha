@@ -137,6 +137,35 @@ class MessagesapiController extends Controller
         return $this->helpers->apiArrayResponseBuilder(200, 'success', ['messages' => $messages]);
     }
 
+    public function loadMore($id, Request $request)
+    {
+        $inputData = $request->all();
+
+        $rules = [
+            'skip' => 'required|integer'
+        ];
+
+        $validator = Validator::make($inputData, $rules);
+        if($validator->fails()) {
+            return $this->helpers->apiArrayResponseBuilder(400, 'fail', $validator->errors() );
+        }
+
+        $skipParam = $inputData['skip'];
+
+        $currentUser = \JWTAuth::parseToken()->authenticate();
+        
+        $chatroom = $currentUser->chatrooms()
+            ->find($id);
+
+        if(!$chatroom) {
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
+        }
+
+        $messages = $chatroom::find($id)->messages()->latest('send_at')->skip($skipParam)->limit(5)->get()->reverse();
+
+        return $this->helpers->apiArrayResponseBuilder(200, 'success', ['messages' => $messages]);
+    }
+
     public static function getAfterFilters() {return [];}
     public static function getBeforeFilters() {return [];}
     public static function getMiddleware() {return [];}
