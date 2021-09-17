@@ -166,6 +166,47 @@ class MessagesapiController extends Controller
         return $this->helpers->apiArrayResponseBuilder(200, 'success', ['messages' => $messages]);
     }
 
+    public function sendMessage($chatroom_id, Request $request)
+    {
+        $currentUser = \JWTAuth::parseToken()->authenticate();
+
+        $chatroom = $currentUser->chatrooms()
+            ->with([
+
+                // this is a message reciever
+                'users' => function ($query) use ($currentUser) {
+                    $query->select(['users.id', 'name', 'email'])
+                    ->where('users.id', '!=', $currentUser->id);
+                }
+            ])
+            ->find($chatroom_id);
+
+        if(!$chatroom) {
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $chatroom_id . ' could not be found']);
+        }
+
+        $inputData = $request->all();
+
+        $rules = [
+            'msg' => 'required'
+        ];
+
+        $validator = Validator::make($inputData, $rules);
+        if($validator->fails()) {
+            return $this->helpers->apiArrayResponseBuilder(400, 'fail', $validator->errors() );
+        }
+
+        $newMsg = new $this->Message;
+        $newMsg->sender_id = $currentUser->id;
+        $newMsg->reciver_id = $chatroom->users->first()->id;
+        $newMsg->send_at = \Carbon\Carbon::now();
+        $newMsg->message = $inputData['msg'];
+        $newMsg->chatroom_id = $chatroom_id;
+        $newMsg->save();
+
+        return $this->helpers->apiArrayResponseBuilder(200, 'ok', ['message' => 'message sent successfully']);
+    }
+
     public static function getAfterFilters() {return [];}
     public static function getBeforeFilters() {return [];}
     public static function getMiddleware() {return [];}
