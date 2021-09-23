@@ -307,11 +307,31 @@ class ProductsAPIController extends Controller
         return $this->helpers->apiArrayResponseBuilder(200, 'ok', ['message' => 'updated successfully']);
     }
 
+    /**
+     * Delete a my product
+     */
     public function delete($id){
 
-        $this->Product->where('id',$id)->delete();
+        $currentUser = \JWTAuth::parseToken()->authenticate();
 
-        return $this->helpers->apiArrayResponseBuilder(200, 'success', 'Data has been deleted successfully.');
+        $product = $currentUser->products->find($id);
+
+        if(!$product) {
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
+        }
+
+        /**
+         * user can not delete product with status 'new'
+         */
+        if($product->status == 'new') {
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
+        }
+
+        $product->images()->delete();
+        $product->translations()->delete();
+        $product->delete();
+
+        return $this->helpers->apiArrayResponseBuilder(200, 'success', ['message' => 'Data has been deleted successfully']);
     }
 
     public function destroy($id){
