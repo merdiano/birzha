@@ -124,4 +124,97 @@ Route::group(['prefix' => 'api'], function() {
 
         return Response::json(compact('user'));
     });
+
+    Route::get('me', function() {
+        
+        $me = \JWTAuth::parseToken()->authenticate();
+        
+        return Response::json(compact('me'));
+
+    })->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+
+    Route::post('me', function(Request $request) {
+        
+        $me = \JWTAuth::parseToken()->authenticate();
+        if(!$me) {
+            return Response::json(['error' => 'Not found'], 404);
+        }
+
+        $data = Input::all();
+
+        $rules = [
+            'email'    => 'required|between:6,191|email',
+            'username' => 'required|digits_between:8,20|numeric',
+            'iu_company' => 'max:191',
+            'iu_about' => 'digits:6|numeric',
+        ];
+
+        $validation = \Validator::make($data, $rules,(new UserModel)->messages);
+        if ($validation->fails()) {
+            return Response::json(['error' => $validation->errors()], 400);
+        }
+
+        /**
+         * If password in input data, add rules for password
+         */
+        if (array_key_exists('password', $data) && strlen($data['password']))  {
+            $rules = [
+                'password' => 'required:create|between:8,255|confirmed',
+                'password_confirmation' => 'required_with:password|between:8,255'
+            ];
+    
+            $validation = \Validator::make($data, $rules,(new UserModel)->messages);
+            if ($validation->fails()) {
+                return Response::json(['error' => $validation->errors()], 400);
+            }
+        }
+
+        $me->fill($data);
+        $me->save();
+
+        /*
+         * Password has changed, reauthenticate the user - send new token
+         */
+        if (array_key_exists('password', $data) && strlen($data['password'])) {
+            
+            $credentials['username'] = $me->username;
+            $credentials['password'] = $data['password'];
+            
+            try {
+                // verify the credentials and create a token for the user
+                if (! $token = JWTAuth::attempt($credentials)) {
+                    return response()->json(['error' => 'invalid_credentials'], 401);
+                }
+            } catch (JWTException $e) {
+                // something went wrong
+                return response()->json(['error' => 'could_not_create_token'], 500);
+            }
+    
+            $userModel = JWTAuth::authenticate($token);
+    
+            // if user is not activated, he will not get token
+            if(!$userModel->is_activated) {
+                return response()->json(['error' => 'Not activated'], 403);
+            }
+    
+            if ($userModel->methodExists('getAuthApiSigninAttributes')) {
+                $user = $userModel->getAuthApiSigninAttributes();
+            } else {
+                $user = [
+                    'id' => $userModel->id,
+                    'name' => $userModel->name,
+                    'surname' => $userModel->surname,
+                    'username' => $userModel->username,
+                    'email' => $userModel->email,
+                    'is_activated' => $userModel->is_activated,
+                ];
+            }
+            // if no errors are encountered we can return a JWT
+            return response()->json(compact('token', 'user'));
+
+        }
+
+        return Response::json(compact('me'));
+
+    })->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 });
