@@ -33,7 +33,11 @@ class MessagesapiController extends Controller
         $chatrooms = $currentUser->chatrooms()
             ->with([
                 'users' => function ($query) use ($currentUser) {
-                    $query->select(['users.id', 'name', 'email'])
+                    /**
+                     * this is the message_partner with whom
+                     * $currentUser is chatting ('users.id', '!=', $currentUser->id)
+                     */
+                    $query->select(['users.id', 'username', 'name', 'surname', 'email'])
                     ->where('users.id', '!=', $currentUser->id);
                 },
                 'messages' => function ($query) {
