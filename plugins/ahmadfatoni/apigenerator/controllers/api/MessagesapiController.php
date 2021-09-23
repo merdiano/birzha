@@ -49,6 +49,7 @@ class MessagesapiController extends Controller
                 
                 $chatroom->last_message = $chatroom->messages->first();
                 $chatroom->count_unread_messages = $chatroom->messages->where('read_at',null)->where('reciver_id', $currentUser->id)->count();
+                $chatroom->messages = 'see the [last_message] field'; // we don't need all the messages, just the latest
                 
                 return $chatroom;
             });
