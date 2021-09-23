@@ -127,12 +127,7 @@ class MessagesapiController extends Controller
             return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
         }
 
-        $chatroom->messages()
-            ->where('reciver_id', $currentUser->id)
-            ->readAtNull()
-            ->update(['read_at'=>\Carbon\Carbon::now()]);
-
-        $messages = $chatroom->messages()->latest('send_at')->limit(5)->get()->reverse();
+        $messages = $this->getMessagesFromChatroom($chatroom, $currentUser);
 
         return $this->helpers->apiArrayResponseBuilder(200, 'success', ['messages' => $messages]);
     }
@@ -205,6 +200,87 @@ class MessagesapiController extends Controller
         $newMsg->save();
 
         return $this->helpers->apiArrayResponseBuilder(200, 'ok', ['message' => 'message sent successfully']);
+    }
+
+    /**
+     * this api works when on a post page authenticated user wants
+     * to write a message to a seller
+     */
+    public function initializeChatting($seller_id)
+    {
+        $currentUser = \JWTAuth::parseToken()->authenticate();
+
+        // \DB::enableQueryLog();
+
+        $seller = User::with(['chatrooms' => function($query) { // seller has chatrooms
+                $query->with(['users' => function($queryUsers) { // every chatroom has users (2)
+                    $queryUsers->select(['users.id', 'name', 'email']);
+                }]);
+            }])
+            ->find($seller_id);
+
+        if (!$seller){
+            return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $seller_id . ' could not be found']);
+        }
+        
+        /** 
+         * this if statement means that
+         * authenticated user & seller must not be the same person
+         */
+        if($seller->id == $currentUser->id) {
+            return $this->helpers->apiArrayResponseBuilder(400, 'bad request', ['error' => 'Id is invalid']);
+        }
+
+        /**
+         * from all seller's chatrooms choose only one with $currentUser
+         * if such chatroom exists
+         * else create new chatroom with $seller & $currentUser
+         */
+        $chatroomNeeded = null;
+        foreach ($seller->chatrooms as $chatroom) {
+            
+            foreach ($chatroom->users as $user) {
+                if($user->id == $currentUser->id) {
+                    $chatroomNeeded = $chatroom;
+                    break;
+                }
+            }
+
+            // after chatroom iteration, check if we found $chatroomNeeded
+            if($chatroomNeeded) break;
+        }
+
+        // dd(\DB::getQueryLog());
+
+        /**
+         * chatroom with given seller not found => $chatroomNeeded is null
+         * in this case create new chatroom
+         */
+        if (!$chatroomNeeded) {
+            $chatroomNeeded = new Chatroom;
+            $chatroomNeeded->save();
+
+            $chatroomNeeded->users()->attach($seller->id);
+            $chatroomNeeded->users()->attach($currentUser->id);
+        }
+
+        // return response()->json(['chatrooms' => $seller->chatrooms]);
+        // return response()->json(['users' => $seller->chatrooms->users]);
+        // return response()->json(['chatroomNeeded' => $chatroomNeeded]);
+        return $this->helpers->apiArrayResponseBuilder(200, 'success', ['messages' => $this->getMessagesFromChatroom($chatroomNeeded, $currentUser)]);
+
+    }
+
+    protected function getMessagesFromChatroom($chatroom, $currentUser)
+    {
+        $chatroom->messages()
+            ->where('reciver_id', $currentUser->id)
+            ->readAtNull()
+            ->update(['read_at'=>\Carbon\Carbon::now()]);
+
+        $messages = $chatroom->messages()->latest('send_at')->limit(5)->get()->reverse();
+
+        return $messages;
     }
 
     public static function getAfterFilters() {return [];}
