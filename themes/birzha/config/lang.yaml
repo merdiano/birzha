@@ -19,7 +19,7 @@ en:
   account.company: Company
   account.legalization_number: Legalization number
   account.save: Save
-  account.current_password: Current password
+  account.password_confirmation: Confirm password
   account.new_password: New password
   account.info: Account info
   account.balance: Balance
@@ -137,7 +137,7 @@ ru:
   account.company: Компания
   account.legalization_number: Номер легализации
   account.save: Ýatla
-  account.current_password: Açar sözüňiz
+  account.password_confirmation: Täze açar sözüňizi tassyklaň
   account.new_password: Täze açar söz
   account.info: Персональные данные
   account.balance: Balance
@@ -255,7 +255,7 @@ tm:
   account.company: Şereket
   account.legalization_number: Legalizasiýa nomeri
   account.save: Ýatla
-  account.current_password: Açar sözüňiz
+  account.password_confirmation: Täze açar sözüňizi tassyklaň
   account.new_password: Täze açar söz
   account.info: Şahsy maglumatlar
   account.balance: Balance
