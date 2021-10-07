@@ -1,6 +1,7 @@
 <?php
 
 use RainLab\User\Models\User as UserModel;
+use RainLab\User\Models\Settings as UserSettings;
 use Vdomah\JWTAuth\Models\Settings;
 
 Route::group(['prefix' => 'api'], function() {
@@ -91,13 +92,18 @@ Route::group(['prefix' => 'api'], function() {
         $login_fields = Settings::get('signup_fields', ['email', 'password', 'password_confirmation']);
         $credentials = Input::only($login_fields);
 
+        /**
+         * activation is set to be automatic
+         */
+        $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
+
         try {
             // password_confirmation is required 
             // but not used when signing up like on web-site
             if (!array_key_exists('password_confirmation', $credentials) && array_key_exists('password', $credentials)) {
                 $credentials['password_confirmation'] = $credentials['password'];
             }
-            $userModel = UserModel::create($credentials);
+            $userModel = Auth::register($credentials, $automaticActivation);
 
             if ($userModel->methodExists('getAuthApiSignupAttributes')) {
                 $user = $userModel->getAuthApiSignupAttributes();
@@ -117,12 +123,7 @@ Route::group(['prefix' => 'api'], function() {
 
         $token = JWTAuth::fromUser($userModel);
 
-        // by default sent token, but user must be activated first
-        // for security purpose token is not sent
-
-        // return Response::json(compact('token', 'user'));
-
-        return Response::json(compact('user'));
+        return Response::json(compact('token', 'user'));
     });
 
     Route::get('me', function() {
