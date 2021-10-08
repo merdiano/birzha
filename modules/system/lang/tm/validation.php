@@ -121,6 +121,7 @@ return [
     'atleast_1_image' => 'Azyndan 1 surat ýüklemeli.',
     'image_type' => 'Diňe :image_type ýüklemek bolýar!',
     'image_size' => 'Surat :size Mb-dan uly bolmaly däl!',
+    'low_balance' => 'Hasabyňyzy doldurmagyňyzy haýyş edýäris',
 
     /*
     |--------------------------------------------------------------------------

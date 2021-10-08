@@ -119,6 +119,7 @@ return [
     'atleast_1_image' => 'You have to upload at least 1 image.',
     'image_type' => 'You must upload :image_type!',
     'image_size' => 'Max file size :size Mb!',
+    'low_balance' => 'Fill up your balance',
 
     /*
     |--------------------------------------------------------------------------
