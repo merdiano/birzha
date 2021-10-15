@@ -1050,9 +1050,9 @@ li {
     position: relative;
 
 
-    width: calc(70% - 25px);
+    width: calc(100% - 40px);
     height: 480px;
-    margin-right: 25px;
+    margin-right: 40px;
     border-radius: 10px;
     overflow: hidden;
     z-index: 1;
@@ -1095,19 +1095,11 @@ li {
     position: relative;
     width: 80%;
 
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    -ms-flex-direction: column; */
-
-
     margin: auto;
 }
 
 .advert {
-    width: calc(30% - 25px);
-    margin-left: 25px;
+    width: 380px;
 }
 
 .advert_item {
@@ -1122,6 +1114,7 @@ li {
     height: 100%;
     object-fit: contain;
     -o-object-fit: contain;
+    border-radius: 10px;
 }
 
 .categories {

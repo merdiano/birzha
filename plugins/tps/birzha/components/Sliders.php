@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use TPS\Birzha\Models\Slider;
+use RainLab\Translate\Classes\Translator;
 
 class Sliders extends ComponentBase
 {
@@ -42,6 +43,8 @@ class Sliders extends ComponentBase
 
     public function onRun() {
         $this->slider = $this->loadSliders();
+        $translator = Translator::instance();
+        $this->lng = $translator->getLocale();
     }
 
     protected function loadSliders() {
@@ -53,4 +56,5 @@ class Sliders extends ComponentBase
     }
 
     public $slider;
+    public $lng;
 }
