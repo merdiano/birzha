@@ -1,15 +1,34 @@
 {% set slider = __SELF__.slider %}
+{% set lng = __SELF__.lng %}
 
 <div class="intro_slider">
     {% for item in slider.slide_items %}
     <div class="slider_item">
         <div class="slider_content">
+            {% if lng == 'ru' %}
             <div class="slider_title">
-                {{ item.slide_title }}
+                {{ item.slide_title_ru }}
             </div>
             <div class="slider_text">
-                {{ item.slide_text }}
+                {{ item.slide_text_ru }}
             </div>
+            {% endif %}
+            {% if lng == 'en' %}
+            <div class="slider_title">
+                {{ item.slide_title_en }}
+            </div>
+            <div class="slider_text">
+                {{ item.slide_text_en }}
+            </div>
+            {% endif %}
+            {% if lng == 'tm' %}
+            <div class="slider_title">
+                {{ item.slide_title_tm }}
+            </div>
+            <div class="slider_text">
+                {{ item.slide_text_tm }}
+            </div>
+            {% endif %}
         </div>
         <div class="slider_item-img">
             <img src="../../../../../themes/birzha/assets/images/slide.png" alt="">

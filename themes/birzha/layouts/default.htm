@@ -36,13 +36,15 @@ function onStart(){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- <link rel="icon" type="image/svg" href="{{ 'assets/images/svg/fav_icon.svg'|theme }}"> -->
+    <link rel="icon" href="{{'assets/images/svg/fav_icon.svg'|theme}}" sizes="32x32">
+    <link rel="icon" href="{{'assets/images/svg/fav_icon.svg'|theme}}" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="{{'assets/images/svg/fav_icon.svg'|theme}}">
+    <meta name="msapplication-TileImage" content="{{'assets/images/svg/fav_icon.svg'|theme}}">
     {% styles %}
     <link rel="stylesheet" href="{{'assets/css/main.css'|theme}}">
     <!--    <link href="{{ ['assets/css/main.css']|theme }}" rel="stylesheet">-->
-<!--    <link rel="icon" href="{{'assets/images/icon/cropped-cropped-orienticon-32x32.png'|theme}}" sizes="32x32">-->
-<!--    <link rel="icon" href="{{'assets/images/icon/cropped-cropped-orienticon-192x192.png'|theme}}" sizes="192x192">-->
-<!--    <link rel="apple-touch-icon-precomposed" href="{{'assets/images/icon/cropped-cropped-orienticon-180x180.png'|theme}}">-->
-<!--    <meta name="msapplication-TileImage" content="{{'assets/images/icon/cropped-cropped-orienticon-270x270.png'|theme}}">-->
+
 
     <title>{{this.page.title}}</title>
 

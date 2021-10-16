@@ -11,12 +11,28 @@ fields:
         type: repeater
         form:
             fields:
-                slide_title:
-                    label: 'Slide title'
+                slide_title_ru:
+                    label: 'Slide title RU'
                     span: auto
                     type: text
-                slide_text:
-                    label: 'Slide text'
+                slide_text_ru:
+                    label: 'Slide text RU'
+                    span: auto
+                    type: text
+                slide_title_tm:
+                    label: 'Slide title TM'
+                    span: auto
+                    type: text
+                slide_text_tm:
+                    label: 'Slide text TM'
+                    span: auto
+                    type: text
+                slide_title_en:
+                    label: 'Slide title EN'
+                    span: auto
+                    type: text
+                slide_text_en:
+                    label: 'Slide text EN'
                     span: auto
                     type: text
                 slide_img:
