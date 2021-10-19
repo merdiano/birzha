@@ -1162,7 +1162,7 @@ li {
 }
 
 .cat_item {
-    width: calc(25% - 20px);
+    width: calc(20% - 20px);
     margin: 0 20px;
     padding: 40px 20px;
 
@@ -1631,7 +1631,6 @@ li {
 
 .cat_tabs {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 
     margin-bottom: 100px;
@@ -1651,6 +1650,9 @@ li {
     font-weight: 700;
     line-height: 1.4;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     transition: all .15s linear;
     -webkit-transition: all .15s linear;
@@ -3566,7 +3568,7 @@ li {
     .cat_item {
         padding: 30px 15px;
         margin: 0 15px;
-        width: calc(25% - 15px);
+        width: calc(20% - 15px);
     }
 
     .cat_photo {
@@ -3731,7 +3733,7 @@ li {
     .cat_item {
         padding: 30px 10px;
         margin: 20px;
-        width: calc(50% - 40px);
+        width: calc(33.33% - 40px);
     }
 
     .cat_photo {
@@ -3754,10 +3756,10 @@ li {
         width: calc(50% - 40px);
         margin-bottom: 30px;
     }
-
+/* 
     .tab_link:nth-child(2) {
         margin-right: 0;
-    }
+    } */
 
     .profile_drop {
         bottom: -505px;
@@ -4320,6 +4322,10 @@ li {
 
     .chat_people {
         width: 40%;
+    }
+
+    .cat_item {
+        width: calc(50% - 40px);
     }
 
 }
