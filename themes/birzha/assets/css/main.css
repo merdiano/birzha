@@ -1081,6 +1081,17 @@ li {
     position: relative;
 }
 
+.slider_item-img::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 49, 151, .5);
+
+}
+
 .slider_item-img {
     position: absolute;
     top: 0;
