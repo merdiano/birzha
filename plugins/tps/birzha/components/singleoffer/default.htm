@@ -23,74 +23,89 @@
         </div>
     </div>
     <div class="detail_info">
-        <div class="detail_about">
-            <div class="detail_title">
-                {{offer.name}}
-            </div>
-            <div class="detail_row">
-                <div class="detail_name">
-                    {{'page.prod_no'|_}}:
-                </div>
-                <div class="detail_value">
-                    № {{offer.id}}
-                </div>
-            </div>
-            <div class="detail_row">
-                <div class="detail_name">
-                    {{'page.prod_amount_2'|_}} :
-                </div>
-                <div class="detail_value">
-                    {{offer.quantity}} {{offer.measure.code}}.
-                </div>
-            </div>
-            <div class="detail_row">
-                <div class="detail_name">
-                    {{'page.prod_price_2'|_}}:
-                </div>
-                <div class="detail_value">
-                    {{offer.price}} {{offer.currency.code}} / 1 {{offer.measure.code}}.
-                </div>
-            </div>
-            <div class="detail_row">
-                <div class="detail_name">
-                    {{'page.prod_startdate'|_}}:
-                </div>
-                <div class="detail_value green">
-                    {{offer.created_at|date('d/m/Y')}}
-                </div>
-            </div>
+        <div class="detail_title">
+            {{offer.name}}
         </div>
-        <div class="detail_other">
-            <div class="detail_row">
-                <div class="detail_name">
-                    {{'page.prod_mark'|_}}:
+        <div class="detail_info-inner">
+            <div class="detail_about">
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.prod_no'|_}}:
+                    </div>
+                    <div class="detail_value">
+                        № {{offer.id}}
+                    </div>
                 </div>
-                <div class="detail_value">
-                    {{offer.mark}}
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.prod_amount_2'|_}} :
+                    </div>
+                    <div class="detail_value">
+                        {{offer.quantity}} {{offer.measure.code}}.
+                    </div>
+                </div>
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.prod_price_2'|_}}:
+                    </div>
+                    <div class="detail_value">
+                        {{offer.price}} {{offer.currency.code}} / 1 {{offer.measure.code}}.
+                    </div>
+                </div>
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.prod_startdate'|_}}:
+                    </div>
+                    <div class="detail_value green">
+                        {{offer.created_at|date('d/m/Y')}}
+                    </div>
+                </div>
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.prod_finishdate'|_}}:
+                    </div>
+                    <div class="detail_value red">
+                        {{offer.ends_at|date('d/m/Y')}}
+                    </div>
                 </div>
             </div>
-            <div class="detail_row">
-                <div class="detail_name">
-                    {{'page.prod_vendor'|_}}:
+            <div class="detail_other">
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.prod_mark'|_}}:
+                    </div>
+                    <div class="detail_value">
+                        {{offer.mark}}
+                    </div>
                 </div>
-                <div class="detail_value">
-                    {{offer.manufacturer}}
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.prod_vendor'|_}}:
+                    </div>
+                    <div class="detail_value">
+                        {{offer.manufacturer}}
+                    </div>
                 </div>
-            </div>
-            <div class="detail_row">
-                <div class="detail_name">
-                    {{'page.prod_vendor_country'|_}} :
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.prod_vendor_country'|_}} :
+                    </div>
+                    <div class="detail_value">
+                        {{offer.country.name}}
+                    </div>
                 </div>
-                <div class="detail_value">
-                    {{offer.country.name}}
-                </div>
-            </div>
-            <div class="detail_row">
-                <div class="detail_name">
-                    {{'page.prod_finishdate'|_}}:
-                </div>
-                <div class="detail_value red">
-                    {{offer.ends_at|date('d/m/Y')}}
+                <div class="detail_row">
+                    <div class="detail_name">
+                        {{'page.market_type'|_}}
+                    </div>
+                    <div class="detail_value">
+                        {% if offer.market_type == 'in' %}
+                            {{'page.market_type_option_in'|_}}
+                        {% endif %}
+                        {% if offer.market_type == 'out' %}
+                            {{'page.market_type_option_out'|_}}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

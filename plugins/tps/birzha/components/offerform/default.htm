@@ -25,7 +25,7 @@
                 <!-- ru name -->
                 <div class="post_input">
                     <label>{{'account.lot_title'|_}} (RU) <span>*</span></label>
-                    <input type="text" name="name_ru" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.lot_title_example'|_}}"
+                    <input type="text" name="name_ru" data-belongsto="product" placeholder="{{'page.example'|_}}: Гидравлическое масло"
                         {% if productForEditing %}
                          value="{{ productForEditing.lang('ru').name }}"
                         {% endif %}
@@ -35,7 +35,7 @@
                 <!-- en name -->
                 <div class="post_input">
                     <label>{{'account.lot_title'|_}} (EN) <span>*</span></label>
-                    <input type="text" name="name_en" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.lot_title_example'|_}}"
+                    <input type="text" name="name_en" data-belongsto="product" placeholder="{{'page.example'|_}}: Hydraulic oil"
                         {% if productForEditing %}
                          value="{{ productForEditing.lang('en').name }}"
                         {% endif %}
@@ -45,7 +45,7 @@
                 <!-- tm name -->
                 <div class="post_input">
                     <label>{{'account.lot_title'|_}} (TM) <span>*</span></label>
-                    <input type="text" name="name_tm" data-belongsto="product" placeholder="{{'page.example'|_}}: {{'account.lot_title_example'|_}}"
+                    <input type="text" name="name_tm" data-belongsto="product" placeholder="{{'page.example'|_}}: Gidrawlika ýagy"
                         {% if productForEditing %}
                         value="{{ productForEditing.lang('tm').name }}"
                         {% endif %}
@@ -111,17 +111,17 @@
                     <label>Market type <span>*</span> </label>
                     <div class="my-select">
                         <select name="market_type" data-belongsto="product">
-                            <option value="0">Выберите тип</option>
+                            <option value="0">{{'page.market_type'|_}}</option>
                             <option value="in"
                                 {% if productForEditing and productForEditing.market_type == 'in' %}
                                     selected
                                 {% endif %}
-                            >Внутренний</option>
+                            >{{'page.market_type_option_in'|_}}</option>
                             <option value="out"
                                 {% if productForEditing and productForEditing.market_type == 'out' %}
                                     selected
                                 {% endif %}
-                            >Внешний</option>
+                            >{{'page.market_type_option_out'|_}}</option>
                         </select>
                         <span class="error_span" data-validate-for="market_type" style="color: red;"></span>
                     </div>

@@ -78,6 +78,9 @@ en:
   page.prod_mark: Product mark
   page.prod_vendor: Manufacturer
   page.prod_vendor_country: Manufactured country
+  page.market_type: Market type
+  page.market_type_option_in: Внутренний
+  page.market_type_option_out: Внешний
   page.contact_us: Обратная связь
   page.your_firstname: Ваше имя
   page.your_lastname: Ваша фамилия
@@ -196,6 +199,9 @@ ru:
   page.prod_mark: Марка товара
   page.prod_vendor: Производитель
   page.prod_vendor_country: Страна производителя
+  page.market_type: Market type
+  page.market_type_option_in: Внутренний
+  page.market_type_option_out: Внешний
   page.contact_us: Обратная связь
   page.your_firstname: Ваше имя
   page.your_lastname: Ваша фамилия
@@ -336,6 +342,9 @@ tm:
   page.prod_mark: Марка товара
   page.prod_vendor: Производитель
   page.prod_vendor_country: Страна производителя
+  page.market_type: Market type
+  page.market_type_option_in: Внутренний
+  page.market_type_option_out: Внешний
   page.prod_desc: Описание
   page.prod_amount_2: Количество товара
   page.prod_price_2: Стартовая цена за единицу

@@ -171,6 +171,7 @@ return [
         'description_en' => 'Beýany EN',
         'description_tm' => 'Beýany TM',
         'bank_file' => 'Bankdan faýl',
+        'market_type' => 'Bazaryň gornüşi',
     ],
 
 ];

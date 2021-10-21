@@ -169,6 +169,7 @@ return [
         'description_en' => 'Description EN',
         'description_tm' => 'Description TM',
         'bank_file' => 'File from bank',
+        'market_type' => 'Market type',
     ],
 
 ];

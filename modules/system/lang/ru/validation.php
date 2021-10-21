@@ -169,6 +169,7 @@ return [
         'description_en' => 'Описание EN',
         'description_tm' => 'Описание TM',
         'bank_file' => 'Файл из банка',
+        'market_type' => 'Тип рынка',
     ],
 
 ];
