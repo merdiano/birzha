@@ -1833,23 +1833,26 @@ li {
 }
 
 .detail_row {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
 
     margin-bottom: 20px;
 }
 
 .detail_name {
-    font-size: var(--text-20);
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 700;
     line-height: 1.4;
     margin-right: 20px;
+    margin-bottom: 5px;
+    color: #a8a8a8;
 }
 
 .detail_value {
     font-size: var(--text-20);
     font-weight: 400;
     line-height: 1.4;
+
 }
 
 .green {
@@ -1866,10 +1869,11 @@ li {
 }
 
 .description_title {
-    font-size: var(--text-20);
+    font-size: 16px;
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 20px;
+    color: #a8a8a8;
 }
 
 .detail_text {
@@ -3756,7 +3760,7 @@ li {
         width: calc(50% - 40px);
         margin-bottom: 30px;
     }
-/* 
+/*
     .tab_link:nth-child(2) {
         margin-right: 0;
     } */
