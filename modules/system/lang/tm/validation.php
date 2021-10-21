@@ -57,7 +57,7 @@ return [
         'array'   => 'The :attribute must have :value items or more.',
     ],
     'image'    => ':attribute surat bolmalydyr.',
-    'in'       => ':attribute mukdary ýalňyş.',
+    'in'       => ':attribute ýalňyş.',
     'in_array' => 'The :attribute field does not exist in :other.',
     'integer'  => ':attribute san bolmalydyr.',
     'ip'       => ':attribute dogry IP adres bolmalydyr.',
