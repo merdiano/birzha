@@ -23,7 +23,6 @@
 1.0.9:
     - 'Created table tps_birzha_messages'
     - builder_table_create_tps_birzha_messages.php
-
 1.0.11:
     - 'Created table tps_birzha_terms'
     - builder_table_create_tps_birzha_terms.php
@@ -225,3 +224,6 @@
 1.0.78:
     - 'Updated table tps_birzha_products'
     - builder_table_update_tps_birzha_products_22.php
+1.0.79:
+    - 'Updated table tps_birzha_products'
+    - builder_table_update_tps_birzha_products_23.php

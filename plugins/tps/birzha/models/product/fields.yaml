@@ -110,6 +110,13 @@ fields:
             'yes': 'yes'
         span: auto
         type: balloon-selector
+    market_type:
+        label: 'Market type'
+        options:
+            in: in
+            out: out
+        span: left
+        type: balloon-selector
 tabs:
     fields:
         categories:

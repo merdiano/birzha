@@ -73,7 +73,8 @@ class OfferForm extends ComponentBase
             'category_id' => 'exists:tps_birzha_categories,id',
             'mark' => 'required',
             'manufacturer' => 'required',
-            'country_id' => 'exists:tps_birzha_countries,id'
+            'country_id' => 'exists:tps_birzha_countries,id',
+            'market_type' => 'required|in:in,out'
         ];
 
         $this->validateForm($data, $rules);
@@ -101,6 +102,7 @@ class OfferForm extends ComponentBase
         $product->mark = $data['mark'];
         $product->manufacturer = $data['manufacturer'];
         $product->country_id = $data['country_id'];
+        $product->market_type = $data['market_type'];
 
         $product->vendor_id = \Auth::user()->id;
         $product->ends_at = null; // if approved but date was expired

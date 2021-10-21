@@ -107,6 +107,26 @@
                     </div>
                 </div>
 
+                <div class="post_input p-b">
+                    <label>Market type <span>*</span> </label>
+                    <div class="my-select">
+                        <select name="market_type" data-belongsto="product">
+                            <option value="0">Выберите тип</option>
+                            <option value="in"
+                                {% if productForEditing and productForEditing.market_type == 'in' %}
+                                    selected
+                                {% endif %}
+                            >Внутренний</option>
+                            <option value="out"
+                                {% if productForEditing and productForEditing.market_type == 'out' %}
+                                    selected
+                                {% endif %}
+                            >Внешний</option>
+                        </select>
+                        <span class="error_span" data-validate-for="market_type" style="color: red;"></span>
+                    </div>
+                </div>
+
                 <div class="btn_bg">
                     <button class="post_btn" type="submit" data-attach-loading>
                         {{'account.step'|_({ step_number: 2 })}} 
