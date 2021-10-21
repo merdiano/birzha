@@ -86,21 +86,21 @@ class Offers extends ComponentBase
         $productSlug = $this->property('productSlug');
         $offerId = $this->property('offerId');
 
-        $query = Product::where('status', 'approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('updated_at', $sortOrder);
+        $query = Product::where('status', 'approved')->where('ends_at','>=',\Carbon\Carbon::now())->orderBy('updated_at', $sortOrder);
 
         if($cSlug != '') { //fetch offers by the category of the product
             $category = Category::transWhere('slug', $cSlug, Session::get('rainlab.translate.locale'))->first();
             if($category) {
                 $offersIds = array();
 
-                $query = $category->products()->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('updated_at', $sortOrder); //categories have many products
+                $query = $category->products()->where('status','approved')->where('ends_at','>=',\Carbon\Carbon::now())->orderBy('updated_at', $sortOrder); //categories have many products
 
                 // foreach($productsOfOneCategory as $p) {
                 //     foreach($p->offers as $of) { //but only one product can have many offers and one offer can have just one product
                 //         $offersIds[] = $of->id;
                 //     }
                 // }
-                // $query = Offer::whereIn('id',$offersIds)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('created_at', $sortOrder)->paginate($perPage);
+                // $query = Offer::whereIn('id',$offersIds)->where('status','approved')->where('ends_at','>=',\Carbon\Carbon::now())->orderBy('created_at', $sortOrder)->paginate($perPage);
             } else {
                 $query = null;
             }
@@ -111,7 +111,7 @@ class Offers extends ComponentBase
             if($product) {
                 $category = $product->categories->first();
                 
-                $query = $category->products()->where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',DB::raw('curdate()'))->orderBy('updated_at', $sortOrder);
+                $query = $category->products()->where('id','!=',$offerId)->where('status','approved')->where('ends_at','>=',\Carbon\Carbon::now())->orderBy('updated_at', $sortOrder);
             } else {
                 $query = null;
             }
