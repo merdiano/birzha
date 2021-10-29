@@ -51,14 +51,14 @@ class PaymentApi extends ComponentBase
                 $user->save();
                 
                 
-                $this->balance_message = trans('client.balance.fill_up_succes');
+                $this->balance_message = trans('validation.balance.fill_up_succes');
                 
             } else {
-                $this->balance_message = trans('client.balance.fill_up_fail');
+                $this->balance_message = trans('validation.balance.fill_up_fail');
             }
         } else {
             
-            $this->balance_message = trans('client.balance.fill_up_fail');
+            $this->balance_message = trans('validation.balance.fill_up_fail');
         }
     }
 }
