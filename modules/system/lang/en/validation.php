@@ -120,6 +120,11 @@ return [
     'image_type' => 'You must upload :image_type!',
     'image_size' => 'Max file size :size Mb!',
     'low_balance' => 'Fill up your balance',
+    'balance' => [
+        'fill_up_succes' => 'The balance has been replenished successfully.',
+        'fill_up_fail' => 'The balance has not been replenished. Try later.',
+        'bank_service_unavailable' => 'Unable to connect to bank services. Try later.'
+    ],
 
     /*
     |--------------------------------------------------------------------------

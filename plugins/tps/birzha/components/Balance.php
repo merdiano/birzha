@@ -37,7 +37,7 @@ class Balance extends ComponentBase
             case 'online':
                 $url = $this->payOnline($data);
                 if(!$url) {
-                    $this->page['err_message'] = 'Не удается подключиться к сервисам банка. Попробуйте позже';
+                    $this->page['err_message'] = trans('validation.balance.bank_service_unavailable');
                     return [
                         '#form-steps' => $this->renderPartial('@message')
                     ];

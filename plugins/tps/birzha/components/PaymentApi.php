@@ -1,6 +1,7 @@
 <?php namespace Tps\Birzha\Components;
 
 use Cms\Classes\ComponentBase;
+use Illuminate\Support\Facades\Redirect;
 use TPS\Birzha\Models\Payment;
 use October\Rain\Network\Http;
 use TPS\Birzha\Models\Settings;
@@ -37,6 +38,12 @@ class PaymentApi extends ComponentBase
             $responce = json_decode(CardApi::getStatus($payment->order_id), true);
 
             if( $responce['ErrorCode'] == 0 && $responce['OrderStatus'] == 2) {
+                
+                // if page bank_result page is refreshed
+                if($payment->status === 'payed') {
+                    return Redirect::to('/');
+                }
+
                 Payment::where('id', $payment_id)->update(['status' => 'payed']);
 
                 $user = $payment->user;
@@ -44,14 +51,14 @@ class PaymentApi extends ComponentBase
                 $user->save();
                 
                 
-                $this->balance_message = 'Баланс пополнен успешно';
+                $this->balance_message = trans('client.balance.fill_up_succes');
                 
             } else {
-                $this->balance_message = 'Баланс не пополнен. Попробуйте позже';
+                $this->balance_message = trans('client.balance.fill_up_fail');
             }
         } else {
             
-            $this->balance_message = 'Баланс не пополнен. Попробуйте позже';
+            $this->balance_message = trans('client.balance.fill_up_fail');
         }
     }
 }

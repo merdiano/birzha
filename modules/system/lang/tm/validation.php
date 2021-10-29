@@ -122,6 +122,11 @@ return [
     'image_type' => 'Diňe :image_type ýüklemek bolýar!',
     'image_size' => 'Surat :size Mb-dan uly bolmaly däl!',
     'low_balance' => 'Hasabyňyzy doldurmagyňyzy haýyş edýäris',
+    'balance' => [
+        'fill_up_succes' => 'Balans üstünlikli dolduryldy.',
+        'fill_up_fail' => 'Balans doldurylmady. Soňrak synanyşyp görüň.',
+        'bank_service_unavailable' => 'Bank hyzmatlaryna birigip bolmaýar. Soňrak synanyşyp görüň.'
+    ],
 
     /*
     |--------------------------------------------------------------------------

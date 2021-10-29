@@ -6,12 +6,14 @@ is_hidden = 0
 [viewBag]
 localeTitle[en] = "bank_result"
 localeTitle[ru] = "bank_result"
-localeUrl[en] = "/bank_result/:payment_id/:is_payment_cancelled/:is_payment_successful"
-localeUrl[ru] = "/bank_result/:payment_id/:is_payment_cancelled/:is_payment_successful"
+localeUrl[en] = "/bank_result/:payment_id"
+localeUrl[ru] = "/bank_result/:payment_id"
 
 [paymentapi]
 payment_id = "{{ :payment_id }}"
-is_payment_cancelled = "{{ :is_payment_cancelled }}"
-is_payment_successful = "{{ :is_payment_successful }}"
+
+[session]
+security = "user"
+redirect = "index"
 ==
 {% component 'paymentapi' %}
