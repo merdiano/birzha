@@ -103,7 +103,7 @@ class ProductsAPIController extends Controller
         //     });
         // }
 
-        return $this->helpers->apiArrayResponseBuilder(200, 'success', [$data]);
+        return response()->json($data, 200);
     }
 
     public function show($id){
@@ -114,7 +114,7 @@ class ProductsAPIController extends Controller
         ])->find($id);
 
         if ($data && $data->status == 'approved' && $data->ends_at >= \Carbon\Carbon::now()){
-            return $this->helpers->apiArrayResponseBuilder(200, 'success', [$data]);
+            return response()->json($data, 200);
         } else {
             return $this->helpers->apiArrayResponseBuilder(404, 'not found', ['error' => 'Resource id=' . $id . ' could not be found']);
         }
@@ -452,6 +452,6 @@ class ProductsAPIController extends Controller
         }
         
         
-        return $this->helpers->apiArrayResponseBuilder(200, 'success', [$products]);
+        return response()->json($products, 200);
     }
 }
