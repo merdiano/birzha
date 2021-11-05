@@ -34,7 +34,7 @@ class PaymentApi extends ComponentBase
         $payment_id = $this->property('payment_id');
         $payment = Payment::find($payment_id);
 
-        if($payment && \Input::get('status') == 'success') {
+        if($payment && \Input::get('status') === 'success' && \Input::get('orderId') === $payment->order_id) {
             $responce = json_decode(CardApi::getStatus($payment->order_id), true);
 
             if( $responce['ErrorCode'] == 0 && $responce['OrderStatus'] == 2) {

@@ -119,6 +119,11 @@ en:
   footer.address: Адрес
   footer.copyright: © TDHСMB all rights reserved
   footer.categories: Categories
+  status_approved: Approved
+  status_draft: Draft
+  status_new: Processing
+  status_denied: Denied
+  status_expired: Date expired
 ru:
   site.name: '«Туркменистан: золотой век»'
   site.short_name: ГТСБТ
@@ -240,6 +245,11 @@ ru:
   footer.address: Адрес
   footer.copyright: © TDHСMB все права зашишены
   footer.categories: Categories
+  status_approved: Одобрено
+  status_draft: Черновик
+  status_new: В обработке
+  status_denied: Отменено
+  status_expired: Срок истек
 tm:
   site.name: Türkmenistanyň Döwlet çig-mal biržasy
   site.short_name: TDÇMB
@@ -337,6 +347,11 @@ tm:
   footer.address: Adres
   footer.copyright: © TDÇMB ähli hukuklar goralan
   footer.categories: Kategoriýalar
+  status_approved: Tassyklandy
+  status_draft: Garalama
+  status_new: Barlagda
+  status_denied: Tassyklanmady
+  status_expired: Möhleti gutardy
   page.similar_prods: Из этой же категории
   page.prod_no: Номер лота
   page.prod_mark: Марка товара

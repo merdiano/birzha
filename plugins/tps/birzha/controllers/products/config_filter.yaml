@@ -14,6 +14,7 @@ scopes:
     status:
         label: Status
         type: group
+        conditions: status in (:filtered)
         options:
             draft: Draft
             new: New
@@ -23,5 +24,5 @@ scopes:
     category:
         label: Category
         modelClass: TPS\Birzha\Models\Category
+        conditions: id in (select product_id from tps_birzha_product_categories where category_id in (:filtered))
         nameFrom: name
-        scope: FilterCategories

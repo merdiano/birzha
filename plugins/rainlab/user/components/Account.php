@@ -265,7 +265,11 @@ class Account extends ComponentBase
             }
         }
         catch (Exception $ex) {
-            if (Request::ajax()) throw $ex;
+            if ($ex instanceof AuthException) {
+                throw new AuthException(Lang::get(/*A user was not found with the given credentials.*/'rainlab.user::lang.account.invalid_user'));
+            }
+            // if (Request::ajax()) throw $ex;
+            if (Request::ajax()) info($ex);
             else Flash::error($ex->getMessage());
         }
     }
@@ -299,7 +303,14 @@ class Account extends ComponentBase
                 unset($rules['username']);
             }
 
-            $validation = Validator::make($data, $rules,(new UserModel)->messages);
+            $validation = Validator::make($data, $rules, [
+                'username.required' => trans('validation.auth_profile.phone_number_required'),
+                'username.numeric' => trans('validation.auth_profile.phone_number_numeric'),
+                'username.digits_between' => trans('validation.auth_profile.phone_number_digits_between'),
+                'username.unique' => trans('validation.auth_profile.phone_number_unique'),
+                'iu_about.digits' => trans('validation.auth_profile.iu_about_digits'),
+                'iu_company.max' => trans('validation.auth_profile.iu_company_max'),
+            ]);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }

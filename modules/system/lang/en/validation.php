@@ -125,6 +125,14 @@ return [
         'fill_up_fail' => 'The balance has not been replenished. Try later.',
         'bank_service_unavailable' => 'Unable to connect to bank services. Try later.'
     ],
+    'auth_profile' => [
+        'phone_number_required' => 'Phone number is required.',
+        'phone_number_numeric' => 'Phone must contain numbers.',
+        'phone_number_digits_between' => 'Phone number must be between 8 and 20 digits.',
+        'phone_number_unique' => 'Phone number has already been taken.',
+        'iu_about_digits' => 'Legalization number must contain 6 digits.',
+        'iu_company_max' => 'Company name cannot exceed 191 characters.',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +183,8 @@ return [
         'description_tm' => 'Description TM',
         'bank_file' => 'File from bank',
         'market_type' => 'Market type',
+        'password' => 'Password',
+        'email' => 'Email',
     ],
 
 ];

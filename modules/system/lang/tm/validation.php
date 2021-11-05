@@ -127,6 +127,14 @@ return [
         'fill_up_fail' => 'Balans doldurylmady. Soňrak synanyşyp görüň.',
         'bank_service_unavailable' => 'Bank hyzmatlaryna birigip bolmaýar. Soňrak synanyşyp görüň.'
     ],
+    'auth_profile' => [
+        'phone_number_required' => 'Telefon belgi meýdany zerur.',
+        'phone_number_numeric' => 'Telefon belgi sandlardan ybarat bolmaly.',
+        'phone_number_digits_between' => 'Telefon belgi 8-20 sany sanlardan ybarat bolmaly.',
+        'phone_number_unique' => 'Telefon belgi öňden hasaba alyndy.',
+        'iu_about_digits' => 'Legalizasiýa nomeri 6 sany sandan ybarat bolmaly.',
+        'iu_company_max' => 'Kompaniýanyň ady 191 sany harpdan geçmeli däl.',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +185,8 @@ return [
         'description_tm' => 'Beýany TM',
         'bank_file' => 'Bankdan faýl',
         'market_type' => 'Bazaryň gornüşi',
+        'password' => 'Açar söz',
+        'email' => 'El. bukjaňyz',
     ],
 
 ];

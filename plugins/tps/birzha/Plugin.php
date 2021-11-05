@@ -4,6 +4,7 @@ use Backend;
 use System\Classes\PluginBase;
 use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Product;
+use Tps\Birzha\Console\DatabaseBackUp;
 use TPS\Birzha\Models\Offer;
 use Event;
 use Session;
@@ -34,7 +35,14 @@ class Plugin extends PluginBase
      */
     public function register()
     {
+        $this->registerConsoleCommand('birzha:databasebackup', DatabaseBackUp::class);
+    }
 
+    public function registerSchedule($schedule)
+    {
+        $schedule->command('birzha:databasebackup')
+            ->timezone('America/New_York')
+            ->everyMinute();
     }
 
     /**

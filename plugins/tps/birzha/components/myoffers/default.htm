@@ -72,7 +72,7 @@
                             {{ offer.name }}
                         </div>
                         <div class="item_sub_title">
-                            {{ offer.name }}
+                            {{ offer.description }}
                         </div>
                     </div>
                     <div class="item_group">
@@ -102,7 +102,7 @@
 
 
                     {% if offer.status == "approved" and offer.ends_at >= __SELF__.today %}
-                        <span class="show_span" style="color:green">{{offer.status}}</span>
+                        <span class="show_span" style="color:green">{{ 'status_approved'|_ }}</span>
                         <div class="new_group">
                             <a href="{{ 'offer'|page({ slug: offer.slug, id: offer.id }) }}" class="item_btn">
                                 {{'account.on_site'|_}}
@@ -115,7 +115,7 @@
                             </a>
                         </div>
                     {% elseif offer.status == "approved" and offer.ends_at < __SELF__.today %}
-                        <span class="show_span" style="color:black">Date is expired</span>
+                        <span class="show_span" style="color:rgb(61, 58, 58)">{{ 'status_expired'|_ }}</span>
                         <div class="new_group">
                             <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
                                 {{'account.prolong'|_}}
@@ -129,7 +129,7 @@
                         </div>
 
                     {% elseif offer.status == "denied" %}
-                        <span class="show_span" style="color:red">{{offer.status}}</span> <br>
+                        <span class="show_span" style="color:red">{{ 'status_denied'|_ }}</span> <br>
                         <span class="show_span" style="color:red">{{ offer.status_note }}</span>
                         <div class="new_group">
                             <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
@@ -143,7 +143,7 @@
                             </a>
                         </div>
                     {% elseif offer.status == "draft" %}
-                        <span class="show_span" style="color:yellow">{{offer.status}}</span>
+                        <span class="show_span" style="color:#ff9800">{{ 'status_draft'|_ }}</span>
                         <div class="new_group">
                             <a href="{{ 'kabinet/edit_post'|page({ id: offer.id }) }}" class="item_btn">
                                 {{'account.complete'|_}}
@@ -156,7 +156,7 @@
                             </a>
                         </div>
                     {% elseif offer.status == "new" %}
-                        <span class="show_span" style="color:blue">{{offer.status}}</span>
+                        <span class="show_span" style="color:blue">{{ 'status_new'|_ }}</span>
                         <a href="#" style="pointer-events: none; background-color: cornflowerblue;" class="item_btn full_btn">
                             {{'account.admin_checking'|_}}
                         </a>
