@@ -5,6 +5,9 @@
 <div class="form_text">
     {{ 'auth.account_recov'|_ }}
 </div>
+<div>
+    <span class="error_span t-c" data-validate-for="no_user" style="color: red;"></span>
+</div>
 <div class="register_input">
     <input type="text" name="username" placeholder="{{'auth.phone'|_}}">
     <div data-validate-for="username"></div>

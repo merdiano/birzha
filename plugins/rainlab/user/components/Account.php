@@ -266,7 +266,7 @@ class Account extends ComponentBase
         }
         catch (Exception $ex) {
             if ($ex instanceof AuthException) {
-                throw new Exception('Txtttstts');
+                throw new ValidationException(['no_user' => trans('validation.no_user')]);
             } 
             
             // if (Request::ajax()) throw $ex;

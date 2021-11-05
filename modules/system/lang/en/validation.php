@@ -133,6 +133,7 @@ return [
         'iu_about_digits' => 'Legalization number must contain 6 digits.',
         'iu_company_max' => 'Company name cannot exceed 191 characters.',
     ],
+    'no_user' => 'A user was not found.',
 
     /*
     |--------------------------------------------------------------------------

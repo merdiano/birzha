@@ -135,6 +135,7 @@ return [
         'iu_about_digits' => 'Legalizasiýa nomeri 6 sany sandan ybarat bolmaly.',
         'iu_company_max' => 'Kompaniýanyň ady 191 sany harpdan geçmeli däl.',
     ],
+    'no_user' => 'Beýle ulanyjy ýok.',
 
     /*
     |--------------------------------------------------------------------------
