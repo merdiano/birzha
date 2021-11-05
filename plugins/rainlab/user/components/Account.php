@@ -266,7 +266,7 @@ class Account extends ComponentBase
         }
         catch (Exception $ex) {
             if ($ex instanceof AuthException) {
-                throw new AuthException('Txtttstts');
+                throw new Exception('Txtttstts');
             } 
             
             // if (Request::ajax()) throw $ex;
