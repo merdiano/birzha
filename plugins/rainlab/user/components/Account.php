@@ -267,6 +267,8 @@ class Account extends ComponentBase
         catch (Exception $ex) {
             if ($ex instanceof AuthException) {
                 throw new AuthException(Lang::get(/*A user was not found with the given credentials.*/'rainlab.user::lang.account.invalid_user'));
+            } else {
+                throw $ex;
             }
             // if (Request::ajax()) throw $ex;
             if (Request::ajax()) info($ex);
