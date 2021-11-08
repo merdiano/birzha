@@ -36,11 +36,11 @@
 
 
 
-    <div class="post_input">
+    <!-- <div class="post_input">
         <label for="good-count">{{'account.amount'|_}} (TMT)<span>*</span> </label>
         <input type="text" placeholder="100" id="good-count" disabled value="{{amount}}">
         <span data-validate-for="amount" style="color: red;"></span>
-    </div>
+    </div> -->
 
     <div class="post_upload_box">
         <div class="post_upload_item">
@@ -58,11 +58,16 @@
             <span data-validate-for="bank_file" style="color: red;"></span>
         </div>
     </div>
-    <div class="btn_bg">
+
+    <button class="send_btn" type="submit">
+        {{'account.send'|_}}
+    </button>
+
+    <!-- <div class="btn_bg">
         <button class="post_btn" type="submit">
             {{'account.send'|_}}
         </button>
-    </div>
+    </div> -->
 </form>
 
 

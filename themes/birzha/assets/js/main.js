@@ -9,7 +9,7 @@ const selectElement = function (element) {
 // selector end=============
 
 let drop = document.querySelectorAll('.profile_drop');
-let profile_head = document.querySelectorAll('.profile_head');
+let profile_head = document.querySelectorAll('.profile_bio');
 let register = document.querySelector('.register');
 let register_btn = document.querySelectorAll('.register_btn');
 let log_in = document.querySelectorAll('.log_in');

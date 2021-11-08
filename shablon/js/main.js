@@ -1,5 +1,5 @@
 
-// 
+//
 
 
 // selector =============
@@ -31,6 +31,13 @@ let chat_alert = document.querySelectorAll('.chat_alert');
 
 let chat_burger = document.querySelector('.chat_burger');
 let chat_people = document.querySelector('.chat_people');
+
+let register_content = document.querySelector('.register_content');
+let register_content_2 = document.querySelector('.register_content_2');
+
+let seller_btn = document.querySelector('.seller_btn');
+let seller_info = document.querySelector('.seller_info');
+
 
 
 
@@ -95,6 +102,8 @@ window.onclick = function (e) {
     if (register != undefined) {
         if (register.classList.contains('active') && !e.target.closest('.register_body')) {
             register.classList.remove('active');
+            selectElement('body').classList.remove('active');
+
         }
     }
 
@@ -105,18 +114,28 @@ window.onclick = function (e) {
     }
 
     if (chat_people != undefined) {
-        if (chat_people.classList.contains('active')  && !e.target.closest('.chat_burger') ) {
+        if (chat_people.classList.contains('active') && !e.target.closest('.chat_burger')) {
             chat_people.classList.remove('active');
+        }
+    }
+
+    if (seller_info != undefined) {
+        if (seller_info.classList.contains('active') && !e.target.closest('.seller_inner')) {
+            seller_info.classList.remove('active');
+            selectElement('body').classList.remove('active');
         }
     }
 
     if (selectElement('.links').classList.contains('active') && !e.target.closest('.profile_head') && !e.target.closest('.links')) {
         selectElement('.links').classList.remove('active');
+        selectElement('body').classList.remove('active');
     }
 
     if (selectElement('.links_bg').classList.contains('active') && !e.target.closest('.profile_head') && !e.target.closest('.links')) {
         selectElement('.links_bg').classList.remove('active');
+        selectElement('body').classList.remove('active');
     }
+
 
 }
 
@@ -127,6 +146,7 @@ selectElement('.burger').addEventListener('click', function () {
     sleep(2).then(() => {
         selectElement('.links_bg').classList.toggle('active');
         selectElement('.links').classList.toggle('active');
+        selectElement('body').classList.toggle('active');
     });
 });
 
@@ -149,6 +169,8 @@ if (register_btn != undefined) {
                 register.classList.toggle('active');
                 btn_2.classList.add('active');
                 btn_1.classList.remove('active');
+                selectElement('body').classList.add('active');
+
 
                 register_content.classList.add('active');
                 register_content_2.classList.remove('active');
@@ -164,6 +186,8 @@ if (log_in != undefined) {
                 register.classList.toggle('active');
                 btn_1.classList.add('active');
                 btn_2.classList.remove('active');
+                selectElement('body').classList.add('active');
+
 
                 register_content.classList.remove('active');
                 register_content_2.classList.add('active');
@@ -211,14 +235,14 @@ if (eye_off != undefined) {
         x.addEventListener('click', function () {
             sleep(2).then(() => {
 
-                pass.type = "password";
-                pass_2.type = "password";
+                pass.type = "text";
+                pass_2.type = "text";
 
                 eye_on.forEach(e => {
-                    e.classList.toggle('active');
+                    e.classList.add('active');
                 })
                 eye_off.forEach(w => {
-                    w.classList.toggle('active');
+                    w.classList.add('active');
                 })
             });
         });
@@ -230,14 +254,14 @@ if (eye_on != undefined) {
         q.addEventListener('click', function () {
             sleep(2).then(() => {
 
-                pass.type = "text";
-                pass_2.type = "text";
+                pass.type = "password";
+                pass_2.type = "password";
 
                 eye_on.forEach(e => {
-                    e.classList.toggle('active');
+                    e.classList.remove('active');
                 })
                 eye_off.forEach(w => {
-                    w.classList.toggle('active');
+                    w.classList.remove('active');
                 })
             });
         });
@@ -260,6 +284,15 @@ if (chat_burger != undefined) {
     chat_burger.addEventListener('click', function () {
         sleep(2).then(() => {
             chat_people.classList.toggle('active');
+        });
+    });
+}
+
+if (seller_btn != undefined) {
+    seller_btn.addEventListener('click', function () {
+        sleep(2).then(() => {
+            seller_info.classList.add('active');
+            selectElement('body').classList.add('active');
         });
     });
 }

@@ -102,85 +102,91 @@ code = "main-top"
             </div>
             {% else %}
 
-            <div class="profile">
-                <div class="profile_bio">
-                    <div class="profile_head">
+            <div class="head_group">
+                <div class="profile_head">
+                    <a href="{{ 'kabinet/messages'|page }}" class="profile_item p-0" style="cursor: pointer;">
                         <div class="profile_icon">
-                            <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
+                            <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
                         </div>
                         <div class="profile_text">
-                            {{user.name ? user.name : user.email}}
+                            {{ 'auth.messages'|_ }}
                         </div>
-                        <div class="prodile_arrow">
-                            <img src="{{'assets/images/svg/arrow-down.svg'|theme}}" alt="">
+                    </a>
+
+                    <div class="profile_item p-0">
+                        <div class="profile_icon">
+                            <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
+                        </div>
+                        <div class="profile_text">
+                            {{user.balance}} TMT
                         </div>
                     </div>
-                    <div class="profile_drop">
-                        <div class="profile_item">
-                            <div class="profile_icon">
-                                <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
-                            </div>
-                            <div class="profile_text">
-                                {{'account.balance'|_}}: {{user.balance}} TMT
-                            </div>
-                        </div>
+                </div>
 
-                        <a href="{{'kabinet/profile'|page}}" class="profile_item">
+                <div class="profile">
+                    <div class="profile_bio">
+                        <div class="profile_head">
                             <div class="profile_icon">
                                 <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
                             </div>
                             <div class="profile_text">
-                                {{ 'auth.personal_data'|_ }}
+                                {{user.name ? user.name : user.email}}
                             </div>
-                        </a>
+                            <div class="prodile_arrow">
+                                <img src="{{'assets/images/svg/arrow-down.svg'|theme}}" alt="">
+                            </div>
+                        </div>
+                        <div class="profile_drop">
 
-                        <a href="{{'kabinet/my_offers'|page}}" class="profile_item">
-                            <div class="profile_icon">
-                                <img src="{{'assets/images/svg/clipboard.svg'|theme}}" alt="">
-                            </div>
-                            <div class="profile_text">
-                                {{ 'auth.my_announces'|_ }}
-                            </div>
-                        </a>
+                            <a href="{{'kabinet/profile'|page}}" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    {{ 'auth.personal_data'|_ }}
+                                </div>
+                            </a>
 
-                        <a href="{{ 'kabinet/messages'|page }}" class="profile_item">
-                            <div class="profile_icon">
-                                <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
-                            </div>
-                            <div class="profile_text">
-                                {{ 'auth.messages'|_ }}
-                            </div>
-                        </a>
+                            <a href="{{'kabinet/my_offers'|page}}" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="{{'assets/images/svg/clipboard.svg'|theme}}" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    {{ 'auth.my_announces'|_ }}
+                                </div>
+                            </a>
 
-                        <a href="{{ 'kabinet/balance'|page }}" class="profile_item">
-                            <div class="profile_icon">
-                                <img src="{{'assets/images/wallet.png'|theme}}" alt="">
-                            </div>
-                            <div class="profile_text">
-                                {{'account.fill_up_balance'|_}}
-                            </div>
-                        </a>
+                            <a href="{{ 'kabinet/balance'|page }}" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="{{'assets/images/wallet.png'|theme}}" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    {{'account.fill_up_balance'|_}}
+                                </div>
+                            </a>
 
-                        <a href="#" data-request="onLogout" data-request-data="redirect: '/'" class="profile_item">
-                            <div class="profile_icon">
-                                <img src="{{'assets/images/svg/log-out.svg'|theme}}" alt="">
-                            </div>
-                            <div class="profile_text">
-                                {{ 'auth.logout'|_ }}
-                            </div>
-                        </a>
+                            <a href="{{ 'kabinet/add_offer'|page }}" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    {{ 'auth.add_announce'|_ }}
+                                </div>
+                            </a>
 
+                            <a href="#" data-request="onLogout" data-request-data="redirect: '/'" class="profile_item">
+                                <div class="profile_icon">
+                                    <img src="{{'assets/images/svg/log-out.svg'|theme}}" alt="">
+                                </div>
+                                <div class="profile_text">
+                                    {{ 'auth.logout'|_ }}
+                                </div>
+                            </a>
+
+                        </div>
                     </div>
+
                 </div>
-
-                <a href="{{ 'kabinet/add_offer'|page }}" class="add_post_btn">
-                    <div class="post_icon">
-                        <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
-                    </div>
-                    <div class="post_text">
-                        {{ 'auth.add_announce'|_ }}
-                    </div>
-                </a>
             </div>
             {% endif %}
         </div>
@@ -236,14 +242,14 @@ code = "main-top"
                                 </div>
                             </div>
                             <div class="profile_drop">
-                                <div class="profile_item">
+                                <!-- <div class="profile_item">
                                     <div class="profile_icon">
                                         <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
                                     </div>
                                     <div class="profile_text">
                                         {{'account.balance'|_}}: {{user.balance}} TMT
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <a href="{{'kabinet/profile'|page}}" class="profile_item">
                                     <div class="profile_icon">
@@ -263,14 +269,14 @@ code = "main-top"
                                     </div>
                                 </a>
 
-                                <a href="{{ 'kabinet/messages'|page }}" class="profile_item">
+                                <!-- <a href="{{ 'kabinet/messages'|page }}" class="profile_item">
                                     <div class="profile_icon">
                                         <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
                                     </div>
                                     <div class="profile_text">
                                         {{ 'auth.messages'|_ }}
                                     </div>
-                                </a>
+                                </a> -->
 
                                 <a href="{{ 'kabinet/balance'|page }}" class="profile_item">
                                     <div class="profile_icon">
@@ -280,7 +286,6 @@ code = "main-top"
                                         {{'account.fill_up_balance'|_}}
                                     </div>
                                 </a>
-
 
                                 <a href="#" data-request="onLogout" data-request-data="redirect: '/'" class="profile_item">
                                     <div class="profile_icon">

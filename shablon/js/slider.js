@@ -4,7 +4,7 @@ $(".intro_slider").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-    autoplay: false,
+    autoplay: true,
     dots: true,
     autoplaySpeed: 3000,
     pauseOnHover: false,
@@ -26,9 +26,9 @@ $(".advert").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: false,
+    autoplay: true,
     dots: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 2500,
     pauseOnHover: false,
 
 
