@@ -90,21 +90,14 @@
                     </div>
                 </div>
 
-                <div class="post_input p-b">
-                    <label>{{'page.prod_vendor_country'|_}} <span>*</span> </label>
-                    <div class="my-select">
-                        <select name="country_id" data-belongsto="product">
-                            <option value="0">{{'page.prod_vendor_country'|_}}</option>
-                            {% for country in countries %}
-                            <option value="{{ country.id }}"
-                                {% if productForEditing and productForEditing.country.id == country.id %}
-                                    selected
-                                {% endif %}
-                            >{{country.name}}</option>
-                            {% endfor %}
-                        </select>
-                        <span class="error_span" data-validate-for="country_id" style="color: red;"></span>
-                    </div>
+                <div class="post_input">
+                    <label>{{'page.prod_vendor_country'|_}} <span>*</span></label>
+                    <input type="text" name="country" data-belongsto="product" placeholder="{{'page.example'|_}}: Türkmenistan"
+                        {% if productForEditing %}
+                        value="{{ productForEditing.country }}"
+                        {% endif %}
+                    >
+                    <span class="error_span" data-validate-for="country" style="color: red;"></span>
                 </div>
 
                 <div class="post_input p-b">

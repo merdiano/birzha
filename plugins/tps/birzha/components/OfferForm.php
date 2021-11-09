@@ -73,7 +73,7 @@ class OfferForm extends ComponentBase
             'category_id' => 'exists:tps_birzha_categories,id',
             'mark' => 'required',
             'manufacturer' => 'required',
-            'country_id' => 'exists:tps_birzha_countries,id',
+            'country' => 'required',
             'market_type' => 'required|in:in,out'
         ];
 
@@ -101,7 +101,7 @@ class OfferForm extends ComponentBase
         $product->status = 'draft';
         $product->mark = $data['mark'];
         $product->manufacturer = $data['manufacturer'];
-        $product->country_id = $data['country_id'];
+        $product->country = $data['country'];
         $product->market_type = $data['market_type'];
 
         $product->vendor_id = \Auth::user()->id;

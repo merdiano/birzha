@@ -11,40 +11,103 @@
             <div class="contact_title">
                 {{'account.fill_up_balance'|_}}
             </div>
+            <div class="post_in">
+                <label for="good-count">{{'account.payment_type'|_}}<span>*</span> </label>
+                <div class="balance_tabs">
+                    <h3 class="balance_link open_link active" data-tab="#balance-1">{{'account.online_payment'|_}}</h3>
+                    <h3 class="balance_link open_link" data-tab="#balance-2">{{'account.bank_transfer'|_}}</h3>
+                </div>
+            </div>
 
+            <div class="balance_box">
+                <div class="balance_source open_info active" id="balance-1">
+                    <form action="#"
+                    data-request="onSend"
+                    data-request-validate
+                    data-request-flash
+                    class="post_form-3 first-step-form">
 
+                        <div class="post_input">
+                            <label for="good-count">{{'account.amount'|_}} (TMT)<span>*</span> </label>
+                            <input type="number" step="0.01" name="amount" placeholder="100" id="good-count" required>
+                            <span data-validate-for="amount" style="color: red;"></span>
+                        </div>
 
-            <form action="#"
-                data-request="onSend"
-                data-request-validate
-                data-request-flash
-                class="post_form post_form-2 first-step-form">
+                        <button type="submit" class="send_btn">
+                            {{'account.pay'|_}}
+                        </button>
+                        
+                    </form>
+                </div>
+                <div class="balance_source open_info" id="balance-2">
+                    <form class="post_form-3 bank_form" enctype="multipart/form-data"
 
-                    <div class="post_input">
-                        <label for="good-count">{{'account.amount'|_}} (TMT)<span>*</span> </label>
-                        <input type="number" step="0.01" name="amount" placeholder="100" id="good-count" required>
-                        <span data-validate-for="amount" style="color: red;"></span>
-                    </div>
+                    method="post"
 
-                    <div class="post_input">
-                        <label>{{'account.payment_type'|_}} <span>*</span> <span data-validate-for="payment_type" style="color: red;"></span></label>
-                        <div class="my-select">
-                            <select name="payment_type" required>
-                                <option value="">{{'account.payment_type'|_}}</option>
-                                <option value="bank">{{'account.bank_transfer'|_}}</option>
-                                <option value="online">{{'account.online_payment'|_}}</option>
-                            </select>
+                    data-request="onPayByBankTransfer"
+                    data-request-validate
+                    data-request-flash
+                    data-request-files>
+
+                    <div class="bank">
+                        <div class="bank_group">
+                            <div class="bank_title">
+                                {{'account.bank_details'|_}}:
+                            </div>
+                            <div class="bank_text">
+                                - 1234-1234-1234-1234
+                            </div>
+                            <div class="bank_text">
+                                - 1234-1234-1234-1234
+                            </div>
+                        </div>
+                        <div class="bank_group">
+                            <div class="bank_title">
+                                {{'account.bank_address'|_}}:
+                            </div>
+                            <div class="bank_text">
+                                {{'account.bank_1'|_}}
+                            </div>
+                        </div>
+                        <div class="bank_group">
+                            <div class="bank_title">
+                                {{'account.our_bank_details'|_}}:
+                            </div>
+                            <div class="bank_text">
+                                - 1234-1234-1234-1234
+                            </div>
                         </div>
                     </div>
 
-                <div class="btn_bg">
-                    <button class="post_btn" type="submit" data-attach-loading>
-                        {{'account.pay'|_}}
+                    <div class="post_upload_box">
+                        <div class="post_upload_item">
+                            <label class="upload_label" >{{'account.upload_file'|_}}<span>*</span></label>
+                            <div class="upload_group">
+                                <label for="file-1">{{'account.upload_file'|_}}</label>
+                                <div class="form_group">
+                                    <label class="additional">
+                                        <span>{{'account.nothing_chosen'|_}}</span>
+                                    </label>
+                                    <input type="file" name="bank_file" id="file-1" class="inputfile inputfile-1"
+                                        data-multiple-caption="{count} files selected" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="send_btn" type="submit">
+                        {{'account.send'|_}}
                     </button>
+
+                    <p class="post_footer-text"><span data-validate-for="bank_file" style="color: red;"></span></p>
+                    
+                    <p class="post_footer-text">
+                        <span>*</span> {{ 'account.balance_warning'|_ }}
+                    </p>
+                </form>
+
                 </div>
-
-            </form>
-
+            </div>
         </div>
         {% else %}
         <div class="post_wrap">
@@ -56,5 +119,7 @@
     </div>
 </section>
 <!-- Add post end ========================================================= -->
+
+<script src="{{ 'assets/js/custom-file-input.js'|theme }}"></script>
 
 
