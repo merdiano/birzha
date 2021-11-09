@@ -27,6 +27,8 @@
                     data-request-flash
                     class="post_form-3 first-step-form">
 
+                        <input type="hidden" name="payment_type" value="online">
+
                         <div class="post_input">
                             <label for="good-count">{{'account.amount'|_}} (TMT)<span>*</span> </label>
                             <input type="number" step="0.01" name="amount" placeholder="100" id="good-count" required>
@@ -48,6 +50,8 @@
                     data-request-validate
                     data-request-flash
                     data-request-files>
+
+                    <input type="hidden" name="payment_type" value="bank">
 
                     <div class="bank">
                         <div class="bank_group">
