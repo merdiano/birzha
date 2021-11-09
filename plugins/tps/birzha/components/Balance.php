@@ -18,11 +18,14 @@ class Balance extends ComponentBase
         ];
     }
 
+    /**
+     * On online payment
+     */
     public function onSend() {
         $data = post();
 
         $rules = [
-            'payment_type' => 'required',
+            // 'payment_type' => 'required',
             'amount' => 'required|numeric'
         ];
 
@@ -70,6 +73,9 @@ class Balance extends ComponentBase
         }
     }
 
+    /**
+     * On bank transfer payment
+     */
     public function onPayByBankTransfer() {
         $data = input();
 
@@ -81,7 +87,7 @@ class Balance extends ComponentBase
         
         $newPayment = new Payment;
         $newPayment->user_id = \Auth::user()->id;
-        $newPayment->amount = $data['amount'];
+        $newPayment->amount = 0;
         $newPayment->payment_type = "bank";
         $newPayment->status = "new";
         $newPayment->save();

@@ -142,7 +142,7 @@ class ProductsAPIController extends Controller
             ],
             'mark' => 'required',
             'manufacturer' => 'required',
-            'country_id' => 'required|exists:tps_birzha_countries,id',
+            'country' => 'required',
             
             // if product is being edited - not added 
             'productForEditing' => [
@@ -182,7 +182,7 @@ class ProductsAPIController extends Controller
         $product->status = 'draft';
         $product->mark = $data['mark'];
         $product->manufacturer = $data['manufacturer'];
-        $product->country_id = $data['country_id'];
+        $product->country = $data['country'];
 
         $product->vendor_id = \JWTAuth::parseToken()->authenticate()->id;
 

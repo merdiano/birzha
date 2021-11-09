@@ -48,7 +48,7 @@ class Product extends Model
     ];
 
     public $belongsTo = [
-        'country' => ['TPS\Birzha\Models\Country'],
+        // 'country' => ['TPS\Birzha\Models\Country'],
         'measure'       => ['TPS\Birzha\Models\Measure','key' => 'measure_id'],
         'currency'      => ['TPS\Birzha\Models\Currency'],
         'payment_term'  => ['TPS\Birzha\Models\Term','key' => 'payment_term_id'],

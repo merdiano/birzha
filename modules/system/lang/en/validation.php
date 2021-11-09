@@ -170,7 +170,7 @@ return [
         'mark' => 'Product mark',
         'manufacturer' => 'Vendor',
         'category_id' => 'Category',
-        'country_id' => "Vendor's country",
+        'country' => "Vendor's country",
         'measure_id' => 'Measure',
         'quantity' => 'Quantity',
         'currency_id' => 'Currency',
@@ -186,6 +186,8 @@ return [
         'market_type' => 'Market type',
         'password' => 'Password',
         'email' => 'Email',
+        'name' => 'Name',
+        'surname' => 'Surname',
     ],
 
 ];

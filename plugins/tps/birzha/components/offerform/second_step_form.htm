@@ -91,12 +91,12 @@
                     {% if product.packaging == "yes" %}
                         selected
                     {% endif %}
-                >Bar</option>
+                >{{'page.packaging_yes'|_}}</option>
                 <option value="no"
                     {% if product.packaging == "no" %}
                         selected
                     {% endif %}
-                >Ýok</option>
+                >{{'page.packaging_no'|_}}</option>
             </select>
             <span class="error_span" data-validate-for="packaging" style="color: red;"></span>
         </div>

@@ -26,6 +26,11 @@ use Exception;
  */
 class Account extends ComponentBase
 {
+    /**
+     * Validation messages
+     */
+    public $accountValidationMsgs;
+
     public function componentDetails()
     {
         return [
@@ -363,9 +368,11 @@ class Account extends ComponentBase
             /*
              * Redirect to the intended page after successful sign in
              */
-            if ($redirect = $this->makeRedirection(true)) {
-                return $redirect;
-            }
+            // if ($redirect = $this->makeRedirection(true)) {
+            //     return $redirect;
+            // }
+
+            return \Redirect::to('/profile');
         }
         catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
@@ -434,11 +441,21 @@ class Account extends ComponentBase
         $rules = [
             'email'    => 'required|between:6,191|email',
             'username' => 'required|digits_between:8,20|numeric',
+            'name' => 'required',
+            'surname' => 'required',
+            'username' => 'required|digits_between:8,20|numeric',
             'iu_company' => 'max:191',
             'iu_about' => 'digits:6|numeric',
         ];
 
-        $validation = Validator::make($data, $rules,(new UserModel)->messages);
+        $validation = Validator::make($data, $rules, [
+            'username.required' => trans('validation.auth_profile.phone_number_required'),
+            'username.numeric' => trans('validation.auth_profile.phone_number_numeric'),
+            'username.digits_between' => trans('validation.auth_profile.phone_number_digits_between'),
+            'username.unique' => trans('validation.auth_profile.phone_number_unique'),
+            'iu_about.digits' => trans('validation.auth_profile.iu_about_digits'),
+            'iu_company.max' => trans('validation.auth_profile.iu_company_max'),
+        ]);
         if ($validation->fails()) {
             throw new ValidationException($validation);
         }
