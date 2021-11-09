@@ -4,6 +4,7 @@ fields:
         span: auto
         disabled: 0
         readOnly: 0
+        required: 1
         type: number
     user:
         label: Payer
@@ -20,17 +21,21 @@ fields:
         type: datepicker
     payment_type:
         label: 'Payment type'
-        span: auto
         options:
             bank: Bank
             online: Online
+        span: auto
+        readOnly: 1
         type: balloon-selector
     status:
         label: Status
         options:
             new: new
+            approved: approved
+            declined: declined
             payed: payed
         span: auto
+        readOnly: 1
         type: balloon-selector
     note:
         label: Note

@@ -8,11 +8,15 @@ columns:
         invisible: false
     user_id:
         label: User
-        type: text
+        type: user
         relation: user
+        valueFrom: email
     amount:
         label: Amount
         type: text
     payment_type:
         label: 'Payment type'
-        type: text
+        type: status
+    status:
+        label: Status
+        type: status

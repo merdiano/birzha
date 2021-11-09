@@ -3,28 +3,30 @@ columns:
         label: id
         type: number
         sortable: true
-    created_at:
-        label: 'Created at'
-        type: datetime
-        invisible: true
-    updated_at:
-        label: 'Updated at'
-        type: datetime
-        invisible: true
     name:
         label: Name
         type: text
         searchable: true
-        sortable: true
+        sortable:
+    user_id:
+        label: User
+        type: vendor
+        relation: vendor
+        valueFrom: email
     status:
         label: Status
-        type: text
+        type: status
         sortable: true
-    slug:
-        label: Slug
-        type: text
     mark:
         label: Marka
         type: text
         searchable: true
         sortable: true
+    updated_at:
+        label: 'Updated at'
+        type: datetime
+        invisible: true
+    ends_at:
+        label: 'Ends at'
+        type: datetime
+        invisible: true

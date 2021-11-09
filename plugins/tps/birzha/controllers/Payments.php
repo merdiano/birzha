@@ -3,6 +3,7 @@
 use Backend\Classes\Controller;
 use BackendMenu;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use TPS\Birzha\Models\Payment;
 
 class Payments extends Controller
@@ -47,5 +48,12 @@ class Payments extends Controller
             ?? 0;
     }
 
+    public function onApprove(){
+        Log::info('test approve');
+    }
+
+    public function onDecline(){
+        Log::info('test approve');
+    }
     //todo amount funksia yazmaly
 }

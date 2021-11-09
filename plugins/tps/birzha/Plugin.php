@@ -37,6 +37,40 @@ class Plugin extends PluginBase
     {
         $this->registerConsoleCommand('birzha:databasebackup', DatabaseBackUp::class);
     }
+    public function registerListColumnTypes()
+    {
+        return [
+            // A local method, i.e $this->evalUppercaseListColumn()
+            'status' => [$this, 'statusListColumn'],
+            'vendor' => [$this, 'vendorLinkListColumn'],
+            'user' => [$this, 'userLinkListColumn'],
+
+        ];
+    }
+
+    public function userLinkListColumn($value, $column, $record){
+        return '<a href="'.Backend::url('rainlab/user/users/preview',$record->user_id).'" class="btn btn-link">'.$value.'</a>';
+    }
+
+    public function vendorLinkListColumn($value, $column, $record){
+        return '<a href="'.Backend::url('rainlab/user/users/preview',$record->vendor_id).'" class="btn btn-link">'.$value.'</a>';
+    }
+
+    public function statusListColumn($value, $column, $record)
+    {
+        switch ($value){
+            case 'draft' : return '<span class="btn btn-default btn-xs">'.$value.'</span>';
+            case 'bank' : return '<span class="btn btn-outline-warning btn-xs">'.$value.'</span>';
+            case 'online' : return '<span class="btn btn-outline-primary btn-xs">'.$value.'</span>';
+            case 'approved' : return '<span class="btn btn-primary btn-xs">'.$value.'</span>';
+            case 'payed' : return '<span class="btn btn-primary btn-xs">'.$value.'</span>';
+            case 'new' : return '<span class="btn btn-secondary btn-xs">'.$value.'</span>';
+            case 'denied' : return '<span class="btn btn-danger btn-xs bg-s">'.$value.'</span>';
+            case 'disabled' : return '<span class="btn btn-outline-danger btn-xs bg-s">'.$value.'</span>';
+            default : return $value;
+        }
+
+    }
 
     public function registerSchedule($schedule)
     {
@@ -88,9 +122,9 @@ class Plugin extends PluginBase
             $controller = \Cms\Classes\Controller::getController() ?? new \Cms\Classes\Controller();
 
             // Search your plugin's contents
-            
+
             $locale = Session::get('rainlab.translate.locale');
-            
+
             if($locale == 'tm') {
                 // user enters product name
                 $items = Models\Product
@@ -100,7 +134,7 @@ class Plugin extends PluginBase
                     ->get();
             } else {
                 $queryString = $query;
-                
+
                 // user enters product name
                 $items =  Models\Product::whereHas('translations', function ($query) use ($locale,$queryString) {
                     $query->where('locale', $locale)->where('attribute_data', 'like', "%${queryString}%");
@@ -109,8 +143,8 @@ class Plugin extends PluginBase
                     ->where('ends_at','>=',\DB::raw('curdate()'))->orderBy('updated_at', 'desc')
                     ->get();
             }
-            
-            
+
+
             // show all offers that have that product
             // $items = collect(new Offer);
             // foreach($products as $p) {
