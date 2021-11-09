@@ -27,11 +27,9 @@ fields:
         span: auto
         type: text
     country:
-        label: 'Maufactured country'
-        nameFrom: name
-        descriptionFrom: description
+        label: 'Manufacturer country'
         span: auto
-        type: relation
+        type: text
     quantity:
         label: Quantity
         span: auto
@@ -83,7 +81,7 @@ fields:
         type: text
     vendor:
         label: Seller
-        nameFrom: name
+        nameFrom: email
         descriptionFrom: description
         span: auto
         type: relation

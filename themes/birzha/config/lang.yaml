@@ -23,6 +23,7 @@ en:
   account.new_password: New password
   account.info: Account info
   account.balance: Balance
+  account.balance_warning: Перед отправкой убедитесь что перевод был осуществлен верно и у вас имеется чек
   account.fill_up_balance: Fill up balance
   account.bank_details: Банковские реквизиты
   account.bank_address: Bank address
@@ -106,6 +107,8 @@ en:
   page.delivery_cond: Условия поставки
   page.delivery_point: Пункт
   page.packaging: Упаковка
+  page.packaging_yes: Yes
+  page.packaging_no: No
   page.seller_cont: Контакты продавца
   page.buy_now: Купить сейчас
   page.send_prod_request: Отправить запрос на лот
@@ -149,6 +152,7 @@ ru:
   account.new_password: Täze açar söz
   account.info: Персональные данные
   account.balance: Balance
+  account.balance_warning: Перед отправкой убедитесь что перевод был осуществлен верно и у вас имеется чек
   account.fill_up_balance: Fill up balance
   account.bank_details: Банковские реквизиты
   account.bank_address: Bank address
@@ -230,6 +234,8 @@ ru:
   page.delivery_cond: Условия поставки
   page.delivery_point: Пункт
   page.packaging: Упаковка
+  page.packaging_yes: Есть
+  page.packaging_no: Нет
   page.seller_cont: Контакты продавца
   page.buy_now: Купить сейчас
   page.send_prod_request: Отправить запрос на лот
@@ -275,6 +281,7 @@ tm:
   account.new_password: Täze açar söz
   account.info: Şahsy maglumatlar
   account.balance: Balance
+  account.balance_warning: Перед отправкой убедитесь что перевод был осуществлен верно и у вас имеется чек
   account.fill_up_balance: Fill up balance
   account.bank_details: Банковские реквизиты
   account.bank_address: Bank address
@@ -373,6 +380,8 @@ tm:
   page.delivery_cond: Условия поставки
   page.delivery_point: Пункт
   page.packaging: Упаковка
+  page.packaging_yes: Bar
+  page.packaging_no: Ýok
   page.seller_cont: Контакты продавца
   page.buy_now: Купить сейчас
   page.send_prod_request: Отправить запрос на лот

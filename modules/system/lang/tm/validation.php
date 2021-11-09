@@ -172,7 +172,7 @@ return [
         'mark' => 'Harydyň markasy',
         'manufacturer' => 'Öndüriji',
         'category_id' => 'Kategoriýa',
-        'country_id' => 'Öndürijiniň yurdy',
+        'country' => 'Öndürijiniň yurdy',
         'measure_id' => 'Birlikler',
         'quantity' => 'Harydyň mukdary',
         'currency_id' => 'Pul birligi',
@@ -188,6 +188,8 @@ return [
         'market_type' => 'Bazaryň gornüşi',
         'password' => 'Açar söz',
         'email' => 'El. bukjaňyz',
+        'name' => 'At',
+        'surname' => 'Familiýa',
     ],
 
 ];
