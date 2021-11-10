@@ -54,3 +54,24 @@ tabs:
             label: Product display duration
             comment: In days
             span: right
+        tax_code:
+            tab: Bank Info
+            label: Salgyt kody (Налоговый код)
+            span: left
+        bab:
+            tab: Bank Info
+            label: BAB (МФО)
+            span: right
+        manat_account:
+            tab: Bank Info
+            label: Manat hasaby (Манатный счёт)
+            span: left
+        correspondent_account:
+            tab: Bank Info
+            label: Korrespondent hasaby (Корреспондент счет)
+            span: right
+        bank_address:
+            tab: Bank Info
+            label: Bank address
+            span: left
+        
