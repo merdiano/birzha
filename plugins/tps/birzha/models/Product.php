@@ -57,6 +57,10 @@ class Product extends Model
         'payment'       => ['TPS\Birzha\Models\Payment'],
     ];
 
+    public $morphOne = [
+        'transaction' => [Transaction::class, 'name' => 'transactable']
+    ];
+
     public $attachMany = [
         'images' => 'System\Models\File'
     ];

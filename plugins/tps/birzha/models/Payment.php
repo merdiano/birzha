@@ -26,8 +26,8 @@ class Payment extends Model
         'amount' => 'required|gt:0'
     ];
 
-    public $hasMany = [
-        'offers' => 'TPS\Birzha\Models\Offer'
+    public $morphOne = [
+        'transaction' => [Transaction::class, 'name' => 'transactable']
     ];
 
     public $belongsTo = [

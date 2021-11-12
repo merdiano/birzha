@@ -62,8 +62,9 @@ class Plugin extends PluginBase
             case 'draft' : return '<span class="btn btn-default btn-xs">'.$value.'</span>';
             case 'bank' : return '<span class="btn btn-outline-warning btn-xs">'.$value.'</span>';
             case 'online' : return '<span class="btn btn-outline-primary btn-xs">'.$value.'</span>';
+            case 'gift' : return '<span class="btn btn-outline-success btn-xs">'.$value.'</span>';
+            case 'payed':
             case 'approved' : return '<span class="btn btn-primary btn-xs">'.$value.'</span>';
-            case 'payed' : return '<span class="btn btn-primary btn-xs">'.$value.'</span>';
             case 'new' : return '<span class="btn btn-secondary btn-xs">'.$value.'</span>';
             case 'denied' : return '<span class="btn btn-danger btn-xs bg-s">'.$value.'</span>';
             case 'disabled' : return '<span class="btn btn-outline-danger btn-xs bg-s">'.$value.'</span>';

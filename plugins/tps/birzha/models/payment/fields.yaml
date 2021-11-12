@@ -24,6 +24,7 @@ fields:
         options:
             bank: Bank
             online: Online
+            gift: Gift
         span: auto
         readOnly: 1
         type: balloon-selector
