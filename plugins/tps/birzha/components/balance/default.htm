@@ -56,13 +56,18 @@
                     <div class="bank">
                         <div class="bank_group">
                             <div class="bank_title">
-                                {{'account.bank_details'|_}}:
+                                {{ 'account.bank_tax_code'|_ }}:
                             </div>
                             <div class="bank_text">
-                                - 1234-1234-1234-1234
+                                {{ tax_code }}
+                            </div>
+                        </div>
+                        <div class="bank_group">
+                            <div class="bank_title">
+                                {{ 'account.bank_manat_account'|_}}:
                             </div>
                             <div class="bank_text">
-                                - 1234-1234-1234-1234
+                                {{ manat_account }}
                             </div>
                         </div>
                         <div class="bank_group">
@@ -75,12 +80,21 @@
                         </div>
                         <div class="bank_group">
                             <div class="bank_title">
-                                {{'account.our_bank_details'|_}}:
+                                {{ 'account.bank_bab'|_ }}:
                             </div>
                             <div class="bank_text">
-                                - 1234-1234-1234-1234
+                                {{ bab }}
                             </div>
                         </div>
+                        <div class="bank_group">
+                            <div class="bank_title">
+                                {{ 'account.bank_correspondent_account'|_ }}:
+                            </div>
+                            <div class="bank_text">
+                                {{ correspondent_account }}
+                            </div>
+                        </div>
+                        
                     </div>
 
                     <div class="post_upload_box">
