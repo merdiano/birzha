@@ -88,19 +88,19 @@ function sleep(time) {
 
 window.onclick = function (e) {
 
-    if (drop != undefined) {
-        if (document.querySelector('.profile_drop').classList.contains('active') && !e.target.closest('.profile_head')) {
-            document.querySelector('.profile_drop').classList.remove('active');
-        }
-    }
-
-    // drop.forEach(drop => {
-    //     if (drop != undefined) {
-    //         drop.classList.contains('active') && !e.target.closest('.profile_head');
-    //         drop.classList.remove('active')
+    // if (drop != undefined) {
+    //     if (drop.classList.contains('active') && !e.target.closest('.profile_head')) {
+    //         drop.classList.remove('active');
     //     }
     // }
-    // );
+
+    drop.forEach(drop => {
+        if (drop != undefined) {
+            drop.classList.contains('active') && !e.target.closest('.profile_head');
+            drop.classList.remove('active')
+        }
+    }
+    );
 
     if (register != undefined) {
         if (register.classList.contains('active') && !e.target.closest('.register_body')) {
