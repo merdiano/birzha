@@ -102,9 +102,10 @@ code = "main-top"
             </div>
             {% else %}
 
-            <div class="head_group">
-                <div class="profile_head">
-                    <a href="{{ 'kabinet/messages'|page }}" class="profile_item p-0" style="cursor: pointer;">
+            
+
+                <div class="profile">
+                    <a href="{{ 'kabinet/messages'|page }}" class="profile_info-group">
                         <div class="profile_icon">
                             <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
                         </div>
@@ -113,7 +114,7 @@ code = "main-top"
                         </div>
                     </a>
 
-                    <div class="profile_item p-0">
+                    <div class="profile_info-group">
                         <div class="profile_icon">
                             <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
                         </div>
@@ -121,9 +122,6 @@ code = "main-top"
                             {{user.balance}} TMT
                         </div>
                     </div>
-                </div>
-
-                <div class="profile">
                     <div class="profile_bio">
                         <div class="profile_head">
                             <div class="profile_icon">
@@ -187,6 +185,86 @@ code = "main-top"
                     </div>
 
                 </div>
+
+                <div class="mobile_user-profile">
+                    <div class="open_profile-icon">
+                        <img src="{{'assets/images/svg/user-profile.svg'|theme}}" alt="">
+                    </div>
+                </div>
+
+                {% if user %}
+                <div class="mobile_profile-navs">
+                    <div class="mobile_profile-inner">
+
+                        <div class="mobile_user-name">
+                            {{user.name ? user.name : user.email}}
+                        </div>
+
+                        <div class="mobile_user-item">
+                            <div class="mobile_user-item-icon">
+                                <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
+                            </div>
+                            <p class="mobile_user-item-text">
+                                {{user.balance}} TMT
+                            </p>
+                        </div>
+
+                        <a href="{{ 'kabinet/messages'|page }}" class="mobile_user-item">
+                            <div class="mobile_user-item-icon">
+                                <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
+                            </div>
+                            <p class="mobile_user-item-text">
+                                {{ 'auth.messages'|_ }}
+                            </p>
+                        </a>
+
+                        <a href="{{'kabinet/profile'|page}}" class="mobile_user-item">
+                            <div class="mobile_user-item-icon">
+                                <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
+                            </div>
+                            <p class="mobile_user-item-text">
+                                {{ 'auth.personal_data'|_ }}
+                            </p>
+                        </a>
+
+                        <a href="{{'kabinet/my_offers'|page}}" class="mobile_user-item">
+                            <div class="mobile_user-item-icon">
+                                <img src="{{'assets/images/svg/clipboard.svg'|theme}}" alt="">
+                            </div>
+                            <p class="mobile_user-item-text">
+                                {{ 'auth.my_announces'|_ }}
+                            </p>
+                        </a>
+
+                        <a href="#" class="mobile_user-item">
+                            <div class="mobile_user-item-icon">
+                                <img src="{{'assets/images/svg/add-blue.svg'|theme}}" alt="">
+                            </div>
+                            <p class="mobile_user-item-text">
+                                {{ 'auth.add_announce'|_ }}
+                            </p>
+                        </a>
+
+                        <a href="{{ 'kabinet/add_offer'|page }}" class="mobile_user-item">
+                            <div class="mobile_user-item-icon">
+                                <img src="{{'assets/images/wallet.png'|theme}}" alt="">
+                            </div>
+                            <p class="mobile_user-item-text">
+                                Fill up balance
+                            </p>
+                        </a>
+
+                        <a href="#" data-request="onLogout" data-request-data="redirect: '/'" class="mobile_user-item">
+                            <div class="mobile_user-item-icon">
+                                <img src="{{'assets/images/svg/log-out.svg'|theme}}" alt="">
+                            </div>
+                            <p class="mobile_user-item-text">
+                                {{ 'auth.logout'|_ }}
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
             </div>
             {% endif %}
         </div>
@@ -227,87 +305,7 @@ code = "main-top"
                             </div>
                         </div>
                     </div>
-                    {% else %}
-                    <div class="mobile_profile">
-                        <div class="profile_bio">
-                            <div class="profile_head">
-                                <div class="profile_icon">
-                                    <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
-                                </div>
-                                <div class="profile_text">
-                                    {{user.name}}
-                                </div>
-                                <div class="prodile_arrow">
-                                    <img src="{{'assets/images/svg/arrow-down.svg'|theme}}" alt="">
-                                </div>
-                            </div>
-                            <div class="profile_drop">
-                                <!-- <div class="profile_item">
-                                    <div class="profile_icon">
-                                        <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
-                                    </div>
-                                    <div class="profile_text">
-                                        {{'account.balance'|_}}: {{user.balance}} TMT
-                                    </div>
-                                </div> -->
-
-                                <a href="{{'kabinet/profile'|page}}" class="profile_item">
-                                    <div class="profile_icon">
-                                        <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
-                                    </div>
-                                    <div class="profile_text">
-                                        {{ 'auth.personal_data'|_ }}
-                                    </div>
-                                </a>
-
-                                <a href="{{'kabinet/my_offers'|page}}" class="profile_item">
-                                    <div class="profile_icon">
-                                        <img src="{{'assets/images/svg/clipboard.svg'|theme}}" alt="">
-                                    </div>
-                                    <div class="profile_text">
-                                        {{ 'auth.my_announces'|_ }}
-                                    </div>
-                                </a>
-
-                                <!-- <a href="{{ 'kabinet/messages'|page }}" class="profile_item">
-                                    <div class="profile_icon">
-                                        <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
-                                    </div>
-                                    <div class="profile_text">
-                                        {{ 'auth.messages'|_ }}
-                                    </div>
-                                </a> -->
-
-                                <a href="{{ 'kabinet/balance'|page }}" class="profile_item">
-                                    <div class="profile_icon">
-                                        <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
-                                    </div>
-                                    <div class="profile_text">
-                                        {{'account.fill_up_balance'|_}}
-                                    </div>
-                                </a>
-
-                                <a href="#" data-request="onLogout" data-request-data="redirect: '/'" class="profile_item">
-                                    <div class="profile_icon">
-                                        <img src="{{'assets/images/svg/log-out.svg'|theme}}" alt="">
-                                    </div>
-                                    <div class="profile_text">
-                                        {{ 'auth.logout'|_ }}
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-
-                        <a href="{{ 'kabinet/add_offer'|page }}" class="add_post_btn">
-                            <div class="post_icon">
-                                <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
-                            </div>
-                            <div class="post_text">
-                                {{ 'auth.add_announce'|_ }}
-                            </div>
-                        </a>
-                    </div>
+                    
                     {% endif %}
                 </div>
             </div>
