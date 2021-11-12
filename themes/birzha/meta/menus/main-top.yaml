@@ -1,6 +1,6 @@
 items:
     -
-        title: Kategoriýalar
+        title: Pudaklar
         type: cms-page
         code: ''
         reference: kategorii
@@ -10,7 +10,7 @@ items:
                     title: Categories
                     url: ''
                 ru:
-                    title: Категории
+                    title: Секции
                     url: ''
             isHidden: '0'
             cssClass: ''

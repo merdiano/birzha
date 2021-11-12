@@ -23,7 +23,7 @@ class Payment extends Model
      * @var array Validation rules
      */
     public $rules = [
-        'amount' => 'required|gt:0'
+        'amount' => 'required'
     ];
 
     public $morphOne = [
@@ -44,5 +44,15 @@ class Payment extends Model
             $user->balance +=$this->amount;
             $user->save();
         }
+    }
+
+    public function beforeValidate()
+    {
+        if(\App::runningInBackend()) {
+            $this->rules['amount'] = 'required|gt:0';
+        } else {
+            $this->rules['amount'] = 'required';
+        }
+
     }
 }
