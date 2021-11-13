@@ -1,0 +1,16 @@
+fields:
+    amount:
+        label: Number
+        span: auto
+        type: number
+    user:
+        label: User
+        nameFrom: email
+        descriptionFrom: name
+        span: auto
+        type: relation
+    created_at:
+        label: 'Created date'
+        mode: datetime
+        span: auto
+        type: datepicker

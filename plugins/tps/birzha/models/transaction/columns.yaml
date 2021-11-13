@@ -1,0 +1,18 @@
+columns:
+    id:
+        label: id
+        type: number
+    amount:
+        label: amount
+        type: money
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    user_id:
+        label: User
+        type: text
+        relation: user
+        valueFrom: email
