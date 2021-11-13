@@ -10,7 +10,7 @@ use TPS\Birzha\Classes\Payment as CardApi;
 class PaymentApi extends ComponentBase
 {
     public $balance_message;
-    
+
     public function componentDetails() {
         return [
             'name' => 'Payment API',
@@ -38,26 +38,26 @@ class PaymentApi extends ComponentBase
             $responce = json_decode(CardApi::getStatus($payment->order_id), true);
 
             if( $responce['ErrorCode'] == 0 && $responce['OrderStatus'] == 2) {
-                
+
                 // if page bank_result page is refreshed
-                if($payment->status === 'payed') {
+                if($payment->status === 'approved') {
                     return Redirect::to('/');
                 }
 
-                Payment::where('id', $payment_id)->update(['status' => 'payed']);
+                Payment::where('id', $payment_id)->update(['status' => 'approved']);
 
-                $user = $payment->user;
-                $user->balance += $payment->amount;
-                $user->save();
-                
-                
+//                $user = $payment->user;
+//                $user->balance += $payment->amount;
+//                $user->save();
+
+
                 $this->balance_message = trans('validation.balance.fill_up_succes');
-                
+
             } else {
                 $this->balance_message = trans('validation.balance.fill_up_fail');
             }
         } else {
-            
+
             $this->balance_message = trans('validation.balance.fill_up_fail');
         }
     }

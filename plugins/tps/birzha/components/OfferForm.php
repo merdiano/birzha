@@ -195,8 +195,8 @@ class OfferForm extends ComponentBase
             // ... message about not enough money
             throw new ValidationException(['money' => trans('validation.low_balance')]);
         } else {
-            $user->balance = $user->balance - Settings::getValue('fee');
-            $user->save();
+//            $user->balance = $user->balance - Settings::getValue('fee');
+//            $user->save();
 
             $product = Product::find(Input::get('product_id'));
             //save how much user payed because fee can be changed by admin tomorrow
@@ -210,6 +210,7 @@ class OfferForm extends ComponentBase
             ];
         }
     }
+
 
     // after deleting a photo go the second form_step
     public function onImageDelete() {

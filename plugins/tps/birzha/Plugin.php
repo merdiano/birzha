@@ -44,8 +44,13 @@ class Plugin extends PluginBase
             'status' => [$this, 'statusListColumn'],
             'vendor' => [$this, 'vendorLinkListColumn'],
             'user' => [$this, 'userLinkListColumn'],
+            'money' => [$this, 'moneyColumn'],
 
         ];
+    }
+
+    public function moneyColumn($value, $column, $record){
+        return '<span style="color: '.($value > 0 ? 'green':'red').'">'.$value.'tmt</span>';
     }
 
     public function userLinkListColumn($value, $column, $record){

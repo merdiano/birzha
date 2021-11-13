@@ -8,12 +8,12 @@ use TPS\Birzha\Models\Payment;
 
 class Payments extends Controller
 {
-    public $implement = [        'Backend\Behaviors\ListController',        'Backend\Behaviors\FormController'    ];
+    public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController'];
 
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
-
     public $stats;
+
     public $requiredPermissions = [
         'payment'
     ];
@@ -23,11 +23,14 @@ class Payments extends Controller
         parent::__construct();
         BackendMenu::setContext('TPS.Birzha', 'birzha-menu', 'payments');
 
+
+    }
+    public function index(){
+        parent::index();
         $this->stats = Payment::groupBy('status','payment_type')
             ->selectRaw('status, payment_type, COUNT(id) as count, SUM(amount) as total_amount')
             ->get();
     }
-
     public function getRecordsStats($status){
         return $this->stats->where('status',$status)
                 ->sum('count')
@@ -47,13 +50,4 @@ class Payments extends Controller
                 ->sum('total_amount')
             ?? 0;
     }
-
-    public function onApprove(){
-        Log::info('test approve');
-    }
-
-    public function onDecline(){
-        Log::info('test approve');
-    }
-    //todo amount funksia yazmaly
 }

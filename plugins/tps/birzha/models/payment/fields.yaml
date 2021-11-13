@@ -11,13 +11,12 @@ fields:
         nameFrom: email
         descriptionFrom: description
         span: auto
-        readOnly: 1
         type: relation
     created_at:
         label: 'Payment date'
         mode: datetime
         span: auto
-        readOnly: 1
+
         type: datepicker
     payment_type:
         label: 'Payment type'
@@ -26,7 +25,7 @@ fields:
             online: Online
             gift: Gift
         span: auto
-        readOnly: 1
+        disabled: 1
         type: balloon-selector
     status:
         label: Status
@@ -34,10 +33,9 @@ fields:
             new: new
             approved: approved
             declined: declined
-            payed: payed
         span: auto
-        readOnly: 1
         type: balloon-selector
+        dependsOn: payment_type
     note:
         label: Note
         size: ''

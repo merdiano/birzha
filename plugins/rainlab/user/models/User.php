@@ -53,7 +53,7 @@ class User extends UserBase
 
     public $hasMany = [
         'products' => ['TPS\Birzha\Models\Product', 'key' => 'vendor_id'],
-        'transaction' => ['TPS\Birzha\Models\Transaction']
+        'transactions' => ['TPS\Birzha\Models\Transaction']
     ];
 
     /**
@@ -164,6 +164,9 @@ class User extends UserBase
     // Getters
     //
 
+    public function getBalance(){
+        return $this->transactions()->sum('amount');
+    }
     /**
      * Gets a code for when the user is persisted to a cookie or session which identifies the user.
      * @return string

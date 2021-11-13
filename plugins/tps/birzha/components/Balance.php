@@ -55,7 +55,7 @@ class Balance extends ComponentBase
 
     protected function payOnline($formData) {
         $payment = $this->createNewPayment(false, $formData);
-        
+
         $url = $this->controller->pageUrl('bank_result.htm', ['payment_id' => $payment->id]);
 
         $response = CardApi::registerOrder($payment, $url);
@@ -84,13 +84,13 @@ class Balance extends ComponentBase
         ];
 
         $this->validateForm($data, $rules);
-        
+
         $newPayment = new Payment;
         $newPayment->user_id = \Auth::user()->id;
         $newPayment->amount = 0;
         $newPayment->payment_type = "bank";
-        $newPayment->status = "new";
-        $newPayment->save();
+//        $newPayment->status = "new";
+//        $newPayment->save();
 
         // attach file to payment
         $newPayment->bank_file = \Input::file('bank_file');
@@ -114,7 +114,7 @@ class Balance extends ComponentBase
         $newPayment->user_id = \Auth::user()->id;
         $newPayment->amount = $formData['amount'];
         $newPayment->payment_type = $formData['payment_type'];
-        $newPayment->status = "new";
+//        $newPayment->status = "new";
         $newPayment->save();
 
         // attach file to payment

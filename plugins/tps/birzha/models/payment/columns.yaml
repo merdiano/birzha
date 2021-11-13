@@ -13,7 +13,7 @@ columns:
         valueFrom: email
     amount:
         label: Amount
-        type: text
+        type: money
     payment_type:
         label: 'Payment type'
         type: status
