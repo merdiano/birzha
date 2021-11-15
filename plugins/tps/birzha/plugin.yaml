@@ -22,36 +22,18 @@ navigation:
                 icon: icon-cube
                 permissions:
                     - product
-            measure:
-                label: Measure
-                url: tps/birzha/measures
-                icon: icon-tachometer
-                permissions:
-                    - measure
-            terms:
-                label: Terms
-                url: tps/birzha/terms
-                icon: icon-delicious
-                permissions:
-                    - term
-            currency:
-                label: Currencies
-                url: tps/birzha/currencies
-                icon: icon-dollar
-                permissions:
-                    - currency
             payments:
                 label: Payments
                 url: tps/birzha/payments
                 icon: icon-money
                 permissions:
                     - payment
-            countries:
-                label: Countries
-                url: tps/birzha/countries
-                icon: icon-flag-o
+            transactions:
+                label: Transactions
+                url: tps/birzha/transactions
+                icon: icon-usd
                 permissions:
-                    - country
+                    - payment
     frontend:
         label: Frontend
         url: tps/birzha/sliders
@@ -61,7 +43,7 @@ navigation:
             sliders:
                 label: Sliders
                 url: tps/birzha/sliders
-                icon: icon-sitemap
+                icon: icon-image
                 permissions:
                     - slider
             messages:
@@ -70,6 +52,35 @@ navigation:
                 icon: icon-envelope-o
                 permissions:
                     - messages
+    dictionary:
+        label: Dictionary
+        url: tps/birzha/terms
+        icon: icon-life-ring
+        sideMenu:
+            terms:
+                label: Terms
+                url: tps/birzha/terms
+                icon: icon-delicious
+                permissions:
+                    - term
+            measure:
+                label: Measure
+                url: tps/birzha/measures
+                icon: icon-tachometer
+                permissions:
+                    - measure
+            currency:
+                label: Currencies
+                url: tps/birzha/currencies
+                icon: icon-money
+                permissions:
+                    - currency
+            countries:
+                label: Countries
+                url: tps/birzha/countries
+                icon: icon-flag
+                permissions:
+                    - currency
 permissions:
     category:
         tab: Catalog

@@ -6,17 +6,17 @@ use BackendMenu;
 class Measures extends Controller
 {
     public $implement = [        'Backend\Behaviors\ListController',        'Backend\Behaviors\FormController'    ];
-    
+
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
 
     public $requiredPermissions = [
-        'measure' 
+        'measure'
     ];
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('TPS.Birzha', 'birzha-menu', 'measure');
+        BackendMenu::setContext('TPS.Birzha', 'dictionary', 'measure');
     }
 }

@@ -4,34 +4,38 @@ fields:
         span: auto
         disabled: 0
         readOnly: 0
+        required: 1
         type: number
     user:
         label: Payer
         nameFrom: email
         descriptionFrom: description
         span: auto
-        readOnly: 1
         type: relation
     created_at:
         label: 'Payment date'
         mode: datetime
         span: auto
-        readOnly: 1
+
         type: datepicker
     payment_type:
         label: 'Payment type'
-        span: auto
         options:
             bank: Bank
             online: Online
+            gift: Gift
+        span: auto
+        disabled: 1
         type: balloon-selector
     status:
         label: Status
         options:
             new: new
-            payed: payed
+            approved: approved
+            declined: declined
         span: auto
         type: balloon-selector
+        dependsOn: payment_type
     note:
         label: Note
         size: ''

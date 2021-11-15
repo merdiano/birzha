@@ -57,6 +57,10 @@ class Product extends Model
         'payment'       => ['TPS\Birzha\Models\Payment'],
     ];
 
+    public $morphOne = [
+        'transaction' => [Transaction::class, 'name' => 'transactable','delete' => true]
+    ];
+
     public $attachMany = [
         'images' => 'System\Models\File'
     ];
@@ -106,15 +110,32 @@ class Product extends Model
 
     }
 
+    private function createTransaction(){
+        $transaction = new Transaction([
+            'user_id' => $this->vendor_id,
+            'amount' => 0 - $this->payed_fee_for_publ
+        ]);
+        $this->transaction()->save($transaction);
+    }
+
     public function beforeUpdate()
     {
-        if($this->status == 'approved' && !$this->ends_at) {
+        if($this->status == 'new'){
+            if(!$transaction = $this->transaction)
+                $this->createTransaction();
+            else {
+                $transaction->amount = 0 - $this->payed_fee_for_publ;
+                $transaction->save();
+            }
+        }
+        elseif($this->status == 'approved' && !$this->ends_at) {
 //            $createdAt = Carbon::parse($this->created_at);
             $this->ends_at = \Carbon\Carbon::now()->addDays(Settings::getValue('duration'));
         }
-        if($this->status == 'denied') {
+        elseif($this->status == 'denied') {
             // give fee back to the user, because his post has been denied
             $user = $this->vendor;
+            //todo delete associated transaction
             $user->balance = $user->balance + $this->payed_fee_for_publ;
             $user->save();
         }

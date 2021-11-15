@@ -2,7 +2,7 @@ scopes:
     status:
         label: Hide UnActive
         type: checkbox
-        default: 1
+        default: 0
         conditions: status = true
     created_at:
         label: Date

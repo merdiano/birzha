@@ -1,5 +1,6 @@
 <?php namespace TPS\Birzha\Models;
 
+use Carbon\Carbon;
 use Model;
 
 /**
@@ -26,8 +27,8 @@ class Payment extends Model
         'amount' => 'required'
     ];
 
-    public $hasMany = [
-        'offers' => 'TPS\Birzha\Models\Offer'
+    public $morphOne = [
+        'transaction' => [Transaction::class, 'name' => 'transactable','delete'=>true]
     ];
 
     public $belongsTo = [
@@ -39,11 +40,17 @@ class Payment extends Model
     ];
 
     public function beforeUpdate() {
-        if($this->status == 'payed') {
-            $user = $this->user;
-            $user->balance +=$this->amount;
-            $user->save();
+        if($this->status == 'approved' || $this->payment_type == 'gift' ) {
+            if(!$transaction = $this->transaction)
+            {
+                $this->createTransaction();
+            }
+            else{
+                $transaction->amount = $this->amount;
+                $transaction->save();
+            }
         }
+
     }
 
     public function beforeValidate()
@@ -52,6 +59,52 @@ class Payment extends Model
             $this->rules['amount'] = 'required|gt:0';
         } else {
             $this->rules['amount'] = 'required';
+        }
+
+    }
+
+    protected function beforeCreate()
+    {
+        parent::beforeCreate();
+        if(\App::runningInBackend()) {
+            $this->payment_type = 'gift';
+            $this->created_at = Carbon::now();
+            $this->updated_at = Carbon::now();
+
+        }
+        else{
+            $this->status = 'new';
+        }
+    }
+
+    protected function afterCreate()
+    {
+        parent::afterCreate();
+
+        if($this->payment_type == 'gift'){
+            $this->createTransaction();
+        }
+    }
+
+    private function createTransaction(){
+        $transaction = new Transaction([
+            'user_id' => $this->user_id,
+            'amount' => $this->amount
+        ]);
+        $this->transaction()->save($transaction);
+    }
+    public function filterFields($fields, $context = null){
+        if($this->payment_type == 'online'){
+            $fields->amount->disabled = true;
+            $fields->user->disabled = true;
+            $fields->created_at->disabled = true;
+            $fields->status->disabled = true;
+
+        }
+
+        if ($this->payment_type == 'gift') {
+            $fields->status->hidden = true;
+            $fields->bank_file->hidden = true;
         }
 
     }

@@ -6,17 +6,17 @@ use BackendMenu;
 class Terms extends Controller
 {
     public $implement = [        'Backend\Behaviors\ListController',        'Backend\Behaviors\FormController'    ];
-    
+
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
 
     public $requiredPermissions = [
-        'term' 
+        'term'
     ];
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('TPS.Birzha', 'birzha-menu', 'terms');
+        BackendMenu::setContext('TPS.Birzha', 'dictionary', 'terms');
     }
 }
