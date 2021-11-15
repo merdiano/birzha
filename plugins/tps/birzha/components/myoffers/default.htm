@@ -1,4 +1,5 @@
 {% set offers = __SELF__.offers %}
+{% set deleteConfirm = __SELF__.wantToDelete %}
 
 <!-- My post ========================================================= -->
 <section class="library">
@@ -107,10 +108,13 @@
                             <a href="{{ 'offer'|page({ slug: offer.slug, id: offer.id }) }}" class="item_btn">
                                 {{'account.on_site'|_}}
                             </a>
-                            <a href="#"
+                            <!-- 
                                 data-request="onDeleteOffer"
                                 data-request-data="deleting_product_id: {{offer.id}}"
-                                class="item_btn delete_item_btn">
+                             -->
+                            <a href="#"
+                                class="item_btn delete_item_btn approved-post-delete-btn"
+                                onclick="deletePostHandler({{ offer.id }})">
                                 {{'account_delete'|_}}
                             </a>
                         </div>
@@ -188,3 +192,21 @@
     </div>
 </section>
 <!-- My post end ===================================================== -->
+
+<script>
+    function deletePostHandler(offerId) {
+
+        let answer = confirm('{{ deleteConfirm }}');
+        
+        if(answer) {
+            
+            $(this).request('onDeleteOffer',{
+                data: {
+                    deleting_product_id: offerId
+                }
+            });
+        }
+
+        event.preventDefault()
+    }
+</script>

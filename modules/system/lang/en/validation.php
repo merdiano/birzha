@@ -134,6 +134,7 @@ return [
         'iu_company_max' => 'Company name cannot exceed 191 characters.',
     ],
     'no_user' => 'A user was not found.',
+    'post_delete_confirm' => 'This post has been published. Do you really want to delete this post? The data cannot be recovered',
 
     /*
     |--------------------------------------------------------------------------

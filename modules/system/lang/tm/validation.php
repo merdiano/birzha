@@ -136,6 +136,7 @@ return [
         'iu_company_max' => 'Kompaniýanyň ady 191 sany harpdan geçmeli däl.',
     ],
     'no_user' => 'Beýle ulanyjy ýok.',
+    'post_delete_confirm' => 'Bu bildiriş saýtda ýerleşdirilen. Bu bildirişi pozmak isleýärsiňizmi? Soň bu bildirişi dikeldip bolmaz.',
 
     /*
     |--------------------------------------------------------------------------

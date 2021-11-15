@@ -15,6 +15,12 @@ class MyOffers extends ComponentBase
      * today's date
      */
     public $today;
+
+    /**
+     * @var String
+     * A question for delete post confirmation
+     */
+    public $wantToDelete;
     
     public function componentDetails()
     {
@@ -61,6 +67,7 @@ class MyOffers extends ComponentBase
     public function onRun() {
         $this->offers = $this->loadOffers();
         $this->today = \Carbon\Carbon::now();
+        $this->wantToDelete = trans('validation.post_delete_confirm');
     }
 
     protected function loadOffers() {
