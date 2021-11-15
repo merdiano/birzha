@@ -9,7 +9,7 @@ const selectElement = function (element) {
 // selector end=============
 
 let drop = document.querySelectorAll('.profile_drop');
-let profile_head = document.querySelectorAll('.profile_bio');
+let profile_head = document.querySelectorAll('.profile_head');
 let register = document.querySelector('.register');
 let register_btn = document.querySelectorAll('.register_btn');
 let log_in = document.querySelectorAll('.log_in');
@@ -37,6 +37,9 @@ let register_content_2 = document.querySelector('.register_content_2');
 
 let seller_btn = document.querySelector('.seller_btn');
 let seller_info = document.querySelector('.seller_info');
+
+let mobile_user_profile = document.querySelector('.mobile_user-profile');
+let mobile_profile_navs = document.querySelector('.mobile_profile-navs');
 
 
 
@@ -86,8 +89,8 @@ function sleep(time) {
 window.onclick = function (e) {
 
     // if (drop != undefined) {
-    //     if (document.querySelector('.profile_drop').classList.contains('active') && !e.target.closest('.profile_head')) {
-    //         document.querySelector('.profile_drop').classList.remove('active');
+    //     if (drop.classList.contains('active') && !e.target.closest('.profile_head')) {
+    //         drop.classList.remove('active');
     //     }
     // }
 
@@ -116,6 +119,12 @@ window.onclick = function (e) {
     if (chat_people != undefined) {
         if (chat_people.classList.contains('active') && !e.target.closest('.chat_burger')) {
             chat_people.classList.remove('active');
+        }
+    }
+
+    if (mobile_profile_navs != undefined) {
+        if (mobile_profile_navs.classList.contains('active') && !e.target.closest('.mobile_profile-inner')) {
+            mobile_profile_navs.classList.remove('active');
         }
     }
 
@@ -158,6 +167,15 @@ if (profile_head != undefined) {
                     p.classList.toggle('active');
                 })
             })
+        });
+    });
+}
+
+
+if (mobile_user_profile != undefined) {
+    mobile_user_profile.addEventListener('click', function () {
+        sleep(2).then(() => {
+            mobile_profile_navs.classList.add('active');
         });
     });
 }

@@ -28,6 +28,10 @@ en:
   account.bank_details: Банковские реквизиты
   account.bank_address: Bank address
   account.bank_1: 744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+  account.bank_tax_code: Salgyt kody
+  account.bank_manat_account: Manat hasaby
+  account.bank_correspondent_account: Korrespondent hasaby
+  account.bank_bab: BAB
   account.our_bank_details: Our реквизиты
   account.amount: Сумма
   account.upload_file: Загрузить файл
@@ -157,6 +161,10 @@ ru:
   account.bank_details: Банковские реквизиты
   account.bank_address: Bank address
   account.bank_1: 744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+  account.bank_tax_code: Налоговый код
+  account.bank_manat_account: Манатный счёт
+  account.bank_correspondent_account: Корреспондент счет
+  account.bank_bab: МФО
   account.our_bank_details: Our реквизиты
   account.amount: Сумма
   account.upload_file: Загрузить файл
@@ -286,6 +294,10 @@ tm:
   account.bank_details: Банковские реквизиты
   account.bank_address: Bank address
   account.bank_1: 744000, Туркменистан г.Ашгабат, Арчабиль шаелы 52
+  account.bank_tax_code: Salgyt kody
+  account.bank_manat_account: Manat hasaby
+  account.bank_correspondent_account: Korrespondent hasaby
+  account.bank_bab: BAB
   account.our_bank_details: Our реквизиты
   account.amount: Сумма
   account.upload_file: Загрузить файл
