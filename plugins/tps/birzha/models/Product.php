@@ -58,7 +58,7 @@ class Product extends Model
     ];
 
     public $morphOne = [
-        'transaction' => [Transaction::class, 'name' => 'transactable','delete' => true]
+        'transaction' => [Transaction::class, 'name' => 'transactable']
     ];
 
     public $attachMany = [
@@ -113,7 +113,8 @@ class Product extends Model
     private function createTransaction(){
         $transaction = new Transaction([
             'user_id' => $this->vendor_id,
-            'amount' => 0 - $this->payed_fee_for_publ
+            'amount' => 0 - $this->payed_fee_for_publ,
+            'description' => "Lot #{$this->id} {$this->name} haryt ucin tutym."
         ]);
         $this->transaction()->save($transaction);
     }
@@ -132,12 +133,8 @@ class Product extends Model
 //            $createdAt = Carbon::parse($this->created_at);
             $this->ends_at = \Carbon\Carbon::now()->addDays(Settings::getValue('duration'));
         }
-        elseif($this->status == 'denied') {
-            // give fee back to the user, because his post has been denied
-            $user = $this->vendor;
-            //todo delete associated transaction
-            $user->balance = $user->balance + $this->payed_fee_for_publ;
-            $user->save();
+        elseif($this->status == 'denied' && $this->transaction) {
+            $this->transaction()->delete();
         }
     }
 

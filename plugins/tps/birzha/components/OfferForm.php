@@ -83,6 +83,12 @@ class OfferForm extends ComponentBase
 
         if(isset($data['productForEditing'])) {
             $product = Product::find($data['productForEditing']);
+            //approved edilen produkty prodlenie uchin drafta tayinlamak, bagly transacsiasyny goparmak,
+            if($product && $product->status == 'approved' && $product->transaction)
+            {
+               $product->transaction()->update(['description'=>"Lot #{$product->id} {$product->name} harydyn onki publikasia tolegidir.(bu haryt prodlenia uchin taze transaksia doredilyar)"]);
+               $product->transaction = null;
+            }
         } else {
             $product = new Product;
         }
@@ -190,8 +196,9 @@ class OfferForm extends ComponentBase
 
     // step3
     public function onPublish() {
-        $user = \Auth::user();
-        if($user->balance - Settings::getValue('fee') < 0) {
+        $balance = \Auth::user()->getBalance();
+
+        if($balance - Settings::getValue('fee') < 0) {
             // ... message about not enough money
             throw new ValidationException(['money' => trans('validation.low_balance')]);
         } else {

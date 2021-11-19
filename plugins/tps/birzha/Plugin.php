@@ -50,7 +50,7 @@ class Plugin extends PluginBase
     }
 
     public function moneyColumn($value, $column, $record){
-        return '<span style="color: '.($value > 0 ? 'green':'red').'">'.$value.'tmt</span>';
+        return '<span style="color: '.($value > 0 ? 'green':'red').'">'.number_format($value,2).' tmt</span>';
     }
 
     public function userLinkListColumn($value, $column, $record){

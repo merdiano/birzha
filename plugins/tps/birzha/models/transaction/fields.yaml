@@ -3,14 +3,22 @@ fields:
         label: Number
         span: auto
         type: number
+        disabled: true
     user:
         label: User
         nameFrom: email
         descriptionFrom: name
         span: auto
         type: relation
+        disabled: true
     created_at:
         label: 'Created date'
         mode: datetime
         span: auto
         type: datepicker
+        disabled: true
+    description:
+        label: Description
+        span: auto
+        type: text
+        disabled: true
