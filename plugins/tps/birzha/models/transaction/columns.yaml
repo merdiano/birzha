@@ -13,6 +13,10 @@ columns:
         type: datetime
     user_id:
         label: User
-        type: text
+        type: user
         relation: user
         valueFrom: email
+        sortable: false
+    description:
+        label: Description
+        type: text

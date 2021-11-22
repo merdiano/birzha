@@ -236,3 +236,9 @@
 1.0.82:
     - 'Updated table tps_birzha_transactions'
     - builder_table_update_tps_birzha_transactions.php
+1.0.83:
+    - 'Updated table tps_birzha_transactions'
+    - builder_table_update_tps_birzha_transactions_2.php
+1.0.84:
+    - 'Updated decimal table tps_birzha_transactions'
+    - builder_table_update_tps_birzha_transactions_3.php

@@ -1,0 +1,10 @@
+name: Payments
+form: $/tps/birzha/models/transaction/fields.yaml
+modelClass: TPS\Birzha\Models\Transaction
+defaultRedirect: tps/birzha/transactions
+create:
+    redirect: 'tps/birzha/transactions/update/:id'
+    redirectClose: tps/birzha/transactions
+update:
+    redirect: tps/birzha/transactions
+    redirectClose: tps/birzha/transactions

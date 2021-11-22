@@ -102,7 +102,7 @@ code = "main-top"
             </div>
             {% else %}
 
-            
+
 
                 <div class="profile">
                     <a href="{{ 'kabinet/messages'|page }}" class="profile_info-group">
@@ -114,14 +114,14 @@ code = "main-top"
                         </div>
                     </a>
 
-                    <div class="profile_info-group">
+                    <a class="profile_info-group" href="{{ 'kabinet/transactions'|page }}">
                         <div class="profile_icon">
                             <img src="{{'assets/images/svg/coins.svg'|theme}}" alt="">
                         </div>
                         <div class="profile_text">
                             {{user.getBalance}} TMT
                         </div>
-                    </div>
+                    </a>
                     <div class="profile_bio">
                         <div class="profile_head">
                             <div class="profile_icon">
@@ -305,7 +305,7 @@ code = "main-top"
                             </div>
                         </div>
                     </div>
-                    
+
                     {% endif %}
                 </div>
             </div>

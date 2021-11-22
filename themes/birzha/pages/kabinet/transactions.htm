@@ -1,0 +1,62 @@
+title = "Balans taryhy"
+url = "/balans-taryhy"
+layout = "default"
+is_hidden = 0
+==
+<section class="post">
+        <div class="auto_container">
+            <div class="post_wrap">
+                <div class="contact_title">
+                    История Balansa
+                </div>
+
+                <div class="history_table">
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>№</th>
+                            <th>Дата пополнения</th>
+                            <th>Description</th>
+                            <th>Сумма</th>
+                            <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for transaction in user.transactions%}
+                            <tr>
+                                <td>{{transaction.id}}</td>
+                                <td>{{transaction.created_at|date('H:i - d.m.Y')}}</td>
+                                <td>{{transaction.description}}</td>
+                                <td>{{transaction.amount}} TMT</td>
+                                <td>
+                                    {% if transaction.amount > 0%}
+                                    <p class="approved">{{'popolnenie'|_}}</p>
+                                        {% else %}
+                                    <p class="denied">{{'oplata'|_}} </p>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr><td colspan="5">{{'no_balance_history'|_}}</td></tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+<!--                <div class="cat_end">-->
+<!--                    <a href="#" class="cat_arrow left">-->
+<!--                        <img src="images/svg/arrow-right.svg" alt="">-->
+<!--                    </a>-->
+<!--                    <form action="#" class="cat_form">-->
+<!--                        <input type="text" placeholder="1">-->
+<!--                    </form>-->
+<!--                    <a href="#" class="cat_arrow ">-->
+<!--                        <img src="images/svg/arrow-right.svg" alt="">-->
+<!--                    </a>-->
+<!--                    <div class="cat_page">-->
+<!--                        15 страниц-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </section>

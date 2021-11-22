@@ -43,7 +43,7 @@ class Payment extends Model
         if($this->status == 'approved' || $this->payment_type == 'gift' ) {
             if(!$transaction = $this->transaction)
             {
-                $this->createTransaction();
+                $this->createTransaction($this->payment_type != 'gift'? $this->patment_type:'sowgat');
             }
             else{
                 $transaction->amount = $this->amount;
@@ -86,10 +86,11 @@ class Payment extends Model
         }
     }
 
-    private function createTransaction(){
+    private function createTransaction($desc='sowgat'){
         $transaction = new Transaction([
             'user_id' => $this->user_id,
-            'amount' => $this->amount
+            'amount' => $this->amount,
+            'description' => "Balansyn doldurulmagy {$desc} {$this->amount} manat"
         ]);
         $this->transaction()->save($transaction);
     }
