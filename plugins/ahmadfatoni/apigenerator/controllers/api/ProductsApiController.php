@@ -44,7 +44,9 @@ class ProductsAPIController extends Controller
         // $query = $this->Product::with('categories:id,name')
         $query = $this->Product::with([
                 'translations:locale,model_id,attribute_data',
-                'images:attachment_id,attachment_type,disk_name,file_name'
+                'images:attachment_id,attachment_type,disk_name,file_name',
+                'measure.translations:locale,model_id,attribute_data',
+                'currency.translations:locale,model_id,attribute_data'
             ])
             ->approvedAndFreshEndDate()
             ->orderBy('updated_at', $sortOrder);
@@ -56,7 +58,9 @@ class ProductsAPIController extends Controller
                 // ->with('categories:id,name')
                 ->with([
                     'translations:locale,model_id,attribute_data',
-                    'images:attachment_id,attachment_type,disk_name,file_name'
+                    'images:attachment_id,attachment_type,disk_name,file_name',
+                    'measure.translations:locale,model_id,attribute_data',
+                    'currency.translations:locale,model_id,attribute_data'
                 ])
                 ->approvedAndFreshEndDate()
                 ->orderBy('updated_at', $sortOrder);
@@ -77,7 +81,9 @@ class ProductsAPIController extends Controller
                     // ->with('categories:id,name')
                     ->with([
                         'translations:locale,model_id,attribute_data',
-                        'images:attachment_id,attachment_type,disk_name,file_name'
+                        'images:attachment_id,attachment_type,disk_name,file_name',
+                        'measure.translations:locale,model_id,attribute_data',
+                        'currency.translations:locale,model_id,attribute_data'
                     ])
                     ->approvedAndFreshEndDate()
                     ->orderBy('updated_at', $sortOrder);
@@ -90,7 +96,9 @@ class ProductsAPIController extends Controller
             $query = $this->Product::searched($locale, $queryString)
             ->with([
                 'translations:locale,model_id,attribute_data',
-                'images:attachment_id,attachment_type,disk_name,file_name'
+                'images:attachment_id,attachment_type,disk_name,file_name',
+                'measure.translations:locale,model_id,attribute_data',
+                'currency.translations:locale,model_id,attribute_data'
             ])
             ->orderBy('updated_at', $sortOrder);
         }
@@ -110,7 +118,12 @@ class ProductsAPIController extends Controller
 
         $data = $this->Product::with([
             'translations:locale,model_id,attribute_data',
-            'images:attachment_id,attachment_type,disk_name,file_name'
+            'images:attachment_id,attachment_type,disk_name,file_name',
+            'measure.translations:locale,model_id,attribute_data',
+            'currency.translations:locale,model_id,attribute_data',
+            'payment_term.translations:locale,model_id,attribute_data',
+            'delivery_term.translations:locale,model_id,attribute_data',
+            'vendor:id,name,surname,email,username'
         ])->find($id);
 
         if ($data && $data->status == 'approved' && $data->ends_at >= \Carbon\Carbon::now()){
