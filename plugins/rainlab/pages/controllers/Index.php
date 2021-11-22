@@ -107,15 +107,13 @@ class Index extends Controller
         // before it loads dynamically.
         $this->addJs('/modules/backend/formwidgets/codeeditor/assets/js/build-min.js', 'core');
 
-        $this->bodyClass = 'compact-container';
+        $this->bodyClass = 'compact-container sidenav-responsive';
         $this->pageTitle = 'rainlab.pages::lang.plugin.name';
         $this->pageTitleTemplate = Lang::get('rainlab.pages::lang.page.template_title');
 
         if (Request::ajax() && Request::input('formWidgetAlias')) {
             $this->bindFormWidgetToController();
         }
-
-        $this->vars['layoutIgnoreTouchNavigation'] = true;
     }
 
     public function index_onOpen()
@@ -616,24 +614,46 @@ class Index extends Controller
         }
     }
 
+    /**
+     * modLegacyModeFields will ensure specific field types use legacy mode
+     */
+    protected function modLegacyModeFields($fields)
+    {
+        foreach ($fields as &$fieldConfig) {
+            if (in_array($fieldConfig['type'], ['richeditor', 'codeeditor'])) {
+                $fieldConfig['legacyMode'] = true;
+            }
+        }
+
+        return $fields;
+    }
+
+    /**
+     * addPageSyntaxFields adds syntax defined fields to the form
+     */
     protected function addPageSyntaxFields($formWidget, $page)
     {
         $fields = $page->listLayoutSyntaxFields();
+        $fields = $this->modLegacyModeFields($fields);
 
         foreach ($fields as $fieldCode => $fieldConfig) {
-            if ($fieldConfig['type'] == 'fileupload') continue;
+            if ($fieldConfig['type'] === 'fileupload') {
+                continue;
+            }
 
-            if ($fieldConfig['type'] == 'repeater') {
+            if ($fieldConfig['type'] === 'repeater') {
                 if (empty($fieldConfig['form']) || !is_string($fieldConfig['form'])) {
-                    $fieldConfig['form']['fields'] = array_get($fieldConfig, 'fields', []);
+                    $repeaterFields = array_get($fieldConfig, 'fields', []);
+                    $repeaterFields = $this->modLegacyModeFields($repeaterFields);
+                    $fieldConfig['form']['fields'] = $repeaterFields;
                     unset($fieldConfig['fields']);
                 }
             }
 
             /*
-            * Custom fields placement
-            */
-            $placement = (!empty($fieldConfig['placement']) ? $fieldConfig['placement'] : NULL);
+             * Custom fields placement
+             */
+            $placement = !empty($fieldConfig['placement']) ? $fieldConfig['placement'] : null;
 
             switch ($placement) {
                 case 'primary':
@@ -669,7 +689,8 @@ class Index extends Controller
             $fieldConfig = [
                 'tab'     => $placeholderTitle,
                 'stretch' => '1',
-                'size'    => 'huge'
+                'size'    => 'huge',
+                'legacyMode' => true
             ];
 
             if ($info['type'] != 'text') {
@@ -734,6 +755,12 @@ class Index extends Controller
     {
         $objectPath = trim(Request::input('objectPath'));
         $object = $objectPath ? $this->loadObject($type, $objectPath) : $this->createObject($type);
+
+        // Set page layout super early because it cascades to other elements
+        if ($type === 'page' && ($layout = post('viewBag[layout]'))) {
+            $object->getViewBag()->setProperty('layout', $layout);
+        }
+
         $formWidget = $this->makeObjectFormWidget($type, $object, Request::input('formWidgetAlias'));
 
         $saveData = $formWidget->getSaveData();
@@ -852,21 +879,14 @@ class Index extends Controller
 
         if (!$objectPath) {
             $object = $this->createObject($type);
-
-            if ($type === 'page') {
-                /**
-                 * If layout is in POST, populate that into the object's viewBag to allow placeholders and syntax
-                 * fields to still work when editing a new page.
-                 *
-                 * Fixes https://github.com/octobercms/october/issues/4628
-                 */
-                $layout = Request::input('viewBag.layout');
-                if ($layout) {
-                    $object->getViewBag()->setProperty('layout', $layout);
-                }
-            }
-        } else {
+        }
+        else {
             $object = $this->loadObject($type, $objectPath);
+        }
+
+        // Set page layout super early because it cascades to other elements
+        if ($type === 'page' && ($layout = post('viewBag[layout]'))) {
+            $object->getViewBag()->setProperty('layout', $layout);
         }
 
         $widget = $this->makeObjectFormWidget($type, $object, $alias);

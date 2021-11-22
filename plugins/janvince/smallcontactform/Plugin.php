@@ -81,30 +81,30 @@ class Plugin extends PluginBase {
         ];
     }
 
-//    public function registerNavigation(){
-//        return [
-//            'frontend' => [
-//                'label'       => 'janvince.smallcontactform::lang.navigation.main_label',
-//                'url'         => Backend::url('janvince/smallcontactform/messages'),
-//                'icon'        => 'icon-inbox',
-//                'permissions' => ['janvince.smallcontactform.access_messages'],
-//                'order'       => 990,
-//
-//                'sideMenu' => [
-//                    'messages' => [
-//                        'label'       => 'janvince.smallcontactform::lang.navigation.messages',
-//                        'icon'        => 'icon-envelope-o',
-//                        'url'         => Backend::url('janvince/smallcontactform/messages'),
-//                        'permissions' => ['janvince.smallcontactform.access_messages']
-//                    ],
-//
-//                ],
-//
-//            ],
-//
-//        ];
-//
-//    }
+    public function registerNavigation(){
+        return [
+            'smallcontactform' => [
+                'label'       => 'janvince.smallcontactform::lang.navigation.main_label',
+                'url'         => Backend::url('janvince/smallcontactform/messages'),
+                'icon'        => 'icon-inbox',
+                'permissions' => ['janvince.smallcontactform.access_messages'],
+                'order'       => 990,
+
+                'sideMenu' => [
+                    'messages' => [
+                        'label'       => 'janvince.smallcontactform::lang.navigation.messages',
+                        'icon'        => 'icon-envelope-o',
+                        'url'         => Backend::url('janvince/smallcontactform/messages'),
+                        'permissions' => ['janvince.smallcontactform.access_messages']
+                    ],
+
+                ],
+
+            ],
+
+        ];
+
+    }
 
     public function registerPermissions(){
 
@@ -142,7 +142,7 @@ class Plugin extends PluginBase {
             'JanVince\SmallContactForm\Components\SmallContactForm' => 'contactForm',
         ];
     }
-
+    
     public function registerMailTemplates()
     {
 
@@ -181,14 +181,14 @@ class Plugin extends PluginBase {
             'image_preview' => function($value) {
                 $width = Settings::get('records_list_preview_width') ? Settings::get('records_list_preview_width') : 50;
                 $height = Settings::get('records_list_preview_height') ? Settings::get('records_list_preview_height') : 50;
-
+                
                 if($value){ return "<img src='".$value->getThumb($width, $height)."' style='width: auto; height: auto; max-width: ".$width."px; max-height: ".$height."px'>"; }
             },
-            'scf_files_link' => function($value){
-                if(!empty($value)) {
+            'scf_files_link' => function($value){ 
+                if(!empty($value)) { 
                     $output = [];
                     foreach($value as $file) {
-                        $output[] = "<div><a class='btn btn-primary' href='".$file->getPath()."'>Open file</a></div>";
+                        $output[] = "<div><a class='btn btn-primary' href='".$file->getPath()."'>Open file</a></div>"; 
                     }
                     return implode('', $output);
                 }

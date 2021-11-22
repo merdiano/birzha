@@ -10,5 +10,19 @@ localeUrl[en] = "/contact-us"
 localeUrl[ru] = "/contact-us"
 
 [TPS\Birzha\Components\ContactForm contactForm]
+
+[JanVince\SmallContactForm\Components\SmallContactForm contactForm2]
 ==
 {% component 'contactForm' %}
+
+<div id="scf-{{ contactForm2 }}">
+
+	<div id="scf-message-{{ contactForm2 }}">
+		{% partial contactForm2 ~ '::scf-message' %}
+	</div>
+
+	<div id="scf-form-{{ contactForm2 }}">
+		{% partial contactForm2 ~ '::scf-form' %}
+	</div>
+
+</div>

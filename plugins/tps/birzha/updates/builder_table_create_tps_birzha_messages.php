@@ -22,6 +22,6 @@ class BuilderTableCreateTpsBirzhaMessages extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('tps_birzha_');
+        Schema::dropIfExists('tps_birzha_messages');
     }
 }
