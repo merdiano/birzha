@@ -81,6 +81,10 @@ navigation:
                 icon: icon-flag
                 permissions:
                     - currency
+    contact-messages:
+        label: 'Contact form'
+        url: tps/birzha/messagescontact
+        icon: icon-inbox
 permissions:
     category:
         tab: Catalog

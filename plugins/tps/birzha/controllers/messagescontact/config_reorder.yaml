@@ -1,0 +1,4 @@
+title: Messagescontact
+modelClass: TPS\Birzha\Models\Contactmessage
+toolbar:
+    buttons: reorder_toolbar

@@ -189,6 +189,7 @@ return [
         'email' => 'Email',
         'name' => 'Name',
         'surname' => 'Surname',
+        'mobile' => 'Phone number',
     ],
 
 ];

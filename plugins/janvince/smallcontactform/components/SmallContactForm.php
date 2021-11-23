@@ -370,6 +370,10 @@ class SmallContactForm extends ComponentBase
     $this->validationMessages = $validator->messages();
     $this->setPostData($validator->messages());
 
+    if(empty($this->post['gapja']) or $this->post['gapja'] != 'anti-spam'){
+      $errors[] ='Gapja must be filled with valid data';
+    }
+
     if($validator->failed() or count($errors)){
 
       // Form main error msg (can be overriden by component property)

@@ -191,6 +191,7 @@ return [
         'email' => 'El. bukjaňyz',
         'name' => 'At',
         'surname' => 'Familiýa',
+        'mobile' => 'Telefon belgiňiz',
     ],
 
 ];
