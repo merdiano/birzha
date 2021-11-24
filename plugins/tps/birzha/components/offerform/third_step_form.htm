@@ -2,10 +2,11 @@
     {{'account.add_post'|_({ step_number: 3 })}}
 </div>
 
-<!-- сообщение пополните баланс -->
-<div class="alert alert-danger t-c" data-validate-error>
-    <p data-message style="color: red;"></p> <br>
-</div>
+{% flash error %}
+<p data-control="flash-message" data-interval="5" class="error">
+    {{ message }}
+</p>
+{% endflash %}
 
 <div class="add_post-3">
     <div class="add_post-box">

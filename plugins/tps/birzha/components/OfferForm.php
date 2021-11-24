@@ -189,16 +189,29 @@ class OfferForm extends ComponentBase
 
     // step3
     public function onPublish() {
+
+        $product = Product::find(Input::get('product_id'));
+
         $balance = \Auth::user()->getBalance();
 
         if($balance - Settings::getValue('fee') < 0) {
+
             // ... message about not enough money
-            throw new ValidationException(['money' => trans('validation.low_balance')]);
+            Flash::error(trans('validation.low_balance'));
+
+            $this->page['fee'] = Settings::getValue('fee');
+            $this->page['product'] = $product;
+
+            // redirect back to the third step
+            return [
+                '#form-steps' => $this->renderPartial('@third_step_form')
+            ];
+
         } else {
 //            $user->balance = $user->balance - Settings::getValue('fee');
 //            $user->save();
 
-            $product = Product::find(Input::get('product_id'));
+            
             //save how much user payed because fee can be changed by admin tomorrow
             // if post is denied we get back payed fee, not admin's set fee
             $product->payed_fee_for_publ = Settings::getValue('fee');
