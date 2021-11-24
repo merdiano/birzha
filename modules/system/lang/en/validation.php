@@ -135,6 +135,7 @@ return [
     ],
     'no_user' => 'A user was not found.',
     'post_delete_confirm' => 'This post has been published. Do you really want to delete this post? The data cannot be recovered',
+    'thanks_for_posting' => 'Thank you for your request!',
 
     /*
     |--------------------------------------------------------------------------

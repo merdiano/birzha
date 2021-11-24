@@ -8,8 +8,8 @@ const selectElement = function (element) {
 };
 // selector end=============
 
-let drop = document.querySelectorAll('.profile_drop');
-let profile_head = document.querySelectorAll('.profile_head');
+let drop = document.querySelector('.profile_drop');
+let profile_head = document.querySelector('.profile_head');
 let register = document.querySelector('.register');
 let register_btn = document.querySelectorAll('.register_btn');
 let log_in = document.querySelectorAll('.log_in');
@@ -41,6 +41,9 @@ let seller_info = document.querySelector('.seller_info');
 let mobile_user_profile = document.querySelector('.mobile_user-profile');
 let mobile_profile_navs = document.querySelector('.mobile_profile-navs');
 
+let notification_header = document.querySelector('.notification_header');
+let notification_area = document.querySelector('.notification_area');
+
 
 
 
@@ -49,16 +52,16 @@ let mobile_profile_navs = document.querySelector('.mobile_profile-navs');
 window.onscroll = function () {
     scrollFunc();
 
-    drop.forEach(drop => {
-        if (drop != undefined) {
-            drop.classList.remove('active');
-        }
-    }
-    );
-
-    // if (drop != undefined) {
-    //     drop.classList.remove('active');
+    // drop.forEach(drop => {
+    //     if (drop != undefined) {
+    //         drop.classList.remove('active');
+    //     }
     // }
+    // );
+
+    if (drop != undefined) {
+        drop.classList.remove('active');
+    }
 
 };
 
@@ -85,22 +88,53 @@ function sleep(time) {
 }
 // timing ====================
 
+// Accordion =============================
+
+
+var accordion = document.getElementsByClassName("accord");
+var z;
+
+for (z = 0; z < accordion.length; z++) {
+    accordion[z].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+
+
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+            panel.style.overflow = "auto";
+            panel.style.marginTop = "0px";
+
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            panel.style.overflow = "visible";
+            panel.style.marginTop = "10px";
+        }
+    });
+} // Accordion end =========================
+
 
 window.onclick = function (e) {
 
-    // if (drop != undefined) {
-    //     if (drop.classList.contains('active') && !e.target.closest('.profile_head')) {
-    //         drop.classList.remove('active');
-    //     }
-    // }
-
-    drop.forEach(drop => {
-        if (drop != undefined) {
-            drop.classList.contains('active') && !e.target.closest('.profile_head');
-            drop.classList.remove('active')
+    if (drop != undefined) {
+        if (drop.classList.contains('active') && !e.target.closest('.profile_head')) {
+            drop.classList.remove('active');
         }
     }
-    );
+
+    if (notification_area != undefined) {
+        if (notification_area.classList.contains('active') && !e.target.closest('.notification_header')) {
+            notification_area.classList.remove('active');
+        }
+    }
+
+    // drop.forEach(drop => {
+    //     if (drop != undefined) {
+    //         drop.classList.contains('active');
+    //         drop.classList.remove('active')
+    //     }
+    // }
+    // );
 
     if (register != undefined) {
         if (register.classList.contains('active') && !e.target.closest('.register_body')) {
@@ -159,14 +193,31 @@ selectElement('.burger').addEventListener('click', function () {
     });
 });
 
+// if (profile_head != undefined) {
+//     profile_head.forEach(r => {
+//         r.addEventListener('click', function () {
+//             sleep(2).then(() => {
+//                 drop.forEach(p => {
+//                     p.classList.toggle('active');
+//                 })
+//             })
+//         });
+//     });
+// }
+
 if (profile_head != undefined) {
-    profile_head.forEach(r => {
-        r.addEventListener('click', function () {
-            sleep(2).then(() => {
-                drop.forEach(p => {
-                    p.classList.toggle('active');
-                })
-            })
+    profile_head.addEventListener('click', function () {
+        sleep(2).then(() => {
+            drop.classList.toggle('active');
+        });
+    });
+}
+
+
+if (notification_header != undefined) {
+    notification_header.addEventListener('click', function () {
+        sleep(2).then(() => {
+            notification_area.classList.toggle('active');
         });
     });
 }
