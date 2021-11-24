@@ -2,38 +2,232 @@
     {{'account.add_post'|_({ step_number: 3 })}}
 </div>
 
+<!-- сообщение пополните баланс -->
+<div class="alert alert-danger t-c" data-validate-error>
+    <p data-message style="color: red;"></p> <br>
+</div>
 
-
-<form action="#" class="post_form" enctype="multipart/form-data" 
-    data-request="onPublish"
-    data-request-validate
->
-
-
-    <input type="hidden" name="product_id" value="{{product.id}}">
-
-    
-    <div class="thanks_text">
-        {{'account.fee_for_publishing'|_({ fee: fee })}}
+<div class="add_post-3">
+    <div class="add_post-box">
+        <div class="add_post-box-col">
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'account.lot_title'|_}} (RU)
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.lang('ru').name }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.prod_mark'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.mark }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.prod_vendor_country'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.country }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'account.currency'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.currency.name }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.delivery_point'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.place }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="add_post-box-col">
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'account.lot_title'|_}} (EN)
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.lang('en').name }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.prod_vendor'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.manufacturer }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.market_type'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {% if product and product.market_type == 'in' %}
+                            {{'page.market_type_option_in'|_}}
+                        {% endif %}
+                        {% if product and product.market_type == 'out' %}
+                            {{'page.market_type_option_out'|_}}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.prod_price'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.price }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.packaging'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {% if product.packaging == "yes" %}
+                            {{'page.packaging_yes'|_}}
+                        {% endif %}
+                        {% if product.packaging == "no" %}
+                            {{'page.packaging_no'|_}}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="add_post-box-col">
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'account.lot_title'|_}} (TM)
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.lang('tm').name }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'account.category'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.categories.first.name }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.prod_amount_2'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.quantity }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.delivery_cond'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.delivery_term.name }}
+                    </p>
+                </div>
+            </div>
+            <div class="add_post_box-item">
+                <div class="add_post_box-item-row">
+                    <h4 class="add_post-box-title">
+                        {{'page.payment_cond'|_}}
+                    </h4>
+                </div>
+                <div class="add_post_box-item-row">
+                    <p class="add_post-box-text">
+                        {{ product.payment_term.name }}
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
+    <form data-request="onPublish" data-request-validate class="basket_info">
+        
+        <input type="hidden" name="product_id" value="{{product.id}}">
 
-    <!-- сообщение пополните баланс -->
-    <div class="alert alert-danger t-c" data-validate-error>
-        <p data-message style="color: red;"></p> <br>
-    </div>
-
-    <div class="btn_bg">
-        <button class="post_btn" type="submit">
-            {{'account.publish'|_}}
-        </button>
-    </div>
-
-    <div class="add_post_text">
-        {{'account.required_fields'|_}}
-    </div>
-
-</form>
-
+        <div class="basket_info_title">
+            Стоимость
+        </div>
+        <div class="basket_info_item">
+            <div class="basket_info_box">
+                <div class="basket_info_name">
+                    Цена за пост:
+                </div>
+                <div class="basket_info_cash">
+                    {{ fee }} TMT
+                </div>
+            </div>
+            <button class="pay_link" type="submit">
+                {{'account.publish'|_}}
+            </button>
+        </div>
+    </form>
+</div>
 
 
 <script src="{{ 'assets/js/custom-file-input.js'|theme }}"></script>

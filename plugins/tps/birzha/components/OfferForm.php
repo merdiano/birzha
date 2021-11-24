@@ -4,7 +4,6 @@ use Cms\Classes\ComponentBase;
 use Input;
 use Validator;
 use Redirect;
-use Tps\Birzha\Models\Offer;
 use Tps\Birzha\Models\Measure;
 use Tps\Birzha\Models\Term;
 use Tps\Birzha\Models\Currency;
@@ -12,14 +11,9 @@ use Tps\Birzha\Models\Product;
 use Tps\Birzha\Models\Category;
 use Tps\Birzha\Models\Country;
 use TPS\Birzha\Models\Settings;
-use TPS\Birzha\Models\Payment;
 use Flash;
-use Session;
-use DB;
 use Str;
 use ValidationException;
-use October\Rain\Network\Http;
-use October\Rain\Exception\AjaxException;
 use Carbon\Carbon;
 
 class OfferForm extends ComponentBase
@@ -212,9 +206,14 @@ class OfferForm extends ComponentBase
             $product->status = 'new';
             $product->save();
 
-            return [
-                '#form-steps' => $this->renderPartial('@message')
-            ];
+            // return [
+            //     '#form-steps' => $this->renderPartial('@message')
+            // ];
+            
+            // Sets a successful message
+            Flash::success(trans('validation.thanks_for_posting'));
+
+            return \Redirect::to('my-posts');
         }
     }
 
