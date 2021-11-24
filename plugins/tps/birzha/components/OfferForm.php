@@ -3,7 +3,6 @@
 use Cms\Classes\ComponentBase;
 use Input;
 use Validator;
-use Redirect;
 use Tps\Birzha\Models\Measure;
 use Tps\Birzha\Models\Term;
 use Tps\Birzha\Models\Currency;
@@ -137,7 +136,7 @@ class OfferForm extends ComponentBase
 
         $rules = [
             'quantity' => 'required|numeric',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|max:9999999',
             'place' => 'required',
             'description_tm' => 'required',
             'description_en' => 'required',

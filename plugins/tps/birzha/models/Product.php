@@ -35,7 +35,7 @@ class Product extends Model
         'images' => 'required',
         'quantity' => 'required',
         'measure' => 'required',
-        'price' => 'required|numeric',
+        'price' => 'required|numeric|max:9999999',
         'currency' => 'required',
     ];
 
