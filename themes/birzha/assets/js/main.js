@@ -44,6 +44,10 @@ let mobile_profile_navs = document.querySelector('.mobile_profile-navs');
 let notification_header = document.querySelector('.notification_header');
 let notification_area = document.querySelector('.notification_area');
 
+let phone_box = document.querySelectorAll('.phone_box');
+let iti__country = document.querySelectorAll('.iti__country');
+let iti__country_list = document.querySelectorAll('.iti__country-list');
+
 
 
 
@@ -122,6 +126,12 @@ window.onclick = function (e) {
         }
     }
 
+    // if (iti__country_list != undefined) {
+    //     if (iti__country_list.classList.contains('active') && !e.target.closest('.phone_box')) {
+    //         iti__country_list.classList.remove('active');
+    //     }
+    // }
+
     if (notification_area != undefined) {
         if (notification_area.classList.contains('active') && !e.target.closest('.notification_header')) {
             notification_area.classList.remove('active');
@@ -135,6 +145,15 @@ window.onclick = function (e) {
     //     }
     // }
     // );
+
+    // if (iti__country_list != undefined) {
+    //     iti__country_list.forEach(er => {
+    //         if (er.classList.contains('active') && !e.target.closest('.phone_box')); {
+    //             er.classList.remove('active')
+    //         }
+    //     });
+    // }
+
 
     if (register != undefined) {
         if (register.classList.contains('active') && !e.target.closest('.register_body')) {
@@ -211,6 +230,38 @@ if (profile_head != undefined) {
             drop.classList.toggle('active');
         });
     });
+}
+
+// if (phone_box != undefined) {
+//     phone_box.addEventListener('click', function () {
+//         sleep(2).then(() => {
+//             iti__country_list.classList.toggle('active');
+//         });
+//     });
+// }
+
+if (phone_box != undefined) {
+    phone_box.forEach(x => {
+        x.addEventListener('click', function () {
+            sleep(2).then(() => {
+                iti__country_list.forEach(e => {
+                    e.classList.toggle('active');
+                })
+            });
+        });
+    })
+}
+
+if (iti__country != undefined) {
+    iti__country.forEach(x => {
+        x.addEventListener('click', function () {
+            sleep(2).then(() => {
+                iti__country_list.forEach(e => {
+                    e.classList.remove('active');
+                })
+            });
+        });
+    })
 }
 
 
