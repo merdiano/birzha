@@ -4048,6 +4048,15 @@ li {
     -o-flex-wrap: wrap;
 }
 
+.bank_transfer {
+    width: 100%;
+    margin: 0 15px;
+}
+
+.bank_transfer .add_post_box-item {
+    width: calc(25% - 10px);
+}
+
 .add_post-box-item {
     margin: 0 5px;
 }
@@ -4463,6 +4472,14 @@ li {
 
     .add_post-box {
         width: calc(100% - 430px);
+    }
+
+    .bank_transfer {
+        width: 100%;
+    }
+
+    .bank_transfer .add_post_box-item {
+        width: calc(33.33% - 10px);
     }
 
     .add_post-3 .basket_info {
@@ -5206,6 +5223,14 @@ li {
         padding: 20px;
     }
 
+    .bank_transfer {
+        width: 100%;
+    }
+
+    .bank_transfer .add_post_box-item {
+        width: calc(50% - 10px);
+    }
+
     .detail_info {
         flex-direction: column;
         -ms-flex-direction: column;
@@ -5423,6 +5448,13 @@ li {
     .copyright {
         margin-top: 50px;
     }
+
+    
+    .bank_transfer {
+        width: 100%;
+        margin: 0;
+    }
+
 
 
     /* --------------------------------- */
@@ -5648,6 +5680,16 @@ li {
     .mobile_user-item-text {
         font-size: 14px;
     }
+
+    .bank_transfer {
+        width: 100%;
+    }
+
+    .bank_transfer .add_post_box-item {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
 
     .links {
         width: 70%;

@@ -53,48 +53,67 @@
 
                     <input type="hidden" name="payment_type" value="bank">
 
-                    <div class="bank">
-                        <div class="bank_group">
-                            <div class="bank_title">
-                                {{ 'account.bank_tax_code'|_ }}:
+                    <div class="add_post-box bank_transfer">
+                        <div class="add_post_box-item">
+                            <div class="add_post_box-item-row">
+                                <h4 class="add_post-box-title">
+                                    {{ 'account.bank_tax_code'|_ }}:
+                                </h4>
                             </div>
-                            <div class="bank_text">
-                                {{ tax_code }}
-                            </div>
-                        </div>
-                        <div class="bank_group">
-                            <div class="bank_title">
-                                {{ 'account.bank_manat_account'|_}}:
-                            </div>
-                            <div class="bank_text">
-                                {{ manat_account }}
+                            <div class="add_post_box-item-row">
+                                <p class="add_post-box-text">
+                                    {{ tax_code }}
+                                </p>
                             </div>
                         </div>
-                        <div class="bank_group">
-                            <div class="bank_title">
-                                {{'account.bank_address'|_}}:
+                        <div class="add_post_box-item">
+                            <div class="add_post_box-item-row">
+                                <h4 class="add_post-box-title">
+                                    {{ 'account.bank_manat_account'|_}}:
+                                </h4>
                             </div>
-                            <div class="bank_text">
-                                {{'account.bank_1'|_}}
-                            </div>
-                        </div>
-                        <div class="bank_group">
-                            <div class="bank_title">
-                                {{ 'account.bank_bab'|_ }}:
-                            </div>
-                            <div class="bank_text">
-                                {{ bab }}
+                            <div class="add_post_box-item-row">
+                                <p class="add_post-box-text">
+                                    {{ manat_account }}
+                                </p>
                             </div>
                         </div>
-                        <div class="bank_group">
-                            <div class="bank_title">
-                                {{ 'account.bank_correspondent_account'|_ }}:
+                        <div class="add_post_box-item">
+                            <div class="add_post_box-item-row">
+                                <h4 class="add_post-box-title">
+                                    {{ 'account.bank_correspondent_account'|_ }}:
+                                </h4>
                             </div>
-                            <div class="bank_text">
-                                {{ correspondent_account }}
+                            <div class="add_post_box-item-row">
+                                <p class="add_post-box-text">
+                                    {{ correspondent_account }}
+                                </p>
                             </div>
                         </div>
-                        
+                        <div class="add_post_box-item">
+                            <div class="add_post_box-item-row">
+                                <h4 class="add_post-box-title">
+                                    {{'account.bank_address'|_}}:
+                                </h4>
+                            </div>
+                            <div class="add_post_box-item-row">
+                                <p class="add_post-box-text">
+                                    {{'account.bank_1'|_}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="add_post_box-item">
+                            <div class="add_post_box-item-row">
+                                <h4 class="add_post-box-title">
+                                    {{ 'account.bank_bab'|_ }}:
+                                </h4>
+                            </div>
+                            <div class="add_post_box-item-row">
+                                <p class="add_post-box-text">
+                                    {{ bab }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="post_upload_box">
