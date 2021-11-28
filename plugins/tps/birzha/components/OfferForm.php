@@ -208,9 +208,6 @@ class OfferForm extends ComponentBase
             ];
 
         } else {
-//            $user->balance = $user->balance - Settings::getValue('fee');
-//            $user->save();
-
 
             //save how much user payed because fee can be changed by admin tomorrow
             // if post is denied we get back payed fee, not admin's set fee
@@ -219,23 +216,15 @@ class OfferForm extends ComponentBase
 
             if($product->save()){
                 Event::fire('tps.product.received',[$product]);
-                return [
-                    '#form-steps' => $this->renderPartial('@message')
-                ];
+                // Sets a successful message
+                Flash::success(trans('validation.thanks_for_posting'));
+
+                return \Redirect::to('my-posts');
             }
             else{
-                throw new AjaxException('Product publish unsuccessfull');
+                Flash::error(trans('Product publish unsuccessfull'));
             }
 
-
-            // return [
-            //     '#form-steps' => $this->renderPartial('@message')
-            // ];
-
-            // Sets a successful message
-            Flash::success(trans('validation.thanks_for_posting'));
-
-            return \Redirect::to('my-posts');
         }
     }
 
