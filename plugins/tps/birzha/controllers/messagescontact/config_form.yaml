@@ -1,0 +1,10 @@
+name: Messagescontact
+form: $/tps/birzha/models/contactmessage/fields.yaml
+modelClass: TPS\Birzha\Models\Contactmessage
+defaultRedirect: tps/birzha/messagescontact
+create:
+    redirect: 'tps/birzha/messagescontact/update/:id'
+    redirectClose: tps/birzha/messagescontact
+update:
+    redirect: tps/birzha/messagescontact
+    redirectClose: tps/birzha/messagescontact

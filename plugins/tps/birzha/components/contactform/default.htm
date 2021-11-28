@@ -13,13 +13,13 @@
                     <form action="#" data-request="onSend" data-request-validate data-request-flash class="contact_form">
                         <div class="contact_input">
                             <label for="name">{{'page.your_firstname'|_}}</label>
-                            <input type="text" id="name" name="firstname" placeholder="{{'page.example'|_}}: {{'page.example_firstname'|_}}" required>
-                            <span class=" " data-validate-for="firstname" style="color: red;"></span>
+                            <input type="text" id="name" name="name" placeholder="{{'page.example'|_}}: {{'page.example_firstname'|_}}" required>
+                            <span class=" " data-validate-for="name" style="color: red;"></span>
                         </div>
                         <div class="contact_input">
                             <label for="surname">{{'page.your_lastname'|_}}</label>
-                            <input type="text" id="surname" name="lastname" placeholder="{{'page.example'|_}}: {{'page.example_lastname'|_}}" required>
-                            <span class=" " data-validate-for="lastname" style="color: red;"></span>
+                            <input type="text" id="surname" name="surname" placeholder="{{'page.example'|_}}: {{'page.example_lastname'|_}}" required>
+                            <span class=" " data-validate-for="surname" style="color: red;"></span>
                         </div>
                         <div class="contact_input">
                             <label for="mobile">{{'auth.phone'|_}}</label>
@@ -33,8 +33,8 @@
                         </div>
                         <div class="contact_comment">
                             <label for="comment">{{'page.message'|_}}</label>
-                            <textarea id="message" name="message" placeholder="{{'page.describe_your_problem'|_}}" required></textarea>
-                            <span class=" " data-validate-for="message" style="color: red;"></span>
+                            <textarea id="message" name="content" placeholder="{{'page.describe_your_problem'|_}}" required></textarea>
+                            <span class=" " data-validate-for="content" style="color: red;"></span>
                         </div>
                         <button type="submit" class="btn btn--blue" data-attach-loading>
                             {{'account.send'|_}}

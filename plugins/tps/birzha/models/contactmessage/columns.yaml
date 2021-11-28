@@ -1,0 +1,23 @@
+columns:
+    id:
+        label: ID
+        type: number
+        sortable: true
+    name:
+        label: 'First name'
+        type: text
+        searchable: true
+        sortable: true
+    surname:
+        label: 'Last name'
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: 'Date and time'
+        type: datetime
+        sortable: true
+    content:
+        label: Message
+        type: text
+        searchable: true

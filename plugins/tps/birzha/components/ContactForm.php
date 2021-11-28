@@ -1,6 +1,7 @@
 <?php namespace Tps\Birzha\Components;
 
 use Cms\Classes\ComponentBase;
+use TPS\Birzha\Models\Contactmessage;
 
 class ContactForm extends ComponentBase
 {
@@ -15,11 +16,11 @@ class ContactForm extends ComponentBase
         $data = post();
 
         $rules = [
-            'firstname' => 'required|max:100',
-            'lastname' => 'required|max:100',
+            'name' => 'required|max:100',
+            'surname' => 'required|max:100',
             'mobile' => 'required|max:12',
             'email' => 'required|email|max:100',
-            'message' => 'required'
+            'content' => 'required'
         ];
 
         $validator = \Validator::make($data, $rules);
@@ -27,16 +28,23 @@ class ContactForm extends ComponentBase
         if($validator->fails()) {
             throw new \ValidationException($validator);
         } else {
+            
+            // todo save message
+
+            $contactMessage = new Contactmessage();
+            $contactMessage->fill($data);
+            $contactMessage->save();
+
             $vars = [
-                'firstname' => \Input::get('firstname'),
-                'lastname' => \Input::get('lastname'),
+                'firstname' => \Input::get('name'),
+                'lastname' => \Input::get('surname'),
                 'mobile' => \Input::get('mobile'),
                 'email' => \Input::get('email'),
                 'content' => \Input::get('message')
             ];
 
             \Mail::send('tps.birzha::mail.message', $vars, function($message) {
-                $message->to('XXXXXXXXXXXXXX', 'Birzha Admin');
+                $message->to(env('TPS_EMAIL_GETTER'), 'Birzha Admin');
                 $message->subject('Birzha web site contact form');
             });
 

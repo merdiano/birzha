@@ -1,6 +1,13 @@
 {% set offers = __SELF__.offers %}
 {% set deleteConfirm = __SELF__.wantToDelete %}
 
+<!-- This message is shawn when a post is succesfully published. -->
+{% flash success %}
+<p data-control="flash-message" data-interval="5" class="success">
+    {{ message }}
+</p>
+{% endflash %}
+
 <!-- My post ========================================================= -->
 <section class="library">
     <div class="auto_container">

@@ -1,0 +1,12 @@
+list: $/tps/birzha/models/contactmessage/columns.yaml
+modelClass: TPS\Birzha\Models\Contactmessage
+title: Messagescontact
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'tps/birzha/messagescontact/update/:id'

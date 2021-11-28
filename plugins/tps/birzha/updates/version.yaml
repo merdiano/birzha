@@ -242,3 +242,12 @@
 1.0.84:
     - 'Updated decimal table tps_birzha_transactions'
     - builder_table_update_tps_birzha_transactions_3.php
+1.0.85:
+    - 'Created table tps_birzha_contactform_messages'
+    - builder_table_create_tps_birzha_contactform_messages.php
+1.0.86:
+    - 'Updated table tps_birzha_contactform_messages'
+    - builder_table_update_tps_birzha_contactform_messages.php
+1.0.87:
+    - 'Updated table tps_birzha_contactform_messages'
+    - builder_table_update_tps_birzha_contactform_messages_2.php

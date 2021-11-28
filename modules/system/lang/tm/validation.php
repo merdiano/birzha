@@ -137,6 +137,7 @@ return [
     ],
     'no_user' => 'Beýle ulanyjy ýok.',
     'post_delete_confirm' => 'Bu bildiriş saýtda ýerleşdirilen. Bu bildirişi pozmak isleýärsiňizmi? Soň bu bildirişi dikeldip bolmaz.',
+    'thanks_for_posting' => 'Ugradan ýüzlenmäňiz üçin sag boluň!',
 
     /*
     |--------------------------------------------------------------------------
@@ -191,6 +192,7 @@ return [
         'email' => 'El. bukjaňyz',
         'name' => 'At',
         'surname' => 'Familiýa',
+        'mobile' => 'Telefon belgiňiz',
     ],
 
 ];
