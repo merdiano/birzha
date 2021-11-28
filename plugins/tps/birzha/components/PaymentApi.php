@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Redirect;
+use October\Rain\Support\Facades\Event;
 use TPS\Birzha\Models\Payment;
 use October\Rain\Network\Http;
 use TPS\Birzha\Models\Settings;
@@ -44,12 +45,11 @@ class PaymentApi extends ComponentBase
                     return Redirect::to('/');
                 }
 
-                Payment::where('id', $payment_id)->update(['status' => 'approved']);
+                $payment->status == 'approved';
 
-//                $user = $payment->user;
-//                $user->balance += $payment->amount;
-//                $user->save();
-
+                if($payment->save()){
+                    Event::fire('tps.payment.received',[$payment]);
+                }
 
                 $this->balance_message = trans('validation.balance.fill_up_succes');
 

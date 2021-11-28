@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Model;
+use October\Rain\Support\Facades\Event;
 
 /**
  * Model
@@ -52,6 +53,12 @@ class Payment extends Model
         }
 
     }
+    public function afterUpdate()
+    {
+        if($this->status == 'approved' && $this->payment_type == 'bank' ){
+            Event::fire('tps.payment.reviewed',[$this,$this->user]);
+        }
+    }
 
     public function beforeValidate()
     {
@@ -83,6 +90,7 @@ class Payment extends Model
 
         if($this->payment_type == 'gift'){
             $this->createTransaction();
+            Event::fire('tps.payment.reviewed',[$this,$this->user]);
         }
     }
 

@@ -1,6 +1,8 @@
 <?php namespace Tps\Birzha\Components;
 
 use Cms\Classes\ComponentBase;
+use Illuminate\Support\Facades\Log;
+use October\Rain\Exception\AjaxException;
 use RainLab\User\Models\User;
 use Tps\Birzha\Models\Chatroom;
 use Tps\Birzha\Models\Message;
@@ -8,6 +10,7 @@ use Auth;
 use Input;
 use Carbon\Carbon;
 use Flash;
+use Event;
 
 class Messages extends ComponentBase
 {
@@ -22,7 +25,7 @@ class Messages extends ComponentBase
         $newChatRoomNeeded = true;
 
         $this->chatrooms = Auth::user()->chatrooms;
-        
+
 
         foreach($this->chatrooms as $room) {
             $room->last_message = $room->messages()->latest('send_at')->first();
@@ -34,7 +37,7 @@ class Messages extends ComponentBase
             }
         }
         // dump($this->chatrooms);
-        
+
         if($sellerId) {
             if(!$newChatRoomNeeded) {
                 // dump('open an existing chat');
@@ -81,7 +84,7 @@ class Messages extends ComponentBase
         $this->page['currentUserId'] = Auth::user()->id;
         $this->page['chat_room_id'] = $chatRoomId;
         $this->page['chatRoomPartnerId'] = Chatroom::find($chatRoomId)->users()->where('users.id','!=',Auth::user()->id)->first()->id;
-        
+
         return [
             'chat_area' => $this->renderPartial('@chatroom')
         ];
@@ -105,10 +108,14 @@ class Messages extends ComponentBase
         $newMsg->send_at = Carbon::now();
         $newMsg->message = Input::get('msg');
         $newMsg->chatroom_id = Input::get('chatroom_id');
-        $newMsg->save();
+        if($newMsg->save()){
+            Event::fire('tps.message.received', [$newMsg->reciver_id, $newMsg]);
 
-        $this->page['latestMessage'] = $newMsg->message;
-        $this->page['latestMessageTime'] = $newMsg->send_at;
+            $this->page['latestMessage'] = $newMsg->message;
+            $this->page['latestMessageTime'] = $newMsg->send_at;
+
+        }else
+            throw new AjaxException('Hat gitmedi. Nasazlyk yuze chykdy');
 
         return [
             'latest_message_area' => $this->renderPartial('@latest_message')

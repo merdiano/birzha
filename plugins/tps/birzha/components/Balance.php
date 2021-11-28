@@ -3,6 +3,8 @@
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
 use Illuminate\Validation\Rule;
+use October\Rain\Exception\AjaxException;
+use October\Rain\Support\Facades\Event;
 use TPS\Birzha\Models\Payment;
 use October\Rain\Network\Http;
 use TPS\Birzha\Models\Settings;
@@ -94,11 +96,15 @@ class Balance extends ComponentBase
 
         // attach file to payment
         $newPayment->bank_file = \Input::file('bank_file');
-        $newPayment->save();
+        if($newPayment->save()){
+            Event::fire('tps.payment.received',$newPayment);
+            return [
+                '#form-steps' => $this->renderPartial('@payment_finish')
+            ];
+        }else{
+            throw new AjaxException('Toleg kabul edilmedi.');
+        }
 
-        return [
-            '#form-steps' => $this->renderPartial('@payment_finish')
-        ];
     }
 
     protected function validateForm($data, $rules) {

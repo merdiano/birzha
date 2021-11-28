@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Input;
+use October\Rain\Support\Facades\Event;
 use Validator;
 use Redirect;
 use Tps\Birzha\Models\Offer;
@@ -210,11 +211,18 @@ class OfferForm extends ComponentBase
             // if post is denied we get back payed fee, not admin's set fee
             $product->payed_fee_for_publ = Settings::getValue('fee');
             $product->status = 'new';
-            $product->save();
 
-            return [
-                '#form-steps' => $this->renderPartial('@message')
-            ];
+            if($product->save()){
+                Event::fire('tps.product.received',[$product]);
+                return [
+                    '#form-steps' => $this->renderPartial('@message')
+                ];
+            }
+            else{
+                throw new AjaxException('Product publish unsuccessfull');
+            }
+
+
         }
     }
 

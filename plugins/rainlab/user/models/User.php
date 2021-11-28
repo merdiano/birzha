@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Models;
 
+use RainLab\Notify\Models\Notification;
 use Str;
 use Auth;
 use Mail;
