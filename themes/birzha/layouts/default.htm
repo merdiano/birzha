@@ -47,6 +47,7 @@ function onStart(){
     <meta name="msapplication-TileImage" content="{{'assets/images/svg/fav_icon.svg'|theme}}">
     {% styles %}
     <link rel="stylesheet" href="{{'assets/css/main.css'|theme}}">
+    <link rel="stylesheet" href="{{'assets/css/phone_box.css'|theme}}">
     <!--    <link href="{{ ['assets/css/main.css']|theme }}" rel="stylesheet">-->
 
 
@@ -62,5 +63,25 @@ function onStart(){
 {% framework extras %}
 {% scripts %}
 <script src="{{'assets/js/main.js'|theme}}"></script>
+<script>
+    $('.iti__country').click(function (e) {
+        let flagClass = $(this).find('.iti__flag').attr("class").split(/\s+/)[1]
+
+        let oldClasses = $('.phone_box-flag').attr("class").split(/\s+/);
+        delete(oldClasses[2])
+
+        $('.phone_box-flag').attr('class', oldClasses.join(' '))
+
+
+        $('.phone_box-flag').addClass(flagClass)
+
+        // todo code
+
+        let code = $(this).find('.iti__dial-code').text()
+        $('.phone_box-code').html(code)
+
+    })
+
+</script>
 </body>
 </html>
