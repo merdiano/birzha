@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Models;
 
+use RainLab\Notify\Models\Notification;
 use Str;
 use Auth;
 use Mail;
@@ -53,7 +54,9 @@ class User extends UserBase
 
     public $hasMany = [
         'products' => ['TPS\Birzha\Models\Product', 'key' => 'vendor_id'],
-        'transactions' => ['TPS\Birzha\Models\Transaction']
+        'transactions' => ['TPS\Birzha\Models\Transaction'],
+
+
     ];
 
     /**
@@ -166,6 +169,10 @@ class User extends UserBase
 
     public function getBalance(){
         return $this->transactions()->sum('amount');
+    }
+
+    public function getUserBalanceAttribute(){
+        return $this->getBalance();
     }
     /**
      * Gets a code for when the user is persisted to a cookie or session which identifies the user.

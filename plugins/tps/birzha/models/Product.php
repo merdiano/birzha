@@ -1,6 +1,7 @@
 <?php namespace TPS\Birzha\Models;
 
 use Model;
+use October\Rain\Support\Facades\Event;
 use RainLab\User\Models\User;
 use Carbon\Carbon;
 use TPS\Birzha\Models\Settings;
@@ -132,10 +133,18 @@ class Product extends Model
         elseif($this->status == 'approved' && !$this->ends_at) {
 //            $createdAt = Carbon::parse($this->created_at);
             $this->ends_at = \Carbon\Carbon::now()->addDays(Settings::getValue('duration'));
+
         }
         elseif($this->status == 'denied' && $this->transaction) {
             $this->transaction()->delete();
         }
+
+    }
+
+    public function afterUpdate()
+    {
+        if($this->status != 'new')
+            Event::fire('tps.product.received',[$this,$this->vendor]);
     }
 
     public static function getMenuTypeInfo($type){

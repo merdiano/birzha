@@ -272,8 +272,8 @@ class Account extends ComponentBase
         catch (Exception $ex) {
             if ($ex instanceof AuthException) {
                 throw new ValidationException(['no_user' => trans('validation.no_user')]);
-            } 
-            
+            }
+
             // if (Request::ajax()) throw $ex;
             if (Request::ajax()) info($ex);
             else Flash::error($ex->getMessage());
@@ -314,8 +314,8 @@ class Account extends ComponentBase
                 'username.numeric' => trans('validation.auth_profile.phone_number_numeric'),
                 'username.digits_between' => trans('validation.auth_profile.phone_number_digits_between'),
                 'username.unique' => trans('validation.auth_profile.phone_number_unique'),
-                'iu_about.digits' => trans('validation.auth_profile.iu_about_digits'),
-                'iu_company.max' => trans('validation.auth_profile.iu_company_max'),
+//                'iu_about.digits' => trans('validation.auth_profile.iu_about_digits'),
+//                'iu_company.max' => trans('validation.auth_profile.iu_company_max'),
             ]);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
@@ -453,8 +453,8 @@ class Account extends ComponentBase
             'username.numeric' => trans('validation.auth_profile.phone_number_numeric'),
             'username.digits_between' => trans('validation.auth_profile.phone_number_digits_between'),
             'username.unique' => trans('validation.auth_profile.phone_number_unique'),
-            'iu_about.digits' => trans('validation.auth_profile.iu_about_digits'),
-            'iu_company.max' => trans('validation.auth_profile.iu_company_max'),
+            'zip.digits' => trans('validation.auth_profile.iu_about_digits'),
+            'company.max' => trans('validation.auth_profile.iu_company_max'),
         ]);
         if ($validation->fails()) {
             throw new ValidationException($validation);

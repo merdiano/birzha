@@ -48,3 +48,8 @@ columns:
         label: rainlab.user::lang.user.last_ip_address
         searchable: true
         invisible: true
+    balans:
+        label: Balans
+        searchable: false
+        valueFrom : user_balance
+

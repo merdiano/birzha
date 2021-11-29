@@ -1,8 +1,13 @@
 <?php namespace TPS\Birzha;
 
 use Backend;
+use RainLab\Notify\NotifyRules\SaveDatabaseAction;
+
 use System\Classes\PluginBase;
+use TPS\Birzha\Actions\MailToAdminsAction;
+use TPS\Birzha\Actions\SendSMSAction;
 use TPS\Birzha\Models\Category;
+use TPS\Birzha\Models\Message;
 use TPS\Birzha\Models\Product;
 use Tps\Birzha\Console\DatabaseBackUp;
 use TPS\Birzha\Models\Offer;
@@ -189,8 +194,59 @@ class Plugin extends PluginBase
                 'results'  => $results,
             ];
         });
+
+        /*
+         * Notifications
+         */
+        \RainLab\Notify\Classes\Notifier::bindEvents([
+            'tps.payment.received' => \TPS\Birzha\Events\PaymentRecievedEvent::class,
+            'tps.payment.reviewed' => \TPS\Birzha\Events\PaymentReviewedEvent::class,
+            'tps.product.received' => \TPS\Birzha\Events\ProductRecievedEvent::class,
+            'tps.product.reviewed' => \TPS\Birzha\Events\ProductReviewedEvent::class,
+            'tps.message.received' => \TPS\Birzha\Events\MessageReceivedEvent::class,
+        ]);
+//
+//        \RainLab\Notify\Classes\Notifier::instance()->registerCallback(function($manager) {
+//            $manager->registerGlobalParams([
+//                'user' => Auth::getUser()
+//            ]);
+//        });
     }
 
+
+    public function registerNotificationRules()
+    {
+        return [
+            'events' => [
+                \TPS\Birzha\Events\PaymentRecievedEvent::class,
+                \TPS\Birzha\Events\PaymentReviewedEvent::class,
+                \TPS\Birzha\Events\ProductRecievedEvent::class,
+                \TPS\Birzha\Events\ProductReviewedEvent::class,
+                \TPS\Birzha\Events\MessageReceivedEvent::class,
+            ],
+            'actions' => [
+                SendSMSAction::class,
+                MailToAdminsAction::class
+            ],
+            'conditions' => [
+            ],
+            'groups' => [
+                'payment' => [
+                    'label' => 'Payment',
+                    'icon' => 'icon-money'
+                ],
+                'product' => [
+                    'label' => 'Product',
+                    'icon' => 'icon-cube'
+                ],
+                'message' => [
+                    'label' => 'Message',
+                    'icon' => 'icon-envelope'
+                ],
+            ],
+//            'presets' => '$/rainlab/user/config/notify_presets.yaml',
+        ];
+    }
     /**
      * @return array
      */

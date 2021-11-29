@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Input;
+use October\Rain\Support\Facades\Event;
 use Validator;
 use Tps\Birzha\Models\Measure;
 use Tps\Birzha\Models\Term;
@@ -195,7 +196,6 @@ class OfferForm extends ComponentBase
         $balance = \Auth::user()->getBalance();
 
         if($balance - Settings::getValue('fee') < 0) {
-
             // ... message about not enough money
             Flash::error(trans('validation.low_balance'));
 
@@ -208,24 +208,23 @@ class OfferForm extends ComponentBase
             ];
 
         } else {
-//            $user->balance = $user->balance - Settings::getValue('fee');
-//            $user->save();
 
-            
             //save how much user payed because fee can be changed by admin tomorrow
             // if post is denied we get back payed fee, not admin's set fee
             $product->payed_fee_for_publ = Settings::getValue('fee');
             $product->status = 'new';
-            $product->save();
 
-            // return [
-            //     '#form-steps' => $this->renderPartial('@message')
-            // ];
-            
-            // Sets a successful message
-            Flash::success(trans('validation.thanks_for_posting'));
+            if($product->save()){
+                Event::fire('tps.product.received',[$product]);
+                // Sets a successful message
+                Flash::success(trans('validation.thanks_for_posting'));
 
-            return \Redirect::to('my-posts');
+                return \Redirect::to('my-posts');
+            }
+            else{
+                Flash::error(trans('Product publish unsuccessfull'));
+            }
+
         }
     }
 
