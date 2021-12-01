@@ -69,12 +69,6 @@ navigation:
                 icon: icon-money
                 permissions:
                     - currency
-            countries:
-                label: Countries
-                url: tps/birzha/countries
-                icon: icon-flag
-                permissions:
-                    - currency
     contact-messages:
         label: 'Contact form'
         url: tps/birzha/messagescontact
