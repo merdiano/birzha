@@ -143,8 +143,8 @@ class Product extends Model
 
     public function afterUpdate()
     {
-        if($this->status != 'new')
-            Event::fire('tps.product.received',[$this,$this->vendor]);
+        if($this->status != 'new' && $this->status != 'draft' )
+            Event::fire('tps.product.reviewed',[$this,$this->vendor]);
     }
 
     public static function getMenuTypeInfo($type){
