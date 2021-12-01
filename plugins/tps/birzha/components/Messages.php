@@ -109,6 +109,7 @@ class Messages extends ComponentBase
         $newMsg->message = Input::get('msg');
         $newMsg->chatroom_id = Input::get('chatroom_id');
         if($newMsg->save()){
+
             Event::fire('tps.message.received', [$newMsg->reciver_id, $newMsg]);
 
             $this->page['latestMessage'] = $newMsg->message;

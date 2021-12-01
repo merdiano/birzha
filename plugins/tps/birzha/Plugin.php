@@ -226,7 +226,7 @@ class Plugin extends PluginBase
             ],
             'actions' => [
                 SendSMSAction::class,
-                MailToAdminsAction::class
+                MailToAdminsAction::class,
             ],
             'conditions' => [
             ],

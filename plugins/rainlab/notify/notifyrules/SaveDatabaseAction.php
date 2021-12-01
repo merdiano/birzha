@@ -58,6 +58,7 @@ class SaveDatabaseAction extends ActionBase
             // look up model $definition[class] from ID ...
             $model = array_get($definition,'class');
             $value = $model::find($value);
+
         }
 
         $rule = $this->host->notification_rule;

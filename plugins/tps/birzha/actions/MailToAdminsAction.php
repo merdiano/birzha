@@ -5,6 +5,7 @@ namespace TPS\Birzha\Actions;
 use Backend\Models\User as AdminUserModel;
 use Backend\Models\UserGroup as AdminGroupModel;
 use Illuminate\Support\Facades\Log;
+use Mail;
 use October\Rain\Exception\ApplicationException;
 use RainLab\Notify\Classes\ActionBase;
 use System\Models\MailTemplate;
@@ -119,7 +120,6 @@ class MailToAdminsAction extends ActionBase
             throw new ApplicationException('Missing valid recipient or mail template');
         }
 
-        Log::info($params);
         Mail::sendTo($recipient, $template, $params);
     }
 }
