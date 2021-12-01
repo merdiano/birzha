@@ -24,6 +24,7 @@ function onStart(){
     $this['gbp'] = TPS\Birzha\Models\Settings::getValue('gbp');
     $this['email'] = TPS\Birzha\Models\Settings::getValue('email');
     $this['address'] = TPS\Birzha\Models\Settings::getValue('address');
+    $this['short_name'] = TPS\Birzha\Models\Settings::getValue('short_name');
 }
 ?>
 ==
@@ -37,6 +38,7 @@ function onStart(){
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     {% styles %}
     <link rel="stylesheet" href="{{'assets/css/main.css'|theme}}">
+    <link rel="stylesheet" href="{{'assets/css/phone_box.css'|theme}}">
     <!--    <link href="{{ ['assets/css/main.css']|theme }}" rel="stylesheet">-->
 <!--    <link rel="icon" href="{{'assets/images/icon/cropped-cropped-orienticon-32x32.png'|theme}}" sizes="32x32">-->
 <!--    <link rel="icon" href="{{'assets/images/icon/cropped-cropped-orienticon-192x192.png'|theme}}" sizes="192x192">-->
@@ -53,5 +55,25 @@ function onStart(){
 {% framework extras %}
 {% scripts %}
 <script src="{{'assets/js/main.js'|theme}}"></script>
+<script>
+    $('.iti__country').click(function (e) {
+        let flagClass = $(this).find('.iti__flag').attr("class").split(/\s+/)[1]
+
+        let oldClasses = $('.phone_box-flag').attr("class").split(/\s+/);
+        delete(oldClasses[2])
+
+        $('.phone_box-flag').attr('class', oldClasses.join(' '))
+
+
+        $('.phone_box-flag').addClass(flagClass)
+
+        // todo code
+
+        let code = $(this).find('.iti__dial-code').text()
+        $('.phone_box-code').html(code)
+
+    })
+
+</script>
 </body>
 </html>

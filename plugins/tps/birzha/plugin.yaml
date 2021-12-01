@@ -46,12 +46,6 @@ navigation:
                 icon: icon-image
                 permissions:
                     - slider
-            messages:
-                label: Messages
-                url: janvince/smallcontactform/messages
-                icon: icon-envelope-o
-                permissions:
-                    - messages
     dictionary:
         label: Dictionary
         url: tps/birzha/terms
@@ -73,12 +67,6 @@ navigation:
                 label: Currencies
                 url: tps/birzha/currencies
                 icon: icon-money
-                permissions:
-                    - currency
-            countries:
-                label: Countries
-                url: tps/birzha/countries
-                icon: icon-flag
                 permissions:
                     - currency
     contact-messages:
