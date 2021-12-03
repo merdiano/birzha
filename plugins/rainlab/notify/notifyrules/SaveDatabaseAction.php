@@ -49,7 +49,7 @@ class SaveDatabaseAction extends ActionBase
     {
         if (
             (!$definition = array_get($this->tableDefinitions, $this->host->related_object)) ||
-            (!$param = array_get($definition, 'param', 'user')) ||
+            (!$param = array_get($definition, 'param')) ||
             (!$value = array_get($params, $param))
         ) {
             throw new ApplicationException('Error evaluating the save database action: the related object is not found in the action parameters.');
