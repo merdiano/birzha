@@ -45,10 +45,9 @@ class SaveDatabaseAction extends ActionBase
      */
     public function triggerAction($params)
     {
-        \Log::info($params);
         if (
             (!$definition = array_get($this->tableDefinitions, $this->host->related_object)) ||
-            (!$param = array_get($definition, 'param')) ||
+            (!$param = $definition[0]['param']) ||
             (!$value = array_get($params, $param))
         ) {
             \Log::info($definition);
