@@ -66,7 +66,7 @@ class SaveDatabaseAction extends ActionBase
         }
 
         $rule = $this->host->notification_rule;
-        $relation = array_get($definition, 'relation');
+        $relation = array_get($definition, 'relation', 'notifications');
 
         $value->$relation()->create([
             'id' => Uuid::uuid4()->toString(),
