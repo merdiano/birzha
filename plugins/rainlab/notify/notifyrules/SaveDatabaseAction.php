@@ -51,10 +51,6 @@ class SaveDatabaseAction extends ActionBase
             (!$param = array_get($definition, 'param', 'user')) ||
             (!$value = array_get($params, $param))
         ) {
-            \Log::info($definition);
-            \Log::info($param);
-            \Log::info($value);
-
             throw new ApplicationException('Error evaluating the save database action: the related object is not found in the action parameters.');
         }
 
@@ -62,6 +58,7 @@ class SaveDatabaseAction extends ActionBase
             // @todo Perhaps value is an ID or a model array,
             // look up model $definition[class] from ID ...
             $model = array_get($definition,'class');
+            \Log::info($model);
             $value = $model::find($value);
 
         }
