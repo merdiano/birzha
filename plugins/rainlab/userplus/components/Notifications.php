@@ -4,6 +4,7 @@ use Auth;
 use Carbon\Carbon;
 use Cms\Classes\ComponentBase;
 use ApplicationException;
+use Illuminate\Support\Facades\Redirect;
 
 class Notifications extends ComponentBase
 {
@@ -28,6 +29,13 @@ class Notifications extends ComponentBase
                 'comment' => 'Inject the JavaScript and Stylesheet used by the default component markup',
                 'type'    => 'checkbox',
                 'default' => true
+            ],
+            'frontend' => [
+                'title'       => 'Frontend block',
+                'description' => 'Choose where in the page to display',
+                'type'        => 'dropdown',
+                'options'     => ['desktop','mobile'],
+                'default'     => 'desktop'
             ]
         ];
     }
@@ -90,6 +98,15 @@ class Notifications extends ComponentBase
 
         $this->prepareVars();
         $this->page['notifications'] = $this->unreadNotifications();
+    }
+
+    public function onMarkNotificationAsRead()
+    {
+        $this->getUnreadQuery()
+            ->where('id', \Input::get('notification_id'))
+            ->update(['read_at' => Carbon::now()]);
+
+        return Redirect::to(\Input::get('redirect_link'));
     }
 
     //

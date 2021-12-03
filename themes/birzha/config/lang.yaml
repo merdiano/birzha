@@ -16,6 +16,8 @@ en:
   auth.messages: Messages
   auth.logout: Logout
   auth.add_announce: Add announcement
+  auth.notifications: Notifications
+  auth.no_notifications: There are no notifications
   account.company: Company
   account.legalization_number: Legalization number
   account.save: Save
@@ -149,6 +151,8 @@ ru:
   auth.messages: Сообщения
   auth.logout: Выйти
   auth.add_announce: Добавить объявление
+  auth.notifications: Уведомления
+  auth.no_notifications: Нет уведомлений
   account.company: Компания
   account.legalization_number: Номер легализации
   account.save: Ýatla
@@ -282,6 +286,8 @@ tm:
   auth.messages: Hatlar
   auth.logout: Çykyş
   auth.add_announce: Bildiriş goş
+  auth.notifications: Habarnamalar
+  auth.no_notifications: Habarnamalar ýok
   account.company: Şereket
   account.legalization_number: Legalizasiýa nomeri
   account.save: Ýatla

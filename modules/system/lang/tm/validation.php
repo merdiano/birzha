@@ -138,6 +138,9 @@ return [
     'no_user' => 'Beýle ulanyjy ýok.',
     'post_delete_confirm' => 'Bu bildiriş saýtda ýerleşdirilen. Bu bildirişi pozmak isleýärsiňizmi? Soň bu bildirişi dikeldip bolmaz.',
     'thanks_for_posting' => 'Ugradan ýüzlenmäňiz üçin sag boluň!',
+    'new_message' => 'Täze hat',
+    'payment_reviewed' => 'Töleg gözden geçirildi',
+    'product_reviewed' => 'Bildiriş gözden geçirildi',
 
     /*
     |--------------------------------------------------------------------------

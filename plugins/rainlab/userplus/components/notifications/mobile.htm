@@ -1,0 +1,14 @@
+<div class="mobile_user-item accord" onclick="toggleNotificationsPopover(this)">
+    <div class="mobile_user-item-icon">
+        <img src="{{ 'assets/images/svg/bell-b.svg'|theme }}" alt="bell">
+    </div>
+    <p class="mobile_user-item-text">
+        {{ 'auth.notifications'|_ }}
+    </p>
+</div>
+
+<div class="accord_notification" id="accord_notification">
+    <div class="notifications-loading">
+        <span class="oc-loading"></span>
+    </div>    
+</div>

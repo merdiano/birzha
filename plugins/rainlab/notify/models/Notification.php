@@ -1,7 +1,11 @@
 <?php namespace RainLab\Notify\Models;
 
+use Guzzle\Http\Url;
 use Model;
 use Markdown;
+use TPS\Birzha\Events\MessageReceivedEvent;
+use TPS\Birzha\Events\PaymentReviewedEvent;
+use TPS\Birzha\Events\ProductReviewedEvent;
 
 /**
  * Notification Model stored in the database
@@ -110,5 +114,55 @@ class Notification extends Model
     public function getParsedBodyAttribute()
     {
         return Markdown::parse($this->body);
+    }
+
+    /**
+     * Get the description of the notification
+     * 
+     * @return string
+     */
+    public function getDescriptionAttribute()
+    {
+        $e = new $this->event_type;
+    
+        if($e instanceof MessageReceivedEvent) {
+
+            return trans('validation.new_message');
+
+        } elseif($e instanceof ProductReviewedEvent) {
+
+            return trans('validation.product_reviewed');
+
+        } elseif($e instanceof PaymentReviewedEvent) {
+
+            return trans('validation.payment_reviewed');
+        }
+
+        return 'Unknown type notification';
+    }
+
+    /**
+     * Get the link where to redirect when the notification is clicked
+     * 
+     * @return string
+     */
+    public function getLinkAttribute()
+    {
+        $e = new $this->event_type;
+    
+        if($e instanceof MessageReceivedEvent) {
+
+            return \Url::to('/messages');
+
+        } elseif($e instanceof ProductReviewedEvent) {
+
+            return \Url::to('/my-posts');
+
+        } elseif($e instanceof PaymentReviewedEvent) {
+
+            return \Url::to('/balance');
+        }
+
+        return \Url::to('/');
     }
 }

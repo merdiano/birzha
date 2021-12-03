@@ -27,12 +27,16 @@
   float: right;
   margin: 0 5px;
 }
-.rainlab-userplus .notifications-content .notifications-loading {
+.rainlab-userplus .notifications-content .notifications-loading,
+.notification_area .notifications-loading,
+.accord_notification .notifications-loading {
   padding: 20px;
   font-size: 24px;
   text-align: center;
 }
-.rainlab-userplus .notifications-content .no-notifications {
+.rainlab-userplus .notifications-content .no-notifications,
+.notification_area .no-notifications,
+.accord_notification .no-notifications {
   text-align: center;
   padding: 25px;
   margin: 0;

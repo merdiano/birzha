@@ -1,23 +1,20 @@
 {% if notifications.total %}
-    <ul class="notifications">
         {% for notification in notifications %}
-            <li class="type-{{ notification.type }}">
-                <i class="icon-{{ notification.icon|default('star') }}"></i>
-                <div class="parsed-body">{{ notification.parsed_body|raw }}</div>
-                <div class="text-muted date">{{ notification.created_at|date('M d, Y') }}</div>
-            </li>
-        {% endfor %}
-    </ul>
-
-    {% if notifications.lastItem() < notifications.total %}
-        <div class="notifications-footer">
-            <a href="javascript:;" onclick="loadOlderNotifications(this)" class="text-muted">
-                View older messages ({{notifications.total - notifications.lastItem()}})
+            <a 
+                href="#"
+                data-request="onMarkNotificationAsRead"
+                data-request-data="redirect_link: '{{notification.link}}', notification_id: '{{notification.id}}'"
+                class="notification_area-item"
+            >
+                <h4 class="notification_are-title">
+                    {{ notification.description }}
+                </h4>
+                <p class="notification_area-time">
+                    {{ notification.created_at|date('H:s - d.m.Y') }}
+                </p>
             </a>
-        </div>
-    {% endif %}
+        {% endfor %}
 
-    <input type="hidden" name="records_per_page" value="{{ recordsToDisplay }}" />
 {% else %}
-    <p class="text-muted no-notifications">There are no notifications for you</p>
+    <p class="text-muted no-notifications">{{ 'auth.no_notifications'|_ }}</p>
 {% endif %}

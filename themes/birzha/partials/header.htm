@@ -2,7 +2,6 @@
 
 [staticMenu]
 code = "main-top"
-
 ==
 <!-- Header Top ========================================================= -->
 <section class="header_top" id="head-top">
@@ -209,6 +208,8 @@ code = "main-top"
                             </p>
                         </div>
 
+                        {% component 'notifications' frontend='mobile' %}
+
                         <a href="{{ 'kabinet/messages'|page }}" class="mobile_user-item">
                             <div class="mobile_user-item-icon">
                                 <img src="{{'assets/images/svg/inbox.svg'|theme}}" alt="">
@@ -309,11 +310,19 @@ code = "main-top"
                     {% endif %}
                 </div>
             </div>
-            <div class="languages">
-                {% for code, name in locales %}
-                <a href="#" class="lang_item {{ code == activeLocale ? 'active' : '' }}" data-request="onSwitchLocale" data-request-data="locale: '{{code}}'">{{ code }}</a>
-                {% endfor %}
+            <div class="nav_wrap-box">
+                {% if user %}
+                    
+                    {% component 'notifications' frontend='desktop' %}
+                    
+                {% endif %}
+                <div class="languages">
+                    {% for code, name in locales %}
+                    <a href="#" class="lang_item {{ code == activeLocale ? 'active' : '' }}" data-request="onSwitchLocale" data-request-data="locale: '{{code}}'">{{ code }}</a>
+                    {% endfor %}
+                </div>
             </div>
+            
         </div>
     </div>
 </nav>
