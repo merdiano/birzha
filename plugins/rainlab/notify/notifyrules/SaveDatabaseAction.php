@@ -51,6 +51,10 @@ class SaveDatabaseAction extends ActionBase
             (!$param = array_get($definition, 'param')) ||
             (!$value = array_get($params, $param))
         ) {
+            \Log::info($definition);
+            \Log::info($param);
+            \Log::info($value);
+
             throw new ApplicationException('Error evaluating the save database action: the related object is not found in the action parameters.');
         }
 
