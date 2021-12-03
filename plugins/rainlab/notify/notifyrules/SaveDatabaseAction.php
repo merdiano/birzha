@@ -5,6 +5,7 @@ use Ramsey\Uuid\Uuid;
 use RainLab\Notify\Classes\ActionBase;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use ApplicationException;
+use Illuminate\Support\Arr;
 
 class SaveDatabaseAction extends ActionBase
 {
@@ -45,9 +46,10 @@ class SaveDatabaseAction extends ActionBase
      */
     public function triggerAction($params)
     {
+        \Log::info($params);
         if (
             (!$definition = array_get($this->tableDefinitions, $this->host->related_object)) ||
-            (!$param = $definition[0]['param']) ||
+            (!$param = Arr::get($definition, 'param')) ||
             (!$value = array_get($params, $param))
         ) {
             \Log::info($definition);
