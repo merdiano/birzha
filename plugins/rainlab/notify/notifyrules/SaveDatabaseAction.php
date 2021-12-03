@@ -6,6 +6,7 @@ use RainLab\Notify\Classes\ActionBase;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use ApplicationException;
 use Illuminate\Support\Arr;
+use RainLab\User\Models\User;
 
 class SaveDatabaseAction extends ActionBase
 {
@@ -58,6 +59,7 @@ class SaveDatabaseAction extends ActionBase
             // @todo Perhaps value is an ID or a model array,
             // look up model $definition[class] from ID ...
             $model = Arr::get($definition,'class');
+            if(!$model) $model = User::class;
             \Log::info($model);
             $value = $model::find($value);
 
