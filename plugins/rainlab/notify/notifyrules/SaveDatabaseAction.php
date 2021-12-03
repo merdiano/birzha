@@ -58,9 +58,7 @@ class SaveDatabaseAction extends ActionBase
         if (!$value instanceof EloquentModel) {
             // @todo Perhaps value is an ID or a model array,
             // look up model $definition[class] from ID ...
-            $model = Arr::get($definition,'class');
-            if(!$model) $model = User::class;
-            \Log::info($model);
+            $model = array_get($definition,'class', User::class);
             $value = $model::find($value);
 
         }
