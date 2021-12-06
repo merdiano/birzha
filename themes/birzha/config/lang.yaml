@@ -13,6 +13,7 @@ en:
   auth.login_to_account: Sign in
   auth.personal_data: Profile
   auth.my_announces: My announcements
+  auth.no_my_announces: You have no active <br> ads at the moment.
   auth.messages: Messages
   auth.logout: Logout
   auth.add_announce: Add announcement
@@ -148,6 +149,7 @@ ru:
   auth.login_to_account: Войти в свой профиль
   auth.personal_data: Персональные данные
   auth.my_announces: Мои объявления
+  auth.no_my_announces: На данный момент <br> у вас нет активных объявлений.
   auth.messages: Сообщения
   auth.logout: Выйти
   auth.add_announce: Добавить объявление
@@ -283,6 +285,7 @@ tm:
   auth.login_to_account: Profiliňe gir
   auth.personal_data: Hususy maglumatlar
   auth.my_announces: Meniň bildirişlerim
+  auth.no_my_announces: Häzirki wagtda <br> işjeň mahabatyňyz ýok.
   auth.messages: Hatlar
   auth.logout: Çykyş
   auth.add_announce: Bildiriş goş
