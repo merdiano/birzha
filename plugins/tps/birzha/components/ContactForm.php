@@ -18,7 +18,7 @@ class ContactForm extends ComponentBase
         $rules = [
             'name' => 'required|max:100',
             'surname' => 'required|max:100',
-            'mobile' => 'required|max:12',
+            'mobile' => 'required|max:13', // +99365857412: 13 chars
             'email' => 'required|email|max:100',
             'content' => 'required'
         ];
