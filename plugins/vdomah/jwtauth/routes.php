@@ -17,7 +17,11 @@ Route::group(['prefix' => 'api'], function() {
         try {
             // verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->json(['error' => [
+                    'ru' => trans('validation.no_user', [], 'ru'),
+                    'en' => trans('validation.no_user', [], 'en'),
+                    'tm' => trans('validation.no_user', [], 'tm'),
+                ]], 401);
             }
         } catch (JWTException $e) {
             // something went wrong
