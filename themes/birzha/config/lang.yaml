@@ -26,6 +26,12 @@ en:
   account.new_password: New password
   account.info: Account info
   account.balance: Balance
+  account.balance_history: Balance history
+  account.balance_transaction_amount: Amount
+  account.balance_transaction_type: Type
+  account.balance_fill_up: replenishment
+  account.balance_withdraw: withdraw
+  account.balance_no_actions: Balance history is empty
   account.balance_warning: Перед отправкой убедитесь что перевод был осуществлен верно и у вас имеется чек
   account.fill_up_balance: Fill up balance
   account.bank_details: Банковские реквизиты
@@ -72,6 +78,7 @@ en:
   topnav.login: Sign in
   nav.home: Home
   nav.city: Ashgabat
+  page.date: Date
   page.more: More
   page.not_found: Page not found
   page.not_found_message: We're sorry, but the page you requested cannot be found.
@@ -163,6 +170,12 @@ ru:
   account.new_password: Täze açar söz
   account.info: Персональные данные
   account.balance: Balance
+  account.balance_history: История баланса
+  account.balance_transaction_amount: Сумма
+  account.balance_transaction_type: Тип
+  account.balance_fill_up: пополнение
+  account.balance_withdraw: снятие
+  account.balance_no_actions: История баланса пуста
   account.balance_warning: Перед отправкой убедитесь что перевод был осуществлен верно и у вас имеется чек
   account.fill_up_balance: Fill up balance
   account.bank_details: Банковские реквизиты
@@ -209,6 +222,7 @@ ru:
   topnav.login: Sign in
   nav.home: Главная
   nav.city: Ашхабад
+  page.date: Дата
   page.more: Ещё
   page.not_found: Страница не найдена
   page.not_found_message: Сожалеем, но запрошенная вами страница не может быть найдена.
@@ -300,6 +314,12 @@ tm:
   account.new_password: Täze açar söz
   account.info: Şahsy maglumatlar
   account.balance: Balance
+  account.balance_history: Balansyň taryhy
+  account.balance_transaction_amount: Möçberi
+  account.balance_transaction_type: Görnüşi
+  account.balance_fill_up: dolduruş
+  account.balance_withdraw: aýyrmak
+  account.balance_no_actions: Balans taryhy boş
   account.balance_warning: Перед отправкой убедитесь что перевод был осуществлен верно и у вас имеется чек
   account.fill_up_balance: Fill up balance
   account.bank_details: Банковские реквизиты
@@ -346,6 +366,7 @@ tm:
   topnav.login: Giriş
   nav.home: Baş sahypa
   nav.city: Aşgabat
+  page.date: Sene
   page.more: Ýene
   page.not_found: Sahypa tapylmady.
   page.not_found_message: Bagyşlaň! Siziň gözleýän sahypaňyz ýyok.

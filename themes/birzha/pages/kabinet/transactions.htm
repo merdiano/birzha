@@ -7,7 +7,7 @@ is_hidden = 0
         <div class="auto_container">
             <div class="post_wrap">
                 <div class="contact_title">
-                    История Balansa
+                    {{ 'account.balance'|_ }}
                 </div>
 
                 <div class="history_table">
@@ -15,10 +15,10 @@ is_hidden = 0
                         <thead>
                             <tr>
                             <th>№</th>
-                            <th>Дата пополнения</th>
-                            <th>Description</th>
-                            <th>Сумма</th>
-                            <th>Type</th>
+                            <th>{{ 'page.date'|_ }}</th>
+                            <th>{{ 'page.prod_desc'|_ }}</th>
+                            <th>{{ 'account.balance_transaction_amount'|_ }}</th>
+                            <th>{{ 'account.balance_transaction_type'|_ }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,14 +30,14 @@ is_hidden = 0
                                 <td>{{transaction.amount}} TMT</td>
                                 <td>
                                     {% if transaction.amount > 0%}
-                                    <p class="approved">{{'popolnenie'|_}}</p>
+                                    <p class="approved">{{'account.balance_fill_up'|_}}</p>
                                         {% else %}
-                                    <p class="denied">{{'oplata'|_}} </p>
+                                    <p class="denied">{{'account.balance_withdraw'|_}} </p>
                                     {% endif %}
                                 </td>
                             </tr>
                         {% else %}
-                            <tr><td colspan="5">{{'no_balance_history'|_}}</td></tr>
+                            <tr><td colspan="5">{{'account.balance_no_actions'|_}}</td></tr>
                         {% endfor %}
                         </tbody>
                     </table>
