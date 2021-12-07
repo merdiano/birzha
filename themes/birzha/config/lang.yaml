@@ -78,6 +78,7 @@ en:
   page.search: Search
   page.search_result: 'The search results found: :number articles'
   page.new_prods: New products
+  page.prods: Products
   page.similar_prods: Из этой же категории
   page.prod_id: Lot
   page.prod_img: Image
@@ -214,6 +215,7 @@ ru:
   page.search: Поиск
   page.search_result: 'По результату поиска было найдено: :number статьи'
   page.new_prods: Новые товары
+  page.prods: Tовары
   page.similar_prods: Из этой же категории
   page.prod_id: Лот
   page.prod_img: Изображение
@@ -350,6 +352,7 @@ tm:
   page.search: Gözleg
   page.search_result: 'Gözleg netijesi: :number makala tapyldy'
   page.new_prods: Täze harytlar
+  page.prods: Harytlar
   page.prod_id: Lot
   page.prod_img: Surat
   page.prod_title: Haryt
