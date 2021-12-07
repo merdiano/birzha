@@ -3699,6 +3699,11 @@ li {
     cursor: pointer;
 }
 
+.empty_area {
+    position: relative;
+    height: 420px;
+}
+
 
 /* Custom file-input ============================ */
 .inputfile {
@@ -4094,9 +4099,141 @@ li {
     line-height: 1.4;
 }
 
-
-
 /* Add post 3 end ======================================= */
+
+
+/* Terms =========================================== */
+
+.term {
+    padding: 100px 0;
+}
+
+.term_box {
+    display: flex;
+    align-items: flex-start;
+}
+
+.term_aside {
+    width: calc(35% - 25px);
+    margin-right: 25px;
+
+    border: 2px solid #F1F1F1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.term_main {
+    width: calc(65% - 25px);
+    margin-left: 25px;
+}
+
+.term_aside-title {
+    background: var(--blue);
+    padding: 20px 40px 20px 40px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.aside_term-tab {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+
+    color: #000;
+    cursor: pointer;
+    padding: 30px 40px 30px 40px;
+    position: relative;
+    border-bottom: 1px solid #F1F1F1;
+}
+
+.aside_term-tab:last-child {
+    border-bottom: unset;
+}
+
+.aside_term-tab::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    width: 10px;
+    height: 10px;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    background: #000;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    -ms-clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    -moz-clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    -o-clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    -webkit-clip-path: polygon(0 0, 0% 100%, 100% 50%);
+}
+
+.aside_term-tab.active {
+    color: var(--blue);
+    background: #F2F6FF;
+}
+
+.aside_term-tab.active::after {
+    background: var(--blue);
+}
+
+.open_info {
+    display: none;
+}
+
+.open_info.active {
+    display: block;
+}
+
+.term_main-info {
+    position: relative;
+    animation: tab .3s linear;
+}
+
+.term_main-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+.term_main-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+@keyframes tab {
+    0% {
+        top: 50px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@-webkit-keyframes tab {
+    0% {
+        top: 20px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+
+
+
+
+
+/* Terms end ======================================= */
 
 
 
@@ -4628,8 +4765,37 @@ li {
         height: 39px;
     }
 
+    /* Terms ===================== */
 
+    .term_aside-title {
+        padding: 20px 30px;
+        font-size: 18px;
+    }
+
+    .aside_term-tab {
+        padding: 20px 30px;
+        font-size: 16px;
+    }
+
+    .term_aside {
+        width: calc(35% - 15px);
+        margin-right: 15px;
+    }
+
+    .term_main {
+        width: calc(65% - 15px);
+        margin-left: 15px;
+    }
+
+    .aside_term-tab::after {
+        right: 25px;
+    }
+
+    .term_main-title {
+        font-size: 28px;
+    }
 }
+
 
 @media(max-width: 1000px) {
     :root {
@@ -5068,14 +5234,36 @@ li {
         padding: 10px 20px;
     }
 
-    /* .bank_form .upload_group label {
-        padding: 12px;
+
+    /* Terms ===================== */
+
+    .term_box {
+        flex-direction: column;
+        -ms-flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
     }
 
-    .bank_form .additional {
-        padding: 0 0 0 5px !important;
-    } */
+    .term_aside {
+        margin-right: 0;
+        width: 100%;
+    }
 
+    .term_main {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .term_main-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .term_main-text {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
 }
 
 @media(max-width: 900px) {
@@ -5449,7 +5637,7 @@ li {
         margin-top: 50px;
     }
 
-    
+
     .bank_transfer {
         width: 100%;
         margin: 0;
@@ -5819,7 +6007,7 @@ li {
 
     .chat_area,
     .chat_people {
-        height: 400px;
+        height: 450px;
     }
 
     .chat_area {
@@ -5852,6 +6040,10 @@ li {
     .friend_message,
     .my_message {
         padding: 20px;
+    }
+
+    .empty_area {
+        height: 320px;
     }
 
     /* Seller ---------------- */
@@ -5913,6 +6105,36 @@ li {
         padding: 15px 10px;
         font-size: 14px;
     }
+
+    /* Terms ===================== */
+
+    .term_aside-title {
+        font-size: 16px;
+        padding: 15px 20px;
+    }
+
+    .aside_term-tab {
+        font-size: 14px;
+        padding: 15px 20px;
+    }
+
+    .aside_term-tab::after {
+        width: 8px;
+        height: 8px;
+        right: 20px;
+    }
+
+    .term_main {
+        margin-top: 30px;
+    }
+
+    .term_main-title {
+        font-size: 18px;
+    }
+
+
+
+
 }
 
 @media(max-width: 500px) {
@@ -6258,7 +6480,8 @@ li {
         width: calc(100% - 10px);
     }
 
-    .add_post-box-title, .add_post-box-text {
+    .add_post-box-title,
+    .add_post-box-text {
         display: block;
         -webkit-line-clamp: unset;
         overflow: unset;

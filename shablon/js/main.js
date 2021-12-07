@@ -439,71 +439,89 @@ if (seller_btn != undefined) {
 // const tabsBtn = document.querySelectorAll(".tab_link");
 // const tabsItems = document.querySelectorAll(".tab_source");
 
-const tabsBtn = document.querySelectorAll(".tab_btn");
-const tabsItems = document.querySelectorAll(".tab_info");
-tabsBtn.forEach((e) => {
-    onTabClick(tabsBtn, tabsItems, e);
-});
-function onTabClick(tabBtns, tabItems, item) {
-    item.addEventListener("click", function (e) {
-        let currentBtn = item;
-        let tabId = currentBtn.getAttribute("data-tab");
-        let currentTab = document.querySelector(tabId);
-        if (e.srcElement.classList.contains("active")) {
-            // e.srcElement.classList.remove("active");
-            // e.srcElement.parentElement
-            //     .querySelector(".tab__btn")
-            //     .classList.remove("active");
-            // console.log(e.srcElement.parentElement.querySelector(".event"));
-            // e.srcElement.parentElement
-            //     .querySelector(".event")
-            //     .classList.remove("active");
-        } else if (!currentBtn.classList.contains("active")) {
-            tabBtns.forEach(function (item) {
-                item.classList.remove("active");
-            });
-            tabItems.forEach(function (item) {
-                item.classList.remove("active");
-            });
-            currentBtn.classList.add("active");
-            currentTab.classList.add("active");
-        }
-    });
-}
+// const tabsBtn = document.querySelectorAll(".tab_btn");
+// const tabsItems = document.querySelectorAll(".tab_info");
+// tabsBtn.forEach((e) => {
+//     onTabClick(tabsBtn, tabsItems, e);
+// });
+// function onTabClick(tabBtns, tabItems, item) {
+//     item.addEventListener("click", function (e) {
+//         let currentBtn = item;
+//         let tabId = currentBtn.getAttribute("data-tab");
+//         let currentTab = document.querySelector(tabId);
+//         if (e.srcElement.classList.contains("active")) {
+//         } else if (!currentBtn.classList.contains("active")) {
+//             tabBtns.forEach(function (item) {
+//                 item.classList.remove("active");
+//             });
+//             tabItems.forEach(function (item) {
+//                 item.classList.remove("active");
+//             });
+//             currentBtn.classList.add("active");
+//             currentTab.classList.add("active");
+//         }
+//     });
+// }
 
 // -----------------------------------------------------------------------------------------------
-const tabsBtn_2 = document.querySelectorAll(".open_link");
-const tabsItems_2 = document.querySelectorAll(".open_info");
-tabsBtn_2.forEach((e) => {
-    onTabClick(tabsBtn_2, tabsItems_2, chat_alert, e);
+// const tabsBtn_2 = document.querySelectorAll(".open_link");
+// const tabsItems_2 = document.querySelectorAll(".open_info");
+// tabsBtn_2.forEach((e) => {
+//     onTabClick(tabsBtn_2, tabsItems_2, chat_alert, e);
 
+// });
+// function onTabClick(tabBtns_2, tabItems_2, chat_alert, item) {
+//     item.addEventListener("click", function (e) {
+//         let currentBtn_2 = item;
+//         let tabId = currentBtn_2.getAttribute("data-tab");
+//         let currentTab_2 = document.querySelector(tabId);
+//         if (e.srcElement.classList.contains("active")) {
+//         } else if (!currentBtn_2.classList.contains("active")) {
+//             tabBtns_2.forEach(function (item) {
+//                 item.classList.remove("active");
+//             });
+//             tabItems_2.forEach(function (item) {
+//                 item.classList.remove("active");
+//             });
+//             currentBtn_2.classList.add("active");
+//             currentTab_2.classList.add("active");
+//         }
+//     });
+// }
+
+const formBtn = document.querySelectorAll(".tab_btn");
+const formItem = document.querySelectorAll(".tab_info");
+formBtn.forEach((e) => {
+    onTabClick(formBtn, formItem, e);
 });
-function onTabClick(tabBtns_2, tabItems_2, chat_alert, item) {
-    item.addEventListener("click", function (e) {
-        let currentBtn_2 = item;
-        let tabId = currentBtn_2.getAttribute("data-tab");
-        let currentTab_2 = document.querySelector(tabId);
-        if (e.srcElement.classList.contains("active")) {
-            // e.srcElement.classList.remove("active");
-            // e.srcElement.parentElement
-            //     .querySelector(".tab__btn")
-            //     .classList.remove("active");
-            // console.log(e.srcElement.parentElement.querySelector(".event"));
-            // e.srcElement.parentElement
-            //     .querySelector(".event")
-            //     .classList.remove("active");
-        } else if (!currentBtn_2.classList.contains("active")) {
-            tabBtns_2.forEach(function (item) {
-                item.classList.remove("active");
+const formOuterBtn = document.querySelectorAll(".open_link");
+const formOuterItem = document.querySelectorAll(".open_info");
+formOuterBtn.forEach((e) => {
+    onTabClick(formOuterBtn, formOuterItem, e);
+});
+const heroBtn = document.querySelectorAll(".heroBtn");
+const heroItem = document.querySelectorAll(".heroItem");
+heroBtn.forEach((e) => {
+    onTabClick(heroBtn, heroItem, e);
+});
+function onTabClick(formBtns, formItems, itemForm) {
+    itemForm.addEventListener("click", function (e) {
+        let currentformBtn = itemForm;
+        let tabIdForm = currentformBtn.getAttribute("data-tab");
+        let currentformItem = document.querySelector(tabIdForm);
+        if (!currentformBtn.classList.contains("active")) {
+            formBtns.forEach(function (itemForm) {
+                itemForm.classList.remove("active");
             });
-            tabItems_2.forEach(function (item) {
-                item.classList.remove("active");
+            formItems.forEach(function (itemForm) {
+                itemForm.classList.remove("active");
             });
-            currentBtn_2.classList.add("active");
-            currentTab_2.classList.add("active");
+            currentformBtn.classList.add("active");
+            currentformItem.classList.add("active");
         }
     });
 }
+
 
 
 
