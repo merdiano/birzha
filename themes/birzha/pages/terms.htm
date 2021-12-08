@@ -1,0 +1,59 @@
+title = "Söwda şertleri"
+url = "/sowda-sertleri"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeTitle[en] = "Trade terms"
+localeTitle[ru] = "Условия торгов"
+localeUrl[en] = "/trade-terms"
+localeUrl[ru] = "/uslovia-torgov"
+==
+<?php
+function onStart() {
+    $theme = Cms\Classes\Theme::getEditTheme();
+    $pageList = new RainLab\Pages\Classes\PageList($theme);
+
+    $this['pagesList'] = $pageList->listPages();    
+    // dd($this['pagesList']);
+}
+?>
+==
+<!--Terms section  ========================================================= -->
+    <section class="term">
+        <div class="auto_container">
+            <div class="term_wrap">
+                <div class="term_box">
+                    <div class="term_aside">
+                        <h2 class="term_aside-title">
+                            Помощь по сайту
+                        </h2>
+                        
+                        {% for pg in pagesList %}
+                            <h4 class="aside_term-tab open_link {{ loop.index == 1 ? 'active' : '' }}" data-tab="#term_info-{{loop.index}}">{{ pg.title }}</h4>
+                        {% endfor %}
+                        
+                        
+                    </div>
+
+                    <div class="term_main">
+                    
+                    {% for pg in pagesList %}
+                        
+                        <div class="term_main-info open_info {{ loop.index == 1 ? 'active' : '' }}" id="term_info-{{loop.index}}">
+                        
+                            <h1 class="term_main-title">
+                                {{ pg.title }}
+                            </h1>
+                            
+                            {{ pg.markup|raw }}
+                        </div>
+                    {% endfor %}
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Terms section  end ========================================================= -->

@@ -1,9 +1,13 @@
 items:
     -
         title: Pudaklar
+        nesting: null
         type: cms-page
+        url: null
         code: ''
         reference: kategorii
+        cmsPage: null
+        replace: null
         viewBag:
             locale:
                 en:
@@ -17,13 +21,9 @@ items:
             isExternal: '0'
     -
         title: 'Söwda şertleri'
-        nesting: 0
-        type: static-page
-        url: null
+        type: cms-page
         code: ''
-        reference: sowda-sertleri
-        cmsPage: null
-        replace: 0
+        reference: terms
         viewBag:
             locale:
                 en:
