@@ -131,6 +131,7 @@ en:
   page.date_increase: По возрастанию
   page.no_results_found: No results found
   page.sort_by_date: По дате
+  page.help: Web site help
   footer.contacts: Контакты
   footer.tel: Тел
   footer.email: Эл. почта
@@ -275,6 +276,7 @@ ru:
   page.date_increase: По возрастанию
   page.no_results_found: No results found
   page.sort_by_date: По дате
+  page.help: Помощь по сайту
   footer.contacts: Контакты
   footer.tel: Тел
   footer.email: Эл. почта
@@ -422,6 +424,7 @@ tm:
   page.date_increase: По возрастанию
   page.no_results_found: No results found
   page.sort_by_date: По дате
+  page.help: Web sahypa boýunça kömek
   page.delivery_cond: Условия поставки
   page.delivery_point: Пункт
   page.packaging: Упаковка
