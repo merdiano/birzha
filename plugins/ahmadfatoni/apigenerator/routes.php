@@ -35,3 +35,5 @@ Route::get('api/v1/messages/chatroom/{id}/load-more', 'AhmadFatoni\ApiGenerator\
 Route::post('api/v1/messages/{chatroom_id}', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@sendMessage')->where('chatroom_id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 Route::post('api/v1/messages/initialize-chatting/{seller_id}', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@initializeChatting')->where('seller_id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 // Route::get('api/v1/messages/{id}/delete', ['as' => 'api/v1/messages.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@destroy']);
+
+Route::resource('api/v1/notifications', 'AhmadFatoni\ApiGenerator\Controllers\API\NotificationsApiController', ['except' => ['destroy', 'create', 'edit']])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');

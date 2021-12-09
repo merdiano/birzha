@@ -142,6 +142,68 @@ class Notification extends Model
     }
 
     /**
+     * Get the localized description of the notification for api
+     * 
+     * @return string
+     */
+    public function getDescriptionForApiAttribute()
+    {
+        $e = new $this->event_type;
+    
+        if($e instanceof MessageReceivedEvent) {
+
+            return [
+                'ru' => trans('validation.new_message', [], 'ru'),
+                'en' => trans('validation.new_message', [], 'en'),
+                'tm' => trans('validation.new_message', [], 'tm'),
+            ];
+
+        } elseif($e instanceof ProductReviewedEvent) {
+
+            return [
+                'ru' => trans('validation.product_reviewed', [], 'ru'),
+                'en' => trans('validation.product_reviewed', [], 'en'),
+                'tm' => trans('validation.product_reviewed', [], 'tm'),
+            ];
+
+        } elseif($e instanceof PaymentReviewedEvent) {
+
+            return [
+                'ru' => trans('validation.payment_reviewed', [], 'ru'),
+                'en' => trans('validation.payment_reviewed', [], 'en'),
+                'tm' => trans('validation.payment_reviewed', [], 'tm'),
+            ];
+        }
+
+        return 'Unknown type notification';
+    }
+    
+    /**
+     * Get the screen where to redirect when clicking on the notification
+     * 
+     * @return string
+     */
+    public function getRedirectToScreenForApiAttribute()
+    {
+        $e = new $this->event_type;
+    
+        if($e instanceof MessageReceivedEvent) {
+
+            return 'messages_screen';
+
+        } elseif($e instanceof ProductReviewedEvent) {
+
+            return 'my_posts_screen';
+
+        } elseif($e instanceof PaymentReviewedEvent) {
+
+            return 'balance_history_screen';
+        }
+
+        return 'main_screen';
+    }
+
+    /**
      * Get the link where to redirect when the notification is clicked
      * 
      * @return string
