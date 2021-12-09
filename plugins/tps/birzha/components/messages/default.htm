@@ -4,6 +4,18 @@
 <section class="chat">
     <div class="auto_container">
         <div class="chat_wrap">
+            {% if chatrooms is empty %}
+            <div class="empty_area">
+                <div class="chat_wall">
+                    <div class="chat_wall_img">
+                        <img src="{{ 'assets/images/big_logo.png'|theme }}" alt="logo">
+                    </div>
+                    <div class="chat_wall_text">
+                        {{ 'auth.messages_no'|_ }}
+                    </div>
+                </div>
+            </div>
+            {% else %}
             <div class="chat_burger">
                 <svg viewBox="0 0 32 32" fill="#003197" xmlns="http://www.w3.org/2000/svg">
                     <g data-name="menu " id="menu_">
@@ -61,6 +73,7 @@
 
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 </section>

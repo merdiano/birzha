@@ -15,6 +15,7 @@ en:
   auth.my_announces: My announcements
   auth.no_my_announces: You have no active <br> ads at the moment.
   auth.messages: Messages
+  auth.messages_no: There are no messages
   auth.logout: Logout
   auth.add_announce: Add announcement
   auth.notifications: Notifications
@@ -160,6 +161,7 @@ ru:
   auth.my_announces: Мои объявления
   auth.no_my_announces: На данный момент <br> у вас нет активных объявлений.
   auth.messages: Сообщения
+  auth.messages_no: Сообщений нет
   auth.logout: Выйти
   auth.add_announce: Добавить объявление
   auth.notifications: Уведомления
@@ -305,6 +307,7 @@ tm:
   auth.my_announces: Meniň bildirişlerim
   auth.no_my_announces: Häzirki wagtda <br> işjeň mahabatyňyz ýok.
   auth.messages: Hatlar
+  auth.messages_no: Hatlar ýok
   auth.logout: Çykyş
   auth.add_announce: Bildiriş goş
   auth.notifications: Habarnamalar

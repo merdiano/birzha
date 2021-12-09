@@ -6,9 +6,45 @@ is_hidden = 0
 <section class="post">
         <div class="auto_container">
             <div class="post_wrap">
-                <div class="contact_title">
-                    {{ 'account.balance'|_ }}
+                <div class="product_head">
+                    <div class="product_title">
+                        {{ 'account.balance'|_ }}
+                    </div>
+                    <div class="product_head-row">
+                        <a href="{{ 'kabinet/balance'|page }}" class="add_post_btn">
+                            <div class="post_icon">
+                                <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
+                            </div>
+                            <div class="post_text">
+                                {{ 'account.fill_up_balance'|_ }}
+                            </div>
+                        </a>
+                    </div>
                 </div>
+
+                {% if user.transactions is empty %}
+                <div class="my_advert-bg">
+                    <div class="chat_wall">
+                        <div class="chat_wall_img">
+                            <img src="{{'assets/images/big_logo.png'|theme}}" alt="logo">
+                        </div>
+                        <div class="chat_wall_text">
+                            {{'account.balance_no_actions'|_}}
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile_add-btn">
+                    <a href="{{ 'kabinet/balance'|page }}" class="add_post_btn">
+                        <div class="post_icon">
+                            <img src="{{'assets/images/svg/add.svg'|theme}}" alt="">
+                        </div>
+                        <div class="post_text">
+                            {{ 'account.fill_up_balance'|_ }}
+                        </div>
+                    </a>
+                </div>
+
+                {% else %}
 
                 <div class="history_table">
                     <table>
@@ -36,12 +72,13 @@ is_hidden = 0
                                     {% endif %}
                                 </td>
                             </tr>
-                        {% else %}
-                            <tr><td colspan="5">{{'account.balance_no_actions'|_}}</td></tr>
+                        
                         {% endfor %}
                         </tbody>
                     </table>
                 </div>
+
+                {% endif %}
 
 <!--                <div class="cat_end">-->
 <!--                    <a href="#" class="cat_arrow left">-->
