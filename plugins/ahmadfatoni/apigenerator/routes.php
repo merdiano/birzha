@@ -4,40 +4,49 @@ Route::post('fatoni/generate/api', array('as' => 'fatoni.generate.api', 'uses' =
 Route::post('fatoni/update/api/{id}', array('as' => 'fatoni.update.api', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\ApiGeneratorController@updateApi'));
 Route::get('fatoni/delete/api/{id}', array('as' => 'fatoni.delete.api', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\ApiGeneratorController@deleteApi'));
 
-Route::resource('api/v1/categories', 'AhmadFatoni\ApiGenerator\Controllers\API\CategoriesAPIController', ['except' => ['destroy', 'create', 'edit']]);
-// Route::get('api/v1/categories/{id}/delete', ['as' => 'api/v1/categories.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\CategoriesAPIController@destroy']);
 
-Route::get('api/v1/products', ['as' => 'products.index', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@index']);
-Route::get('api/v1/products/{id}', ['as' => 'products.show', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@show']);
-Route::post('api/v1/products', ['as' => 'products.store', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@store'])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::post('api/v1/products/{id}', ['as' => 'products.complete.step2', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@update'])->where('id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::delete('api/v1/products/{id}/image-delete/{image_id}', ['as' => 'products.images.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@imageDelete'])->where(['id' => '[0-9]+', 'image_id' => '[0-9]+'])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::post('api/v1/products/{id}/publish', ['as' => 'products.publish', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@publish'])->where('id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::get('api/v1/my-products/', ['as' => 'products.my_products', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@myProducts'])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::delete('api/v1/my-products/{id}', ['as' => 'products.my_products.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@delete'])->where('id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-// Route::get('api/v1/products/{id}/delete', ['as' => 'api/v1/products.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\ProductsApiController@destroy']);
+Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Controllers\API'],function ($route){
+    Route::resource('api/v1/categories', 'CategoriesAPIController', ['except' => ['destroy', 'create', 'edit']]);
+// Route::get('categories/{id}/delete', ['as' => 'categories.delete', 'uses' => 'CategoriesAPIController@destroy']);
 
-Route::resource('api/v1/countries', 'AhmadFatoni\ApiGenerator\Controllers\API\CountriesapiController', ['except' => ['destroy', 'create', 'edit']]);
-// Route::get('api/v1/countries/{id}/delete', ['as' => 'api/v1/countries.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\CountriesapiController@destroy']);
+    Route::get('products', ['as' => 'products.index', 'uses' => 'ProductsApiController@index']);
+    Route::get('products/{id}', ['as' => 'products.show', 'uses' => 'ProductsApiController@show']);
 
-Route::resource('api/v1/currencies', 'AhmadFatoni\ApiGenerator\Controllers\API\CurrenciesapiController', ['except' => ['destroy', 'create', 'edit']]);
-// Route::get('api/v1/currencies/{id}/delete', ['as' => 'api/v1/currencies.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\CurrenciesapiController@destroy']);
+// Route::get('products/{id}/delete', ['as' => 'products.delete', 'uses' => 'ProductsApiController@destroy']);
 
-Route::resource('api/v1/measures', 'AhmadFatoni\ApiGenerator\Controllers\API\MeasuresapiController', ['except' => ['destroy', 'create', 'edit']]);
-// Route::get('api/v1/measures/{id}/delete', ['as' => 'api/v1/measures.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\MeasuresapiController@destroy']);
+    Route::resource('countries', 'CountriesapiController', ['except' => ['destroy', 'create', 'edit']]);
+    Route::resource('currencies', 'CurrenciesapiController', ['except' => ['destroy', 'create', 'edit']]);
+    Route::resource('measures', 'MeasuresapiController', ['except' => ['destroy', 'create', 'edit']]);
+// Route::get('measures/{id}/delete', ['as' => 'measures.delete', 'uses' => 'MeasuresapiController@destroy']);
 
-Route::resource('api/v1/terms', 'AhmadFatoni\ApiGenerator\Controllers\API\TermsapiController', ['except' => ['destroy', 'create', 'edit']]);
-// Route::get('api/v1/terms/{id}/delete', ['as' => 'api/v1/terms.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\TermsapiController@destroy']);
+    Route::resource('terms', 'TermsapiController', ['except' => ['destroy', 'create', 'edit']]);
+// Route::get('terms/{id}/delete', ['as' => 'terms.delete', 'uses' => 'TermsapiController@destroy']);
 
-Route::resource('api/v1/messages', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController', ['except' => ['destroy', 'create', 'edit']])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::get('api/v1/messages/chatroom/{id}', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@enterChatroom')->where('id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::get('api/v1/messages/chatroom/{id}/load-more', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@loadMore')->where('id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::post('api/v1/messages/{chatroom_id}', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@sendMessage')->where('chatroom_id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::post('api/v1/messages/initialize-chatting/{seller_id}', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@initializeChatting')->where('seller_id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-// Route::get('api/v1/messages/{id}/delete', ['as' => 'api/v1/messages.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@destroy']);
 
-Route::get('api/v1/notifications', 'AhmadFatoni\ApiGenerator\Controllers\API\NotificationsApiController@index')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::post('api/v1/notifications/{id}/read', 'AhmadFatoni\ApiGenerator\Controllers\API\NotificationsApiController@markAsRead')->where('id', '^(?=.*[a-z])(?=.*[\-])(?=.*\d)[a-z\d\-]{36,}$')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 
-Route::get('api/v1/transactions', 'AhmadFatoni\ApiGenerator\Controllers\API\TransactionsApiController@index')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
-Route::get('api/v1/my-balance', 'AhmadFatoni\ApiGenerator\Controllers\API\TransactionsApiController@myBalance')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+    Route::middleware(['\Tymon\JWTAuth\Middleware\GetUserFromToken'])->group(function () {
+        Route::post('products', ['as' => 'products.store', 'uses' => 'ProductsApiController@store']);
+        Route::post('products/{id}', ['as' => 'products.complete.step2', 'uses' => 'ProductsApiController@update'])->where('id', '[0-9]+');
+        Route::delete('products/{id}/image-delete/{image_id}', ['as' => 'products.images.delete', 'uses' => 'ProductsApiController@imageDelete'])->where(['id' => '[0-9]+', 'image_id' => '[0-9]+']);
+        Route::post('products/{id}/publish', ['as' => 'products.publish', 'uses' => 'ProductsApiController@publish'])->where('id', '[0-9]+');
+        Route::get('my-products/', ['as' => 'products.my_products', 'uses' => 'ProductsApiController@myProducts']);
+        Route::delete('my-products/{id}', ['as' => 'products.my_products.delete', 'uses' => 'ProductsApiController@delete'])->where('id', '[0-9]+');
+        Route::resource('messages', 'MessagesapiController', ['except' => ['destroy', 'create', 'edit']]);
+        Route::get('messages/chatroom/{id}', 'MessagesapiController@enterChatroom')->where('id', '[0-9]+');
+        Route::get('messages/chatroom/{id}/load-more', 'MessagesapiController@loadMore')->where('id', '[0-9]+');
+        Route::post('messages/{chatroom_id}', 'MessagesapiController@sendMessage')->where('chatroom_id', '[0-9]+');
+        Route::post('messages/initialize-chatting/{seller_id}', 'MessagesapiController@initializeChatting')->where('seller_id', '[0-9]+');
+
+        //Balance
+//        Route::post('balance_online','BalanceController@createOnline');
+//        Route::post('balance_bank_transfer','BalanceController@createBankTransfer');
+
+        Route::get('notifications', 'NotificationsApiController@index');
+        Route::post('notifications/{id}/read', 'NotificationsApiController@markAsRead')->where('id', '^(?=.*[a-z])(?=.*[\-])(?=.*\d)[a-z\d\-]{36,}$');
+
+        Route::get('transactions', 'TransactionsApiController@index');
+        Route::get('my-balance', 'TransactionsApiController@myBalance');
+
+    });
+});
+
