@@ -36,4 +36,5 @@ Route::post('api/v1/messages/{chatroom_id}', 'AhmadFatoni\ApiGenerator\Controlle
 Route::post('api/v1/messages/initialize-chatting/{seller_id}', 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@initializeChatting')->where('seller_id', '[0-9]+')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 // Route::get('api/v1/messages/{id}/delete', ['as' => 'api/v1/messages.delete', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\API\MessagesapiController@destroy']);
 
-Route::resource('api/v1/notifications', 'AhmadFatoni\ApiGenerator\Controllers\API\NotificationsApiController', ['except' => ['destroy', 'create', 'edit']])->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+Route::get('api/v1/notifications', 'AhmadFatoni\ApiGenerator\Controllers\API\NotificationsApiController@index')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+Route::post('api/v1/notifications/{id}/read', 'AhmadFatoni\ApiGenerator\Controllers\API\NotificationsApiController@markAsRead')->where('id', '^(?=.*[a-z])(?=.*[\-])(?=.*\d)[a-z\d\-]{36,}$')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');

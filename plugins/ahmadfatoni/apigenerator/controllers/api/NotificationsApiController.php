@@ -1,21 +1,13 @@
 <?php namespace AhmadFatoni\ApiGenerator\Controllers\API;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Cms\Classes\Controller;
 use Illuminate\Support\Facades\Validator;
 
-// use RainLab\Notify\Models\Notification;
 
 class NotificationsApiController extends Controller
 {
-    // protected $Notification;
-
-    // public function __construct(Notification $Notification)
-    // {
-    //     parent::__construct();
-    //     // $this->Notification    = $Notification;
-    // }
-
     public function index(Request $request) {
         if (!$user = \JWTAuth::parseToken()->authenticate()) {
             return response()->json('Unauthorized', 401);
@@ -40,5 +32,37 @@ class NotificationsApiController extends Controller
 
 
         return response()->json(['data' => $notifications], 200);
+    }
+
+    /**
+     * Read the notification
+     */
+    public function markAsRead($id)
+    {
+        if (!$user = \JWTAuth::parseToken()->authenticate()) {
+            return response()->json('Unauthorized', 401);
+        }
+
+        $notification = $user->notifications()
+            ->applyUnread()
+            ->find($id);
+        if(!$notification) {
+            return response()->json("Not found resource with id=$id", 404);
+        }
+
+        try {
+            $notification->update(['read_at' => Carbon::now()]);
+        } catch (\Throwable $th) {
+            return response()->json('Something went wrong', 500);
+        }
+
+        return response()->json([
+            'message' => 'Notification is successfully read',
+            'notification' => [
+                'id' => $notification->id,
+                'read_at' => $notification->read_at,
+                'redirect_to_screen' => $notification->redirect_to_screen_for_api
+            ],
+        ], 300);
     }
 }
