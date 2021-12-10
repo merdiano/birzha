@@ -415,9 +415,9 @@ class ProductsAPIController extends Controller
     public static function getAfterFilters() {return [];}
     public static function getBeforeFilters() {return [];}
     public static function getMiddleware() {return [];}
-    public function callAction($method, $parameters=false) {
-        return call_user_func_array(array($this, $method), $parameters);
-    }
+    // public function callAction($method, $parameters=false) {
+    //     return call_user_func_array(array($this, $method), $parameters);
+    // }
 
     protected function validateForm($data, $rules) {
 
