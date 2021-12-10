@@ -4,7 +4,6 @@ Route::post('fatoni/generate/api', array('as' => 'fatoni.generate.api', 'uses' =
 Route::post('fatoni/update/api/{id}', array('as' => 'fatoni.update.api', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\ApiGeneratorController@updateApi'));
 Route::get('fatoni/delete/api/{id}', array('as' => 'fatoni.delete.api', 'uses' => 'AhmadFatoni\ApiGenerator\Controllers\ApiGeneratorController@deleteApi'));
 
-
 Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Controllers\API'],function ($route){
     Route::resource('categories', 'CategoriesAPIController', ['except' => ['destroy', 'create', 'edit']]);
 // Route::get('categories/{id}/delete', ['as' => 'categories.delete', 'uses' => 'CategoriesAPIController@destroy']);
