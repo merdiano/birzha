@@ -38,3 +38,6 @@ Route::post('api/v1/messages/initialize-chatting/{seller_id}', 'AhmadFatoni\ApiG
 
 Route::get('api/v1/notifications', 'AhmadFatoni\ApiGenerator\Controllers\API\NotificationsApiController@index')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 Route::post('api/v1/notifications/{id}/read', 'AhmadFatoni\ApiGenerator\Controllers\API\NotificationsApiController@markAsRead')->where('id', '^(?=.*[a-z])(?=.*[\-])(?=.*\d)[a-z\d\-]{36,}$')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+
+Route::get('api/v1/transactions', 'AhmadFatoni\ApiGenerator\Controllers\API\TransactionsApiController@index')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
+Route::get('api/v1/my-balance', 'AhmadFatoni\ApiGenerator\Controllers\API\TransactionsApiController@myBalance')->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
