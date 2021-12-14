@@ -3515,6 +3515,7 @@ li {
     height: 20px;
     display: none;
     z-index: 2;
+    background-color: transparent;
 }
 
 .delete:hover {
@@ -3568,6 +3569,7 @@ li {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-break: break-word;
 }
 
 .person_message {

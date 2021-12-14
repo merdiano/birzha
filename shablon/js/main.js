@@ -260,14 +260,23 @@ if (phone_box != undefined) {
     })
 }
 
-if (delete_btn != undefined) {
-    delete_btn.forEach(x => {
-        x.addEventListener('click', function () {
-            sleep(2).then(() => {
-                delete_modal.classList.add('active');
-            });
-        });
-    })
+// if (delete_btn != undefined) {
+//     delete_btn.forEach(x => {
+//         x.addEventListener('click', function (event) {
+//             event.stopPropagation()
+//             sleep(2).then(() => {
+//                 delete_modal.classList.add('active');
+//             });
+//         });
+//     })
+// }
+
+function deleteChat(chatroomId) {
+
+    sleep(2).then(() => {
+        delete_modal.classList.add('active');
+        $('#delete-modal input[name="chatroom_id"]').val(chatroomId)
+    });
 }
 
 if (iti__country != undefined) {

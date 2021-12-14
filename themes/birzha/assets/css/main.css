@@ -3502,6 +3502,53 @@ li {
     background: #c9c9c9;
 }
 
+.person:hover .person_message {
+    width: calc(100% - 50px);
+}
+
+.delete {
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    display: none;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.delete:hover {
+    animation: trash .5s linear infinite;
+}
+
+@keyframes trash {
+    0% {
+        transform: rotate(-7deg);
+    }
+
+    50% {
+        transform: rotate(7deg);
+    }
+
+    100% {
+        transform: rotate(-7deg);
+    }
+}
+
+.delete img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
+    pointer-events: none;
+}
+
+.person:hover .delete {
+    display: block;
+}
+
+
 .person:last-child {
     border-bottom: none;
 }
@@ -3516,6 +3563,13 @@ li {
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 10px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
 }
 
 .person_message {
@@ -3748,6 +3802,81 @@ li {
 
 
 /* Chat end ======================================= */
+
+/* Modal ================================ */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+
+    display: none;
+    z-index: 20;
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal_inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: calc(100% - 80px);
+    max-width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.modal_title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--blue);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.modal_btn-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 -10px;
+}
+
+.modal_btn-box button {
+    width: calc(50% - 34px);
+    margin: 0 10px;
+    border: 1px solid #eeee;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 7px;
+    transition: all .1s linear;
+}
+
+.reset-form:hover {
+    background: rgba(255, 0, 0, 0.795);
+    color: #fff;
+}
+
+.accept-form:hover {
+    background: #003097c0;
+    color: #fff;
+}
+
+
+
+
+/* Modal end ================================ */
 
 
 /* Message ======================================= */
@@ -4796,7 +4925,6 @@ li {
     }
 }
 
-
 @media(max-width: 1000px) {
     :root {
         --item-width: calc(50% - 40px)
@@ -5824,6 +5952,19 @@ li {
     .add_post_box-item {
         width: calc(50% - 10px);
     }
+
+    /* Modal ========================= */
+    .person_message {
+        width: calc(100% - 40px);
+    }
+
+    .delete {
+        bottom: 10px;
+        right: 16px;
+        width: 16px;
+        height: 16px;
+    }
+
 }
 
 @media(max-width: 600px) {
@@ -6486,6 +6627,15 @@ li {
         -webkit-line-clamp: unset;
         overflow: unset;
         height: unset;
+    }
+
+    /* Modal ============================ */
+    .modal_title {
+        font-size: 18px;
+    }
+
+    .modal_btn-box button {
+        width: calc(50% - 15px);
     }
 
 }

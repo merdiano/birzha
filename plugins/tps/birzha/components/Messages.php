@@ -122,4 +122,26 @@ class Messages extends ComponentBase
             'latest_message_area' => $this->renderPartial('@latest_message')
         ];
     }
+
+    public function onDeleteChat()
+    {
+        $chatRoomId = Input::get('chatroom_id');
+
+        $chatroom = Chatroom::with(['messages', 'users'])->find($chatRoomId);
+        if($chatroom) {
+            \DB::beginTransaction();
+
+            try {
+                $chatroom->messages()->delete();
+                $chatroom->users()->detach();
+                $chatroom->delete();
+            } catch (\Throwable $th) {
+                return \Redirect::to('/error');
+            }
+
+            \DB::commit();
+        }
+
+        return \Redirect::back();
+    }
 }
