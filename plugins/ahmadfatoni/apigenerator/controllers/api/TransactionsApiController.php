@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Cms\Classes\Controller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use October\Rain\Support\Facades\Event;
 use TPS\Birzha\Models\Payment;
@@ -36,7 +37,7 @@ class TransactionsApiController extends KabinetAPIController
     public function updateBalance(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'type' => 'required',
+            'type' => 'required|in:bank,online',
             'amount' => 'required_if:type,online|numeric|gt:0',
             'bank_file' => 'required_if:type,bank|mimes:pdf,jpg,png',
         ]);
@@ -58,8 +59,12 @@ class TransactionsApiController extends KabinetAPIController
             if($payment->save()){
                 $url = url('bank_result', ['payment_id' => $payment->id]);
 
+                Log::info($url);
+
                 try {
                     $response = PaymentAPI::registerOrder($payment,$url);
+
+                    Log::info($response);
 
                     $result = json_decode($response->body,true);
 
@@ -82,9 +87,11 @@ class TransactionsApiController extends KabinetAPIController
 
             if($payment->save()){
                 Event::fire('tps.payment.received',$payment);
-                return response()->json(['message' => 'success'], 200);
+                return response()->json(['success' => true], 200);
             }
         }
+
+        return response()->json(['success' => false], 200);
 
     }
 
