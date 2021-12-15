@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Cms\Classes\Controller;
 use Illuminate\Support\Facades\Validator;
+use October\Rain\Support\Facades\Event;
 use TPS\Birzha\Models\Payment;
 use TPS\Birzha\Classes\Payment as PaymentAPI;
 
@@ -36,7 +37,8 @@ class TransactionsApiController extends KabinetAPIController
 
         $validator = Validator::make($request->all(), [
             'type' => 'required',
-            'amount' => 'numeric|gt:0',
+            'amount' => 'required_if:type,online|numeric|gt:0',
+            'bank_file' => 'required_if:type,bank|mimes:pdf,jpg,png',
         ]);
 
         if($validator->fails()) {
@@ -45,16 +47,13 @@ class TransactionsApiController extends KabinetAPIController
 
         $payment = new Payment([
             'status' => 'new',
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
+            'payment_type' => $request->get('type')
         ]);
 
-        if($request->get('type') == 'online'){
+        if($payment->payment_type == 'online'){
 
-            if(! $amount = $request->get('type')) {
-                return response()->json(['message' => 'bad_request'], 400);
-            }
-
-            $payment->amount = $amount;
+            $payment->amount = $request->get('amount');
 
             if($payment->save()){
                 $url = url('bank_result', ['payment_id' => $payment->id]);
@@ -70,20 +69,21 @@ class TransactionsApiController extends KabinetAPIController
                         $payment->save();
 
                         return response()->json(['formUrl' => $result['formUrl']], 200);
-
                     }
 
                 }catch(\Exception $ex){
                     return response()->json(['message' => $ex->getMessage()], 500);
                 }
-
             }
-
         }
-        elseif($request->get('type') == 'bank'){
+        elseif($payment->payment_type == 'bank'){
+            $payment->amount = 0;
+            $payment->bank_file = \Input::file('bank_file');
 
-            //todo
-
+            if($payment->save()){
+                Event::fire('tps.payment.received',$payment);
+                return response()->json(['message' => 'success'], 200);
+            }
         }
 
     }
