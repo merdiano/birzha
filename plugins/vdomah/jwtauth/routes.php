@@ -102,7 +102,7 @@ Route::group(['prefix' => 'api'], function() {
         $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
 
         try {
-            // password_confirmation is required 
+            // password_confirmation is required
             // but not used when signing up like on web-site
             if (!array_key_exists('password_confirmation', $credentials) && array_key_exists('password', $credentials)) {
                 $credentials['password_confirmation'] = $credentials['password'];
@@ -131,15 +131,16 @@ Route::group(['prefix' => 'api'], function() {
     });
 
     Route::get('me', function() {
-        
-        $me = \JWTAuth::parseToken()->authenticate();
-        
+
+        $me = \JWTAuth::parseToken()->authenticate()
+            ->only(['name','surname','email','username','is_activated','phone','company','street_addr','city','mobile']);
+
         return Response::json(compact('me'));
 
     })->middleware('\Tymon\JWTAuth\Middleware\GetUserFromToken');
 
     Route::post('me', function(Request $request) {
-        
+
         $me = \JWTAuth::parseToken()->authenticate();
         if(!$me) {
             return Response::json(['error' => 'Not found'], 404);
@@ -150,8 +151,12 @@ Route::group(['prefix' => 'api'], function() {
         $rules = [
             'email'    => 'required|between:6,191|email',
             'username' => 'required|digits_between:8,20|numeric',
-            'iu_company' => 'max:191',
-            'iu_about' => 'digits:6|numeric',
+            'company' => 'max:191',
+            'phone' => 'numeric',
+            'mobile' => 'numeric',
+            'street_addr' => 'max:191',
+            'city' => 'max:191',
+            'about' => 'digits:6|numeric',
         ];
 
         $validation = \Validator::make($data, $rules,(new UserModel)->messages);
@@ -167,7 +172,7 @@ Route::group(['prefix' => 'api'], function() {
                 'password' => 'required:create|between:8,255|confirmed',
                 'password_confirmation' => 'required_with:password|between:8,255'
             ];
-    
+
             $validation = \Validator::make($data, $rules,(new UserModel)->messages);
             if ($validation->fails()) {
                 return Response::json(['error' => $validation->errors()], 400);
@@ -181,10 +186,10 @@ Route::group(['prefix' => 'api'], function() {
          * Password has changed, reauthenticate the user - send new token
          */
         if (array_key_exists('password', $data) && strlen($data['password'])) {
-            
+
             $credentials['username'] = $me->username;
             $credentials['password'] = $data['password'];
-            
+
             try {
                 // verify the credentials and create a token for the user
                 if (! $token = JWTAuth::attempt($credentials)) {
@@ -194,14 +199,14 @@ Route::group(['prefix' => 'api'], function() {
                 // something went wrong
                 return response()->json(['error' => 'could_not_create_token'], 500);
             }
-    
+
             $userModel = JWTAuth::authenticate($token);
-    
+
             // if user is not activated, he will not get token
             if(!$userModel->is_activated) {
                 return response()->json(['error' => 'Not activated'], 403);
             }
-    
+
             if ($userModel->methodExists('getAuthApiSigninAttributes')) {
                 $user = $userModel->getAuthApiSigninAttributes();
             } else {
