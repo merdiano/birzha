@@ -49,9 +49,8 @@ class PaymentApi extends ComponentBase
 
                 if($payment->save()){
                     Event::fire('tps.payment.received',[$payment]);
+                    $this->balance_message = trans('validation.balance.fill_up_succes');
                 }
-
-                $this->balance_message = trans('validation.balance.fill_up_succes');
 
             } else {
                 $this->balance_message = trans('validation.balance.fill_up_fail');

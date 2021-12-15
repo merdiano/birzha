@@ -9,4 +9,4 @@ Route::namespace('TPS\Birzha\Controllers')->group(function () {
 });
 
 
-// Route::get('payment-result', ['as'=>'paymentReturn','uses'=>'...@checkPayment'] );
+// Route::get('bank_result/{payment_id}', ['as'=>'paymentReturn','uses'=>'...@checkPayment'] );
