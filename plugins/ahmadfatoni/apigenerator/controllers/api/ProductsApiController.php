@@ -12,6 +12,7 @@ use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Term;
 use TPS\Birzha\Models\Measure;
 use TPS\Birzha\Models\Settings;
+use October\Rain\Support\Facades\Event;
 class ProductsAPIController extends Controller
 {
 	protected $Product;
@@ -156,6 +157,7 @@ class ProductsAPIController extends Controller
             'mark' => 'required',
             'manufacturer' => 'required',
             'country' => 'required',
+            'market_type' => 'required|in:in,out',
             
             // if product is being edited - not added 
             'productForEditing' => [
@@ -177,6 +179,12 @@ class ProductsAPIController extends Controller
 
         if(isset($data['productForEditing'])) { // if product is being edited - not added
             $product = $this->Product::find($data['productForEditing']);
+            //approved edilen produkty prodlenie uchin drafta tayinlamak, bagly transacsiasyny goparmak,
+            if($product && $product->status == 'approved' && $product->transaction)
+            {
+               $product->transaction()->update(['description'=>"Lot #{$product->id} {$product->name} harydyn onki publikasia tolegidir.(bu haryt prodlenia uchin taze transaksia doredilyar)"]);
+               $product->transaction = null;
+            }
         } else {
             $product = new $this->Product;
         }
@@ -196,6 +204,7 @@ class ProductsAPIController extends Controller
         $product->mark = $data['mark'];
         $product->manufacturer = $data['manufacturer'];
         $product->country = $data['country'];
+        $product->market_type = $data['market_type'];
 
         $product->vendor_id = \JWTAuth::parseToken()->authenticate()->id;
 
@@ -390,20 +399,23 @@ class ProductsAPIController extends Controller
         }
 
         try {
-            $user = \JWTAuth::parseToken()->authenticate();
+            $balance = \JWTAuth::parseToken()->authenticate()->getBalance();
 
-            if($user->balance - Settings::getValue('fee') < 0) {
+            if($balance - Settings::getValue('fee') < 0) {
                 // ... message about not enough money
                 return $this->helpers->apiArrayResponseBuilder(300, 'redirect', ['message' => 'fill up your balance']);
             } else {
-                $user->balance = $user->balance - Settings::getValue('fee');
-                $user->save();
 
                 //save how much user payed because fee can be changed by admin tomorrow
                 // if post is denied we get back payed fee, not admin's set fee
                 $product->payed_fee_for_publ = Settings::getValue('fee');
                 $product->status = 'new';
-                $product->save();
+
+                if($product->save()) {
+                    Event::fire('tps.product.received',[$product]);
+                } else {
+                    return $this->helpers->apiArrayResponseBuilder(500, 'server error', ['message' => 'Something went wrong']);
+                }
             }
         } catch (\Throwable $th) {
             return $this->helpers->apiArrayResponseBuilder(500, 'server error', ['message' => 'Something went wrong']);
