@@ -49,6 +49,8 @@ let iti__country = document.querySelectorAll('.iti__country');
 let iti__country_list = document.querySelectorAll('.iti__country-list');
 
 
+let delete_btn = document.querySelectorAll('.delete');
+let delete_modal = document.querySelector('#delete-modal');
 
 
 //  Fixed header ====================================
@@ -123,6 +125,12 @@ window.onclick = function (e) {
     if (drop != undefined) {
         if (drop.classList.contains('active') && !e.target.closest('.profile_head')) {
             drop.classList.remove('active');
+        }
+    }
+
+    if (delete_modal != undefined) {
+        if (delete_modal.classList.contains('active')) {
+            delete_modal.classList.remove('active');
         }
     }
 
@@ -250,6 +258,25 @@ if (phone_box != undefined) {
             });
         });
     })
+}
+
+// if (delete_btn != undefined) {
+//     delete_btn.forEach(x => {
+//         x.addEventListener('click', function (event) {
+//             event.stopPropagation()
+//             sleep(2).then(() => {
+//                 delete_modal.classList.add('active');
+//             });
+//         });
+//     })
+// }
+
+function deleteChat(chatroomId) {
+
+    sleep(2).then(() => {
+        delete_modal.classList.add('active');
+        $('#delete-modal input[name="chatroom_id"]').val(chatroomId)
+    });
 }
 
 if (iti__country != undefined) {

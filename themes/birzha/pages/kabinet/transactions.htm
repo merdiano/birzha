@@ -3,6 +3,13 @@ url = "/balans-taryhy"
 layout = "default"
 is_hidden = 0
 ==
+<?php
+function onStart() {
+    $this['transactions'] = \Auth::user()->transactions()->paginate(5);
+}
+?>
+==
+
 <section class="post">
         <div class="auto_container">
             <div class="post_wrap">
@@ -22,7 +29,7 @@ is_hidden = 0
                     </div>
                 </div>
 
-                {% if user.transactions is empty %}
+                {% if transactions is empty %}
                 <div class="my_advert-bg">
                     <div class="chat_wall">
                         <div class="chat_wall_img">
@@ -58,7 +65,7 @@ is_hidden = 0
                             </tr>
                         </thead>
                         <tbody>
-                        {% for transaction in user.transactions%}
+                        {% for transaction in transactions%}
                             <tr>
                                 <td>{{transaction.id}}</td>
                                 <td>{{transaction.created_at|date('H:i - d.m.Y')}}</td>
@@ -80,20 +87,24 @@ is_hidden = 0
 
                 {% endif %}
 
-<!--                <div class="cat_end">-->
-<!--                    <a href="#" class="cat_arrow left">-->
-<!--                        <img src="images/svg/arrow-right.svg" alt="">-->
-<!--                    </a>-->
-<!--                    <form action="#" class="cat_form">-->
-<!--                        <input type="text" placeholder="1">-->
-<!--                    </form>-->
-<!--                    <a href="#" class="cat_arrow ">-->
-<!--                        <img src="images/svg/arrow-right.svg" alt="">-->
-<!--                    </a>-->
-<!--                    <div class="cat_page">-->
-<!--                        15 страниц-->
-<!--                    </div>-->
-<!--                </div>-->
+                {% if transactions.total > transactions.perPage %}
+
+                <div class="cat_end">
+                    <a href="{{ transactions.previousPageUrl|default('#') }}" class="cat_arrow left">
+                        <img src="{{ 'assets/images/svg/arrow-right.svg'|theme }}" alt="">
+                    </a>
+                    <form method="get" class="cat_form">
+                        <input type="text" value="{{transactions.currentPage|default('1')}}" name="page"> 
+                    </form>
+                    <a href="{{ transactions.nextPageUrl|default('#') }}" class="cat_arrow ">
+                        <img src="{{ 'assets/images/svg/arrow-right.svg'|theme }}" alt="">
+                    </a>
+                    <div class="cat_page">
+                        {{ (transactions.total / transactions.perPage)|round(0,'ceil') }} {{ 'page.pages'|_ }}
+                    </div>
+                </div>
+                
+                {% endif %}
             </div>
         </div>
     </section>

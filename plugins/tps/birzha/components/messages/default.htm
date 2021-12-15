@@ -54,6 +54,9 @@
                                 {{chatroom.count_unread_messages}}
                             </div>
                         {% endif %}
+                        <button type="button" class="delete" onclick="event.stopPropagation(); deleteChat({{ chatroom.id }})">
+                            <img src="{{ 'assets/images/svg/trash.svg'|theme }}" alt="delete-icon">
+                        </button>
                     </a>
                     {% endfor %}
                     
@@ -78,6 +81,27 @@
     </div>
 </section>
 <!-- Chat end ======================================================== -->
+
+<!--Delete modal ========================================================= -->
+<div class="modal" id="delete-modal">
+    <div class="modal_inner">
+        <form data-request="onDeleteChat">
+            <h2 class="modal_title">
+                {{ 'auth.messages_modal_question'|_ }}
+            </h2>
+            <input type="hidden" value="" name="chatroom_id">
+            <div class="modal_btn-box">
+                <button class="reset-form" type="reset">
+                    {{ 'auth.modal_no'|_ }}
+                </button>
+                <button class="accept-form" type="submit">
+                    {{ 'auth.modal_yes'|_ }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--Delete modal end ===================================================== -->
 
 {% put scripts %}
     <script>
