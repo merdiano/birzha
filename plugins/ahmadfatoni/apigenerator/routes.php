@@ -45,7 +45,7 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
             ->where('seller_id', '[0-9]+');
 
         //Balance
-//        Route::post('balance_online','BalanceController@createOnline');
+        Route::post('balance_update','TransactionsApiController@updateBalance');
 //        Route::post('balance_bank_transfer','BalanceController@createBankTransfer');
 
         Route::get('notifications', 'NotificationsApiController@index');
