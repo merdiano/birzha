@@ -45,7 +45,7 @@ class PaymentApi extends ComponentBase
                     return Redirect::to('/');
                 }
 
-                $payment->status == 'approved';
+                $payment->status = 'approved';
 
                 if($payment->save()){
                     Event::fire('tps.payment.received',[$payment]);
@@ -53,11 +53,30 @@ class PaymentApi extends ComponentBase
                 }
 
             } else {
-                $this->balance_message = trans('validation.balance.fill_up_fail');
+                // if page bank_result page is refreshed
+                if($payment->status === 'approved') {
+                    return Redirect::to('/');
+                }
+                
+                $payment->status = 'failed';
+
+                if($payment->save()) {
+                    $this->balance_message = trans('validation.balance.fill_up_fail');
+                }
+                
             }
         } else {
 
-            $this->balance_message = trans('validation.balance.fill_up_fail');
+            // if page bank_result page is refreshed
+            if($payment->status === 'approved') {
+                return Redirect::to('/');
+            }
+            
+            $payment->status = 'failed';
+
+            if($payment->save()) {
+                $this->balance_message = trans('validation.balance.fill_up_fail');
+            }
         }
     }
 }
