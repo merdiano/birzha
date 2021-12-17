@@ -46,39 +46,34 @@ class TransactionsApiController extends KabinetAPIController
             return response()->json($validator->errors(), 400);
         }
 
-        $payment = new Payment([
-            'status' => 'new',
-            'user_id' => $this->user->id,
-            'payment_type' => $request->get('type')
-        ]);
+        $payment = $this->createNewPayment(false, $request->all());
 
         if($payment->payment_type == 'online'){
 
             $payment->amount = $request->get('amount');
 
-            if($payment->save()){
-                $url = url('bank_result', ['payment_id' => $payment->id]);
+            $url = url('bank_result', ['payment_id' => $payment->id]);
 
-                Log::info($url);
+            try {
+                $response = PaymentAPI::registerOrder($payment, $url);
 
-                try {
-                    $response = PaymentAPI::registerOrder($payment,$url);
+                $result = json_decode($response->body, true);
 
-                    Log::info($response);
+                if($result['errorCode'] == 0) {
+                    $payment->order_id = $result['orderId'];
 
-                    $result = json_decode($response->body,true);
+                    $payment->save();
 
-                    if($result['errorCode'] == 0) {
-                        $payment->order_id = $result['orderId'];
-
-                        $payment->save();
-
-                        return response()->json(['formUrl' => $result['formUrl']], 200);
-                    }
-
-                }catch(\Exception $ex){
-                    return response()->json(['message' => $ex->getMessage()], 500);
+                    return response()->json(['formUrl' => $result['formUrl']], 200);
+                } else {
+                    return response()->json('bank services are unavailable', 200);
                 }
+
+            } catch(\Throwable $th){
+                $payment->status = 'failed';
+                $payment->save();
+
+                return response()->json(['message' => $th->getMessage()], 500);
             }
         }
         elseif($payment->payment_type == 'bank'){
@@ -87,12 +82,31 @@ class TransactionsApiController extends KabinetAPIController
 
             if($payment->save()){
                 Event::fire('tps.payment.received',$payment);
-                return response()->json(['success' => true], 200);
+                return response()->json('The payment saved. Admin will consider it and approve later', 200);
+            } else {
+                return response()->json('The payment saving failed.', 500);
             }
         }
 
-        return response()->json(['success' => false], 200);
+        return response()->json('The payment saving failed.', 500);
 
+    }
+
+
+    protected function createNewPayment($bank_file, $formData) {
+        $newPayment = new Payment;
+        $newPayment->user_id = $this->user->id;
+        $newPayment->amount = $formData['amount'] ?? 0;
+        $newPayment->payment_type = $formData['type'];
+        $newPayment->save();
+
+        // attach file to payment
+        if($bank_file) {
+            $newPayment->bank_file = $bank_file;
+            $newPayment->save();
+        }
+
+        return $newPayment;
     }
 
 }
