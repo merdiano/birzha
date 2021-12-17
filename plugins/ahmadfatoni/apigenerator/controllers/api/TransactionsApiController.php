@@ -21,7 +21,9 @@ class TransactionsApiController extends KabinetAPIController
             return response()->json($validator->errors(), 400);
         }
 
-        $transactions = $this->user->transactions()->paginate($request->transactions_per_page ? $request->transactions_per_page : 5);
+        $transactions = $this->user->transactions()
+            ->orderBy('id', 'desc')
+            ->paginate($request->transactions_per_page ? $request->transactions_per_page : 5);
 
         return response()->json($transactions, 200);
     }
