@@ -48,7 +48,7 @@ class Payment extends Model
             }
             else{
                 $transaction->amount = $this->amount;
-                $this->payment_type == 'gift' ? $desc = 'sowgat' : '';
+                $this->payment_type == 'gift' ? $desc = 'sowgat' : $desc = '';
                 $transaction->description = "Balansyn doldurulmagy {$desc} {$this->amount} manat";
                 $transaction->save();
             }
