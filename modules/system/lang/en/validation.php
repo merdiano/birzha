@@ -122,6 +122,7 @@ return [
     'low_balance' => 'Fill up your balance',
     'balance' => [
         'fill_up_succes' => 'The balance has been replenished successfully.',
+        'fill_up_succes_but_delayed' => 'Your payment has been registered but not completed. Please, refresh the page.',
         'fill_up_fail' => 'The balance has not been replenished. Try later.',
         'bank_service_unavailable' => 'Unable to connect to bank services. Try later.'
     ],

@@ -11,6 +11,7 @@ use TPS\Birzha\Classes\Payment as CardApi;
 class PaymentApi extends ComponentBase
 {
     public $balance_message;
+    public $orderStatusCode;
 
     public function componentDetails() {
         return [
@@ -38,18 +39,36 @@ class PaymentApi extends ComponentBase
         if($payment && \Input::get('status') === 'success' && \Input::get('orderId') === $payment->order_id) {
             $responce = json_decode(CardApi::getStatus($payment->order_id), true);
 
-            if( $responce['ErrorCode'] == 0 && $responce['OrderStatus'] == 2) {
+            // if( $responce['ErrorCode'] == 0 && $responce['OrderStatus'] == 2) {
+            if( $responce['ErrorCode'] == 0) {
 
                 // if page bank_result page is refreshed
                 if($payment->status === 'approved') {
                     return Redirect::to('/');
                 }
 
-                $payment->status = 'approved';
+                $this->orderStatusCode = $responce['OrderStatus'];
 
-                if($payment->save()){
-                    Event::fire('tps.payment.received',[$payment]);
-                    $this->balance_message = trans('validation.balance.fill_up_succes');
+                switch ($this->orderStatusCode) {
+                    case 2: // OrderStatus 2 OK - the best scenario
+                        $payment->status = 'approved';
+
+                        if($payment->save()){
+                            Event::fire('tps.payment.received',[$payment]);
+                            $this->balance_message = trans('validation.balance.fill_up_succes');                            
+                        }
+                        break;
+                    case 0:
+                        $this->balance_message = trans('validation.balance.fill_up_succes_but_delayed');
+                        break;
+            
+                    default:
+                        $payment->status = 'failed';
+
+                        if($payment->save()) {
+                            $this->balance_message = trans('validation.balance.fill_up_fail');
+                        }
+                        break;
                 }
 
             } else {

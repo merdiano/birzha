@@ -1,4 +1,5 @@
 en:
+  site.refresh: Refresh
   site.name: Turkmenistan state birzha
   site.short_name: ГТСБТ
   auth.login: Enter email or phone number
@@ -148,6 +149,7 @@ en:
   status_denied: Denied
   status_expired: Date expired
 ru:
+  site.refresh: Обновить
   site.name: '«Туркменистан: золотой век»'
   site.short_name: ГТСБТ
   auth.name: Ваша имя
@@ -297,6 +299,7 @@ ru:
   status_denied: Отменено
   status_expired: Срок истек
 tm:
+  site.refresh: Täzelemek
   site.name: Türkmenistanyň Döwlet çig-mal biržasy
   site.short_name: TDÇMB
   auth.name: Adyňyz

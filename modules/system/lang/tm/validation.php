@@ -124,6 +124,7 @@ return [
     'low_balance' => 'Hasabyňyzy doldurmagyňyzy haýyş edýäris',
     'balance' => [
         'fill_up_succes' => 'Balans üstünlikli dolduryldy.',
+        'fill_up_succes_but_delayed' => 'Siziň tölegiňiz hasaba alyndy, ýöne doly tamamlanmady. Sahypany täzelemigi haýyş edýäris.',
         'fill_up_fail' => 'Balans doldurylmady. Soňrak synanyşyp görüň.',
         'bank_service_unavailable' => 'Bank hyzmatlaryna birigip bolmaýar. Soňrak synanyşyp görüň.'
     ],

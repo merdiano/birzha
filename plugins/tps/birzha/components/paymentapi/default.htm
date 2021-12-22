@@ -9,9 +9,15 @@
             </div>
 
             <div class="link">
+                {% if __SELF__.orderStatusCode == 2 %}
                 <a href="{{'index'|page}}" class="home_link">
                     <span>OK</span>
                 </a>
+                {% else %}
+                <a href="#" onclick="location.reload(); return false;" class="home_link">
+                    <span>{{ 'site.refresh'|_ }}</span>
+                </a>
+                {% endif %}
             </div>
         </div>
     </div>
