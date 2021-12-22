@@ -1589,13 +1589,17 @@ li {
 
 .categories {
     display: flex;
-
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     margin: 50px -20px 0;
 }
 
 .cat_item {
-    width: calc(20% - 20px);
-    margin: 0 20px;
+    width: calc(20% - 40px);
+    margin: 15px 20px;
     padding: 40px 20px;
 
     display: flex;
@@ -4479,8 +4483,8 @@ li {
 
     .cat_item {
         padding: 30px 15px;
-        margin: 0 15px;
-        width: calc(20% - 15px);
+        margin: 15px;
+        width: calc(20% - 30px);
     }
 
     .cat_photo {
@@ -4662,12 +4666,12 @@ li {
     .cat_item {
         padding: 30px 10px;
         margin: 20px;
-        width: calc(33.33% - 40px);
+        width: calc(25% - 40px);
     }
 
     .cat_photo {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
     }
 
     .item_photo {
@@ -5512,7 +5516,8 @@ li {
     }
 
     .cat_item {
-        width: calc(50% - 40px);
+        width: calc(33.33% - 20px);
+        margin: 10px;
     }
 
 }
@@ -5606,6 +5611,12 @@ li {
     .fill_balance-text {
         margin: 20px 0 30px;
     }
+
+    .cat_item {
+        width: calc(50% - 20px);
+        margin: 10px;
+    }
+
 
     /* Replenishment History ======================================= */
 
