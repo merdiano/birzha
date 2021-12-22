@@ -222,7 +222,7 @@ class Notification extends Model
 
         } elseif($e instanceof PaymentReviewedEvent) {
 
-            return \Url::to('/balance');
+            return \Url::to('/balans-taryhy');
         }
 
         return \Url::to('/');

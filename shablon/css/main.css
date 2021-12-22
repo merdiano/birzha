@@ -4337,7 +4337,7 @@ li {
     margin-bottom: 30px;
 }
 
-.term_main-text {
+.term_main-info p {
     font-size: 17px;
     font-weight: 400;
     line-height: 1.7;
@@ -5397,7 +5397,7 @@ li {
         margin-bottom: 20px;
     }
 
-    .term_main-text {
+    .term_main-info p {
         font-size: 14px;
         margin-bottom: 10px;
     }

@@ -48,6 +48,8 @@ class Payment extends Model
             }
             else{
                 $transaction->amount = $this->amount;
+                $this->payment_type == 'gift' ? $desc = 'sowgat' : $desc = '';
+                $transaction->description = "Balansyn doldurulmagy {$desc} {$this->amount} manat";
                 $transaction->save();
             }
         }
@@ -63,7 +65,7 @@ class Payment extends Model
     public function beforeValidate()
     {
         if(\App::runningInBackend()) {
-            $this->rules['amount'] = 'required|gt:0';
+            $this->rules['amount'] = 'required|gte:0';
         } else {
             $this->rules['amount'] = 'required';
         }
@@ -114,6 +116,10 @@ class Payment extends Model
         if ($this->payment_type == 'gift') {
             $fields->status->hidden = true;
             $fields->bank_file->hidden = true;
+        }
+
+        if($this->payment_type == 'bank' && $this->status == 'approved') {
+            $fields->status->disabled = true;
         }
 
     }

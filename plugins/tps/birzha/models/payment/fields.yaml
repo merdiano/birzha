@@ -33,6 +33,7 @@ fields:
             new: new
             approved: approved
             declined: declined
+            failed: failed
         span: auto
         type: balloon-selector
         dependsOn: payment_type

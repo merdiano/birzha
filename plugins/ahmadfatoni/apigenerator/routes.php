@@ -21,9 +21,8 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
     Route::resource('terms', 'TermsapiController', ['except' => ['destroy', 'create', 'edit']]);
 // Route::get('terms/{id}/delete', ['as' => 'terms.delete', 'uses' => 'TermsapiController@destroy']);
 
-
-
     Route::middleware(['\Tymon\JWTAuth\Middleware\GetUserFromToken'])->group(function () {
+
         Route::post('products', 'ProductsApiController@store');
         Route::post('products/{id}', 'ProductsApiController@update')
 
@@ -46,7 +45,7 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
             ->where('seller_id', '[0-9]+');
 
         //Balance
-//        Route::post('balance_online','BalanceController@createOnline');
+        Route::post('balance_update','TransactionsApiController@updateBalance');
 //        Route::post('balance_bank_transfer','BalanceController@createBankTransfer');
 
         Route::get('notifications', 'NotificationsApiController@index');

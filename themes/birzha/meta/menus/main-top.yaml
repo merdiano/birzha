@@ -20,17 +20,17 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: 'Söwda şertleri'
+        title: Sorag-jogap
         type: cms-page
         code: ''
         reference: terms
         viewBag:
             locale:
                 en:
-                    title: 'Trade terms'
+                    title: FAQ
                     url: ''
                 ru:
-                    title: 'Условия торгов'
+                    title: 'Часто задаваемые вопросы'
                     url: ''
             isHidden: '0'
             cssClass: ''

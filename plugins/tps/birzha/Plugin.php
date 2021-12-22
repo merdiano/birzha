@@ -76,6 +76,7 @@ class Plugin extends PluginBase
             case 'payed':
             case 'approved' : return '<span class="btn btn-primary btn-xs">'.$value.'</span>';
             case 'new' : return '<span class="btn btn-secondary btn-xs">'.$value.'</span>';
+            case 'failed' : return '<span class="btn btn-warning btn-xs">'.$value.'</span>';
             case 'denied' : return '<span class="btn btn-danger btn-xs bg-s">'.$value.'</span>';
             case 'disabled' : return '<span class="btn btn-outline-danger btn-xs bg-s">'.$value.'</span>';
             default : return $value;

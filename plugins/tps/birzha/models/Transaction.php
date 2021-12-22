@@ -15,7 +15,7 @@ class Transaction extends Model
         'transactable' => []
     ];
 
-    protected $fillable = ['amount','user_id'];
+    protected $fillable = ['amount','user_id', 'description'];
 
     public $belongsTo = [
         'user' => 'RainLab\User\Models\User'
