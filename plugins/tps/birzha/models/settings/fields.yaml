@@ -21,12 +21,22 @@ tabs:
         phone:
             tab: General
             span: left
-            label: Telefon
+            label: Telefon 
+        
+        phone_2:
+            tab: General
+            span: right
+            label: Telefon 2
 
         email:
             tab: General
-            span: right
+            span: left
             label: Email
+            
+        email_2:
+            tab: General
+            span: right
+            label: Email 2
 
         address:
             tab: General
