@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use TPS\Birzha\Classes\SmppTransmitter;
+
 // use October\Rain\Network\Http;
 // use October\Rain\Support\Facades\Http as FacadesHttp;
 // use Http;
@@ -16,6 +18,8 @@ Route::namespace('TPS\Birzha\Controllers')->group(function () {
 // Route::get('bank_result/{payment_id}', ['as'=>'paymentReturn','uses'=>'...@checkPayment'] );
 
 Route::get('check-sms', function() {
+    $transmitter = new SmppTransmitter();
+    $transmitter->sendSms('Hello from transmitter :)', '0773', '+99365611968');
     // $response = \Http::withHeaders([
     //     'Content-Type' => 'application/json'
         
@@ -40,29 +44,29 @@ Route::get('check-sms', function() {
     // dd($client->send());
 
 
-    
 
-    $response = \Http::post('http://217.174.228.218:5019/auth/jwt/create', function($http){
+
+    // $response = \Http::post('http://217.174.228.218:5019/auth/jwt/create', function($http){
 
         // Sets a HTTP header
-        $http->header('Content-Type', 'application/json');
+        // $http->header('Content-Type', 'application/json');
      
         // Use basic authentication
-        $http->auth('birja', 'Birj@1');
+        // $http->auth('birja', 'Birj@1');
      
         // Sends data with the request
         // $http->data('foo', 'bar');
         // $http->data(['key' => 'value', ...]);
      
         // Sets the timeout duration
-        $http->timeout(3600);
+        // $http->timeout(3600);
      
         // Sets a cURL option manually
         // $http->setOption(CURLOPT_SSL_VERIFYHOST, false);
      
-    })->throw()->json();
+    // })->throw()->json();
 
-    $accessToken = $response['access'];
+    // $accessToken = $response['access'];
 
-    dd($accessToken);
+    // dd($accessToken);
 });
