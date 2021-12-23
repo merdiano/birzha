@@ -1112,8 +1112,8 @@ li {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 
-    -webkit-box-shadow: inset 3px 5px 3px 0px rgb(39, 39, 39), ;
-    box-shadow: inset 3px 5px 3px 0px rgb(39, 39, 39);
+    -webkit-box-shadow: inset 0px 5px 3px 0px rgb(39, 39, 39);
+    box-shadow: inset 0px 5px 3px 0px rgb(39, 39, 39);
 }
 
 .nav_wrap-box {
@@ -1414,7 +1414,7 @@ li {
     top: 0;
     left: 0;
     width: calc(100% - 0px);
-    z-index: 10;
+    z-index: 11;
     padding: 15px 0;
     background: #f9f9f9;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -1426,7 +1426,7 @@ li {
 
 .stick-2 {
     position: fixed;
-    top: 50px;
+    top: 55px;
     left: 0;
     width: calc(100% - 0px);
     z-index: 10;
@@ -1574,6 +1574,7 @@ li {
 
 .advert_item {
     width: 100%;
+    width: 380px !important;
     height: 540px;
     /* height: auto; */
     /* max-height: 480px; */
@@ -4368,12 +4369,19 @@ li {
     }
 }
 
-
-
-
-
-
 /* Terms end ======================================= */
+
+/* Import table page ======================================= */
+
+
+
+/* Import table page end ==================================== */
+
+/* Export table page ======================================= */
+
+
+
+/* Export table page end ==================================== */
 
 
 
