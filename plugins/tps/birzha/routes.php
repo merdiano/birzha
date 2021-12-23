@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use TPS\Birzha\Classes\SmppReceiver;
 use TPS\Birzha\Classes\SmppTransmitter;
 
 // use October\Rain\Network\Http;
@@ -16,10 +17,30 @@ Route::namespace('TPS\Birzha\Controllers')->group(function () {
 
 
 // Route::get('bank_result/{payment_id}', ['as'=>'paymentReturn','uses'=>'...@checkPayment'] );
-
-Route::get('check-sms', function() {
-    $transmitter = new SmppTransmitter();
-    $transmitter->sendSms('Hello from transmitter :)', '0773', '+99365611968');
+Route::get('tm/check-sms', function() {
+    // Construct transport and client
+	$transport = new SocketTransport(array('217.174.228.218'),5019);
+	$transport->setRecvTimeout(10000);
+	$smpp = new SmppClient($transport);
+	
+	// Open the connection
+	$transport->open();
+	$smpp->bindTransmitter("birja","Birj@1");
+	
+	// Prepare message
+	$message = 'Hello World €$£';
+	$encodedMessage = GsmEncoder::utf8_to_gsm0338($message);
+	$from = new SmppAddress('MelroseLabs',SMPP::TON_ALPHANUMERIC);
+	$to = new SmppAddress(99365611968,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
+	
+	// Send
+	$messageID = $smpp->sendSMS($from,$to,$encodedMessage,null);
+	
+	// Close connection
+	$smpp->close();
+    dump('sms');
+    // $transmitter = new SmppTransmitter();
+    // $transmitter->sendSms('Hello from transmitter :)', '0773', '+99365611968');
     // $response = \Http::withHeaders([
     //     'Content-Type' => 'application/json'
         
