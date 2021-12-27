@@ -27,6 +27,11 @@ tabs:
             tab: General
             span: right
             label: Telefon 2
+            
+        phone_3:
+            tab: General
+            span: left
+            label: Telefon 3
 
         email:
             tab: General
