@@ -19,7 +19,6 @@ Route::namespace('TPS\Birzha\Controllers')->group(function () {
 Route::get('tm/check-sms', function() {
     
     $S = new \TPS\Birzha\Classes\SMSC_SMPP();
-    dd('ok');
     $S->send_sms("99365611968", "test message");
     if ($S->send_sms("99365611968", "Тестовое сообщение", "sender"))
         echo "Сообщение отправлено";
