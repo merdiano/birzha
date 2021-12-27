@@ -18,7 +18,11 @@ Route::namespace('TPS\Birzha\Controllers')->group(function () {
 // Route::get('bank_result/{payment_id}', ['as'=>'paymentReturn','uses'=>'...@checkPayment'] );
 Route::get('tm/check-sms', function() {
     
-    (new SmsBuilder('217.174.228.218', '5019', 'birja', 'Birj@1', 10000))
-    ->setRecipient('99365611968', \smpp\SMPP::TON_INTERNATIONAL) //msisdn of recipient
-    ->sendMessage('Тестовое сообщение на русском and @noth3r$Ymb0ls');
+    $S = new \TPS\Birzha\Classes\SMSC_SMPP();
+    dd('ok');
+    $S->send_sms("99365611968", "test message");
+    if ($S->send_sms("99365611968", "Тестовое сообщение", "sender"))
+        echo "Сообщение отправлено";
+    else
+        echo "Произошла ошибка";
 });
