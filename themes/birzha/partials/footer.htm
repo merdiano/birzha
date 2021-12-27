@@ -32,7 +32,17 @@ renderFeatures = "footer"
                         </div>
                         <div class="foot_box">
                             <div class="foot_item">
-                                {{ 'footer.tel'|_ }}: {{ phone }}
+                                
+                                <div class="foot_phone-box">
+                                    <h4 class="foot_phone-text">
+                                        {{ 'footer.tel'|_ }}:
+                                    </h4>
+                                    <div>
+                                        <a href="tel:{{ phone }}">{{ phone }}</a>
+                                        <a href="tel:{{ phone_2 }}">{{ phone_2 }}</a>
+                                        <a href="tel:{{ phone_3 }}">{{ phone_3 }}</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="foot_item">
                                 {{ 'footer.email'|_ }}: {{ email }}
