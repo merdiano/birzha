@@ -266,6 +266,153 @@
     <section class="export">
         <div class="auto_container">
             <div class="export_wrap">
+                <div class="table_info-row">
+                    <div class="table_info-group">
+                        <h4 class="table_info-title">
+                            Exchange trades are held from Monday to Friday. Agriculture, industry & communications and
+                            trade complex commodities at 16:00, Saturday at 11:30; Petrochemical commodities from Monday
+                            to Friday at 16:30, Saturday at 12:00;
+                        </h4>
+                    </div>
+
+                    <div class="table_info-group">
+                        <button class="table_download" type="button">
+                            Download excel
+                        </button>
+
+                        <div class="table_filter">
+                            <div class="table_filter-icon">
+                                <svg viewBox="64 64 896 896" data-icon="filter" width="1em" height="1em" fill="#003197"
+                                    aria-hidden="true" focusable="false" class="">
+                                    <path
+                                        d="M880.1 154H143.9c-24.5 0-39.8 26.7-27.5 48L349 597.4V838c0 17.7 14.2 32 31.8 32h262.4c17.6 0 31.8-14.3 31.8-32V597.4L907.7 202c12.2-21.3-3.1-48-27.6-48zM603.4 798H420.6V642h182.9v156zm9.6-236.6l-9.5 16.6h-183l-9.5-16.6L212.7 226h598.6L613 561.4z">
+                                    </path>
+                                </svg>
+                            </div>
+
+                            <div class="table_filter-info">
+                                <h6 class="table_filter-info-title">
+                                    Hide show columns
+                                </h6>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="num">
+                                    <label for="num" class="filter_label">№</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="title">
+                                    <label for="title" class="filter_label">Title</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="category">
+                                    <label for="category" class="filter_label">Category</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="country">
+                                    <label for="country" class="filter_label">Country</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="payment">
+                                    <label for="payment" class="filter_label">Payment</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="send">
+                                    <label for="send" class="filter_label">Send</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="point">
+                                    <label for="point" class="filter_label">Point</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="place">
+                                    <label for="place" class="filter_label">Place</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="broker">
+                                    <label for="broker" class="filter_label">Broker seller</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="amount">
+                                    <label for="amount" class="filter_label">Amount</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="price">
+                                    <label for="price" class="filter_label">Price</label>
+                                </div>
+                                <div class="table_filter-info-check">
+                                    <input type="checkbox" id="total">
+                                    <label for="total" class="filter_label">Total</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="table_box">
+                    <div class="table_box-search w300">
+                        <input type="text" placeholder="Title">
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="browsers" name="browser" id="browser" placeholder="Category">
+                        <datalist id="browsers">
+                            <option value="Petrochemistry production">Petrochemistry production</option>
+                            <option value="Agricultural production">Agricultural production</option>
+                            <option value="Chrome rkierikeirkeirke"></option>
+                            <option value="Engineering products">Engineering products</option>
+                            <option value="Light industry products">Light industry products</option>
+                        </datalist>
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="Units" name="Unit" id="Unit" placeholder="Unit">
+                        <datalist id="Units">
+                            <option value="tn">tn</option>
+                            <option value="item">item</option>
+                            <option value="kg">kg</option>
+                            <option value="sq.m">sq.m</option>
+                            <option value="metr">metr</option>
+                            <option value="cub.m">cub.m</option>
+                        </datalist>
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="currency" placeholder="Currency">
+                        <datalist id="currency">
+                            <option value="Edge"></option>
+                            <option value="Firefox"></option>
+                            <option value="Chrome rkierikeirkeirke"></option>
+                            <option value="Opera"></option>
+                            <option value="Safari"></option>
+                        </datalist>
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="pay" placeholder="Payment">
+                        <datalist id="pay">
+                            <option value="prepayment">prepayment</option>
+                        </datalist>
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="Send" placeholder="Send">
+                        <datalist id="Send">
+                            <option value="EXW">EXW</option>
+                            <option value="FCA">FCA</option>
+                            <option value="FOB">FOB</option>
+                        </datalist>
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="Type" placeholder="Type">
+                        <datalist id="Type">
+                            <option value="Internal">Internal</option>
+                            <option value="External">External</option>
+                        </datalist>
+                    </div>
+                </div>
+
                 <div class="export_table">
                     <table>
                         <colgroup>
@@ -275,171 +422,173 @@
                             <col>
                             <col>
                             <col style="width: 150px; min-width: 150px;">
-                            <col style="width: 50px; min-width: 50px;">
+                            <col style="width: 150px; min-width: 150px;">
                             <col>
                             <col>
                             <col>
                         </colgroup>
                         <thead class="table-thead">
                             <tr>
-                                <th key="id"><span>№</span></th>
-                                <th key="title"><span>Title</span></th>
-                                <th key="category"><span>Category</span></th>
-                                <th key="payment"><span>Payment</span></th>
-                                <th key="send"><span>Send</span></th>
-                                <th key="point"><span>Point</span></th>
-                                <th key="seller"><span>Broker seller</span></th>
-                                <th key="amount"><span>Amount</span></th>
-                                <th key="price"><span>Price</span></th>
-                                <th key="total"><span>Total</span></th>
+                                <th key="id">№</th>
+                                <th key="title">Title</th>
+                                <th key="category">Category</th>
+                                <th key="payment">Payment</th>
+                                <th key="send">Send</th>
+                                <th key="point">Point</th>
+                                <th key="seller">Broker seller</th>
+                                <th key="amount">Amount</th>
+                                <!-- <th key="price">Price</th>
+                                <th key="total">Total</th> -->
                             </tr>
                         </thead>
                         <tbody class="table-tbody">
                             <tr data-row-key="107524">
-                                <td><span>1</span></td>
+                                <td>1</td>
                                 <td>Iodine technical brand "A" (packaging at the
                                     expense of the buyer) ("Turkmenhimiya" SC) (bid.590391)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>Iodine plant "Bereket"</td>
                                 <td>107</td>
-                                <td><span>  40 tn </span></td>
-                                <td><span> 45057  </span></td>
-                                <td><span>1802280 </span></td>
+                                <td> 40 tn </td>
+                                <!-- <td> 45057  </td>
+                                <td>1802280 </td> -->
                             </tr>
                             <tr data-row-key="107525">
-                                <td><span>2</span></td>
-                                <td>Iodized table salt of the first grade grinding №1 (bid.594905) ("Turkmenhimiya" SC)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>2</td>
+                                <td>Iodized table salt of the first grade grinding №1 (bid.594905) ("Turkmenhimiya" SC)
+                                </td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>Guwlyduz factrory</td>
                                 <td>107</td>
-                                <td><span> 20000 tn  </span></td>
-                                <td><span> 258 </span></td>
-                                <td><span> 5160000 </span></td>
+                                <td> 20000 tn </td>
+                                <!-- <td> 258 </td>
+                                <td> 5160000 </td> -->
                             </tr>
                             <tr data-row-key="107526">
-                                <td><span>3</span></td>
+                                <td>3</td>
                                 <td>Food salt, tableted, premium (bid.594907) ("Turkmenhimiya" SC)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>Guwlyduz factrory</td>
                                 <td>107</td>
-                                <td><span> 5000 tn</span></td>
-                                <td><span> 246 </span></td>
-                                <td><span> 1230000 </span></td>
+                                <td> 5000 tn</td>
+                                <!-- <td> 246 </td>
+                                <td> 1230000 </td> -->
                             </tr>
                             <tr data-row-key="107527">
-                                <td><span>4</span></td>
+                                <td>4</td>
                                 <td>Oksigumat ("Turkmenhimiya" SC) (bid. 595622) </td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>Chemical plant named S.A.Niyazov</td>
                                 <td>107</td>
-                                <td><span> 400 tn </span></td>
-                                <td><span> 1143 </span></td>
-                                <td><span> 457200 </span></td>
+                                <td> 400 tn </td>
+                                <!-- <td> 1143 </td>
+                                <td> 457200 </td> -->
                             </tr>
                             <tr data-row-key="107528">
-                                <td><span>5</span></td>
-                                <td>Technical sulfuric acid ("Turkmenhimiya" SC)  (bid. 595623)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>5</td>
+                                <td>Technical sulfuric acid ("Turkmenhimiya" SC) (bid. 595623)</td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>FCA</td>
                                 <td>st.Zerger</td>
                                 <td>107</td>
-                                <td><span> 20000 tn </span></td>
-                                <td><span> 158 </span></td>
-                                <td><span> 3160000 </span></td>
+                                <td> 20000 tn </td>
+                                <!-- <td> 158 </td>
+                                <td> 3160000 </td> -->
                             </tr>
                             <tr data-row-key="107529">
-                                <td><span>6</span></td>
+                                <td>6</td>
                                 <td>Carbon black brand "K-354" ("Turkmenhimiya" SC) (bid. 598566)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>iodine plant "Balkanabat"</td>
                                 <td>107</td>
-                                <td><span> 800 tn </span></td>
-                                <td><span> 2294 </span></td>
-                                <td><span> 1835200 </span></td>
+                                <td> 800 tn </td>
+                                <!-- <td> 2294 </td>
+                                <td> 1835200 </td> -->
                             </tr>
                             <tr data-row-key="107524">
-                                <td><span>7</span></td>
+                                <td>7</td>
                                 <td>Iodine technical brand "A" (packaging at the
                                     expense of the buyer) ("Turkmenhimiya" SC) (bid.590391)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>Iodine plant "Bereket"</td>
                                 <td>107</td>
-                                <td><span>  40 tn </span></td>
-                                <td><span> 45057  </span></td>
-                                <td><span>1802280 </span></td>
+                                <td> 40 tn </td>
+                                <!-- <td> 45057  </td>
+                                <td>1802280 </td> -->
                             </tr>
                             <tr data-row-key="107525">
-                                <td><span>8</span></td>
-                                <td>Iodized table salt of the first grade grinding №1 (bid.594905) ("Turkmenhimiya" SC)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>8</td>
+                                <td>Iodized table salt of the first grade grinding №1 (bid.594905) ("Turkmenhimiya" SC)
+                                </td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>Guwlyduz factrory</td>
                                 <td>107</td>
-                                <td><span> 20000 tn  </span></td>
-                                <td><span> 258 </span></td>
-                                <td><span> 5160000 </span></td>
+                                <td> 20000 tn </td>
+                                <!-- <td> 258 </td>
+                                <td> 5160000 </td> -->
                             </tr>
                             <tr data-row-key="107526">
-                                <td><span>9</span></td>
+                                <td>9</td>
                                 <td>Food salt, tableted, premium (bid.594907) ("Turkmenhimiya" SC)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>Guwlyduz factrory</td>
                                 <td>107</td>
-                                <td><span> 5000 tn</span></td>
-                                <td><span> 246 </span></td>
-                                <td><span> 1230000 </span></td>
+                                <td> 5000 tn</td>
+                                <!-- <td> 246 </td>
+                                <td> 1230000 </td> -->
                             </tr>
                             <tr data-row-key="107527">
-                                <td><span>10</span></td>
+                                <td>10</td>
                                 <td>Oksigumat ("Turkmenhimiya" SC) (bid. 595622) </td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>Chemical plant named S.A.Niyazov</td>
                                 <td>107</td>
-                                <td><span> 400 tn </span></td>
-                                <td><span> 1143 </span></td>
-                                <td><span> 457200 </span></td>
+                                <td> 400 tn </td>
+                                <!-- <td> 1143 </td>
+                                <td> 457200 </td> -->
                             </tr>
                             <tr data-row-key="107528">
-                                <td><span>11</span></td>
-                                <td>Technical sulfuric acid ("Turkmenhimiya" SC)  (bid. 595623)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>11</td>
+                                <td>Technical sulfuric acid ("Turkmenhimiya" SC) (bid. 595623)</td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>FCA</td>
                                 <td>st.Zerger</td>
                                 <td>107</td>
-                                <td><span> 20000 tn </span></td>
-                                <td><span> 158 </span></td>
-                                <td><span> 3160000 </span></td>
+                                <td> 20000 tn </td>
+                                <!-- <td> 158 </td>
+                                <td> 3160000 </td> -->
                             </tr>
                             <tr data-row-key="107529">
-                                <td><span>12</span></td>
+                                <td>12</td>
                                 <td>Carbon black brand "K-354" ("Turkmenhimiya" SC) (bid. 598566)</td>
-                                <td><span>Petrochemistry production</span></td>
+                                <td>Petrochemistry production</td>
                                 <td>prepayment</td>
                                 <td>EXW</td>
                                 <td>iodine plant "Balkanabat"</td>
                                 <td>107</td>
-                                <td><span> 800 tn </span></td>
-                                <td><span> 2294 </span></td>
-                                <td><span> 1835200 </span></td>
+                                <td> 800 tn </td>
+                                <!-- <td> 2294 </td>
+                                <td> 1835200 </td> -->
                             </tr>
                         </tbody>
                     </table>
@@ -454,15 +603,6 @@
         <div class="auto_container">
             <div class="footer_wrap">
                 <div class="footer_content">
-                    <a href="index.html" class="foot_logo">
-                        <div class="footer_img">
-                            <img src="images/register_logo.png" alt="logo">
-                        </div>
-                        <div class="foot_logo_text">
-                            Государственная товарно-сырьевая <br>
-                            биржа Туркменистана
-                        </div>
-                    </a>
                     <div class="foot_outer">
                         <div class="foot_col">
                             <div class="foot_title">
@@ -483,6 +623,24 @@
                                 </a>
                             </div>
                         </div>
+
+                        <div class="foot_col">
+                            <div class="foot_box mt20">
+                                <a href="#" class="foot_item">
+                                    Нефтехимия
+                                </a>
+                                <a href="#" class="foot_item">
+                                    Машиностроение
+                                </a>
+                                <a href="#" class="foot_item">
+                                    Легкая промышленность
+                                </a>
+                                <a href="#" class="foot_item">
+                                    Стройматериалы
+                                </a>
+                            </div>
+                        </div>
+
                         <div class="foot_col">
                             <div class="foot_title">
                                 Контакты
