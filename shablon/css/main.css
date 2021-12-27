@@ -2103,6 +2103,26 @@ li {
     line-height: 1.4;
 }
 
+.foot_phone-box {
+    display: flex;
+    align-items: flex-start;
+}
+
+.foot_phone-box a {
+    font-size: var(--text-16);
+    font-weight: 400;
+    line-height: 1.4;
+    display: block;
+    color: #fff;
+}
+
+.foot_phone-text {
+    font-size: var(--text-16);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-right: 10px;
+}
+
 .copyright {
     color: #fff;
     font-size: var(--text-16);
