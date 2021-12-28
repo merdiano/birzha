@@ -1,6 +1,26 @@
-
-{% for category in categories %}
-<a href="{{ 'category'|page({ slug: category.slug }) }}" class="foot_item">
-    {{ category.name }}
-</a>
-{% endfor %}
+<!-- loop.index -->
+<div class="foot_col">
+    <div class="foot_title">
+        {{ 'footer.categories'|_ }}
+    </div>
+    <div class="foot_box">
+        {% for category in categories %}
+        {% if loop.index < 6 %}
+        <a href="{{ 'category'|page({ slug: category.slug }) }}" class="foot_item">
+            {{ category.name }}
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="foot_col">
+    <div class="foot_box mt20">
+        {% for category in categories %}
+        {% if loop.index > 5 %}
+        <a href="{{ 'category'|page({ slug: category.slug }) }}" class="foot_item">
+            {{ category.name }}
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
