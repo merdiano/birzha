@@ -52,6 +52,10 @@ let iti__country_list = document.querySelectorAll('.iti__country-list');
 let delete_btn = document.querySelectorAll('.delete');
 let delete_modal = document.querySelector('#delete-modal');
 
+let table_filter_icon = document.querySelector('.table_filter-icon');
+let table_filter_info = document.querySelector('.table_filter-info');
+
+
 
 //  Fixed header ====================================
 
@@ -189,6 +193,12 @@ window.onclick = function (e) {
         }
     }
 
+    if (table_filter_info != undefined) {
+        if (table_filter_info.classList.contains('active') && !e.target.closest('.table_filter-info')  && !e.target.closest('.table_filter-icon')) {
+            table_filter_info.classList.remove('active');
+        }
+    }
+
     if (seller_info != undefined) {
         if (seller_info.classList.contains('active') && !e.target.closest('.seller_inner')) {
             seller_info.classList.remove('active');
@@ -300,6 +310,13 @@ if (notification_header != undefined) {
     });
 }
 
+if (table_filter_icon != undefined) {
+    table_filter_icon.addEventListener('click', function () {
+        sleep(2).then(() => {
+            table_filter_info.classList.toggle('active');
+        });
+    });
+}
 
 if (mobile_user_profile != undefined) {
     mobile_user_profile.addEventListener('click', function () {

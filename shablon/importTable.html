@@ -118,11 +118,438 @@
     </header>
     <!--Header  end ========================================================= -->
 
+    <!--Navs  ============================================================= -->
+    <nav class="navs" id="nav">
+        <div class="auto_container">
+            <div class="navs_wrap">
+                <div class="burger">
+                    <img src="images/svg/menu.svg" alt="">
+                </div>
+                <div class="links_bg">
+                    <div class="links">
+                        <a href="category.html" class="nav_link">Категории</a>
+                        <a href="product.html" class="nav_link">Условия торгов</a>
+                        <a href="contact.html" class="nav_link">Обратная связь</a>
+
+                        <div class="mobile_register">
+                            <div class="register_btn">
+                                <div class="btn_icon">
+                                    <img src="images/svg/user-plus-white.svg" alt="">
+                                </div>
+                                <div class="btn_text">
+                                    Регистрация
+                                </div>
+                            </div>
+                            <div class="log_in">
+                                <div class="btn_icon">
+                                    <img src="images/svg/log-in-white.svg" alt="">
+                                </div>
+                                <div class="btn_text">
+                                    Войти
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mobile_profile">
+                            <div class="profile_bio">
+                                <div class="profile_head">
+                                    <div class="profile_icon">
+                                        <img src="images/svg/user-plus.svg" alt="">
+                                    </div>
+                                    <div class="profile_text">
+                                        Аман Аманов
+                                    </div>
+                                    <div class="prodile_arrow">
+                                        <img src="images/svg/arrow-down.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="profile_drop">
+                                    <a href="personal_data.html" class="profile_item">
+                                        <div class="profile_icon">
+                                            <img src="images/svg/user-plus.svg" alt="">
+                                        </div>
+                                        <div class="profile_text">
+                                            Персональные данные
+                                        </div>
+                                    </a>
+
+                                    <a href="my_post.html" class="profile_item">
+                                        <div class="profile_icon">
+                                            <img src="images/svg/clipboard.svg" alt="">
+                                        </div>
+                                        <div class="profile_text">
+                                            Мои объявления
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="profile_item">
+                                        <div class="profile_icon">
+                                            <img src="images/svg/inbox.svg" alt="">
+                                        </div>
+                                        <div class="profile_text">
+                                            Сообщения
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="profile_item">
+                                        <div class="profile_icon">
+                                            <img src="images/svg/log-out.svg" alt="">
+                                        </div>
+                                        <div class="profile_text">
+                                            Выйти
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                            <a href="add_post.html" class="add_post_btn">
+                                <div class="post_icon">
+                                    <img src="images/svg/add.svg" alt="">
+                                </div>
+                                <div class="post_text">
+                                    Добавить объявление
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="languages">
+                    <a href="#" class="lang_item">eng</a>
+                    <a href="#" class="lang_item active">рус</a>
+                    <a href="#" class="lang_item">tkm</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Navs  end ========================================================= -->
+
     <!-- Import section ==================================================== -->
     <section class="import">
         <div class="auto_container">
-            <div class="import_wrap">
+            <div class="export_wrap">
+                <div class="table_info-row">
+                    <div class="table_info-group">
+                        <h4 class="table_info-title">
+                            Imports
+                        </h4>
+                    </div>
 
+                    <div class="table_info-group">
+                        <button class="table_download" type="button">
+                            Download excel
+                        </button>
+
+                        <div class="table_box-search">
+                            <input list="currency" placeholder="Price in November 2021">
+                            <datalist id="currency">
+                                <option value="September 2021"></option>
+                                <option value="November 2021"></option>
+                                <option value="December 2021"></option>
+                                <option value="January 2022"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table_box">
+                    <div class="table_box-search w300">
+                        <input type="text" placeholder="Title">
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="browsers" name="browser" id="browser" placeholder="Category">
+                        <datalist id="browsers">
+                            <option value="Petrochemistry production">Petrochemistry production</option>
+                            <option value="Agricultural production">Agricultural production</option>
+                            <option value="Chrome rkierikeirkeirke"></option>
+                            <option value="Engineering products">Engineering products</option>
+                            <option value="Light industry products">Light industry products</option>
+                        </datalist>
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="Units" name="Unit" id="Unit" placeholder="Unit">
+                        <datalist id="Units">
+                            <option value="tn">tn</option>
+                            <option value="item">item</option>
+                            <option value="kg">kg</option>
+                            <option value="sq.m">sq.m</option>
+                            <option value="metr">metr</option>
+                            <option value="cub.m">cub.m</option>
+                        </datalist>
+                    </div>
+
+                    <div class="table_box-search">
+                        <input list="currency" placeholder="Currency">
+                        <datalist id="currency">
+                            <option value="Edge"></option>
+                            <option value="Firefox"></option>
+                            <option value="Chrome rkierikeirkeirke"></option>
+                            <option value="Opera"></option>
+                            <option value="Safari"></option>
+                        </datalist>
+                    </div>
+                </div>
+
+                <div class="export_table">
+                    <table class="">
+                        <colgroup>
+                            <col style="width: 40px; min-width: 40px;">
+                            <col>
+                            <col style="width: 50%; min-width: 50%;">
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                        </colgroup>
+                        <thead class="ant-table-thead">
+                            <tr>
+                                <th key="checkbox" class="ant-table-align-right ant-table-row-cell-break-word"
+                                    style="text-align: right;"><span class="ant-table-header-column">
+                                        <div><span class="ant-table-column-title"></span><span
+                                                class="ant-table-column-sorter"></span></div>
+                                    </span></th>
+                                <th key="id" class="ant-table-align-center" style="text-align: center;"><span
+                                        class="ant-table-header-column">
+                                        <div><span class="ant-table-column-title">№</span><span
+                                                class="ant-table-column-sorter"></span></div>
+                                    </span></th>
+                                <th key="title" class="ant-table-row-cell-break-word"><span
+                                        class="ant-table-header-column">
+                                        <div><span class="ant-table-column-title">Title</span><span
+                                                class="ant-table-column-sorter"></span></div>
+                                    </span></th>
+                                <th key="country" class=""><span class="ant-table-header-column">
+                                        <div><span class="ant-table-column-title">Country</span><span
+                                                class="ant-table-column-sorter"></span></div>
+                                    </span></th>
+                                <th key="unit" class="ant-table-align-center" style="text-align: center;"><span
+                                        class="ant-table-header-column">
+                                        <div><span class="ant-table-column-title">Unit</span><span
+                                                class="ant-table-column-sorter"></span></div>
+                                    </span></th>
+                                <th key="price" class="ant-table-align-right" style="text-align: right;"><span
+                                        class="ant-table-header-column">
+                                        <div><span class="ant-table-column-title">Price</span><span
+                                                class="ant-table-column-sorter"></span></div>
+                                    </span></th>
+                                <th key="currency" class=""><span class="ant-table-header-column">
+                                        <div><span class="ant-table-column-title">Currency</span><span
+                                                class="ant-table-column-sorter"></span></div>
+                                    </span></th>
+                                <th key="registered_at" class="ant-table-row-cell-last"><span
+                                        class="ant-table-header-column">
+                                        <div><span class="ant-table-column-title">Registered date</span><span
+                                                class="ant-table-column-sorter"></span></div>
+                                    </span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="ant-table-tbody">
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153187">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">1</span></td>
+                                <td class="ant-table-row-cell-break-word">КГ 530х426х324х244,5х139,7; 21х21х35х70
+                                    Головка НКТ 140-70(НКТ 89, 73); ФА 78х52-70 (dwg No.: XTSD201109-0104 REV.01) PU;
+                                    EE-1,5; PSL3G; PR-2 в т.ч. включается:</td>
+                                <td class="">Китай</td>
+                                <td class="" style="text-align: center;">компл</td>
+                                <td class="" style="text-align: right;">65206.73</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153188">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">2</span></td>
+                                <td class="ant-table-row-cell-break-word">“HAKSAN MAKINA” RST-M 1270X86 Цилиндрический
+                                    станок с мотором / “HAKSAN MAKINA” RST-M 1270X86 Мotorly silindrik stanok</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">2562</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153189">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">3</span></td>
+                                <td class="ant-table-row-cell-break-word">“MONOTIG 220 ip AC/DC” Однофазный переносной
+                                    сварочный аппарат / “MONOTIG 220 ip AC/DC” Bir fazaly elde daşalýan kebşirleýji
+                                    enjam</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">3200</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153190">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">4</span></td>
+                                <td class="ant-table-row-cell-break-word">“HAKSAN MAKINA” HPK 60 Станок для выбигания
+                                    трубы под профиль / “HAKSAN MAKINA” HPK 60 Тurbany profil görnüşde bükme stanogy
+                                </td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">10738</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153191">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">5</span></td>
+                                <td class="ant-table-row-cell-break-word">“HAKSAN MAKINA” КME DG 350 Станок для резки
+                                    металла электронный под градус/ “HAKSAN MAKINA” КME DG 350 elektroniki derejeli
+                                    demir kesme stanogy</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">13090</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153192">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">6</span></td>
+                                <td class="ant-table-row-cell-break-word">“HAKSAN MAKINA” 60 тонный механический
+                                    эксентрический пресс, модель HKM-60 / “HAKSAN MAKINA” 60 tonnalyk mehaniki
+                                    eksentrikli pres, modeli HMK-60</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">14295</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153193">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">7</span></td>
+                                <td class="ant-table-row-cell-break-word">“YIGITSAN” Howa kompressory YHD-2000, 2000
+                                    litr, 11 Bar.</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">21700</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153194">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">8</span></td>
+                                <td class="ant-table-row-cell-break-word">“G-WEIKE Tech. Co. LTD” Лазерный сварочный
+                                    аппарат LW1500H 1500W IPG / “G-WEIKE Tech. Co. LTD” Lazerlyý kebşirleýji enjam
+                                    LW1500H 1500W IPG /</td>
+                                <td class="">Китай</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">27300</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153195">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">9</span></td>
+                                <td class="ant-table-row-cell-break-word">“HAKSAN MAKINA” HGL 3106 Гидравлическая
+                                    геотиновая ножница / “HAKSAN MAKINA” HGL 3106 Gidrawliki giotin gaýçysy</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">32900</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153196">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">10</span></td>
+                                <td class="ant-table-row-cell-break-word">“YILMAZ MAKINE” “DC 550 SK-H” Iki kelleli
+                                    alýumin kesiji bycgy (doly awtomatlaşdyrylan)</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">компл</td>
+                                <td class="" style="text-align: right;">44800</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153197">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">11</span></td>
+                                <td class="ant-table-row-cell-break-word">“HAKSAN MAKINA” 4R HS 30-180 Гидравлический 4
+                                    ядерный цилиндрический станок / “HAKSAN MAKINA” 4R HS 30-180 Gidrawliki 4 toply
+                                    silindrli stanok</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">53200</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                            <tr class="ant-table-row ant-table-row-level-0" data-row-key="1153198">
+                                <td class="ant-table-row-cell-break-word" style="text-align: right;"><span
+                                        data-v-e742966e=""><label data-v-e742966e="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input"
+                                                    value=""><span
+                                                    class="ant-checkbox-inner"></span></span></label></span></td>
+                                <td class="" style="text-align: center;"><span data-v-e742966e=""
+                                        class="text-right">12</span></td>
+                                <td class="ant-table-row-cell-break-word">“TEKSAN” “TJ750BD (400 VAC)” 50Hz Дизельный
+                                    генератор, модель 6М33G750/5 “TEKSAN” “TJ750BD (400 VAC)” 50Hz Dizel generatory,
+                                    modeli 6М33G750/5</td>
+                                <td class="">Турция</td>
+                                <td class="" style="text-align: center;">шт.</td>
+                                <td class="" style="text-align: right;">65800</td>
+                                <td class="">Доллар США</td>
+                                <td class="">01.11.2021</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
