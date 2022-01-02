@@ -9,30 +9,28 @@ renderFeatures = "footer"
     <div class="auto_container">
         <div class="footer_wrap">
             <div class="footer_content">
-                <a href="{{'index'|page}}" class="foot_logo">
-                    <div class="footer_img">
-                        <img src="{{'assets/images/register_logo.png'|theme}}" alt="logo">
-                    </div>
-                    <div class="foot_logo_text">
-                        {{ site_name|raw }}
-                    </div>
-                </a>
+                
                 <div class="foot_outer">
-                    <div class="foot_col">
-                        <div class="foot_title">
-                            {{ 'footer.categories'|_ }}
-                        </div>
-                        <div class="foot_box">
-                            {% component 'categories3' %}
-                        </div>
-                    </div>
+                    
+                    {% component 'categories3' %}
+                        
                     <div class="foot_col">
                         <div class="foot_title">
                             {{ 'footer.contacts'|_ }}
                         </div>
                         <div class="foot_box">
                             <div class="foot_item">
-                                {{ 'footer.tel'|_ }}: {{ phone }}
+                                
+                                <div class="foot_phone-box">
+                                    <h4 class="foot_phone-text">
+                                        {{ 'footer.tel'|_ }}:
+                                    </h4>
+                                    <div>
+                                        <a href="tel:{{ phone }}">{{ phone }}</a>
+                                        <a href="tel:{{ phone_2 }}">{{ phone_2 }}</a>
+                                        <a href="tel:{{ phone_3 }}">{{ phone_3 }}</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="foot_item">
                                 {{ 'footer.email'|_ }}: {{ email }}
