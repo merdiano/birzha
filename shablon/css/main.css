@@ -5741,6 +5741,16 @@ input::-webkit-calendar-picker-indicator {
         left: -10px;
         transform: rotate(180deg);
     }
+
+    .table_info-group .table_box-search {
+        margin-bottom: 0;
+        max-width: 200px;
+    }
+
+    .export_table table.big_table {
+        width: 900px;
+    }
+
 }
 
 @media(max-width: 900px) {
@@ -7093,7 +7103,10 @@ input::-webkit-calendar-picker-indicator {
     /* Tables ==================== */
 
     .table_box-search {
-        max-width: calc(100% - 15px);
+        max-width: 100% !important;
+        min-width: unset !important;
+        width: 100% !important;
+        margin-right: 0;
     }
 
 }
