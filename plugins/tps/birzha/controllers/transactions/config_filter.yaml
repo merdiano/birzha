@@ -6,5 +6,5 @@ scopes:
     user:
         label: Seller
         modelClass: RainLab\User\Models\User
-        nameFrom: name
+        nameFrom: email
         conditions: user_id in (:filtered)
