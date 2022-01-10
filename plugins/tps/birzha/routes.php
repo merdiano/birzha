@@ -23,7 +23,7 @@ Route::get('tm/check-sms', function() {
     $tx->debug=true;
     $tx->bindTransmitter("birja","Birj@1");
     dump('bind transmitter');
-    $result = $tx->sendSMS("0773","+99365611968","h");
+    $result = $tx->sendSMS("0773","phone_number","h");
     dump('send sms attempt');
     echo $tx->getStatusMessage($result);
     $tx->close();
