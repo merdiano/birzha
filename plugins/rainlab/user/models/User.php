@@ -55,7 +55,7 @@ class User extends UserBase
     public $hasMany = [
         'products' => ['TPS\Birzha\Models\Product', 'key' => 'vendor_id'],
         'transactions' => ['TPS\Birzha\Models\Transaction'],
-
+        'exchangerequests' => ['TPS\Birzha\Models\Exchangerequest'],
 
     ];
 

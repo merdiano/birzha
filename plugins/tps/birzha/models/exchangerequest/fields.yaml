@@ -1,0 +1,32 @@
+fields:
+    content:
+        label: Content
+        span: auto
+        type: text
+    description:
+        label: Description
+        size: ''
+        span: auto
+        type: textarea
+    payed_for_request:
+        label: Fee
+        span: auto
+        type: number
+    user_id:
+        label: User
+        nameFrom: email
+        descriptionFrom: description
+        span: auto
+        type: relation
+    created_at:
+        label: 'Created at'
+        mode: datetime
+        span: auto
+        type: datepicker
+    status:
+        label: Status
+        options:
+            success: success
+            failed: failed
+        span: auto
+        type: balloon-selector

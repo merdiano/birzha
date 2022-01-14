@@ -20,9 +20,6 @@
 1.0.8:
     - 'Updated table tps_birzha_product'
     - builder_table_update_tps_birzha_product.php
-#1.0.9:
-#    - 'Created table tps_birzha_messages'
-#    - builder_table_create_tps_birzha_messages.php
 1.0.11:
     - 'Created table tps_birzha_terms'
     - builder_table_create_tps_birzha_terms.php
@@ -251,3 +248,12 @@
 1.0.87:
     - 'Updated table tps_birzha_contactform_messages'
     - builder_table_update_tps_birzha_contactform_messages_2.php
+1.0.88:
+    - 'Created table tps_birzha_exchange_requests'
+    - builder_table_create_tps_birzha_exchange_requests.php
+1.0.89:
+    - 'Updated table tps_birzha_exchange_requests'
+    - builder_table_update_tps_birzha_exchange_requests.php
+1.0.90:
+    - 'Updated table tps_birzha_exchange_requests'
+    - builder_table_update_tps_birzha_exchange_requests_2.php
