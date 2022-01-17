@@ -20,7 +20,7 @@ class Exchangerequest extends Model
      */
     public $table = 'tps_birzha_exchange_requests';
 
-    public $fillable = ['payed_for_request', 'content', 'status'];
+    public $fillable = ['payed_for_request', 'content', 'status', 'currency', 'total_price', 'converted_to_tmt'];
 
     /**
      * @var array Validation rules
@@ -48,9 +48,10 @@ class Exchangerequest extends Model
         $this->transaction()->save($transaction);
     }
 
-    public function beforeCreate()
+    public function afterCreate()
     {
+        parent::afterCreate();
+        
         $this->createTransaction();
-        $this->status = 'success';
     }
 }

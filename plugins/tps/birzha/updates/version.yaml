@@ -257,3 +257,6 @@
 1.0.90:
     - 'Updated table tps_birzha_exchange_requests'
     - builder_table_update_tps_birzha_exchange_requests_2.php
+1.0.91:
+    - 'Updated table tps_birzha_exchange_requests'
+    - builder_table_update_tps_birzha_exchange_requests_3.php
