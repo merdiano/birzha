@@ -93,7 +93,7 @@ class VerifyAction extends ActionBase
     }
 
     private function sendSMS($phone,$code){
-        $message = "tmex.gov.tm verification code: {$code}";
+        $message = "tmex.gov.tm%20verification%20code:%20{$code}";
         SMS::send($phone,$message);
     }
 

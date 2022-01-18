@@ -9,10 +9,9 @@ use October\Rain\Support\Facades\Http;
 class SMS
 {
     public static function send($to, $content){
-        $url = env('SMS_API')."+99363432211/{$content}";
+        $url = urlencode(env('SMS_API')."$to/{$content}");
         try {
             $response = Http::get($url);
-            Log::info($response);
         }
         catch (Exception $exception){
             Log::error($exception);
