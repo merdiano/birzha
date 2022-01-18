@@ -347,9 +347,10 @@ class Account extends ComponentBase
              * Activation is by the user, send the email
              */
             if ($userActivation) {
-                $this->sendActivationEmail($user);
-
-                Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
+//                $this->sendActivationEmail($user);
+//
+//                Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
+                //todo open activation view
             }
 
             /*

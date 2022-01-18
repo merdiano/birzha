@@ -558,4 +558,17 @@ class User extends UserBase
     {
         $this->password = $this->password_confirmation = Str::random(static::getMinPasswordLength());
     }
+
+    /**
+     * Get an activation code for the given user.
+     * @return string
+     */
+    public function getActivationCode()
+    {
+        $this->activation_code = $activationCode = random_int(1000, 9999);;
+
+        $this->forceSave();
+
+        return $activationCode;
+    }
 }

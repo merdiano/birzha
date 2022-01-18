@@ -15,4 +15,14 @@ class UserRegisteredEvent extends UserEventBase
             'group'       => 'user'
         ];
     }
+    public static function makeParamsFromEvent(array $args, $eventName = null)
+    {
+        $user = array_get($args, 0);
+
+        $params = $user->getNotificationVars();
+        $params['activation_code'] = $user->getActivationCode();
+        $params['user'] = $user;
+
+        return $params;
+    }
 }
