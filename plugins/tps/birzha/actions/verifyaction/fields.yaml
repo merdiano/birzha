@@ -1,0 +1,14 @@
+fields:
+    send_to_mode:
+        label: Send to
+        type: radio
+        span: left
+
+    mail_template:
+        label: Mail template
+        type: dropdown
+        placeholder: Select template
+        trigger:
+            action: hide
+            field: send_to_mode
+            condition: value[sms]

@@ -3,10 +3,10 @@
 # ===================================
 
 fields:
-    mail_template:
-        label: Mail template
-        type: dropdown
-        placeholder: Select template
+#    mail_template:
+#        label: Mail template
+#        type: dropdown
+#        placeholder: Select template
 
     send_to_mode:
         label: Send to
@@ -29,14 +29,3 @@ fields:
             field: send_to_mode
             condition: value[admin]
 
-    reply_to_mode:
-        label: Reply-to address
-        type: radio
-        span: left
-
-    reply_to_custom:
-        cssClass: radio-align
-        trigger:
-            action: show
-            field: reply_to_mode
-            condition: value[custom]

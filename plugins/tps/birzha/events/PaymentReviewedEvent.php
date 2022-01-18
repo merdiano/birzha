@@ -22,7 +22,9 @@ class PaymentReviewedEvent extends EventBase
     {
         return [
             'payment' => array_get($args, 0),
-            'user' => array_get($args, 1)
+            'user' => array_get($args, 1),
+            'message' => 'sizin balansynyz doldurldy'
         ];
     }
+
 }
