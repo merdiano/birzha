@@ -2,10 +2,18 @@
 
 namespace TPS\Birzha\Actions;
 
+use Backend\Models\UserGroup as AdminGroupModel;
+use Illuminate\Support\Facades\Log;
 use RainLab\Notify\Classes\ActionBase;
 
 class SendSMSAction extends ActionBase
 {
+    public $recipientModes = [
+        'user'    => 'User phone number (if applicable)',
+        'admin'   => 'Back-end administrators phones',
+        'custom'  => 'Specific phone number',
+    ];
+
     /**
      * Returns information about this event, including name and description.
      */
@@ -17,20 +25,84 @@ class SendSMSAction extends ActionBase
             'icon'        => 'icon-envelope'
         ];
     }
-
+    /**
+     * Defines validation rules for the custom fields.
+     * @return array
+     */
+    public function defineValidationRules()
+    {
+        return [
+            'send_to_mode' => 'required',
+        ];
+    }
     /**
      * Field configuration for the action.
      */
-//    public function defineFormFields()
-//    {
-//        return 'fields.yaml';
-//    }
+    public function defineFormFields()
+    {
+        return 'fields.yaml';
+    }
+
+    public function getSendToModeOptions()
+    {
+        $modes = $this->recipientModes;
+
+        return $modes;
+    }
+
+    public function getSendToAdminOptions()
+    {
+        $options = ['' => '- All administrators -'];
+
+        $groups = AdminGroupModel::lists('name', 'id');
+
+        return $options + $groups;
+    }
 
     public function getTitle()
     {
+        if ($this->isAdminMode()) {
+            return 'Send sms to administrators';
+        }
         return 'Send sms to customers';
     }
+    public function getText()
+    {
+        $hostObj = $this->host;
 
+        $recipient = array_get($this->recipientModes, $hostObj->send_to_mode);
+
+        if ($this->isAdminMode()) {
+            if ($groupId = $this->host->send_to_admin) {
+                if ($group = AdminGroupModel::find($groupId)) {
+                    $adminText = $group->name;
+                }
+                else {
+                    $adminText = '?';
+                }
+
+                $adminText .= ' admin group';
+            }
+            else {
+                $adminText = 'all admins';
+            }
+            return sprintf(
+                'Send a sms to %s',
+                $adminText,
+                $hostObj->mail_template
+            );
+        }
+
+        if ($hostObj->mail_template) {
+            return sprintf(
+                'Send smd to %s',
+                mb_strtolower($recipient),
+                $hostObj->mail_template
+            );
+        }
+
+        return parent::getText();
+    }
     public function getActionIcon()
     {
         return 'icon-envelope-square';
@@ -43,6 +115,10 @@ class SendSMSAction extends ActionBase
      */
     public function triggerAction($params)
     {
-
+        Log::info(json_encode($params));
+    }
+    protected function isAdminMode()
+    {
+        return $this->host->send_to_mode == 'admin';
     }
 }

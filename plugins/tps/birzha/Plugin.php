@@ -6,6 +6,7 @@ use RainLab\Notify\NotifyRules\SaveDatabaseAction;
 use System\Classes\PluginBase;
 use TPS\Birzha\Actions\MailToAdminsAction;
 use TPS\Birzha\Actions\SendSMSAction;
+use TPS\Birzha\Actions\VerifyAction;
 use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Message;
 use TPS\Birzha\Models\Product;
@@ -228,6 +229,7 @@ class Plugin extends PluginBase
             'actions' => [
                 SendSMSAction::class,
                 MailToAdminsAction::class,
+                VerifyAction::class
             ],
             'conditions' => [
             ],

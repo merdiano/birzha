@@ -1,6 +1,7 @@
 <?php namespace TPS\Birzha\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Model;
 use October\Rain\Support\Facades\Event;
 
@@ -58,6 +59,7 @@ class Payment extends Model
     public function afterUpdate()
     {
         if($this->status == 'approved' && $this->payment_type == 'bank' ){
+//            Log::info($this);
             Event::fire('tps.payment.reviewed',[$this,$this->user]);
         }
     }
