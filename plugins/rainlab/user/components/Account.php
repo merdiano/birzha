@@ -303,7 +303,15 @@ class Account extends ComponentBase
                 $data['password_confirmation'] = post('password');
             }
 
-            $rules = (new UserModel)->rules;
+            $rules = array_merge((new UserModel)->rules, [
+                'username' => [
+                    'required',
+                    'unique' => function($attribute, $value, $fail) use($data) {
+                        $u = UserModel::find($data['dial_code'] . $value);
+                        if(!is_null($u)) $fail();
+                    }
+                ],
+            ]);
 
             if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
                 unset($rules['username']);

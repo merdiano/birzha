@@ -197,6 +197,7 @@ return [
         'name' => 'At',
         'surname' => 'Familiýa',
         'mobile' => 'Telefon belgiňiz',
+        'username' => 'Telefon belgi',
     ],
 
 ];
