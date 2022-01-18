@@ -260,3 +260,6 @@
 1.0.91:
     - 'Updated table tps_birzha_exchange_requests'
     - builder_table_update_tps_birzha_exchange_requests_3.php
+1.0.94:
+    - 'Updated table users'
+    - builder_table_update_users_table_18_01_2022_14_26.php

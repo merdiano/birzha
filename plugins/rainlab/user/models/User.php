@@ -29,6 +29,7 @@ class User extends UserBase
         'username' => 'required|unique:users',
         'password' => 'required:create|between:8,255|confirmed',
         'password_confirmation' => 'required_with:password|between:8,255',
+        'dial_code' => 'required', // +993, +375...
     ];
 
     public $messages = [
@@ -71,7 +72,8 @@ class User extends UserBase
         'password',
         'password_confirmation',
         'created_ip_address',
-        'last_ip_address'
+        'last_ip_address',
+        'dial_code'
     ];
 
     /**
@@ -174,6 +176,16 @@ class User extends UserBase
     public function getUserBalanceAttribute(){
         return $this->getBalance();
     }
+
+    /**
+     * Mutators
+     */
+    // public function setUsernameAttribute($value)
+    // {
+    //     dd($this->attributes);
+    //     return $this->attributes['username'] = $this->attributes['dial_code'] . $value;
+    // }
+
     /**
      * Gets a code for when the user is persisted to a cookie or session which identifies the user.
      * @return string
