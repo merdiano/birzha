@@ -7,6 +7,7 @@ use Mail;
 use October\Rain\Exception\ApplicationException;
 use RainLab\Notify\Classes\ActionBase;
 use System\Models\MailTemplate;
+use TPS\Birzha\Classes\SMS;
 
 class VerifyAction extends ActionBase
 {
@@ -58,7 +59,7 @@ class VerifyAction extends ActionBase
     public function triggerAction($params)
     {
 //        Log::info(json_encode($params));
-        $code = $params['user']['id'];
+        $code = $params['activation_code'];
         $phone = $params['username'];
         $dial_code = $params['user']['dial_code'];
 
@@ -86,13 +87,14 @@ class VerifyAction extends ActionBase
             throw new ApplicationException('Missing valid recipient or mail template');
         }
 
-        Mail::sendTo($email, $template, ['code'=>$code], function($message){
+        Mail::sendTo($email, 'tps.birzha::mail.activate', ['code'=>$code], function($message){
 
         });
     }
 
     private function sendSMS($phone,$code){
-
+        $message = "tmex.gov.tm verification code: {$code}";
+        SMS::send($phone,$message);
     }
 
     public function getSendToModeOptions()
