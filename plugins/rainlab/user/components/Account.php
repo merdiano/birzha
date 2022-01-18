@@ -228,7 +228,7 @@ class Account extends ComponentBase
              * Authenticate user
              */
             $credentials = [
-                'login'    => array_get($data, 'login'),
+                'login'    => array_get($data, 'dial_code') . array_get($data, 'login'),
                 'password' => array_get($data, 'password')
             ];
 
@@ -337,7 +337,9 @@ class Account extends ComponentBase
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
             $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
             $adminActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_ADMIN;
-            $user = Auth::register($data, $automaticActivation);
+            $user = Auth::register(array_merge($data, [
+                'username' => $data['dial_code'] . $data['username']
+            ]), $automaticActivation);
 
             Event::fire('rainlab.user.register', [$user, $data]);
 

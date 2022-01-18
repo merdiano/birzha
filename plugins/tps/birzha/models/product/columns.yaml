@@ -12,6 +12,7 @@ columns:
         label: User
         type: vendor
         relation: vendor
+        sortable: false
         valueFrom: email
     status:
         label: Status

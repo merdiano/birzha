@@ -272,7 +272,10 @@ class MessagesapiController extends Controller
         // return response()->json(['chatrooms' => $seller->chatrooms]);
         // return response()->json(['users' => $seller->chatrooms->users]);
         // return response()->json(['chatroomNeeded' => $chatroomNeeded]);
-        return $this->helpers->apiArrayResponseBuilder(200, 'success', ['messages' => $this->getMessagesFromChatroom($chatroomNeeded, $currentUser)]);
+        return $this->helpers->apiArrayResponseBuilder(200, 'success', [
+            'chatroom_id' => $chatroomNeeded->id,
+            'messages' => $this->getMessagesFromChatroom($chatroomNeeded, $currentUser)
+        ]);
 
     }
 

@@ -13,10 +13,11 @@ Route::group(['prefix' => 'api'], function() {
         $login_fields = Settings::get('login_fields', ['email', 'password']);
 
         $credentials = Input::only($login_fields);
+        $username = $credentials['username'];
 
         try {
             // verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (! $token = JWTAuth::attempt(array_merge($credentials, ['username' => $credentials['dial_code'] . $username]))) {
                 return response()->json(['error' => [
                     'ru' => trans('validation.no_user', [], 'ru'),
                     'en' => trans('validation.no_user', [], 'en'),
@@ -96,6 +97,17 @@ Route::group(['prefix' => 'api'], function() {
         $login_fields = Settings::get('signup_fields', ['email', 'password', 'password_confirmation']);
         $credentials = Input::only($login_fields);
 
+        $rules = [
+            'email'    => 'required|between:6,191|email',
+            'username' => 'required|digits_between:8,20|numeric',
+            'dial_code' => 'required',
+        ];
+
+        $validation = \Validator::make($credentials, $rules,(new UserModel)->messages);
+        if ($validation->fails()) {
+            return Response::json(['error' => $validation->errors()], 400);
+        }
+
         /**
          * activation is set to be automatic
          */
@@ -107,7 +119,9 @@ Route::group(['prefix' => 'api'], function() {
             if (!array_key_exists('password_confirmation', $credentials) && array_key_exists('password', $credentials)) {
                 $credentials['password_confirmation'] = $credentials['password'];
             }
-            $userModel = Auth::register($credentials, $automaticActivation);
+            $userModel = Auth::register(array_merge($credentials,[
+                'username' => $credentials['dial_code'] . $credentials['username']
+            ]), $automaticActivation);
 
             if ($userModel->methodExists('getAuthApiSignupAttributes')) {
                 $user = $userModel->getAuthApiSignupAttributes();
@@ -117,6 +131,7 @@ Route::group(['prefix' => 'api'], function() {
                     'name' => $userModel->name,
                     'surname' => $userModel->surname,
                     'username' => $userModel->username,
+                    'dial_code' => $userModel->dial_code,
                     'email' => $userModel->email,
                     'is_activated' => $userModel->is_activated,
                 ];

@@ -55,6 +55,8 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
         Route::get('transactions', 'TransactionsApiController@index');
         Route::get('my-balance', 'TransactionsApiController@myBalance');
 
+        Route::post('withdraw-from-balance', 'ExchangeRequestsController@withdrawFromBalance');
+
     });
 });
 
