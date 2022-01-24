@@ -21,23 +21,23 @@ class MessageReceivedEvent extends \RainLab\Notify\Classes\EventBase
     /**
      * Defines the usable parameters provided by this class.
      */
-    public function defineParams()
-    {
-        return [
-            'name' => [
-                'title' => 'Name',
-                'label' => 'Name of the user',
-            ],
-            // ...
-        ];
-    }
+//    public function defineParams()
+//    {
+//        return [
+//            'name' => [
+//                'title' => 'Name',
+//                'label' => 'Name of the user',
+//            ],
+//            // ...
+//        ];
+//    }
 
     public static function makeParamsFromEvent(array $args, $eventName = null)
     {
 
         return [
             'user' => array_get($args, 0),
-            'message' => array_get($args, 1)
+            'message' => array_get($args, 1),
         ];
     }
 }

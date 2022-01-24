@@ -19,13 +19,16 @@ fields:
             action: show
             field: send_to_mode
             condition: value[custom]
+#
+#    send_to_admin:
+#        label: Send to admin group
+#        span: right
+#        type: dropdown
+#        trigger:
+#            action: show
+#            field: send_to_mode
+#            condition: value[admin]
 
-    send_to_admin:
-        label: Send to admin group
-        span: right
-        type: dropdown
-        trigger:
-            action: show
-            field: send_to_mode
-            condition: value[admin]
-
+    message:
+        cssClass: radio-align
+        label: Message
