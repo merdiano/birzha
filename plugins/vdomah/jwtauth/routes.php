@@ -46,6 +46,7 @@ Route::group(['prefix' => 'api'], function() {
                 'username' => $userModel->username,
                 'email' => $userModel->email,
                 'is_activated' => $userModel->is_activated,
+                'user_balance' => $userModel->user_balance
             ];
         }
         // if no errors are encountered we can return a JWT
