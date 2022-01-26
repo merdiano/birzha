@@ -23,15 +23,3 @@ columns:
         label: Status
         type: text
         sortable: true
-    currency:
-        label: Currence
-        type: text
-        sortable: true
-    total_price:
-        label: 'Total Price'
-        type: number
-        sortable: true
-    converted_to_tmt:
-        label: 'Convert to TMT'
-        type: number
-        sortable: true
