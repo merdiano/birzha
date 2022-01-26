@@ -69,6 +69,32 @@ function onStart(){
 
 {% framework extras %}
 {% scripts %}
+
+<!-- Try to find a hash when parsing a url -->
+<script>
+    $(document).ready(function() {
+        switch (location.hash.substr(1)) {
+            case 'register':
+                $('.register').addClass('active');
+                $('#btn-2').addClass('active');
+                $('body').addClass('active');
+                $('.register_content').addClass('active');
+                break;
+                
+            case 'login':
+                $('.register').addClass('active');
+                $('#btn-1').addClass('active');
+                $('body').addClass('active');
+                $('.register_content_2').addClass('active');
+                break;
+        
+            default:
+                break;
+        }
+    })
+</script>
+<!-- End hash script -->
+
 <script src="{{'assets/js/main.js'|theme}}"></script>
 <script>
     $('.iti__country').click(function (e) {
