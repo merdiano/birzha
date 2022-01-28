@@ -23,6 +23,10 @@ class ExchangeRequestsController extends KabinetAPIController
             'converted_to_tmt' => $request->get('fee')
         ]);
 
+        // \Log::info('test items id:sapar-october');
+        // \Log::info($request->get('items'));
+        // \Log::info('end test items id:sapar-october');
+
         if(!is_null($exRequest->transaction)) {
             $exRequest->update(['status' => 'success']);
         }
