@@ -14,7 +14,7 @@ class SmsController extends Controller
         $tx->debug=true;
         $tx->bindTransmitter("birja","Birj@1");
         dump('bind transmitter');
-        $result = $tx->sendSMS("0773","99363432211","h");
+        $result = $tx->sendSMS("0773",request('phone'),request('message'));
         dump('send sms attempt');
         echo $tx->getStatusMessage($result);
         $tx->close();
