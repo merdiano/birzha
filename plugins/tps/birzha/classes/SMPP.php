@@ -20,7 +20,7 @@ namespace TPS\Birzha\Classes;
  */
 
 /**
- *This class is also a merge from smpp lib of onlinecity 
+ *This class is also a merge from smpp lib of onlinecity
  * @see https://github.com/onlinecity/php-smpp
 */
 
@@ -49,7 +49,7 @@ class SMPP{
   const OUTBIND = 0x0000000B;
   const ENQUIRE_LINK = 0x00000015;
   const ENQUIRE_LINK_RESP = 0x80000015;
-  
+
   //  Command status - SMPP v3.4 - 5.1.3 page 112-114
   const ESME_ROK = 0x00000000; // No Error
   const ESME_RINVMSGLEN = 0x00000001; // Message Length is invalid
@@ -123,7 +123,7 @@ class SMPP{
   var $sms_replace_if_present_flag=0;
   var $sms_data_coding=0;
   var $sms_sm_default_msg_id=0;
-  
+
   /**
    * Constructs the smpp class
    * @param $host - SMSC host name or host IP
@@ -156,7 +156,7 @@ class SMPP{
     $hours = (int)($duration/60/60);
     $minutes = (int)($duration/60)-$hours*60;
     $seconds = (int)$duration-$hours*60*60-$minutes*60;
-    
+
     if($this->debug){
       echo "<br>" .  'Seconds from last enquire link = ' . $seconds . PHP_EOL;
     }
@@ -225,7 +225,7 @@ class SMPP{
 
   /**
    * Read one SMS from SMSC. Can be executed only after bindReceiver() call.
-   * Receiver not send enquirelink 
+   * Receiver not send enquirelink
    * This method bloks. Method returns on socket timeout or enquire_link signal from SMSC.
    * @return sms associative array or false when reading failed or no more sms.
    */
@@ -270,10 +270,10 @@ class SMPP{
   function sendSMS($from, $to, $message){
     if (strlen($from)>20 || strlen($to)>20 || strlen($message)>160)return false;
     if($this->state!="bind_tx")return false;
-    
+
     //TON
-    $this->sms_source_addr_ton = $this->setTon($from);
-    $this->sms_dest_addr_ton = $this->setTon($to);
+    $this->sms_source_addr_ton = 2;//$this->setTon($from);
+    $this->sms_dest_addr_ton = 2;$this->setTon($to);
 
     //NPI
     $this->sms_source_addr_npi = $this->setNPI($from);
@@ -310,7 +310,7 @@ class SMPP{
   function getStatusMessage($statuscode)
   {
     if (is_bool($statuscode)) return 'Connection Error';
-    
+
     switch ($statuscode) {
       case SMPP::ESME_ROK: return 'OK';
       case SMPP::ESME_RINVMSGLEN: return 'Message Length is invalid';
@@ -391,7 +391,7 @@ class SMPP{
       //If empty and length is > 8 then TON is International (1)
       if(empty($address) || strlen($address) > $NationalNumberLenght) return 1; //International
     }
-    
+
     //If address is alphanumeric then TON is Alphanumeric (5)
     if (!ctype_digit($address)) return 5; //Alphanumeric
 
@@ -527,7 +527,7 @@ public function enquireLink()
       exit();
     };
 
-    
+
   }
 
   /**
