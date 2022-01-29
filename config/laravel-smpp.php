@@ -19,10 +19,10 @@ return [
 
     'defaults' => [
         'sender' => env('SMPP_SENDER'),
-        'source_ton' => env('SMPP_SOURCE_TON'),
-        'source_npi' => env('SMPP_SOURCE_NPI'),
-        'destination_ton' => env('SMPP_DESTINATION_TON'),
-        'destination_npi' => env('SMPP_DESTINATION_NPI')
+        'source_ton' => env('SMPP_SOURCE_TON',SMPP::TON_ALPHANUMERIC),
+        'source_npi' => env('SMPP_SOURCE_NPI',SMPP::NPI_UNKNOWN),
+        'destination_ton' => env('SMPP_DESTINATION_TON',SMPP::TON_NATIONAL),
+        'destination_npi' => env('SMPP_DESTINATION_NPI',SMPP::NPI_NATIONAL)
     ],
 
     /*
