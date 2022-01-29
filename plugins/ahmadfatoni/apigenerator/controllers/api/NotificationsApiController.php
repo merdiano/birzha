@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Validator;
 
 class NotificationsApiController extends Controller
 {
-    public function index(Request $request) {
+    public function __construct()
+    {
         if (!$user = \JWTAuth::parseToken()->authenticate()) {
             return response()->json('Unauthorized', 401);
         }
+    }
+
+    public function index(Request $request) {
+
 
         $validator = Validator::make($request->all(), [
             'records_per_page' => 'numeric',
@@ -39,10 +44,6 @@ class NotificationsApiController extends Controller
      */
     public function markAsRead($id)
     {
-        if (!$user = \JWTAuth::parseToken()->authenticate()) {
-            return response()->json('Unauthorized', 401);
-        }
-
         $notification = $user->notifications()
             ->applyUnread()
             ->find($id);

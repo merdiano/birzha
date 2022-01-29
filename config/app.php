@@ -155,7 +155,7 @@ return [
     'providers' => array_merge(include(base_path('modules/system/providers.php')), [
 
         // 'Illuminate\Html\HtmlServiceProvider', // Example
-
+        'LaravelSmpp\LaravelSmppServiceProvider',
         'System\ServiceProvider',
     ]),
 

@@ -10,6 +10,7 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
 
     Route::get('products', ['as' => 'products.index', 'uses' => 'ProductsApiController@index']);
     Route::get('products/{id}', ['as' => 'products.show', 'uses' => 'ProductsApiController@show']);
+    Route::get('test',['as' => 'test', 'uses' => 'SmsController@index']);
 
 // Route::get('products/{id}/delete', ['as' => 'products.delete', 'uses' => 'ProductsApiController@destroy']);
 
