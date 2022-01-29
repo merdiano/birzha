@@ -18,7 +18,7 @@ return [
     */
 
     'defaults' => [
-        'sender' => env('SMPP_SENDER'),
+        'sender' => env('SMPP_SENDER','0773'),
         'source_ton' => env('SMPP_SOURCE_TON',SMPP::TON_ALPHANUMERIC),
         'source_npi' => env('SMPP_SOURCE_NPI',SMPP::NPI_UNKNOWN),
         'destination_ton' => env('SMPP_DESTINATION_TON',SMPP::TON_NATIONAL),
@@ -35,7 +35,7 @@ return [
     |
     */
 
-    'default' => env('SMPP_DEFAULT_PROVIDER'),
+    'default' => env('SMPP_DEFAULT_PROVIDER','example'),
 
     'providers' => [
         'example' => [
