@@ -41,7 +41,7 @@ return [
         'example' => [
             'host' => '217.174.228.218',
             'port' => 5019,
-            'timeout' => 90,
+            'timeout' => 9000,
             'login' => 'birja',
             'password' => 'Birj@1'
         ]
