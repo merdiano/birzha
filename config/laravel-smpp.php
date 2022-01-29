@@ -63,7 +63,7 @@ return [
             SMPP::ESME_RINVCMDID
         ],
         'force_ipv4' => true,
-        'debug' => false
+        'debug' => true
     ],
 
     /*
@@ -75,6 +75,6 @@ return [
     'client' => [
         'system_type' => 'default',
         'null_terminate_octetstrings' => false,
-        'debug' => false
+        'debug' => true
     ]
 ];
