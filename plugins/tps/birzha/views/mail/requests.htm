@@ -1,0 +1,24 @@
+<p><b>ФИО: </b>{{ first_name }} {{ last_name }}</p>
+<p><b>Тел.: </b>{{ phone }}</p>
+<p><b>Email: </b>{{ email }}</p>
+<p><b>Тип организации: </b>{{ org_type }}</p>
+<p><b>Статус: </b>{{ status }}</p>
+<p><b>Снято за отправку запроса: </b>{{ withdraw_from_balance }} TMT</p>
+<table>
+    <thead>
+        <th>Наименование</th>
+        <th>Страна</th>
+        <th>Единица</th>
+        <th>Валюта</th>
+        <th>Цена</th>
+    </thead>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.title }}</td>
+        <td>{{ item.country }}</td>
+        <td>{{ item.unit }}</td>
+        <td>{{ item.currency }}</td>
+        <td>{{ item.price }}</td>
+    </tr>
+    {% endfor %}
+</table>

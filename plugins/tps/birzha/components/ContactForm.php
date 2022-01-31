@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use TPS\Birzha\Models\Contactmessage;
+use TPS\Birzha\Models\Settings;
 
 class ContactForm extends ComponentBase
 {
@@ -44,7 +45,7 @@ class ContactForm extends ComponentBase
             ];
 
             \Mail::send('tps.birzha::mail.message', $vars, function($message) {
-                $message->to(env('TPS_EMAIL_GETTER'), 'Birzha Admin');
+                $message->to(Settings::getValue('admin_email'), 'Birzha Admin');
                 $message->subject('Birzha web site contact form');
             });
 
