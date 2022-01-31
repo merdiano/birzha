@@ -33,10 +33,14 @@ class ExchangeRequestsController extends KabinetAPIController
             'withdraw_from_balance' => $exRequest->transaction->amount
         ]);
 
-        \Mail::send('tps.birzha::mail.requests', $vars, function($message) {
-            $message->to(Settings::getValue('admin_email'), 'Birzha Admin');
-            $message->subject('Биржа - Запрос пользователя (раздел Импортные цены)');
-        });
+        $admin_email = Settings::getValue('admin_email');
+        
+        if($admin_email) {
+            \Mail::send('tps.birzha::mail.requests', $vars, function($message) use ($admin_email){
+                $message->to($admin_email, 'Birzha Admin');
+                $message->subject('Биржа - Запрос пользователя (раздел Импортные цены)');
+            });
+        }
 
         return response()->json([
             'status' => 201,
