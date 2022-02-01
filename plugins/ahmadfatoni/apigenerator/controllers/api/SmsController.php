@@ -3,6 +3,7 @@
 namespace AhmadFatoni\ApiGenerator\Controllers\API;
 
 use Cms\Classes\Controller;
+use Illuminate\Support\Facades\Log;
 use LaravelSmpp\SmppServiceInterface;
 use SmppClient;
 use SmppException;
@@ -33,7 +34,9 @@ class SmsController extends Controller
 
         try {
             $transport->setRecvTimeout(10000);
-            $smpp = new SmppClient($transport);
+            $smpp = new SmppClient($transport,function($log){
+                Log::info($log);
+            });
             $smpp->debug = true;
 
             $transport->open();
@@ -44,9 +47,9 @@ class SmsController extends Controller
             // Skipping unavailable
         catch (SmppException $ex) {
             $transport->close();
-
-
             throw $ex;
         }
     }
+
+
 }
