@@ -279,7 +279,7 @@ class SMPP{
     $this->sms_source_addr_npi = $this->setNPI($from);
     $this->sms_dest_addr_npi = $this->setNPI($to);
 
-    $pdu = pack('a1cca'.(strlen($from)+1).'cca'.(strlen($to)+1).'ccca1a1ccccca'.(strlen($message)+1),
+    $pdu = pack('a1cca'.(strlen($from)+1).'cca'.(strlen($to)+1).'ccca1a1ccccca'.(strlen($message)),
       $this->sms_service_type,
       $this->sms_source_addr_ton,
       $this->sms_source_addr_npi,
