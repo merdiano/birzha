@@ -37,6 +37,7 @@ class SmsController extends Controller
 
         try {
             $transport->setRecvTimeout(10000);
+            SmppClient::$sms_null_terminate_octetstrings = false;
             $smpp = new SmppClient($transport);
             $smpp->debug = true;
             $transport->debug = true;
