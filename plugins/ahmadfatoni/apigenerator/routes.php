@@ -22,6 +22,8 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
     Route::resource('terms', 'TermsapiController', ['except' => ['destroy', 'create', 'edit']]);
 // Route::get('terms/{id}/delete', ['as' => 'terms.delete', 'uses' => 'TermsapiController@destroy']);
 
+    Route::post('send-contact-form', 'ContactFormApiController@sendContactForm');
+
     Route::middleware(['\Tymon\JWTAuth\Middleware\GetUserFromToken'])->group(function () {
 
         Route::post('products', 'ProductsApiController@store');
