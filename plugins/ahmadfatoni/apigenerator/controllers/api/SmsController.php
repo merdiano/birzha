@@ -11,7 +11,7 @@ use SmppAddress;
 use SmppClient;
 use SmppException;
 use SocketTransport;
-//use TPS\Birzha\Classes\SMPP;
+use TPS\Birzha\Classes\SMPP as SMPPV2;
 
 class SmsController extends Controller
 {
@@ -46,10 +46,10 @@ class SmsController extends Controller
             $message = 'H€llo world';
             $encodedMessage = GsmEncoder::utf8_to_gsm0338($message);
             $from = new SmppAddress('0773',SMPP::TON_ALPHANUMERIC);
-            $to = new SmppAddress(99363432211,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
+            $to = new SmppAddress(99363432211,SMPP::TON_NATIONAL,SMPP::NPI_NATIONAL);
 
 // Send
-            $response = $smpp->sendSMS($from,$to,$encodedMessage);
+            $response = $smpp->sendSMS($from,$to,$message,null,SMPP::DATA_CODING_ISO8859_1);
 
 // Close connection
             $smpp->close();
