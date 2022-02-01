@@ -3,9 +3,11 @@
 namespace AhmadFatoni\ApiGenerator\Controllers\API;
 
 use Cms\Classes\Controller;
+use GsmEncoder;
 use Illuminate\Support\Facades\Log;
 use LaravelSmpp\SmppServiceInterface;
 use SMPP;
+use SmppAddress;
 use SmppClient;
 use SmppException;
 use SocketTransport;
@@ -47,11 +49,11 @@ class SmsController extends Controller
             $to = new SmppAddress(99363432211,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
 
 // Send
-            $smpp->sendSMS($from,$to,$encodedMessage);
+            $response = $smpp->sendSMS($from,$to,$encodedMessage);
 
 // Close connection
             $smpp->close();
-            return 'ok';
+            dd($response);
 
         }
             // Skipping unavailable
