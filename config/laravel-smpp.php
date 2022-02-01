@@ -41,7 +41,7 @@ return [
         'example' => [
             'host' => '217.174.228.218',
             'port' => 5019,
-            'timeout' => 9000,
+            'timeout' => 10000,
             'login' => 'birja',
             'password' => 'Birj@1'
         ]
@@ -60,7 +60,8 @@ return [
     'transport' => [
         'catchables' => [
             SMPP::ESME_RBINDFAIL,
-            SMPP::ESME_RINVCMDID
+            SMPP::ESME_RINVCMDID,
+            SMPP::ESME_RINVPARLEN
         ],
         'force_ipv4' => true,
         'debug' => true
