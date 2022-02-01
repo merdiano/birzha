@@ -45,8 +45,8 @@ class SmsController extends Controller
             $smpp->bindTransmitter('birja', 'Birj@1');
             $message = 'H€llo world';
             $encodedMessage = GsmEncoder::utf8_to_gsm0338($message);
-            $from = new SmppAddress('0773',SMPP::TON_ALPHANUMERIC);
-            $to = new SmppAddress(99363432211,SMPP::TON_NATIONAL,SMPP::NPI_NATIONAL);
+            $from = new SmppAddress('0773');
+            $to = new SmppAddress('99363432211');
 
 // Send
             $response = $smpp->sendSMS($from,$to,$message,null,SMPP::DATA_CODING_ISO8859_1);
