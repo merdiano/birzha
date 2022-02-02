@@ -3,6 +3,7 @@
 use RainLab\User\Models\User as UserModel;
 use RainLab\User\Models\Settings as UserSettings;
 use Vdomah\JWTAuth\Models\Settings;
+use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'api'], function() {
 
@@ -57,7 +58,14 @@ Route::group(['prefix' => 'api'], function() {
         if (Settings::get('is_refresh_disabled'))
             App::abort(404, 'Page not found');
 
-        $token = Request::get('token');
+        $validation = \Validator::make($request->all(), [
+            'token' => 'required'
+        ]);
+        if ($validation->fails()) {
+            return response()->json(['error' => $validation->errors()], 400);
+        }
+        
+        $token = $request->get('token');
 
         try {
             // attempt to refresh the JWT
