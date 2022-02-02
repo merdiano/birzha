@@ -232,6 +232,7 @@ class Plugin extends PluginBase
                 VerifyAction::class
             ],
             'conditions' => [
+                \RainLab\User\NotifyRules\UserAttributeCondition::class
             ],
             'groups' => [
                 'payment' => [

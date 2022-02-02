@@ -36,7 +36,7 @@ class SendSMSAction extends ActionBase
             'send_to_mode' => 'required',
             'send_to_custom' => 'required_if:send_to_mode,custom',
 //            'send_to_admin' => 'required_if:send_to_mode,admin',
-            'message' => 'required'
+            'message' => 'required|string|max:160'
         ];
     }
     /**
@@ -65,9 +65,9 @@ class SendSMSAction extends ActionBase
 
     public function getTitle()
     {
-        if ($this->isAdminMode()) {
-            return 'Send sms to administrators';
-        }
+//        if ($this->isAdminMode()) {
+//            return 'Send sms to administrators';
+//        }
         return 'Send sms to customers';
     }
 
@@ -85,6 +85,8 @@ class SendSMSAction extends ActionBase
     {
 
         if($this->host->send_to_mode == 'user' && $params['user']){
+            if(!$params['user']['phone_verified'])
+                return;
             $to = $params['user']['username'];
 
         }else{
