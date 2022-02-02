@@ -4,6 +4,7 @@ namespace AhmadFatoni\ApiGenerator\Controllers\API;
 
 use Cms\Classes\Controller;
 use GsmEncoder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use LaravelSmpp\SmppServiceInterface;
 use SMPP;
@@ -28,6 +29,19 @@ class SmsController extends Controller
         unset($tx);
         return $result;
 
+    }
+
+    public function verifyPhone(Request $request)
+    {
+        $tx=new SMPPV2('217.174.228.218', 5019);
+        
+        $tx->bindTransmitter("birja","Birj@1");
+
+        $result = $tx->sendSMS("0773",'99365611968','message');
+
+        return response()->json([
+                'result' => $result
+        ], 201);
     }
 
 }

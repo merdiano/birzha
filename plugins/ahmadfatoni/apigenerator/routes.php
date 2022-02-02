@@ -60,6 +60,8 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
 
         Route::post('withdraw-from-balance', 'ExchangeRequestsController@withdrawFromBalance');
 
+        Route::post('verify-phone', 'SmsController@verifyPhone');
+
     });
 });
 
