@@ -1,5 +1,6 @@
 <?php namespace RainLab\Notify\NotifyRules;
 
+use Illuminate\Support\Facades\Log;
 use Mail;
 use Lang;
 use Config;
@@ -48,6 +49,7 @@ class SendMailTemplateAction extends ActionBase
             throw new ApplicationException('Missing valid recipient or mail template');
         }
 
+        Log::info($template);
         Mail::sendTo($recipient, $template, $params, function($message) use ($replyTo) {
             if ($replyTo) {
                 $message->replyTo($replyTo);
