@@ -22,8 +22,8 @@ class SMS
             unset($tx);
             return $result;
         }
-        catch (Exception $exception){
-            Log::error($exception);
+        catch (\Throwable $th){
+            Log::info($th);
             return 1;
         }
 
