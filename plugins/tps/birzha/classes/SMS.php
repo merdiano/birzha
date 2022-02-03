@@ -24,7 +24,7 @@ class SMS
         }
         catch (Exception $exception){
             Log::error($exception);
-            return false;
+            return 1;
         }
 
     }

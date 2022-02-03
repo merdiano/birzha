@@ -2,19 +2,13 @@
 
 namespace AhmadFatoni\ApiGenerator\Controllers\API;
 
-use Cms\Classes\Controller;
-use GsmEncoder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use LaravelSmpp\SmppServiceInterface;
-use SMPP;
-use SmppAddress;
-use SmppClient;
-use SmppException;
-use SocketTransport;
 use TPS\Birzha\Classes\SMPP as SMPPV2;
+use TPS\Birzha\Classes\SMS;
 
-class SmsController extends Controller
+class SmsController extends KabinetAPIController
 {
     public function index(SmppServiceInterface $smpp) {
 //        $smpp->sendOne(99363432211, 'Hi, this SMS was send via SMPP protocol');
@@ -31,17 +25,58 @@ class SmsController extends Controller
 
     }
 
-    public function verifyPhone(Request $request)
+    public function sendSmsCode()
     {
-        $tx=new SMPPV2('217.174.228.218', 5019);
+        if($this->user->verified) {
+                return response()->json('User phone already verified', 200);
+        }
         
-        $tx->bindTransmitter("birja","Birj@1");
+        $code = random_int(100000, 999999);
+        
+        $result = SMS::send($this->user->username, $code);
+        // $result = 0;
 
-        $result = $tx->sendSMS("0773",'99365611968','message');
+        switch ($result) {
+                case 0:
+                        $this->user->activation_code = $code;
+                        $this->user->save();
+                        return response()->json([
+                                'result' => $result,
+                                'message' => 'Message has been succesfully sent'
+                        ], 201);
+                        break;
 
-        return response()->json([
-                'result' => $result
-        ], 201);
+                case 1:
+                        return response()->json([
+                                'result' => $result,
+                                'message' => 'Error'
+                        ], 500);
+                        break;
+                
+                default:
+                        return response()->json([
+                                'result' => $result,
+                                'message' => 'Error'
+                        ], 500);
+                        break;
+        }
     }
 
+    public function checkSmsCode(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+                'sms_code' => 'required|digits:6',
+        ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        if($this->user->activation_code == $request->get('sms_code')) {
+                $this->user->verified = true;
+                $this->user->save();
+                return response()->json('User phone has been succesfully verified', 201);
+        } else {
+                return response()->json('Wrong sms code', 400);
+        }
+    }
 }
