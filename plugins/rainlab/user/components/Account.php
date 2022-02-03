@@ -402,8 +402,8 @@ class Account extends ComponentBase
             if($this->user()->dial_code == '+993' && !$this->user()->phone_verified) {
                 $code = random_int(100000, 999999);
 
-                // $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user()->username), $code);
-                $result = 0;
+                $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user()->username), $code);
+                // $result = 0;
 
                 switch ($result) {
                     case 0:
