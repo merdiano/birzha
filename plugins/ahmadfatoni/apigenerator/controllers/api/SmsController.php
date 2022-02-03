@@ -34,13 +34,14 @@ class SmsController extends KabinetAPIController
                 ], 400);
         }
 
-        if($this->user->verified && $this->user->dial_code == '+993') {
+        if($this->user->phone_verified && $this->user->dial_code == '+993') {
                 return response()->json('User phone already verified', 200);
         }
         
         $code = random_int(100000, 999999);
 
         $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user->username), $code);
+        // $result = 0;
 
         switch ($result) {
                 case 0:
@@ -77,7 +78,7 @@ class SmsController extends KabinetAPIController
                 ], 400);
         }
 
-        if($this->user->verified && $this->user->dial_code == '+993') {
+        if($this->user->phone_verified && $this->user->dial_code == '+993') {
                 return response()->json('User phone already verified', 200);
         }
         
@@ -89,7 +90,7 @@ class SmsController extends KabinetAPIController
         }
 
         if($this->user->activation_code == $request->get('sms_code')) {
-                $this->user->verified = true;
+                $this->user->phone_verified = true;
                 $this->user->save();
                 return response()->json('User phone has been succesfully verified', 201);
         } else {

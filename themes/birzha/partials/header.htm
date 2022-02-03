@@ -109,7 +109,7 @@ code = "main-top"
 
 {% else %}
 
-    {% if user.dial_code == '+993' and not user.verified %}
+    {% if user.dial_code == '+993' and not user.phone_verified %}
 
         <!-- Sms code input ==================================================== -->
         <section class="password sms-code">
@@ -205,24 +205,7 @@ code = "main-top"
                         </div>
                         <div class="profile_drop">
 
-                            <!-- Phone verification -->
-                            {% if user.dial_code == '+993' and not user.verified %}
-                            <a href="#" onclick="$('.sms-code').addClass('active'); $(this).request('onSendSmsCode', {
-                                error: function(e) {
-                                    console.error(e);
-                                    $('.sms-code').removeClass(active);
-                                }
-                            }); return false"
-                             class="profile_item">
-                                <div class="profile_icon">
-                                    <img src="{{'assets/images/svg/user-plus.svg'|theme}}" alt="">
-                                </div>
-                                <div class="profile_text">
-                                    Verify phone
-                                </div>
-                            </a>
-                            {% endif %}
-                            <!-- End Phone verification -->
+                            
 
                             <a href="{{'kabinet/profile'|page}}" class="profile_item">
                                 <div class="profile_icon">

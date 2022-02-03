@@ -266,3 +266,6 @@
 1.0.95:
     - 'Updated table users'
     - builder_table_update_users_table_02_02_2022_16_55.php
+1.0.96:
+    - 'Updated table users'
+    - builder_table_update_users_table_03_02_2022_17_12.php

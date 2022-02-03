@@ -399,11 +399,11 @@ class Account extends ComponentBase
     public function onSendSmsCode()
     {
         try {
-            if($this->user()->dial_code == '+993' && !$this->user()->verified) {
+            if($this->user()->dial_code == '+993' && !$this->user()->phone_verified) {
                 $code = random_int(100000, 999999);
 
-                $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user()->username), $code);
-                // $result = 0;
+                // $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user()->username), $code);
+                $result = 0;
 
                 switch ($result) {
                     case 0:
@@ -441,7 +441,7 @@ class Account extends ComponentBase
         }
 
         if($this->user()->activation_code == $data['sms_code']) {
-            $this->user()->verified = true;
+            $this->user()->phone_verified = true;
             $this->user()->save();
             
             Flash::success('Your phone number has been succesfully verified');

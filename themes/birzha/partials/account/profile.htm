@@ -30,6 +30,21 @@
         <label for="phone_num">{{'auth.phone'|_}}</label>
         <input type="text"  id="phone_num" name="username" value="{{user.username}}">
         <div data-validate-for="username"></div>
+
+        <!-- Phone verification -->
+        {% if user.dial_code == '+993' and not user.phone_verified %}
+        <a href="#" onclick="$('.sms-code').addClass('active'); $(this).request('onSendSmsCode', {
+                error: function(e) {
+                    console.error(e);
+                    $('.sms-code').removeClass(active);
+                }
+            }); return false;"
+        >
+            
+            Verify phone
+        </a>
+        {% endif %}
+        <!-- End Phone verification -->
     </div>
 
 
