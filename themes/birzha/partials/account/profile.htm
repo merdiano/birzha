@@ -1,3 +1,17 @@
+<!-- This messages are shawn when a user attempts tp verify the phone number. -->
+{% flash success %}
+<p data-control="flash-message" data-interval="5" class="success">
+    {{ message }}
+</p>
+{% endflash %}
+
+{% flash error %}
+<p data-control="flash-message" data-interval="5" class="error">
+    {{ message }}
+</p>
+{% endflash %}
+<!-- Flash messages end. -->
+
 {{ form_ajax('onUpdate',{class:'post_form','data-request-validate':''}) }}
 
     <div class="post_input">

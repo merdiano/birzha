@@ -17,6 +17,8 @@ use Cms\Classes\ComponentBase;
 use RainLab\User\Models\User as UserModel;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
+use Throwable;
+use TPS\Birzha\Classes\SMS;
 
 /**
  * Account component
@@ -388,6 +390,67 @@ class Account extends ComponentBase
         catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
+        }
+    }
+
+    /**
+     * Send sms with 6 digits code to user
+     */
+    public function onSendSmsCode()
+    {
+        try {
+            if($this->user()->dial_code == '+993' && !$this->user()->verified) {
+                $code = random_int(100000, 999999);
+
+                $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user()->username), $code);
+                // $result = 0;
+
+                switch ($result) {
+                    case 0:
+                        $this->user()->activation_code = $code;
+                        $this->user()->save();
+                        break;
+                    case 1:
+                        return \Redirect::to('/error');
+                        break;
+                    
+                    default:
+                        return \Redirect::to('/error');
+                        break;
+                }
+            }
+        } catch(Throwable $th) {
+            \Log::info($th);
+            return \Redirect::to('/error');
+        }
+        
+    }
+
+    /**
+     * Check SMS code sent by user
+     */
+    public function onCheckSmsCode()
+    {
+        $data = post();
+
+        $validator = \Validator::make($data, [
+            'sms_code' => 'required|digits:6',
+        ]);
+        if($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        if($this->user()->activation_code == $data['sms_code']) {
+            $this->user()->verified = true;
+            $this->user()->save();
+            
+            Flash::success('Your phone number has been succesfully verified');
+
+            return \Redirect::to('profile');
+        } else {
+            Flash::error('Invalid sms code');
+
+            return \Redirect::to('profile');
         }
     }
 
