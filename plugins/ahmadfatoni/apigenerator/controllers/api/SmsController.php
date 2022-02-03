@@ -27,14 +27,20 @@ class SmsController extends KabinetAPIController
 
     public function sendSmsCode()
     {
-        if($this->user->verified) {
+        if($this->user->dial_code != '+993') {
+                return response()->json([
+                        'dial_code' => $this->user->dial_code,
+                        'message' => 'This user is not a resident of Turkmenistan.'
+                ], 400);
+        }
+
+        if($this->user->verified && $this->user->dial_code == '+993') {
                 return response()->json('User phone already verified', 200);
         }
         
         $code = random_int(100000, 999999);
-        
-        $result = SMS::send($this->user->username, $code);
-        // $result = 0;
+
+        $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user->username), $code);
 
         switch ($result) {
                 case 0:
