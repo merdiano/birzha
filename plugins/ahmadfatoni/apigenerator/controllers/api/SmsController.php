@@ -38,14 +38,14 @@ class SmsController extends KabinetAPIController
                 return response()->json('User phone already verified', 200);
         }
         
-        $code = random_int(100000, 999999);
+        $code = random_int(1000, 9999);
 
         $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user->username), $code);
         // $result = 0;
 
         switch ($result) {
                 case 0:
-                        $this->user->activation_code = $code;
+                        $this->user->phone_activation_code = $code;
                         $this->user->save();
                         return response()->json([
                                 'result' => $result,
@@ -83,14 +83,15 @@ class SmsController extends KabinetAPIController
         }
         
         $validator = Validator::make($request->all(), [
-                'sms_code' => 'required|digits:6',
+                'sms_code' => 'required|digits:4',
         ]);
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
 
-        if($this->user->activation_code == $request->get('sms_code')) {
+        if($this->user->phone_activation_code == $request->get('sms_code')) {
                 $this->user->phone_verified = true;
+                $this->user->phone_activation_code = null;
                 $this->user->save();
                 return response()->json('User phone has been succesfully verified', 201);
         } else {
