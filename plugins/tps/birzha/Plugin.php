@@ -214,7 +214,25 @@ class Plugin extends PluginBase
 //            ]);
 //        });
     }
+    public function registerMailLayouts()
+    {
+        return [
+//            'default' => 'system::mail.layout-default',
+//            'system' => 'system::mail.layout-system',
+        ];
+    }
 
+    public function registerMailTemplates()
+    {
+        return [
+            'tps.birzha::mail.ru.activate',
+            'tps.birzha::mail.en.activate',
+            'tps.birzha::mail.tm.activate',
+            'tps.birzha::mail.message',
+            'tps.birzha::mail.request',
+
+        ];
+    }
 
     public function registerNotificationRules()
     {
