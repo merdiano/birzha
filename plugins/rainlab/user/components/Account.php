@@ -17,6 +17,8 @@ use Cms\Classes\ComponentBase;
 use RainLab\User\Models\User as UserModel;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
+use Throwable;
+use TPS\Birzha\Classes\SMS;
 
 /**
  * Account component
@@ -109,9 +111,9 @@ class Account extends ComponentBase
         /*
          * Activation code supplied
          */
-        if ($code = $this->activationCode()) {
-            $this->onActivate($code);
-        }
+        // if ($code = $this->activationCode()) {
+        //     $this->onActivate($code);
+        // }
 
         $this->prepareVars();
     }
@@ -388,6 +390,101 @@ class Account extends ComponentBase
         catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
+        }
+    }
+
+    /**
+     * Send sms with 6 digits code to user
+     */
+    public function onSendSmsCode()
+    {
+        try {
+            if($this->user()->dial_code == '+993' && !$this->user()->phone_verified) {
+                $code = random_int(1000, 9999);
+
+                $result = SMS::send(str_replace(array('+', ' ', '(' , ')', '-'), '', $this->user()->username), $code);
+                // $result = 0;
+
+                switch ($result) {
+                    case 0:
+                        $this->user()->phone_activation_code = $code;
+                        $this->user()->save();
+                        break;
+                    case 1:
+                        return \Redirect::to('/error');
+                        break;
+                    
+                    default:
+                        return \Redirect::to('/error');
+                        break;
+                }
+            }
+        } catch(Throwable $th) {
+            \Log::info($th);
+            return \Redirect::to('/error');
+        }
+        
+    }
+
+    /**
+     * Check SMS code sent by user
+     */
+    public function onCheckSmsCode()
+    {
+        $data = post();
+
+        $validator = \Validator::make($data, [
+            'sms_code' => 'required|digits:4',
+        ]);
+        if($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        if($this->user()->phone_activation_code == $data['sms_code']) {
+            $this->user()->phone_verified = true;
+            $this->user()->phone_activation_code = null;
+            $this->user()->save();
+            
+            Flash::success('Your phone number has been succesfully verified');
+
+            return \Redirect::to('profile');
+        } else {
+            Flash::error('Invalid sms code');
+
+            return \Redirect::to('profile');
+        }
+    }
+
+    /**
+     * Send email with the verification link to the user
+     */
+    public function onSendEmailVerificationLink()
+    {
+        if(!$this->user()->email_verified) {
+            $code = sha1(time());
+            $vars = [
+                'verification_link' => $this->controller->pageUrl('kabinet/verify_email.htm', ['code' => $code])
+            ];
+
+            try {
+                \Mail::send('rainlab.user::mail.email_verification', $vars, function($message) {
+                    $message->to($this->user()->email, 'Birzha User');
+                    $message->subject('Подтверждение Email');
+                });
+            } catch(Throwable $th) {
+                \Log::info($th);
+                
+                Flash::error('Cannot verify. Invalid email address');
+                
+                return \Redirect::to('profile');
+            }
+
+            $this->user()->email_activation_code = $code;
+            $this->user()->save();
+
+            Flash::success('Please check your email');
+
+            return \Redirect::to('profile');
         }
     }
 

@@ -47,7 +47,7 @@ class ContactForm extends ComponentBase
             $admin_email = Settings::getValue('admin_email');
         
             if($admin_email) {
-                \Mail::send('tps.birzha::mail.message', $vars, function($message) use($admin_email,){
+                \Mail::send('tps.birzha::mail.message', $vars, function($message) use($admin_email){
                     $message->to($admin_email, 'Birzha Admin');
                     $message->subject('Контактная форма');
                 });

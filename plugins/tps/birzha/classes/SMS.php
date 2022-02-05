@@ -22,9 +22,9 @@ class SMS
             unset($tx);
             return $result;
         }
-        catch (Exception $exception){
-            Log::error($exception);
-            return false;
+        catch (\Throwable $th){
+            Log::info($th);
+            return 1;
         }
 
     }

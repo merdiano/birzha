@@ -68,6 +68,76 @@ code = "main-top"
 </section>
 <!-- Header Top end ========================================================= -->
 
+{% if not account.user %}
+<!-- Password ==================================================== -->
+<section class="password">
+    <div class="auto_container">
+        <div class="pass_wrap">
+            <div class="pass_mail">
+                <div class="pass_title">
+                    Забыли пароль
+                </div>
+                <form action="#" class="password_form">
+                    <div class="pass_input">
+                        <input type="text" placeholder="Ваш электронный адрес">
+                    </div>
+                    <button type="submit" class="pass_btn">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+            <div class="pass_change">
+                <div class="pass_title">
+                    Забыли пароль
+                </div>
+                <form action="#" class="password_form">
+                    <div class="pass_input">
+                        <input type="text" placeholder="Введите новый пароль">
+                    </div>
+                    <div class="pass_input">
+                        <input type="text" placeholder="Введите еще раз новый пароль">
+                    </div>
+                    <button type="submit" class="pass_btn">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Password end ==================================================== -->
+
+{% else %}
+
+    {% if user.dial_code == '+993' and not user.phone_verified %}
+
+        <!-- Sms code input ==================================================== -->
+        <section class="password sms-code">
+            <div class="auto_container">
+                <div class="pass_wrap">
+                    <div class="pass_mail">
+                        <div class="pass_title">
+                            Enter 4 digits SMS code
+                        </div>
+                        <form action="#" data-request="onCheckSmsCode" data-request-validate data-request-flash class="password_form">
+                            <div class="pass_input">
+                                <input type="text" name="sms_code" placeholder="SMS code" required>
+                                <span data-validate-for="sms_code" style="color: red;"></span>
+                            </div>
+                            <button type="submit" class="pass_btn" data-attach-loading>
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sms code input end ==================================================== -->
+
+    {% endif %}
+
+{% endif %}
+
 <!--Header  ============================================================= -->
 <header class="header" id="header">
     <div class="auto_container">
@@ -134,6 +204,8 @@ code = "main-top"
                             </div>
                         </div>
                         <div class="profile_drop">
+
+                            
 
                             <a href="{{'kabinet/profile'|page}}" class="profile_item">
                                 <div class="profile_icon">

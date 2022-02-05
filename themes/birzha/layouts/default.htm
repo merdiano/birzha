@@ -62,6 +62,20 @@ function onStart(){
 
 </head>
 <body>
+
+{% flash success %}
+<p data-control="flash-message" data-interval="5" class="success">
+    {{ message }}
+</p>
+{% endflash %}
+
+{% flash error %}
+<p data-control="flash-message" data-interval="5" class="error">
+    {{ message }}
+</p>
+{% endflash %}
+
+
 {% partial 'header' %}
 {% page %}
 {% partial 'footer' %}

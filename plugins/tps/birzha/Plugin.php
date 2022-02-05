@@ -306,6 +306,7 @@ class Plugin extends PluginBase
             'TPS\Birzha\Components\MyOffers' => 'myOffers',
             'TPS\Birzha\Components\Balance' => 'balance',
             'TPS\Birzha\Components\ContactForm' => 'contactForm',
+            'TPS\Birzha\Components\EmailVerify' => 'emailverify',
         ];
     }
 
