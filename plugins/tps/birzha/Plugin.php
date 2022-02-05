@@ -217,8 +217,8 @@ class Plugin extends PluginBase
     public function registerMailLayouts()
     {
         return [
-//            'default' => 'system::mail.layout-default',
-//            'system' => 'system::mail.layout-system',
+           'birzha_default' => 'tps.birzha::mail.layout-default',
+        //    'system' => 'tps.birzha::mail.layout-system',
         ];
     }
 
@@ -231,6 +231,15 @@ class Plugin extends PluginBase
             'tps.birzha::mail.message',
             'tps.birzha::mail.request',
 
+            // email verification
+            'tps.birzha::mail.ru.email_verify',
+            'tps.birzha::mail.en.email_verify',
+            'tps.birzha::mail.tm.email_verify',
+
+            // product reviewed
+            // 'tps.birzha::mail.ru.product_reviewed',
+            // 'tps.birzha::mail.en.product_reviewed',
+            // 'tps.birzha::mail.tm.product_reviewed',
         ];
     }
 

@@ -467,14 +467,14 @@ class Account extends ComponentBase
             ];
 
             try {
-                \Mail::send('rainlab.user::mail.email_verification', $vars, function($message) {
+                \Mail::send('tps.birzha::mail.' . app()->getLocale() . '.email_verify', $vars, function($message) {
                     $message->to($this->user()->email, 'Birzha User');
                     $message->subject('Подтверждение Email');
                 });
             } catch(Throwable $th) {
                 \Log::info($th);
                 
-                Flash::error('Cannot verify. Invalid email address');
+                Flash::error('tps.birzha::mail.' . app()->getLocale() . '.email_verify');
                 
                 return \Redirect::to('profile');
             }
