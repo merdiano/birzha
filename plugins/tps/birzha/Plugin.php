@@ -218,7 +218,7 @@ class Plugin extends PluginBase
     {
         return [
            'birzha_default' => 'tps.birzha::mail.layout-default',
-        //    'system' => 'tps.birzha::mail.layout-system',
+            'birzha_system' => 'tps.birzha::mail.layout-system',
         ];
     }
 
