@@ -217,7 +217,7 @@ class Plugin extends PluginBase
     public function registerMailLayouts()
     {
         return [
-           'birzha_default' => 'tps.birzha::mail.layout-default',
+            'birzha_default' => 'tps.birzha::mail.layout-default',
             'birzha_system' => 'tps.birzha::mail.layout-system',
         ];
     }
@@ -237,9 +237,7 @@ class Plugin extends PluginBase
             'tps.birzha::mail.tm.email_verify',
 
             // product reviewed
-            // 'tps.birzha::mail.ru.product_reviewed',
-            // 'tps.birzha::mail.en.product_reviewed',
-            // 'tps.birzha::mail.tm.product_reviewed',
+            'tps.birzha::mail.product_reviewed',
         ];
     }
 
