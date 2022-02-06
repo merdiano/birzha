@@ -20,7 +20,7 @@ namespace TPS\Birzha\Classes;
  */
 
 /**
- *This class is also a merge from smpp lib of onlinecity 
+ *This class is also a merge from smpp lib of onlinecity
  * @see https://github.com/onlinecity/php-smpp
 */
 
@@ -49,7 +49,7 @@ class SMPP{
   const OUTBIND = 0x0000000B;
   const ENQUIRE_LINK = 0x00000015;
   const ENQUIRE_LINK_RESP = 0x80000015;
-  
+
   //  Command status - SMPP v3.4 - 5.1.3 page 112-114
   const ESME_ROK = 0x00000000; // No Error
   const ESME_RINVMSGLEN = 0x00000001; // Message Length is invalid
@@ -123,7 +123,7 @@ class SMPP{
   var $sms_replace_if_present_flag=0;
   var $sms_data_coding=0;
   var $sms_sm_default_msg_id=0;
-  
+
   /**
    * Constructs the smpp class
    * @param $host - SMSC host name or host IP
@@ -156,9 +156,9 @@ class SMPP{
     $hours = (int)($duration/60/60);
     $minutes = (int)($duration/60)-$hours*60;
     $seconds = (int)$duration-$hours*60*60-$minutes*60;
-    
+
     if($this->debug){
-      echo 'Seconds from last enquire link = ' . $seconds . PHP_EOL;
+      echo "<br>" .  'Seconds from last enquire link = ' . $seconds . PHP_EOL;
     }
 
     if ($seconds >= $this->enquirelink_timeout){
@@ -176,11 +176,11 @@ class SMPP{
 
     if($this->state!="open")return false;
     if($this->debug){
-      echo "Binding receiver...\n\n";
+      echo "<br>" .  "Binding receiver...\n\n";
     }
     $status=$this->_bind($login, $pass, SMPP::BIND_RECEIVER);
     if($this->debug){
-      echo "Binding status  : $status\n\n";
+      echo "<br>" .  "Binding status  : $status\n\n";
     }
     if($status===0)$this->state="bind_rx";
     return ($status===0);
@@ -196,11 +196,11 @@ class SMPP{
 
     if($this->state!="open")return false;
     if($this->debug){
-      echo "Binding transmitter...\n\n";
+      echo "<br>" .  "Binding transmitter...\n\n";
     }
     $status=$this->_bind($login, $pass, SMPP::BIND_TRANSMITTER);
     if($this->debug){
-      echo "Binding status  : $status\n\n";
+      echo "<br>" .  "Binding status  : $status\n\n";
     }
     if($status===0)$this->state="bind_tx";
 
@@ -213,11 +213,11 @@ class SMPP{
   function close(){
     if($this->state=="closed")return;
     if($this->debug){
-      echo "Unbinding...\n\n";
+      echo "<br>" .  "Unbinding...\n\n";
     }
     $status=$this->sendCommand(SMPP::UNBIND,"");
     if($this->debug){
-      echo "Unbind status   : $status\n\n";
+      echo "<br>" .  "Unbind status   : $status\n\n";
     }
     fclose($this->socket);
     $this->state="closed";
@@ -225,7 +225,7 @@ class SMPP{
 
   /**
    * Read one SMS from SMSC. Can be executed only after bindReceiver() call.
-   * Receiver not send enquirelink 
+   * Receiver not send enquirelink
    * This method bloks. Method returns on socket timeout or enquire_link signal from SMSC.
    * @return sms associative array or false when reading failed or no more sms.
    */
@@ -246,7 +246,7 @@ class SMPP{
     //read pdu
     do{
       if($this->debug){
-        echo "read sms...\n\n";
+        echo "<br>" .  "read sms...\n\n";
       }
       $pdu=$this->readPDU();
       //check for enquire link command
@@ -270,16 +270,16 @@ class SMPP{
   function sendSMS($from, $to, $message){
     if (strlen($from)>20 || strlen($to)>20 || strlen($message)>160)return false;
     if($this->state!="bind_tx")return false;
-    
+
     //TON
-    $this->sms_source_addr_ton = $this->setTon($from);
-    $this->sms_dest_addr_ton = $this->setTon($to);
+    $this->sms_source_addr_ton = 2;//$this->setTon($from);
+    $this->sms_dest_addr_ton = 2;$this->setTon($to);
 
     //NPI
     $this->sms_source_addr_npi = $this->setNPI($from);
     $this->sms_dest_addr_npi = $this->setNPI($to);
 
-    $pdu = pack('a1cca'.(strlen($from)+1).'cca'.(strlen($to)+1).'ccca1a1ccccca'.(strlen($message)+1),
+    $pdu = pack('a1cca'.(strlen($from)+1).'cca'.(strlen($to)+1).'ccca1a1ccccca'.(strlen($message)),
       $this->sms_service_type,
       $this->sms_source_addr_ton,
       $this->sms_source_addr_npi,
@@ -310,7 +310,7 @@ class SMPP{
   function getStatusMessage($statuscode)
   {
     if (is_bool($statuscode)) return 'Connection Error';
-    
+
     switch ($statuscode) {
       case SMPP::ESME_ROK: return 'OK';
       case SMPP::ESME_RINVMSGLEN: return 'Message Length is invalid';
@@ -391,7 +391,7 @@ class SMPP{
       //If empty and length is > 8 then TON is International (1)
       if(empty($address) || strlen($address) > $NationalNumberLenght) return 1; //International
     }
-    
+
     //If address is alphanumeric then TON is Alphanumeric (5)
     if (!ctype_digit($address)) return 5; //Alphanumeric
 
@@ -422,7 +422,7 @@ public function enquireLink()
     if ($response == 0) {
       $this->lastenquire = microtime(true);
       if ($this->debug){
-        echo "ENQUIRE!!" . PHP_EOL;
+        echo "<br>" .  "ENQUIRE!!" . PHP_EOL;
       }
     }
     return $response;
@@ -480,9 +480,9 @@ public function enquireLink()
       'short_message'=>$this->getString($ar,255)
     );
     if($this->debug){
-      echo "Delivered sms:\n";
+      echo "<br>" .  "Delivered sms:\n";
       print_r($sms);
-      echo "\n";
+      echo "<br>" .  "\n";
     }
     //send response of recieving sms
     $this->sendPDU(SMPP::DELIVER_SM_RESP, "\0", $pdu['sn']);
@@ -513,21 +513,21 @@ public function enquireLink()
     $length=strlen($pdu) + 16;
     $header=pack("NNNN", $length, $command_id, 0, $seq_number);
     if($this->debug){
-      echo "Send PDU        : $length bytes\n";
+      echo "<br>" .  "Send PDU        : $length bytes\n";
       $this->printHex($header.$pdu);
-      echo "command_id      : ".$command_id."\n";
-      echo "sequence number : $seq_number\n\n";
+      echo "<br>" .  "command_id      : ".$command_id."\n";
+      echo "<br>" .  "sequence number : $seq_number\n\n";
     }
 
     $writed = @fwrite($this->socket, $header.$pdu, $length);
 
     //Close conection if not bind
     if ($writed == FALSE) {
-      if ($this->debug) echo "Lost connection to SMSC" . PHP_EOL;
+      if ($this->debug) echo "<br>" .  "Lost connection to SMSC" . PHP_EOL;
       exit();
     };
 
-    
+
   }
 
   /**
@@ -584,12 +584,12 @@ public function enquireLink()
       $body="";
     }
     if($this->debug){
-      echo "Read PDU        : $length bytes\n";
+      echo "<br>" .  "Read PDU        : $length bytes\n";
       $this->printHex($tmp.$tmp2.$body);
-      echo "body len        : " . strlen($body) . "\n";
-      echo "Command id      : $command_id\n";
-      echo "Command status  : $command_status\n";
-      echo "sequence number : $sequence_number\n\n";
+      echo "<br>" .  "body len        : " . strlen($body) . "\n";
+      echo "<br>" .  "Command id      : $command_id\n";
+      echo "<br>" .  "Command status  : $command_status\n";
+      echo "<br>" .  "sequence number : $sequence_number\n\n";
     }
     $pdu=array(
       'id'=>$command_id,

@@ -6,6 +6,7 @@ use RainLab\Notify\NotifyRules\SaveDatabaseAction;
 use System\Classes\PluginBase;
 use TPS\Birzha\Actions\MailToAdminsAction;
 use TPS\Birzha\Actions\SendSMSAction;
+use TPS\Birzha\Actions\VerifyAction;
 use TPS\Birzha\Models\Category;
 use TPS\Birzha\Models\Message;
 use TPS\Birzha\Models\Product;
@@ -213,7 +214,34 @@ class Plugin extends PluginBase
 //            ]);
 //        });
     }
+    public function registerMailLayouts()
+    {
+        return [
+           'birzha_default' => 'tps.birzha::mail.layout-default',
+            'birzha_system' => 'tps.birzha::mail.layout-system',
+        ];
+    }
 
+    public function registerMailTemplates()
+    {
+        return [
+            'tps.birzha::mail.ru.activate',
+            'tps.birzha::mail.en.activate',
+            'tps.birzha::mail.tm.activate',
+            'tps.birzha::mail.message',
+            'tps.birzha::mail.request',
+
+            // email verification
+            'tps.birzha::mail.ru.email_verify',
+            'tps.birzha::mail.en.email_verify',
+            'tps.birzha::mail.tm.email_verify',
+
+            // product reviewed
+            // 'tps.birzha::mail.ru.product_reviewed',
+            // 'tps.birzha::mail.en.product_reviewed',
+            // 'tps.birzha::mail.tm.product_reviewed',
+        ];
+    }
 
     public function registerNotificationRules()
     {
@@ -228,8 +256,10 @@ class Plugin extends PluginBase
             'actions' => [
                 SendSMSAction::class,
                 MailToAdminsAction::class,
+                VerifyAction::class
             ],
             'conditions' => [
+                \RainLab\User\NotifyRules\UserAttributeCondition::class
             ],
             'groups' => [
                 'payment' => [
@@ -285,6 +315,7 @@ class Plugin extends PluginBase
             'TPS\Birzha\Components\MyOffers' => 'myOffers',
             'TPS\Birzha\Components\Balance' => 'balance',
             'TPS\Birzha\Components\ContactForm' => 'contactForm',
+            'TPS\Birzha\Components\EmailVerify' => 'emailverify',
         ];
     }
 

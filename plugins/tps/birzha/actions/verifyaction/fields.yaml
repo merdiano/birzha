@@ -1,0 +1,6 @@
+fields:
+    send_to_mode:
+        label: Send to
+        type: radio
+        span: left
+

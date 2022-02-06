@@ -15,15 +15,3 @@ Route::namespace('TPS\Birzha\Controllers')->group(function () {
     });
 });
 
-
-// Route::get('bank_result/{payment_id}', ['as'=>'paymentReturn','uses'=>'...@checkPayment'] );
-Route::get('tm/check-sms', function() {
-    
-    $tx=new SMPP('217.174.228.218', 5019); // make sure the port is integer
-    $tx->debug=false;
-    $tx->bindTransmitter("birja","Birj@1");
-    $result = $tx->sendSMS("0773","99365611968","Hello world");
-    echo $tx->getStatusMessage($result);
-    $tx->close();
-    unset($tx);
-});

@@ -10,6 +10,7 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
 
     Route::get('products', ['as' => 'products.index', 'uses' => 'ProductsApiController@index']);
     Route::get('products/{id}', ['as' => 'products.show', 'uses' => 'ProductsApiController@show']);
+    Route::get('test',['as' => 'test', 'uses' => 'SmsController@index']);
 
 // Route::get('products/{id}/delete', ['as' => 'products.delete', 'uses' => 'ProductsApiController@destroy']);
 
@@ -20,6 +21,8 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
 
     Route::resource('terms', 'TermsapiController', ['except' => ['destroy', 'create', 'edit']]);
 // Route::get('terms/{id}/delete', ['as' => 'terms.delete', 'uses' => 'TermsapiController@destroy']);
+
+    Route::post('send-contact-form', 'ContactFormApiController@sendContactForm');
 
     Route::middleware(['\Tymon\JWTAuth\Middleware\GetUserFromToken'])->group(function () {
 
@@ -54,6 +57,13 @@ Route::group(['prefix' =>'api/v1','namespace' =>'AhmadFatoni\ApiGenerator\Contro
 
         Route::get('transactions', 'TransactionsApiController@index');
         Route::get('my-balance', 'TransactionsApiController@myBalance');
+
+        Route::post('withdraw-from-balance', 'ExchangeRequestsController@withdrawFromBalance');
+
+        Route::post('send-sms-code', 'SmsController@sendSmsCode');
+        Route::post('check-sms-code', 'SmsController@checkSmsCode');
+
+        Route::post('send-email-verification-link', 'EmailVerificationController@sendEmailVerificationLink');
 
     });
 });

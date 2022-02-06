@@ -28,7 +28,8 @@
     24 => 'October\\Rain\\Argon\\ArgonServiceProvider',
     25 => 'October\\Rain\\Redis\\RedisServiceProvider',
     26 => 'October\\Rain\\Validation\\ValidationServiceProvider',
-    27 => 'System\\ServiceProvider',
+    27 => 'LaravelSmpp\\LaravelSmppServiceProvider',
+    28 => 'System\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -43,7 +44,8 @@
     8 => 'October\\Rain\\Filesystem\\FilesystemServiceProvider',
     9 => 'October\\Rain\\Html\\UrlServiceProvider',
     10 => 'October\\Rain\\Argon\\ArgonServiceProvider',
-    11 => 'System\\ServiceProvider',
+    11 => 'LaravelSmpp\\LaravelSmppServiceProvider',
+    12 => 'System\\ServiceProvider',
   ),
   'deferred' => 
   array (

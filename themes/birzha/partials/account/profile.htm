@@ -1,3 +1,7 @@
+<!-- This messages are shawn when a user attempts tp verify the phone number. -->
+
+<!-- Flash messages end. -->
+
 {{ form_ajax('onUpdate',{class:'post_form','data-request-validate':''}) }}
 
     <div class="post_input">
@@ -16,6 +20,21 @@
         <label for="phone_num">{{'auth.phone'|_}}</label>
         <input type="text"  id="phone_num" name="username" value="{{user.username}}">
         <div data-validate-for="username"></div>
+
+        <!-- Phone verification -->
+        {% if user.dial_code == '+993' and not user.phone_verified %}
+        <a href="#" onclick="$('.sms-code').addClass('active'); $(this).request('onSendSmsCode', {
+                error: function(e) {
+                    console.error(e);
+                    $('.sms-code').removeClass(active);
+                }
+            }); return false;"
+        >
+            
+            Verify phone
+        </a>
+        {% endif %}
+        <!-- End Phone verification -->
     </div>
 
 
@@ -23,6 +42,19 @@
         <label for="blue_mail">{{'auth.email'|_}}</label>
         <input type="email"  id="blue_mail" name="email" value="{{user.email}}">
         <div data-validate-for="email"></div>
+
+        <!-- Email verification -->
+        {% if not user.email_verified %}
+        <a href="#" onclick="$(this).request('onSendEmailVerificationLink', {
+                error: function(e) {
+                    console.error(e);
+                }
+            }); return false;"
+        >
+            Verify email
+        </a>
+        {% endif %}
+        <!-- End Email verification -->
     </div>
 
     <div class="post_input">

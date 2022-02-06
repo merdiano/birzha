@@ -1,0 +1,25 @@
+columns:
+    id:
+        label: ID
+        type: number
+        sortable: true
+    payed_for_request:
+        label: Fee
+        type: number
+        sortable: true
+    user_id:
+        label: User
+        type: text
+        relation: user
+        valueFrom: email
+    content:
+        label: Content
+        type: text
+        invisible: true
+    created_at:
+        label: 'Created At'
+        type: datetime
+    status:
+        label: Status
+        type: text
+        sortable: true

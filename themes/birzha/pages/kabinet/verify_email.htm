@@ -1,0 +1,15 @@
+title = "Verify Email"
+url = "/verify-email/:code"
+layout = "default"
+is_hidden = 0
+
+[session]
+security = "user"
+redirect = "index"
+
+[emailverify]
+code = "{{ :code }}"
+==
+{% component 'session' %}
+
+{% component 'emailverify' %}

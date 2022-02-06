@@ -34,6 +34,10 @@ navigation:
                 icon: icon-usd
                 permissions:
                     - payment
+            exchange-requests:
+                label: 'Exchange Req.'
+                url: tps/birzha/exchangerequests
+                icon: icon-sitemap
     frontend:
         label: Frontend
         url: tps/birzha/sliders

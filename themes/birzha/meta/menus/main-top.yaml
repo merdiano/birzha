@@ -21,9 +21,13 @@ items:
             isExternal: '0'
     -
         title: Sorag-jogap
+        nesting: null
         type: cms-page
+        url: null
         code: ''
         reference: terms
+        cmsPage: null
+        replace: null
         viewBag:
             locale:
                 en:
@@ -52,6 +56,22 @@ items:
                 ru:
                     title: 'Обратная связь'
                     url: ''
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Kotirowkalar
+        type: url
+        url: /app
+        code: ''
+        viewBag:
+            locale:
+                en:
+                    title: Quotations
+                    url: /app
+                ru:
+                    title: Котировки
+                    url: /app
             isHidden: '0'
             cssClass: ''
             isExternal: '0'

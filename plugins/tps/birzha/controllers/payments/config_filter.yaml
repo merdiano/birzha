@@ -6,17 +6,22 @@ scopes:
     status:
         label: Status
         type: group
+        conditions: status in (:filtered)
         options:
             new: new
-            payed: payed
+            approved: approved
+            declined: declined
+            failed: failed
     payment_type:
         label: 'Payment type'
         type: group
+        conditions: payment_type in (:filtered)
         options:
             bank: Bank
             online: Online
+            gift: Gift
     user:
         label: Seller
         modelClass: RainLab\User\Models\User
-        nameFrom: name
+        nameFrom: email
         conditions: user_id in (:filtered)

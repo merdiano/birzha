@@ -195,6 +195,7 @@ return [
         'name' => 'Name',
         'surname' => 'Surname',
         'mobile' => 'Phone number',
+        'username' => 'Phone number',
     ],
 
 ];
