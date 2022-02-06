@@ -55,6 +55,10 @@ let delete_modal = document.querySelector('#delete-modal');
 let table_filter_icon = document.querySelector('.table_filter-icon');
 let table_filter_info = document.querySelector('.table_filter-info');
 
+let close_alert = document.querySelector('.close_alert');
+let alert = document.querySelector('.alert');
+
+
 
 
 //  Fixed header ====================================
@@ -249,6 +253,15 @@ if (profile_head != undefined) {
         });
     });
 }
+
+if (close_alert != undefined) {
+    close_alert.addEventListener('click', function () {
+        sleep(2).then(() => {
+            alert.classList.remove('active');
+        });
+    });
+}
+
 
 // if (phone_box != undefined) {
 //     phone_box.addEventListener('click', function () {

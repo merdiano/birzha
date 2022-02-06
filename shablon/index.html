@@ -16,6 +16,28 @@
 
 <body>
 
+    <!-- Alert message =============================================== -->
+    <section class="alert active">
+        <div class="auto_container">
+            <div class="alet_wrap">
+                <div class="alert_row">
+                    <h6 class="alert_text">
+                        Вы не можете создавать и исползовать ресурсы некоторых сервисов. Пополните баланс, чтобы
+                        возобновить работу.
+                    </h6>
+                    <div class="close_alert">
+                        <svg viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M30.248 2.9785L17.5762 15.6479L30.248 28.3174C30.7812 28.8506 30.7812 29.7148 30.248 30.248C29.7148 30.7813 28.8507 30.7812 28.3174 30.248L15.6479 17.5762L2.9785 30.248C2.4453 30.7812 1.58113 30.7812 1.04787 30.248C0.514612 29.7148 0.514671 28.8507 1.04787 28.3174L13.7197 15.6479L1.04787 2.9785C0.514671 2.4453 0.514671 1.58113 1.04787 1.04787C1.58107 0.514612 2.44524 0.514671 2.9785 1.04787L15.6479 13.7197L28.3174 1.04787C28.8506 0.514671 29.7148 0.514671 30.248 1.04787C30.7813 1.58107 30.7812 2.44524 30.248 2.9785V2.9785Z"
+                                fill="#003197" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Alert message end =========================================== -->
+
     <!-- Register ======================================================== -->
     <section class="register">
         <div class="auto_container">
@@ -3065,7 +3087,7 @@
     <!-- Register end ==================================================== -->
 
     <!-- Password ==================================================== -->
-    <section class="password active">
+    <section class="password ">
         <div class="auto_container">
             <div class="pass_wrap">
                 <div class="pass_mail">
@@ -4001,7 +4023,7 @@
             let flagClass = $(this).find('.iti__flag').attr("class").split(/\s+/)[1]
 
             let oldClasses = $('.phone_box-flag').attr("class").split(/\s+/);
-            delete(oldClasses[2])
+            delete (oldClasses[2])
 
             $('.phone_box-flag').attr('class', oldClasses.join(' '))
 
